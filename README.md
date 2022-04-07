@@ -68,6 +68,7 @@ layouts, check ```./settings/layouts.py```, the rest of files don't need any
 configuration.
 
 ![screen2](./screenshot/2.png)
+![screen3](./screenshot/3.png)
 
 ## Themes
 

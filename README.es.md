@@ -70,7 +70,8 @@ Para añadir o quitar espacios de trabajos, debes modificar
 ```./settings/groups.py```. Finalmente, si quieres añadir nuevos *layouts*,
 abre ```./settings/layouts.py```, el resto de archivos no hace falta tocarlos.
 
-![screen1](./screenshot/2.png)
+![screen2](./screenshot/2.png)
+![screen3](./screenshot/3.png)
 
 ## Temas
 
