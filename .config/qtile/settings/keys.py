@@ -1,5 +1,3 @@
-
-
 from libqtile.config import Key
 from libqtile.command import lazy
 
@@ -54,15 +52,21 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
 
     # Browser
     ([mod], "b", lazy.spawn("google-chrome-stable")),
+    
+    ([mod,"shift"], "b", lazy.spawn("qutebrowser")),
 
     # text editor
-    ([mod], "c", lazy.spawn("subl")),
+    ([mod], "c", lazy.spawn("Code")),
+    
+    ([mod,"shift"], "c", lazy.spawn("subl")),
+
 
     # File Explorer
     ([mod], "e", lazy.spawn("pcmanfm")),
 
     # Terminal
-    ([mod], "t", lazy.spawn("alacritty")),
+    ([mod], "t", lazy.spawn("kitty")),
+    ([mod,"shift"], "t", lazy.spawn("alacritty")),
 
     # Redshift
     ([mod], "r", lazy.spawn("redshift -O 2400")),
@@ -74,6 +78,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
 
     # ------------ Hardware Configs ------------
 
+    # ------------ Hardware Configs ------------
     # Volume
     ([], "XF86AudioLowerVolume", lazy.spawn(
         "pactl set-sink-volume @DEFAULT_SINK@ -5%"

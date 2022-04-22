@@ -8,14 +8,9 @@ volumeicon &
 # picom
 picom &
 # imagen
-feh --bg-fill ~/.config/qtile/assets/fondo.png
+feh --bg-fill ~/.config/qtile/assets/fondo20.png
 
 # start all this to entry the system
 
-alacritty &
-alacritty & 
-#alacritty -e htop &
-alacritty &
+kitty &
 notes &
-subl &
-google-chrome-stable &

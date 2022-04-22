@@ -26,6 +26,10 @@ alias l='lsd --group-dirs=first'
 alias lla='lsd -lha --group-dirs=first'
 alias ls='lsd --group-dirs=first'
 alias vim='nvim'
+alias icat="kitty +kitten icat"
+alias cdbt="cd ~/Documentos/trading-bot/"
+alias cdft="cd ~/Curso/facebook-Template/"
+alias r8169="sudo modprobe r8169"
 alias mkt(){
 	mkdir {nmap,content,exploits}
 }
