@@ -22,7 +22,7 @@ def icon(fg='text', bg='dark', fontsize=16, text="?"):
         **base(fg, bg),
         fontsize=fontsize,
         text=text,
-        padding=3
+        padding=4
     )
 
 
@@ -69,7 +69,7 @@ def workspaces():
       
       
         widget.GroupBox(
-            **base(fg='dark',bg='color1'),
+            **base(fg='dark',bg='primary'),
             font='UbuntuMono Nerd Font',
             fontsize=19,
             margin_y=3,
@@ -83,10 +83,10 @@ def workspaces():
             highlight_method='text',
             urgent_alert_method='text',
             urgent_border=colors['urgent'],
-            this_current_screen_border=colors['light'],
+            this_current_screen_border=colors['focus'],
             this_screen_border=colors['grey'],
-            other_current_screen_border=colors['light'],
-            other_screen_border=colors['color1'],
+            other_current_screen_border=colors['focus'],
+            other_screen_border=colors['primary'],
             disable_drag=True,
         ),
       
@@ -95,21 +95,21 @@ def workspaces():
     ]
 
 primary_widgets = [
-    corner_left('dark', 'color1'),
-    widget.Sep(padding=180, linewidth=0, **base(bg='color1',fg='color1')),
+    corner_left('dark', 'primary'),
+    widget.Sep(padding=180, linewidth=0, **base(bg='primary',fg='primary')),
     *workspaces(),
-    powerline_mirror('color1', 'dark'),
+    powerline_mirror('primary', 'dark'),
     spacer(),
     widget.Image(filename='~/.config/qtile/assets/center-logo.png'),
     spacer(),
   
 
-    powerline('color1', 'dark'),
+    powerline('primary', 'dark'),
 
-    icon(bg="color1",fg='color3', text=' '), # Icon: nf-fa-download
+    icon(bg="primary",fg='secondary', text=' '), # Icon: nf-fa-download
     
     widget.CheckUpdates(
-        background=colors['color1'],
+        background=colors['primary'],
         colour_have_updates=colors['urgent'],
         colour_no_updates=colors['light'],
         no_update_string='0',
@@ -117,21 +117,21 @@ primary_widgets = [
         update_interval=1800,
         custom_command='checkupdates',
     ),
-   widget.Sep(**base(bg='color1'), linewidth=0, padding=5),
-    widget.Sep(**base(bg='color1'), linewidth=0, padding=5),
-    icon(bg="color1",fg='color3', text=' '),
-    widget.CPU(**base(bg='color1',fg='light'), format='{load_percent}% '),
-    icon(bg="color1",fg='color3', text=' '),
-    widget.Memory(**base(bg='color1',fg='light'),format=' {MemUsed: .0f}{mm} '),  
-    widget.Sep(**base(bg='color1'), linewidth=0, padding=5),
-    icon(bg="color1",fg='color3', text=' '),
-    widget.Clock(**base(bg='color1', fg='light'), format='%d/%m/%Y '),
-    icon(bg="color1",fg='color3', text=' '),
-    widget.Clock(**base(bg='color1', fg='light'), format='%I:%M %p '),
-    widget.Sep(**base(bg='color1'), linewidth=0, padding=5),
-    widget.Systray(background=colors['color1'], padding=5),
-    widget.Sep(padding=6, linewidth=1, **base(bg='color1',fg='color1')),
-    corner_right('dark', 'color1'),
+   widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
+    widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
+    icon(bg="primary",fg='secondary', text=' '),
+    widget.CPU(**base(bg='primary',fg='light'), format='{load_percent}% '),
+    icon(bg="primary",fg='secondary', text=' '),
+    widget.Memory(**base(bg='primary',fg='light'),format=' {MemUsed: .0f}{mm} '),  
+    widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
+    icon(bg="primary",fg='secondary', text=' '),
+    widget.Clock(**base(bg='primary', fg='light'), format='%d/%m/%Y '),
+    icon(bg="primary",fg='secondary', text=' '),
+    widget.Clock(**base(bg='primary', fg='light'), format='%I:%M %p '),
+    widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
+    widget.Systray(background=colors['primary'], padding=5),
+    widget.Sep(padding=6, linewidth=1, **base(bg='primary',fg='color1')),
+    corner_right('dark', 'primary'),
     
 ]
 
@@ -140,13 +140,13 @@ secondary_widgets = [
 
     separator(),
 
-    powerline('color1', 'dark'),
+    powerline('primary', 'dark'),
     widget.StockTicker(),
 
 
 
 
-    powerline('color2', 'color1'),
+    powerline('color2', 'primary'),
     widget.Pomodoro(),
 
 

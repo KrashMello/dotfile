@@ -1,12 +1,12 @@
 #!/bin/sh
 
 # keymap
-setxkbmap latam
+#setxkbmap latam
 # systray volume
-volumeicon &
-
+#volumeicon &
+#udiskie -t &
 # picom
-picom &
+#picom &
 # imagen
 feh --bg-fill ~/.config/qtile/assets/fondo20.png
 
