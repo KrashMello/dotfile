@@ -1,0 +1,3 @@
+setxkbmap latam &
+udiskie -t &
+volumeicon &

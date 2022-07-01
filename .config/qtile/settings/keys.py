@@ -44,6 +44,11 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
 
     # ------------ App Configs ------------
 
+    #lock screen 
+
+    
+    ([mod], "l", lazy.spawn("dm-tool lock")),
+
     # Menu
     ([mod], "space", lazy.spawn("rofi -show drun")),
 

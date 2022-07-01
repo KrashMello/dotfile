@@ -28,9 +28,18 @@ let g:vim_vue_plugin_config = {
 "let g:foldnestmax=10
 "let g:nofoldenable
 "let g:foldlevel=2
+let mapleader = " "
 for f in g:config_file_list
     execute 'source ' . g:nvim_config_root . f
 endfor
 hi normal guibg=000000
 nnoremap <leader>w :w<cr>
+nnoremap <leader>wq :wq<cr>
 silent! nmap <C-b> :NERDTreeToggle<CR>
+nnoremap <c-z> :u<CR>
+nnoremap <c-y> :redo<CR>
+nnoremap <leader>q :q!<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>

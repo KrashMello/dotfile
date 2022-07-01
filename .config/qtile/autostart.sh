@@ -1,14 +1,14 @@
 #!/bin/sh
 
 # keymap
-#setxkbmap latam
+# setxkbmap latam
 # systray volume
 #volumeicon &
 #udiskie -t &
 # picom
-#picom &
+picom &
 # imagen
-feh --bg-fill ~/.config/qtile/assets/fondo20.png
+feh --bg-fill ~/Imágenes/rose_pine_shape.png 
 
 # start all this to entry the system
 

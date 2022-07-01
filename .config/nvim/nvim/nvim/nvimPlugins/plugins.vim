@@ -8,7 +8,7 @@ call plug#begin(stdpath('data').'/plugged')
     Plug 'ryanoasis/vim-devicons'
 
     " Conquer Of Completion
-    Plug 'neoclide/coc.nvim', {'do':'yarn install','branch': 'master'}
+    Plug 'neoclide/coc.nvim', {'branch': 'master'}
     Plug 'neoclide/coc-eslint'
     Plug 'neoclide/coc-vetur'
     " sintax
@@ -42,11 +42,9 @@ call plug#begin(stdpath('data').'/plugged')
     " indentline
     Plug 'yggdroot/indentline'
     
-    "vim vue plugin
-    Plug 'leafoftree/vim-vue-plugin',
+    " BarBar
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'romgrk/barbar.nvim'
 
-    "telescope vim
-    Plug 'nvim-lua/plenary.nvim',
-    Plug 'nvim-telescope/telescope.nvim', 
 
-call plug#end()
+    call plug#end()
