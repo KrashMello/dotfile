@@ -1,6 +1,6 @@
 from libqtile import widget
 from .theme import colors
-
+from libqtile import bar
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
 
 def base(fg='text', bg='dark'): 
@@ -14,7 +14,7 @@ def separator():
     return widget.Sep(**base(), linewidth=0, padding=5)
 
 def spacer():
-    return widget.Spacer()
+    return widget.Spacer(length=bar.STRETCH)
 
 
 def icon(fg='text', bg='dark', fontsize=16, text="?"):
@@ -96,7 +96,7 @@ def workspaces():
 
 primary_widgets = [
     corner_left('dark', 'primary'),
-    widget.Sep(padding=180, linewidth=0, **base(bg='primary',fg='primary')),
+    widget.Sep(padding=240, linewidth=0, **base(bg='primary',fg='primary')),
     *workspaces(),
     powerline_mirror('primary', 'dark'),
     spacer(),
@@ -111,7 +111,7 @@ primary_widgets = [
     widget.CheckUpdates(
         background=colors['primary'],
         colour_have_updates=colors['urgent'],
-        colour_no_updates=colors['light'],
+        colour_no_updates=colors['text'],
         no_update_string='0',
         display_format='{updates}',
         update_interval=1800,
@@ -120,14 +120,14 @@ primary_widgets = [
    widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
     widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
     icon(bg="primary",fg='secondary', text=' '),
-    widget.CPU(**base(bg='primary',fg='light'), format='{load_percent}% '),
+    widget.CPU(**base(bg='primary',fg='text'), format='{load_percent}% '),
     icon(bg="primary",fg='secondary', text=' '),
-    widget.Memory(**base(bg='primary',fg='light'),format=' {MemUsed: .0f}{mm} '),  
+    widget.Memory(**base(bg='primary',fg='text'),format=' {MemUsed: .0f}{mm} '),  
     widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
     icon(bg="primary",fg='secondary', text=' '),
-    widget.Clock(**base(bg='primary', fg='light'), format='%d/%m/%Y '),
+    widget.Clock(**base(bg='primary', fg='text'), format='%d/%m/%Y '),
     icon(bg="primary",fg='secondary', text=' '),
-    widget.Clock(**base(bg='primary', fg='light'), format='%I:%M %p '),
+    widget.Clock(**base(bg='primary', fg='text'), format='%I:%M %p '),
     widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
     widget.Systray(background=colors['primary'], padding=5),
     widget.Sep(padding=6, linewidth=1, **base(bg='primary',fg='color1')),
