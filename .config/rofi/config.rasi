@@ -1,12 +1,12 @@
 * {
-    bg: #faf4ed;
-    cur: #f2e9de;
-    fgd: #575279;
+    bg: #23014E;
+    cur: #23014E;
+    fgd: #05905E;
     cmt: #6e6a86;
     cya: #56949f;
-    grn: #286983;
-    ora: #d7827e;
-    pur: #907aa9;
+    grn: #573086;
+    ora: #08BBC6;
+    pur: #05905E;
     red: #b4637a;
     yel: #ea9d34;
 

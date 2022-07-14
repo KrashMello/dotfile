@@ -7,7 +7,7 @@ from .widgets import primary_widgets, secondary_widgets
 import subprocess
 
 def status_bar(widgets):
-    return bar.Bar( widgets, 24, background=colors['dark'][0], border_color=colors['dark'][0],border_width=1, margin=[5,5,5,5] )
+    return bar.Bar( widgets, 24, background=colors['dark'][0], border_color=colors['dark'][0],border_width=2, margin=[5,5,5,5] )
 
 
 screens = [Screen(top=status_bar(primary_widgets))]

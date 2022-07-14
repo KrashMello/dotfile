@@ -75,7 +75,6 @@ require('packer').startup(function(use)
 	use 'nvim-lua/plenary.nvim'
 	use 'ryanoasis/vim-devicons'
     use 'preservim/nerdtree'
-
     use {
             'prettier/vim-prettier',
             run = 'yarn install --frozen-lockfile --production', 
@@ -89,13 +88,18 @@ require('packer').startup(function(use)
             vim.cmd('colorscheme rose-pine')
         end
     })
+    use'thedenisnikulin/vim-cyberpunk'
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
+    use 'shougo/deoplete.nvim'
+    use 'valloric/youcompleteme'
+    ---use 'zxqfl/tabnine-vim'
     use {'neoclide/coc.nvim', run = 'yarn install'} 
     use 'neoclide/coc-eslint'                                         
     use 'neoclide/coc-vetur'
+    ---use 'neoclide/coc-tabnine'
     use 'sheerun/vim-polyglot'
     use 'jiangmiao/auto-pairs'
     use 'alvan/vim-closetag'
@@ -114,14 +118,13 @@ require('packer').startup(function(use)
 )
 
 require('rose-pine').setup({
-	--- @usage 'main' | 'moon'
+    -- @usage 'main' | 'moon'
 	dark_variant = 'moon',
 	bold_vert_split = false,
 	dim_nc_background = false,
-	disable_background = false,
+	disable_background = true,
 	disable_float_background = false,
 	disable_italics = false,
-
 	--- @usage string hex value or named color from rosepinetheme.com/palette
 	groups = {
 		background = 'base',
@@ -155,7 +158,12 @@ require('rose-pine').setup({
 })
 
 -- set colorscheme after options
-vim.cmd('colorscheme rose-pine')
+--vim.cmd('colorscheme rose-pine')
+--set termguicolors
+--colorscheme cyberpunk
+cmd[[
+    colorscheme cyberpunk-neon
+    ]]
 require('telescope').setup{
   defaults = {
     vimgrep_arguments = {

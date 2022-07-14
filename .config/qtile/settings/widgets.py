@@ -1,6 +1,7 @@
 from libqtile import widget
 from .theme import colors
 from libqtile import bar
+
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
 
 def base(fg='text', bg='dark'): 
@@ -51,7 +52,7 @@ def corner_left(fg="light", bg="dark"):
       
 	   text=" ",
        fontsize=50,
-       padding=-5
+       padding=-6
     )
 
 def corner_right(fg="light", bg="dark"):
@@ -60,7 +61,7 @@ def corner_right(fg="light", bg="dark"):
       
 	   text=" ",
         fontsize=50,
-        padding=-5
+        padding=-6
     )
 
 
@@ -93,6 +94,7 @@ def workspaces():
       
       
     ]
+
 
 primary_widgets = [
     corner_left('dark', 'primary'),
