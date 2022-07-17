@@ -9,7 +9,7 @@
 # picom &
 # imagen
 #feh --bg-fill ~/Imágenes/rose_pine_shape.png 
-feh --bg-fill ~/Imágenes/vhs.png
+feh --bg-fill ~/Imágenes/deer.png
 # start all this to entry the system
 
 kitty &
