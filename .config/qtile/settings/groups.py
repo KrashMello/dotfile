@@ -19,7 +19,6 @@ __groups = {
     3: Group("   ", layout="max", layouts=layouts_maxtowide, matches=[Match(wm_class=["code-oss","subl","code","Code"])]),
     4: Group("   ", layout="max", layouts=layouts_maxtowide, matches=[Match(wm_class=["pcmanfm","thunar","beekeeper-studio","blender","Inkscape"])]),
     5: Group("   ", matches=[Match(wm_class=["qtpad","Notes"])]),
-    
 }
 groups = [__groups[i] for i in __groups]
 
@@ -43,7 +42,7 @@ for i in groups:
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
         #     desc="move focused window to group {}".format(i.name)),
     ])
-    
+
     # groups = [Group(i) for i in [
     #     "   ", "   ", "   ", "   ", "  ", "   ", "   ", "   ", "   ",
     # ]]

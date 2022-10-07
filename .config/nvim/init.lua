@@ -75,6 +75,7 @@ require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use 'ryanoasis/vim-devicons'
   use 'preservim/nerdtree'
+  use 'xuyuanp/nerdtree-git-plugin'
   use {
     'prettier/vim-prettier',
     run = 'yarn install --frozen-lockfile --production',
