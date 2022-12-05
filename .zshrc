@@ -10,13 +10,14 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/share/fzf/key-bindings.zsh
+# source /usr/share/fzf/completion.zsh
 
 # Alias
-alias cat='/usr/bin/bat'
+alias cat='/usr/bin/batcat'
+alias qtile='/home/krashmello/.local/bin/qtile'
 alias df='/usr/bin/duf'
 alias catn='/usr/bin/cat'
 alias catnl='/usr/bin/bat --paging=never'
@@ -26,12 +27,12 @@ alias l='lsd --group-dirs=first'
 alias lla='lsd -lha --group-dirs=first'
 alias ls='lsd --group-dirs=first'
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias purge="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
+# alias purge="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
 alias rm-cache="yay -Sc && sudo pacman -Scc"
 alias update="yay -Syu"
 alias vim='nvim'
 alias icat="kitty +kitten icat"
-alias cdss="cd /home/krashmello/Documentos/Dev/simai-server"
+alias spgadmin4="source ~/pgadmin4/bin/activate"
 alias mkt(){
 	mkdir {nmap,content,exploits}
 }
@@ -69,7 +70,7 @@ extract () {
     fi
  }
 
-
+export PATH=/home/krashmello/.local/bin:$PATH
 export EDITOR=nvim
 
 bindkey "^[[H" beginning-of-line
@@ -102,3 +103,7 @@ fi
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startx
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source ~/.zsh-nvm/zsh-nvm.plugin.zsh
