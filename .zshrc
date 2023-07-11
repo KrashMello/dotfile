@@ -10,13 +10,15 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+# source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source /usr/share/fzf/key-bindings.zsh
 # source /usr/share/fzf/completion.zsh
 
 # Alias
-alias cat='/usr/bin/batcat'
+alias cat='/usr/bin/bat'
 alias qtile='/home/krashmello/.local/bin/qtile'
 alias df='/usr/bin/duf'
 alias catn='/usr/bin/cat'
@@ -32,20 +34,19 @@ alias rm-cache="yay -Sc && sudo pacman -Scc"
 alias update="yay -Syu"
 alias vim='nvim'
 alias icat="kitty +kitten icat"
-alias spgadmin4="source ~/pgadmin4/bin/activate"
-alias mkt(){
-	mkdir {nmap,content,exploits}
-}
-alias extractPorts(){
-	ports="$(cat $1 | grep -oP '\d{1,5}/open' | awk '{print $1}' FS='/' | xargs | tr ' ' ',')"
-	ip_address="$(cat $1 | grep -oP '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}' | sort -u | head -n 1)"
-	echo -e "\n[*] Extracting information...\n" > extractPorts.tmp
-	echo -e "\t[*] IP Address: $ip_address"  >> extractPorts.tmp
-	echo -e "\t[*] Open ports: $ports\n"  >> extractPorts.tmp
-	echo $ports | tr -d '\n' | xclip -sel clip
-	echo -e "[*] Ports copied to clipboard\n"  >> extractPorts.tmp
-	cat extractPorts.tmp; rm extractPorts.tmp
-}
+# alias mkt(){
+# 	mkdir {nmap,content,exploits}
+# }
+# alias extractPorts(){
+# 	ports="$(cat $1 | grep -oP '\d{1,5}/open' | awk '{print $1}' FS='/' | xargs | tr ' ' ',')"
+# 	ip_address="$(cat $1 | grep -oP '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}' | sort -u | head -n 1)"
+# 	echo -e "\n[*] Extracting information...\n" > extractPorts.tmp
+# 	echo -e "\t[*] IP Address: $ip_address"  >> extractPorts.tmp
+# 	echo -e "\t[*] Open ports: $ports\n"  >> extractPorts.tmp
+# 	echo $ports | tr -d '\n' | xclip -sel clip
+# 	echo -e "[*] Ports copied to clipboard\n"  >> extractPorts.tmp
+# 	cat extractPorts.tmp; rm extractPorts.tmp
+# }
 ######## Extract part ########
 
 extract () {
@@ -70,8 +71,11 @@ extract () {
     fi
  }
 
+#pamac
+alias pamac-unlock="sudo rm /var/tmp/pamac/dbs/db.lock"
+
 export PATH=/home/krashmello/.local/bin:$PATH
-export EDITOR=nvim
+export EDITOR=lvim
 
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line       
@@ -106,4 +110,4 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+# source ~/.zsh-nvm/zsh-nvm.plugin.zsh

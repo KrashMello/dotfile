@@ -29,6 +29,18 @@ class code(Command):
     codecmd = ["code", dirname]
     self.fm.execute_command(codecmd)
 
+class lvim(Command):
+  """
+  :lvim
+  Opens current directory in VSCode
+  """
+
+  def execute(self):
+    dirname = self.fm.thisdir.path
+    codecmd = ["lvim", dirname]
+    self.fm.execute_command(codecmd)
+
+
 # Any class that is a subclass of "Command" will be integrated into ranger as a
 # command.  Try typing ":my_edit<ENTER>" in ranger!
 class my_edit(Command):

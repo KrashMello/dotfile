@@ -24,6 +24,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod, "shift"], "h", lazy.layout.shrink()),
 
     # Toggle floating
+    ([mod], "f", lazy.window.toggle_fullscreen()),
     ([mod, "shift"], "f", lazy.window.toggle_floating()),
     ([mod, "control"], "f", lazy.layout.flip()),
 
@@ -56,13 +57,13 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     #lock screen 
 
     
-    ([mod], "l", lazy.spawn("dm-tool lock")),
+    ([mod], "l", lazy.spawn("archlinux-logout")),
 
     # Menu
     ([mod], "space", lazy.spawn("rofi -show drun")),
 
     # Window Nav
-    ([mod, "shift"], "space", lazy.spawn("rofi -show")),
+    ([mod, "shift"], "space", lazy.spawn("rofi -show window")),
 
     # Browser
     ([mod], "b", lazy.spawn("google-chrome-stable")),
@@ -76,7 +77,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
 
 
     # File Explorer
-    ([mod], "e", lazy.spawn("pcmanfm")),
+    ([mod], "e", lazy.spawn("Thunar")),
 
     # Terminal
     ([mod], "t", lazy.spawn("kitty")),
@@ -87,7 +88,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod, "shift"], "r", lazy.spawn("redshift -x")),
 
     # Screenshot
-    ([mod], "s", lazy.spawn("scrot")),
+    ([mod], "s", lazy.spawn("scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'")),
     ([mod, "shift"], "s", lazy.spawn("scrot -s")),
 
     # ------------ Hardware Configs ------------

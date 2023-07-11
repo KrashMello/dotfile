@@ -14,10 +14,10 @@ from .layouts import layouts_maxtowide
 # nf-mdi-image, 
 # nf-mdi-layers
 __groups = {
-    1: Group("   ", layout="monadtall", matches=[Match(wm_class=["Google-chrome","qutebrowser","vivaldi-stable"])]),
+    1: Group("   ", layout="monadtall", matches=[Match(wm_class=["Navigator", "Firefox", "Vivaldi-stable", "Vivaldi-snapshot", "Chromium", "Google-chrome", "Brave", "Brave-browser", "navigator", "firefox", "vivaldi-stable", "vivaldi-snapshot", "chromium", "google-chrome", "brave", "brave-browser", ])]),
     2: Group("   ", layout="monadwide", layouts=layouts_maxtowide, matches=[Match(wm_class=["Alacritty","kitty"])]),
     3: Group("   ", layout="max", layouts=layouts_maxtowide, matches=[Match(wm_class=["code-oss","subl","code","Code"])]),
-    4: Group("   ", layout="max", layouts=layouts_maxtowide, matches=[Match(wm_class=["pcmanfm","thunar","beekeeper-studio","blender","Inkscape"])]),
+    4: Group("   ", layout="max", layouts=layouts_maxtowide, matches=[Match(wm_class=["Thunar", "Nemo", "Caja", "Nautilus", "org.gnome.Nautilus", "Pcmanfm", "Pcmanfm-qt", "thunar", "nemo", "caja", "nautilus", "org.gnome.nautilus", "pcmanfm", "pcmanfm-qt", "beekeeper-studio","blender","Inkscape"])]),
     5: Group("   ", matches=[Match(wm_class=["qtpad","Notes"])]),
 }
 groups = [__groups[i] for i in __groups]

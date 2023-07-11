@@ -1,3 +1,7 @@
+-- Read the docs: https://www.lunarvim.org/docs/configuration
+-- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
+-- Forum: https://www.reddit.com/r/lunarvim/
+-- Discord: https://discord.com/invite/Xb9B4Ny
 --[[
 lvim is the global options object
 
@@ -9,38 +13,12 @@ an executable
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
 -- general
-lvim.log.level = "warn"
-lvim.format_on_save = false
-lvim.colorscheme = "tokyonight"
+reload("user.general")
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
-lvim.leader = "space"
--- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<leader>w"] = ":w<cr>"
-lvim.keys.normal_mode["<leader>q"] = ":q!<cr>"
-lvim.keys.normal_mode["<leader>wq"] = ":wq<cr>"
-lvim.keys.normal_mode["<C-z>"] = ":u<CR>"
-lvim.keys.normal_mode["<C-y>"] = ":redo<CR>"
-
-lvim.keys.insert_mode["<left>"] = "<left>"
-lvim.keys.insert_mode["<right>"] = "<right>"
-lvim.keys.insert_mode["<up>"] = "<up>"
-lvim.keys.insert_mode["<down>"] = "<down>"
-lvim.keys.insert_mode[""] = "<C-o>:u<CR>"
-lvim.keys.insert_mode["<80>ü^DY"] = "<C-o>:redo<CR>"
-lvim.keys.insert_mode["<C-h>"] = "<C-w>h"
-lvim.keys.insert_mode["<C-l>"] = "<C-w>l"
-lvim.keys.insert_mode["<C-j>"] = "<C-w>j"
-lvim.keys.insert_mode["<C-k>"] = "<C-w>k"
-lvim.keys.insert_mode["<C-h>"] = "<left>"
-lvim.keys.insert_mode["<C-l>"] = "<right>"
-lvim.keys.insert_mode["<C-j>"] = "<down>"
-lvim.keys.insert_mode["<C-k>"] = "<up>"
-
-
+reload("user.keymap")
 
 
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
@@ -89,27 +67,8 @@ lvim.keys.insert_mode["<C-k>"] = "<up>"
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
-lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
--- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "c",
-  "javascript",
-  "json",
-  "lua",
-  "python",
-  "typescript",
-  "tsx",
-  "css",
-  "rust",
-  "java",
-  "yaml",
-}
 
-lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enable = true
 
 -- generic LSP settings
 
@@ -153,46 +112,13 @@ lvim.builtin.treesitter.highlight.enable = true
 -- end
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
--- local formatters = require "lvim.lsp.null-ls.formatters"
--- formatters.setup {
---   { command = "black", filetypes = { "python" } },
---   { command = "isort", filetypes = { "python" } },
---   {
---     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
---     command = "prettier",
---     ---@usage arguments to pass to the formatter
---     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
---     extra_args = { "--print-with", "100" },
---     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---     filetypes = { "typescript", "typescriptreact" },
---   },
--- }
+reload("user.formatters")
 
 -- -- set additional linters
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { command = "flake8", filetypes = { "python" } },
---   {
---     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
---     command = "shellcheck",
---     ---@usage arguments to pass to the formatter
---     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
---     extra_args = { "--severity", "warning" },
---   },
---   {
---     command = "codespell",
---     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---     filetypes = { "javascript", "python" },
---   },
--- }
+reload("user.linters")
 
 -- Additional Plugins
--- lvim.plugins = {
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
+reload("user.plugins")
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {

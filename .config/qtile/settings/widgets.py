@@ -1,141 +1,162 @@
 from libqtile import widget
 from .theme import colors
 from libqtile import bar
-
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
 
-
-def base(fg="text", bg="dark"):
-    return {"foreground": colors[fg], "background": colors[bg]}
+def base(fg='text', bg='dark'): 
+    return {
+        'foreground': colors[fg],
+        'background': colors[bg]
+    }
 
 
 def separator():
     return widget.Sep(**base(), linewidth=0, padding=5)
 
-
 def spacer():
     return widget.Spacer(length=bar.STRETCH)
 
 
-def icon(fg="text", bg="dark", fontsize=16, text="?"):
-    return widget.TextBox(**base(fg, bg), fontsize=fontsize, text=text, padding=4)
+def icon(fg='text', bg='dark', fontsize=16, text="?"):
+    return widget.TextBox(
+        **base(fg, bg),
+        fontsize=fontsize,
+        text=text,
+        padding=4
+    )
 
 
 def powerline(fg="light", bg="dark"):
-    return widget.TextBox(**base(fg, bg), text="", width=50, fontsize=25, padding=35)
-
+    return widget.TextBox(
+        **base(fg, bg),
+      
+	    text=" ",
+        width=55, 
+        fontsize=25,
+        padding=24
+    )
 
 def powerline_mirror(fg="light", bg="dark"):
-    return widget.TextBox(**base(fg, bg), text="", width=50, fontsize=25, padding=-1)
-
+    return widget.TextBox(
+        **base(fg, bg),
+      
+        text=" ",
+        width=60,
+        fontsize=30,
+        padding=-1
+    )
 
 def corner_left(fg="light", bg="dark"):
-    return widget.TextBox(**base(fg, bg), text=" ", fontsize=50, padding=-6)
-
+    return widget.TextBox(
+        **base(fg, bg),
+      
+	   text=" ",
+       fontsize=50,
+       padding=-5
+    )
 
 def corner_right(fg="light", bg="dark"):
-    return widget.TextBox(**base(fg, bg), text=" ", fontsize=50, padding=-6)
+    return widget.TextBox(
+        **base(fg, bg),
+      
+	   text=" ",
+        fontsize=50,
+        padding=-5
+    )
 
 
-def workspaces():
+def workspaces(): 
     return [
+      
+      
         widget.GroupBox(
-            **base(fg="dark", bg="primary"),
-            font="UbuntuMono Nerd Font",
+            **base(fg='dark',bg='primary'),
+            font='UbuntuMono Nerd Font',
             fontsize=19,
             margin_y=3,
             margin_x=0,
             padding_y=8,
             padding_x=5,
             borderwidth=1,
-            active=colors["active"],
-            inactive=colors["inactive"],
+            active=colors['active'],
+            inactive=colors['inactive'],
             rounded=True,
-            highlight_method="text",
-            urgent_alert_method="text",
-            urgent_border=colors["urgent"],
-            this_current_screen_border=colors["focus"],
-            this_screen_border=colors["grey"],
-            other_current_screen_border=colors["focus"],
-            other_screen_border=colors["primary"],
+            highlight_method='text',
+            urgent_alert_method='text',
+            urgent_border=colors['urgent'],
+            this_current_screen_border=colors['focus'],
+            this_screen_border=colors['grey'],
+            other_current_screen_border=colors['focus'],
+            other_screen_border=colors['primary'],
             disable_drag=True,
         ),
+      
+      
+      
     ]
 
-
 primary_widgets = [
-    corner_left("dark", "primary"),
-    widget.Sep(padding=150, linewidth=0, **base(bg="primary", fg="primary")),
+    corner_left('dark', 'primary'),
+    widget.Sep(padding=240, linewidth=0, **base(bg='primary',fg='primary')),
     *workspaces(),
-    powerline_mirror("primary", "dark"),
+    powerline_mirror('primary', 'dark'),
     spacer(),
-    widget.Image(filename="~/.config/qtile/assets/center-logo.png"),
+    widget.Image(filename='~/.config/qtile/assets/center-logo.png'),
     spacer(),
-    powerline("primary", "dark"),
-    icon(bg="primary", fg="secondary", text=" "),  # Icon: nf-fa-download
+  
+
+    powerline('primary', 'dark'),
+
+    icon(bg="primary",fg='secondary', text=' '), # Icon: nf-fa-download
+    
     widget.CheckUpdates(
-        background=colors["primary"],
-        colour_have_updates=colors["urgent"],
-        colour_no_updates=colors["text"],
-        no_update_string="0",
-        display_format="{updates}",
+        background=colors['primary'],
+        colour_have_updates=colors['urgent'],
+        colour_no_updates=colors['text'],
+        no_update_string='0',
+        display_format='{updates}',
         update_interval=1800,
-        custom_command="checkupdates",
+        custom_command='checkupdates',
     ),
-    widget.Sep(**base(bg="primary"), linewidth=0, padding=5),
-    widget.Sep(**base(bg="primary"), linewidth=0, padding=5),
-    icon(bg="primary", fg="secondary", text=" "),
-    widget.CPU(**base(bg="primary", fg="text"), format="{load_percent}% "),
-    icon(bg="primary", fg="secondary", text=" "),
-    widget.Memory(**base(bg="primary", fg="text"), format=" {MemUsed: .0f}{mm} "),
-    widget.Sep(**base(bg="primary"), linewidth=0, padding=5),
-    icon(bg="primary", fg="secondary", text=" "),
-    widget.Clock(**base(bg="primary", fg="text"), format="%d/%m/%Y "),
-    icon(bg="primary", fg="secondary", text=" "),
-    widget.Clock(**base(bg="primary", fg="text"), format="%I:%M %p "),
-    widget.Sep(**base(bg="primary"), linewidth=0, padding=5),
-    widget.Systray(background=colors["primary"], padding=5),
-    # widget.Sep(padding=6, linewidth=1, **base(bg="primary", fg="color1")),
-    corner_right("dark", "primary"),
+   widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
+    widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
+    icon(bg="primary",fg='secondary', text=' '),
+    widget.CPU(**base(bg='primary',fg='text'), format='{load_percent}% '),
+    icon(bg="primary",fg='secondary', text=' '),
+    widget.Memory(**base(bg='primary',fg='text'),format=' {MemUsed: .0f}{mm} '),  
+    widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
+    icon(bg="primary",fg='secondary', text=' '),
+    widget.Clock(**base(bg='primary', fg='text'), format='%d/%m/%Y '),
+    icon(bg="primary",fg='secondary', text=' '),
+    widget.Clock(**base(bg='primary', fg='text'), format='%I:%M %p '),
+    widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
+    widget.Systray(background=colors['primary'], padding=5),
+    widget.Sep(padding=6, linewidth=1, **base(bg='primary',fg='color1')),
+    corner_right('dark', 'primary'),
+    
 ]
 
 secondary_widgets = [
-    corner_left("dark", "primary"),
-    widget.Sep(padding=150, linewidth=0, **base(bg="primary", fg="primary")),
+   corner_left('dark', 'primary'),
+    widget.Sep(padding=240, linewidth=0, **base(bg='primary',fg='primary')),
     *workspaces(),
-    powerline_mirror("primary", "dark"),
+    powerline_mirror('primary', 'dark'),
     spacer(),
-    widget.Image(filename="~/.config/qtile/assets/center-logo.png"),
+    widget.Image(filename='~/.config/qtile/assets/center-logo.png'),
     spacer(),
-    powerline("primary", "dark"),
-    icon(bg="primary", fg="secondary", text=" "),  # Icon: nf-fa-download
-    widget.CheckUpdates(
-        background=colors["primary"],
-        colour_have_updates=colors["urgent"],
-        colour_no_updates=colors["text"],
-        no_update_string="0",
-        display_format="{updates}",
-        update_interval=1800,
-        custom_command="checkupdates",
-    ),
-    widget.Sep(**base(bg="primary"), linewidth=0, padding=5),
-    widget.Sep(**base(bg="primary"), linewidth=0, padding=5),
-    icon(bg="primary", fg="secondary", text=" "),
-    widget.CPU(**base(bg="primary", fg="text"), format="{load_percent}% "),
-    icon(bg="primary", fg="secondary", text=" "),
-    widget.Memory(**base(bg="primary", fg="text"), format=" {MemUsed: .0f}{mm} "),
-    widget.Sep(**base(bg="primary"), linewidth=0, padding=5),
-    icon(bg="primary", fg="secondary", text=" "),
-    widget.Clock(**base(bg="primary", fg="text"), format="%d/%m/%Y "),
-    icon(bg="primary", fg="secondary", text=" "),
-    widget.Clock(**base(bg="primary", fg="text"), format="%I:%M %p "),
-    corner_right("dark", "primary"),
+  
+
+    powerline('primary', 'dark'),
+
+    widget.Net(**base(bg='primary',fg='secondary'),format='{up}    {down}'),
+    corner_right('dark', 'primary'), 
 ]
 
 
+
 widget_defaults = {
-    "font": "UbuntuMono Nerd Font Bold",
-    "fontsize": 9,
-    "padding": 1,
+    'font': 'UbuntuMono Nerd Font Bold',
+    'fontsize': 14,
+    'padding': 1,
 }
 extension_defaults = widget_defaults.copy()
