@@ -1,6 +1,7 @@
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "tokyonight-night"
+lvim.colorscheme = "nord"
+lvim.builtin.lualine.style = "lvim"
 
 lvim.builtin.nvimtree.setup.view.side = "right"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
