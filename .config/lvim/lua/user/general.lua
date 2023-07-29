@@ -5,12 +5,14 @@ lvim.builtin.lualine.style = "lvim"
 
 lvim.builtin.nvimtree.setup.view.side = "right"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.nvimtree.active = true
 
 vim.opt.relativenumber = true
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldcolumn = "2"
+vim.notify = require("notify")
 
 
 -- if you don't want all the parsers change this to a table of the ones you want

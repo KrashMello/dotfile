@@ -24,6 +24,7 @@ run pamac-tray &
 run xfce4-power-manager &
 numlockx on &
 blueberry-tray &
+udiskie -t &
 run volumeicon &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
  

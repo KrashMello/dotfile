@@ -1,86 +1,109 @@
-from libqtile import widget
+# from libqtile import widget
+from qtile_extras import widget
 from .theme import colors
 from libqtile import bar
+from qtile_extras.widget.decorations import RectDecoration
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
 
-def base(fg='text', bg='dark'): 
+
+def base(fg='text', bg='dark'):
     return {
         'foreground': colors[fg],
-        'background': colors[bg]
+        'background': colors[bg],
     }
 
 
 def separator():
-    return widget.Sep(**base(), linewidth=0, padding=5)
-
-def spacer():
-    return widget.Spacer(length=bar.STRETCH)
+    return widget.sep(**base(), linewidth=0, padding=5)
 
 
-def icon(fg='text', bg='dark', fontsize=16, text="?"):
+def spacer(length=bar.STRETCH):
+    return widget.Spacer(length=length, background='#00000000')
+
+
+def icon(fg='text', bg='dark', fontsize=16, text="?", decorations=[]):
     return widget.TextBox(
-        **base(fg, bg),
+        foreground=colors[fg],
+        background=bg,
         fontsize=fontsize,
         text=text,
-        padding=4
+        padding=12,
+        decorations=decorations,
     )
 
 
 def powerline(fg="light", bg="dark"):
     return widget.TextBox(
         **base(fg, bg),
-      
-	    text=" ",
-        width=55, 
+
+        text=" ",
+        width=55,
         fontsize=25,
         padding=24
     )
 
+
 def powerline_mirror(fg="light", bg="dark"):
     return widget.TextBox(
         **base(fg, bg),
-      
+
         text=" ",
         width=60,
         fontsize=30,
         padding=-1
     )
 
+
 def corner_left(fg="light", bg="dark"):
     return widget.TextBox(
         **base(fg, bg),
-      
-	   text=" ",
-       fontsize=50,
-       padding=-5
-    )
 
-def corner_right(fg="light", bg="dark"):
-    return widget.TextBox(
-        **base(fg, bg),
-      
-	   text=" ",
+        text=" ",
         fontsize=50,
         padding=-5
     )
 
 
-def workspaces(): 
+def corner_right(fg="light", bg="dark"):
+    return widget.TextBox(
+        **base(fg, bg),
+
+        text=" ",
+        fontsize=50,
+        padding=-5
+    )
+
+
+decor_group = {
+    "decorations": [
+        RectDecoration(colour=colors['primary'],
+                       filled=True, group=True, radius=11),
+    ],
+}
+
+decor_groupbox = {
+    "decorations": [
+        RectDecoration(colour=colors['primary'], radius=11,
+                       filled=True, ),
+    ],
+    "padding": 18
+}
+
+
+def workspaces():
     return [
-      
-      
         widget.GroupBox(
-            **base(fg='dark',bg='primary'),
+            background="#00000000",
             font='UbuntuMono Nerd Font',
-            fontsize=19,
-            margin_y=3,
-            margin_x=0,
-            padding_y=8,
-            padding_x=5,
+            fontsize=14,
+            margin_y=2,
+            margin_x=10,
+            padding_y=6,
+            padding_x=0,
             borderwidth=1,
             active=colors['active'],
             inactive=colors['inactive'],
-            rounded=True,
+            rounded=False,
             highlight_method='text',
             urgent_alert_method='text',
             urgent_border=colors['urgent'],
@@ -89,26 +112,19 @@ def workspaces():
             other_current_screen_border=colors['focus'],
             other_screen_border=colors['primary'],
             disable_drag=True,
+            **decor_groupbox
         ),
-      
-      
-      
     ]
 
+
 primary_widgets = [
-    corner_left('dark', 'primary'),
-    widget.Sep(padding=240, linewidth=0, **base(bg='primary',fg='primary')),
+    widget.LaunchBar(default_icon='/home/krashmello/.config/qtile/assets/logo64x64_dark.png',
+                     progs=[('rofy', 'rofi -show drun')], padding=5),
+    spacer(length=15),
     *workspaces(),
-    powerline_mirror('primary', 'dark'),
     spacer(),
-    widget.Image(filename='~/.config/qtile/assets/center-logo.png'),
-    spacer(),
-  
 
-    powerline('primary', 'dark'),
-
-    icon(bg="primary",fg='secondary', text=' '), # Icon: nf-fa-download
-    
+    icon(bg="#00000000", fg='focus', fontsize=14, text=' ', **decor_group),
     widget.CheckUpdates(
         background=colors['primary'],
         colour_have_updates=colors['urgent'],
@@ -116,42 +132,66 @@ primary_widgets = [
         no_update_string='0',
         display_format='{updates}',
         update_interval=1800,
-        custom_command='checkupdates',
+        custom_command='checkupdates', **decor_group
+
     ),
-   widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
-    widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
-    icon(bg="primary",fg='secondary', text=' '),
-    widget.CPU(**base(bg='primary',fg='text'), format='{load_percent}% '),
-    icon(bg="primary",fg='secondary', text=' '),
-    widget.Memory(**base(bg='primary',fg='text'),format=' {MemUsed: .0f}{mm} '),  
-    widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
-    icon(bg="primary",fg='secondary', text=' '),
-    widget.Clock(**base(bg='primary', fg='text'), format='%d/%m/%Y '),
-    icon(bg="primary",fg='secondary', text=' '),
-    widget.Clock(**base(bg='primary', fg='text'), format='%I:%M %p '),
-    widget.Sep(**base(bg='primary'), linewidth=0, padding=5),
-    widget.Systray(background=colors['primary'], padding=5),
-    widget.Sep(padding=6, linewidth=1, **base(bg='primary',fg='color1')),
-    corner_right('dark', 'primary'),
-    
+    widget.Sep(**base(bg='primary'), linewidth=0, padding=5, **decor_group
+               ),
+    icon(bg="#00000000", fg='focus', fontsize=14, text=' ', **decor_group
+         ),
+    widget.CPU(**base(bg='primary', fg='text'), fontsize=14, format='{load_percent}% ', **decor_group
+               ),
+    icon(bg="#00000000", fg='focus', fontsize=14, text=' ', **decor_group
+         ),
+    widget.Memory(**base(bg='primary', fg='text'), fontsize=14, format='{MemUsed: .0f}{mm} ', **decor_group
+                  ),
+    icon(bg="#00000000", fg='focus', fontsize=14, text=' ', **decor_group
+         ),
+    widget.Clock(background="#00000000", foreground=colors['text'], fontsize=14, format='%d/%m/%Y ', **decor_group
+                 ), 
+    icon(bg="#00000000", fg='focus', fontsize=14, text=' ', **decor_group
+         ),
+    widget.Clock(background="#00000000", foreground=colors['text'], format='%I:%M %p ',**decor_group
+    ),
+    widget.Systray(background='#00000000', padding=5),
+    # corner_right('dark', 'primary'),
+
 ]
 
 secondary_widgets = [
-   corner_left('dark', 'primary'),
-    widget.Sep(padding=240, linewidth=0, **base(bg='primary',fg='primary')),
+    widget.LaunchBar(default_icon='/home/krashmello/.config/qtile/assets/logo64x64_dark.png',
+                     progs=[('rofy', 'rofi -show drun')]),
+    spacer(length=15),
     *workspaces(),
-    powerline_mirror('primary', 'dark'),
     spacer(),
-    widget.Image(filename='~/.config/qtile/assets/center-logo.png'),
-    spacer(),
-  
 
-    powerline('primary', 'dark'),
+    icon(bg="#00000000", fg='focus', fontsize=14, text=' ', **decor_group),
+    widget.CheckUpdates(
+        background=colors['primary'],
+        colour_have_updates=colors['urgent'],
+        colour_no_updates=colors['text'],
+        no_update_string='0',
+        display_format='{updates}',
+        update_interval=1800,
+        custom_command='checkupdates', **decor_group
 
-    widget.Net(**base(bg='primary',fg='secondary'),format='{up}    {down}'),
-    corner_right('dark', 'primary'), 
+    ),
+    widget.Sep(**base(bg='primary'), linewidth=0, padding=5, **decor_group
+               ),
+    icon(bg="#00000000", fg='focus', fontsize=14, text=' ', **decor_group
+         ),
+    widget.CPU(**base(bg='primary', fg='text'), fontsize=14, format='{load_percent}% ', **decor_group
+               ),
+    icon(bg="#00000000", fg='focus', fontsize=14, text=' ', **decor_group
+         ),
+    widget.Memory(**base(bg='primary', fg='text'), fontsize=14, format='{MemUsed: .0f}{mm} ', **decor_group
+                  ),
+    icon(bg="#00000000", fg='focus', fontsize=14, text=' ', **decor_group
+         ),
+    widget.Clock(background="#00000000", foreground=colors['text'], fontsize=14, format='%d/%m/%Y ', **decor_group
+                 ),
+    widget.Systray(background='#00000000', padding=5),
 ]
-
 
 
 widget_defaults = {

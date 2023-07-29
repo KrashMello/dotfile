@@ -133,8 +133,3 @@ reload("user.plugins")
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
-
-
--- window pickers
-
-reload("user.windowPicker")
