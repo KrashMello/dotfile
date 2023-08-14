@@ -30,9 +30,9 @@ configuration {
 @theme"/dev/null"
 
 * {
-  bg: #1f222d;
-  fg: #81a1c1;
-  button: #81a1c1;
+  bg: #232136;
+  fg: #e0def4;
+  button: #6e6a86;
   background-color: @bg;
   text-color: @fg;
 }
@@ -49,7 +49,7 @@ window {
   width: 55%;
   border: 10px;
   border-radius: 15px;
-  border-color: #1f222d;
+  border-color: @bg;
   height: 65%;
 }
 
@@ -57,10 +57,11 @@ window {
 entry {
   placeholder: "Search";
   placeholder-color: #81a1c1;
-  text-color: #81a1c1;
+  text-color: @fg;
   expand: true;
   padding: 2.0%;
   border-radius: 50%;
+  background-color: #393552;
 }
 
 
@@ -90,7 +91,7 @@ element {
   font: "Dosis 14";
   margin: 5px 5px 5px 5px;
   border-radius: 10px;
-  background-color: #3b4252;
+  background-color: #393552;
 }
 
 element-text {
@@ -104,7 +105,7 @@ element-text {
 element selected {
   background-color: @button;
   font: "Dosis 14";
-  text-color: #2e3440;
+  text-color: @fg;
   border-radius: 10px;
 }
 

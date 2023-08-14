@@ -1,16 +1,38 @@
 {
-  "dark": ["#e9b1cd", "#e9b1cd"],
-  "grey": ["#ABB2BF", "#ABB2BF"],
-  "light": ["#ffffff", "#ffffff"],
-  "text": ["#EBA0B0", "#EBA0B0"],
-  "focus": ["#5B202E", "#5B202E"],
-  "active": ["#AC465E", "#AC465E"],
-  "inactive": ["#DFDDFF", "#DFDDFF"],
-  "urgent": ["#eb6f92", "#eb6f92"],
-  "primary": ["#ffffff", "#ffffff"],
-  "secondary": ["#E0718B", "#E0718B"],
-  "color1": ["#ffffff", "#ffffff"],
-  "color2": ["#ffffff", "#ffffff"],
-  "color3": ["#ffffff", "#ffffff"],
-  "color4": ["#ea6f91", "#ea6f91"]
+  "text": [
+    "#FFFFFF",
+    "#FFFFFF"
+  ],
+  "focus": [
+    "#FDADC7",
+    "#FDADC7"
+  ],
+  "active": [
+    "#FFFFFF",
+    "#FFFFFF"
+  ],
+  "inactive": [
+    "#b2b2b2",
+    "#b2b2b2"
+  ],
+  "urgent": [
+    "#eb6f92",
+    "#eb6f92"
+  ],
+  "icon": [
+    "#FDADC7",
+    "#FDADC7"
+  ],
+  "background": [
+    "#3b4252",
+    "#3b4252"
+  ],
+  "extra": [
+    "#EBA0B0",
+    "#e9b1cd"
+  ],
+  "extra2": [
+    "#DFDDFF",
+    "#AC465E"
+  ]
 }
