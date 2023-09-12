@@ -6,18 +6,13 @@ function run {
     $@&
   fi
 }
-
-# keymap
-# setxkbmap latam
-# systray volume
-#volumeicon &
-#udiskie -t &
-# picom
- picom &
-# imagen
-#feh --bg-fill ~/Imágenes/rose_pine_shape.png 
+PATH="$HOME/.config/qtile/scripts:$PATH"
+xrandr --output DP-1 --off --output HDMI-1 --mode 1920x1080 --pos 1280x0 --rotate normal --output DVI-I-1 --mode 1280x1024 --pos 0x56 --rotate normal
+picom &
 #feh --bg-fill ~/Imágenes/sakura.png
 # start all this to entry the system
+sxhkd -c $HOME/.config/qtile/sxhkdrc &
+dunst -config "$HOME"/.config/qtile/dunstrc &
 run variety &
 run nm-applet &
 run pamac-tray &
@@ -27,6 +22,6 @@ blueberry-tray &
 udiskie -t &
 run volumeicon &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
- 
 kitty &
-notes &
+run franz &
+# notes &

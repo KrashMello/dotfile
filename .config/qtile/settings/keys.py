@@ -88,8 +88,8 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod, "shift"], "r", lazy.spawn("redshift -x")),
 
     # Screenshot
-    ([mod], "s", lazy.spawn("scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'")),
-    ([mod, "shift"], "s", lazy.spawn("scrot -s")),
+    # ([mod], "s", lazy.spawn(" maim -u $HOME/Imágenes/Screenshot/km-%d_%m_%Y-%I-%M-%S.png")),
+    # ([mod, "shift"], "s", lazy.spawn("sh ../screenshots --sel")),
 
     # ------------ Hardware Configs ------------
 

@@ -3,6 +3,7 @@ from qtile_extras import widget
 from .theme import colors
 from libqtile import bar
 from qtile_extras.widget.decorations import RectDecoration
+# from qtile_extras.widget import GlobalMenu
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
 
 
@@ -47,7 +48,6 @@ decor_groupbox = {
     "padding": 18
 }
 
-
 def workspaces():
     return [
         widget.GroupBox(
@@ -81,62 +81,21 @@ primary_widgets = [
     spacer(length=15),
     *workspaces(),
     spacer(),
-
-    icon(bg="#00000000", fg='icon', fontsize=14, text=' ', **decor_group),
-    widget.CheckUpdates(
-        background=colors['background'],
-        colour_have_updates=colors['urgent'],
-        colour_no_updates=colors['text'],
-        no_update_string='0',
-        display_format='{updates}',
-        update_interval=1800,
-        custom_command='checkupdates', **decor_group
-
-    ),
-    widget.Sep(**base(bg='background'), linewidth=0, padding=5, **decor_group
-               ),
-    icon(bg="#00000000", fg='icon', fontsize=14, text=' ', **decor_group
-         ),
-    widget.CPU(**base(bg='background', fg='text'), fontsize=14, format='{load_percent}% ', **decor_group
-               ),
-    icon(bg="#00000000", fg='icon', fontsize=14, text=' ', **decor_group
-         ),
-    widget.Memory(**base(bg='background', fg='text'), fontsize=14, format='{MemUsed: .0f}{mm} ', **decor_group
-                  ),
-    icon(bg="#00000000", fg='icon', fontsize=14, text=' ', **decor_group
-         ),
-    widget.Clock(background="#00000000", foreground=colors['text'], fontsize=14, format='%d/%m/%Y ', **decor_group
-                 ),
-    icon(bg="#00000000", fg='icon', fontsize=14, text=' ', **decor_group
-         ),
-    widget.Clock(background="#00000000", foreground=colors['text'], format='%I:%M %p ', **decor_group
-                 ),
-    widget.Systray(background='#00000000', padding=5),
+    widget.Systray(),
 ]
 
 secondary_widgets = [
-    widget.LaunchBar(default_icon='/home/krashmello/.config/qtile/assets/logo64x64_dark.png',
+    widget.LaunchBar(default_icon='/home/krashmello/.config/qtile/assets/logo64x64_sakura_light.png',
                      progs=[('rofy', 'rofi -show drun')], padding=5),
     spacer(length=15),
     *workspaces(),
     spacer(),
-
-    icon(bg="#00000000", fg='icon', fontsize=14, text=' ', **decor_group),
-    widget.CheckUpdates(
-        background=colors['background'],
-        colour_have_updates=colors['urgent'],
-        colour_no_updates=colors['text'],
-        no_update_string='0',
-        display_format='{updates}',
-        update_interval=1800,
-        custom_command='checkupdates', **decor_group
-
-    ),
-    widget.Sep(**base(bg='background'), linewidth=0, padding=5, **decor_group
-               ),
+    
+    
+   
     icon(bg="#00000000", fg='icon', fontsize=14, text=' ', **decor_group
          ),
-    widget.CPU(**base(bg='background', fg='text'), fontsize=14, format='{load_percent}% ', **decor_group
+    widget.CPU(**base(bg='background', fg='text'), fontsize=14, format='{load_percent}% ',max_chars=5, **decor_group
                ),
     icon(bg="#00000000", fg='icon', fontsize=14, text=' ', **decor_group
          ),
@@ -150,7 +109,6 @@ secondary_widgets = [
          ),
     widget.Clock(background="#00000000", foreground=colors['text'], format='%I:%M %p ', **decor_group
                  ),
-    widget.Systray(background='#00000000', padding=5),
 ]
 
 

@@ -1,0 +1,9 @@
+super + s
+	screenshots --now;
+
+super + shift + s
+	screenshots --sel
+
+# Reload sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd;
