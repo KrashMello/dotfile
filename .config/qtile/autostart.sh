@@ -7,7 +7,10 @@ function run {
   fi
 }
 PATH="$HOME/.config/qtile/scripts:$PATH"
-xrandr --output DP-1 --off --output HDMI-1 --mode 1920x1080 --pos 1280x0 --rotate normal --output DVI-I-1 --mode 1280x1024 --pos 0x56 --rotate normal
+# dimension wide
+# xrandr --output DP-1 --off --output HDMI-1 --mode 1920x1080 --pos 1280x0 --rotate normal --output DVI-I-1 --mode 1280x1024 --pos 0x56 --rotate normal
+xrandr --output DP-1 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-I-1 --mode 1280x1024 --pos 320x1080 --rotate normal
+run polybar kmbar --config=$HOME/.config/qtile/polybar/config.ini
 picom &
 #feh --bg-fill ~/Imágenes/sakura.png
 # start all this to entry the system
@@ -18,10 +21,10 @@ run nm-applet &
 run pamac-tray &
 run xfce4-power-manager &
 numlockx on &
-blueberry-tray &
+run blueberry-tray &
 udiskie -t &
 run volumeicon &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 kitty &
-run franz &
+
 # notes &

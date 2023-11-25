@@ -1,0 +1,175 @@
+[network-base]
+type = internal/network
+interval = 5
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
+
+[module/eth]
+inherit = network-base
+interface-type = wired
+label-connected = %{F#F0C674}%ifname%%{F-} %local_ip%
+
+[battery]
+screenchange-reload = true
+pseudo-transparency = true
+dlick-left = "~/Scripts/Display/brightness_widget.sh"
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout = %layout%
+label-layout-foreground = ${colors.primary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-foreground = ${colors.background}
+label-indicator-background = ${colors.secondary}
+
+[module/arch]
+type = custom/text
+content = 󰣇
+content-font = 2
+content-foreground = ${colors.clear-mauve}
+content-margin = 0
+click-left = "~/.config/eww/powermenu/powermenu_widget.sh"
+
+
+[module/monitoring]
+type = custom/text
+content = 󰗶
+content-font = 2
+content-foreground = ${colors.clear-mauve}
+content-margin = 0
+click-left = "~/Scripts/HardwareMonitor/hardware_monitor.sh"
+
+[module/scale_battery]
+type = custom/text
+content = %
+content-font = 2
+content-foreground = ${colors.clear-mauve} 
+content-margin = 0
+click-left = "~/.config/eww/battery/battery_widget.sh"
+
+[module/scale_mic]
+type = custom/text
+content = 
+content-font = 2
+content-foreground = ${colors.blue} 
+content-margin = 0
+click-left = "~/Scripts/Audio/mic_widget.sh"
+
+[module/mic]
+type = custom/script
+exec = ~/Scripts/Audio/mic.sh
+interval = 0.1
+format-foreground = ${colors.blue}
+format = <label>
+label = %output%
+enable-scroll = true
+click-left = ~/Scripts/Audio/mic.sh 1
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume-prefix = "󰕾 "
+format-volume-foreground = ${rose-pine.fg}
+format-volume-prefix-foreground = ${rose-pine.primary}
+format-volume = <label-volume>
+label-volume = %percentage%%
+
+label-muted = 󰖁 %percentage%%
+label-muted-foreground = ${rose-pine.disabled}
+
+[module/weather]
+type = custom/script
+exec = python3 ~/Scripts/Weather/weather.py
+interval = 1
+format-foreground = ${colors.really-white}
+format = <label>
+label = %output%
+
+[module/rofi]
+type = custom/text
+content = 
+content-font = 2
+content-foreground = ${colors.really-white}
+content-margin = 0
+click-left = "rofi -show drun -theme .config/rofi/apps.rasi -show-icons"
+
+[module/panel]
+type = custom/text
+content = 
+content-font = 2
+content-foreground = ${colors.clear-mauve}
+content-margin = 0
+click-left = "~/.config/qtile/eww/panel/panel_widget.sh"
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight  
+use-actual-brightness = true
+enable-scroll = true
+format = <ramp> <label>
+format-foreground = ${colors.white}
+label = %percentage%%
+
+ramp-0 = 󰃞
+ramp-1 = 󰃝
+ramp-2 = 󰃟
+ramp-3 = 󰃠
+
+
+[module/battery]
+type = internal/battery
+full-at = 99
+low-at = 20
+battery = BAT0
+adapter = ADP1
+poll-interval = 5
+format-charging-foreground = ${colors.clear-mauve}
+format-discharging-foreground = ${colors.clear-mauve}
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+label-charging = %percentage%
+label-discharging =%percentage%
+label-full =  100
+label-low = LOW 
+
+ramp-capacity-0 = "  "
+ramp-capacity-1 = "  "
+ramp-capacity-2 = "  "
+ramp-capacity-3 = "  "
+ramp-capacity-4 = "  "
+
+bar-capacity-width = 10
+
+animation-charging-0 = "  "
+animation-charging-1 = "  "
+animation-charging-2 = "  "
+animation-charging-3 = "  "
+animation-charging-4 = "  "
+animation-charging-framerate = 750
+
+animation-discharging-0 = "  "
+animation-discharging-1 = "  "
+animation-discharging-2 = "  "
+animation-discharging-3 = "  "
+animation-discharging-4 = "  "
+
+animation-discharging-framerate = 500
+
+animation-low-0 = !
+animation-low-1 = 
+animation-low-framerate = 200
+
+[module/brightness]
+type = custom/text
+content = 
+content-font = 2
+content-foreground = ${colors.white} 
+content-margin = 0
+
+
+

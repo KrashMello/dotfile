@@ -19,8 +19,8 @@ separator_height = 2
 padding = 8
 horizontal_padding = 11
 frame_width = 6
-frame_color = "#1D1F28"
-separator_color = "#8897F4"
+frame_color = "#191724"
+separator_color = "#c4a7e7"
 
 font = JetBrainsMono Nerd Font Medium 9
 
@@ -55,16 +55,16 @@ mouse_right_click = close_all
 
 [urgency_low]
 timeout = 3
-background = "#1D1F28"
-foreground = "#FDFDFD"
+background = "#191724"
+foreground = "#9ccfd8"
 
 [urgency_normal]
 timeout = 6
-background = "#1D1F28"
-foreground = "#FDFDFD"
+background = "#191724"
+foreground = "#9ccfd8"
 
 [urgency_critical]
 timeout = 0
-background = "#1D1F28"
-foreground = "#FDFDFD"
+background = "#191724"
+foreground = "#9ccfd8"
 
