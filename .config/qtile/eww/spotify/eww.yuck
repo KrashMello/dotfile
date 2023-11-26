@@ -32,11 +32,11 @@
 ;; spotify
 (defwindow spotify
            :monitor 0
-           :geometry (geometry :x "49px"
+           :geometry (geometry :x "840px"
                                :y "35px"
                                :width "240px"
                                :height "262px"
-                               :anchor "top left")
+                               :anchor "top center")
                                :stacking "fg"
                                :reserve (struts :distance "40px" :side "top")
                                :windowtype "dock"

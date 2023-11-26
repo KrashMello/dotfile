@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+pkill -9 -f polybar > /dev/null;
+function run {
+  if ! pgrep -x $(basename $1 | head -c 15) 1>/dev/null;
+  then
+    $@&
+  fi
+}
+run polybar kmbar --config=$HOME/.config/qtile/polybar/config.ini &

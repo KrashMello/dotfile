@@ -9,7 +9,7 @@ monitor = 0
 follow = mouse
 width = 300
 height = 300
-origin = bottom-right
+origin = top-center
 offset = 10x48
 indicate_hidden = yes
 shrink = yes
@@ -19,14 +19,14 @@ separator_height = 2
 padding = 8
 horizontal_padding = 11
 frame_width = 6
-frame_color = "#191724"
+frame_color = "#232136"
 separator_color = "#c4a7e7"
 
 font = JetBrainsMono Nerd Font Medium 9
 
 line_height = 0
 markup = full
-format = "<span size='x-large' font_desc='Cantarell 9' weight='bold' foreground='#79E6F3'>%s</span>\n%b"
+format = "<span size='x-large' font_desc='Cantarell 9' weight='bold' foreground='#9ccfd8'>%s</span>\n%b"
 alignment = center
 
 idle_threshold = 120
@@ -55,16 +55,16 @@ mouse_right_click = close_all
 
 [urgency_low]
 timeout = 3
-background = "#191724"
+background = "#232136"
 foreground = "#9ccfd8"
 
 [urgency_normal]
 timeout = 6
-background = "#191724"
+background = "#232136"
 foreground = "#9ccfd8"
 
 [urgency_critical]
 timeout = 0
-background = "#191724"
+background = "#232136"
 foreground = "#9ccfd8"
 

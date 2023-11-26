@@ -50,7 +50,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod, "control"], "r", lazy.restart()),
 
     ([mod, "control"], "q", lazy.shutdown()),
-    ([mod], "r", lazy.spawncmd()),
+    
 
     # ------------ App Configs ------------
 
@@ -65,14 +65,12 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     # Window Nav
     ([mod, "shift"], "space", lazy.spawn("rofi -show window")),
 
-    # Browser
+    # Browsers
     ([mod], "b", lazy.spawn("google-chrome-stable")),
-    
     ([mod,"shift"], "b", lazy.spawn("qutebrowser")),
 
     # text editor
     ([mod], "c", lazy.spawn("Code")),
-    
     ([mod,"shift"], "c", lazy.spawn("subl")),
 
 
