@@ -1,8 +1,8 @@
 configuration {
-  kb-row-up: "k";
-  kb-row-down: "j";
-  kb-row-left: "h";
-  kb-row-right: "l";
+  kb-row-up: "Control+k";
+  kb-row-down: "Control+j";
+  kb-row-left: "Control+h";
+  kb-row-right: "Control+l";
 
   modi: "drun,window,run";
 
