@@ -24,8 +24,6 @@ git clone
 cp -rf dotfiles/.config/ ~/.config
 ```
 
-![bar](./screenshot/barra.png)
-
 ## Structure
 
 In `config.py`, which is the file where most people write all their config,
