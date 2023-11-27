@@ -3,6 +3,10 @@ configuration {
   kb-row-down: "Control+j";
   kb-row-left: "Control+h";
   kb-row-right: "Control+l";
+  kb-mode-complete: "";
+  kb-accept-entry: "Control+m,Return,KP_Enter";
+  kb-remove-to-eol: "";
+  kb-remove-char-back: "BackSpace,Shift+BackSpace";
 
   modi: "drun,window,run";
 
