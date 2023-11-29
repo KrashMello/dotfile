@@ -1,19 +1,18 @@
-      ......                       ......     
-    .';cccc:,.                 .,:ccc:;'.      
-    .'..';clllc;'.           .';clllc;'..'.      
-    .cc;'..,:lllc:,.       .,:clll:,..';cc'       
-    .cllc,  .':clllc:::;:::clllc;'.  ,cllc'        
-    .clll,  ,:'.,:ccccccccccc:,.     ,lllc'         
-    .clll,  oNKo;............. .;xc  ,lllc'         
-    .clll,  oWMMXl           .:ONWo  ,lllc'          
-    .clll,  oWMMMx.          oWMMWo  ,lllc'          
-    .clll,  oWMMMx.         ;0MMWO,  ,lllc'          
-    .clll,  oWMMMx.      .;kNMNO:.   ,lllc'          
-    .clll,  oWMMMx.   .':ONMNx:..    ,lllc.          
-    .clll,  oWMMMx. .c0NWMXd;'lOOc.  ,lllc.         
-    .clll,  oWMMWx. oWWWKo,,oKWMMNl  ,lllc'         
-    .clll,  oWMMMx. o0l;. .lXMMMMWo  ,lllc'        
-    .clll,  oWMMWx. ..      ;0MMMWo  ,lllc.        
-    .clll,  oWMMWd.         .xMMMXc  ,lllc.       
-     .;cl,  oWW0l.          .xWXx,   ,lc;.      
-       .''  :x:.            .co'     ',.       
+
+
+ ?55.              .5P?   
+ G#B.    .    .    .B#G   
+ G#G.  .7B?  JB?.  .G#G   
+ G#G .?B#5^  ^5#B?. G#G   
+ G#BJB#Y:      :Y#BJB#G   
+ G###Y.          .Y###G   
+ G###5.          .5###G   
+ G####G.        .G####G   
+ G##5Y#G:      :G#Y5##G   
+ P##? J#B:    :B#J ?##P   
+ ^~!:  J#G.  .G#J  :!~^   
+ ^^^.   Y#G..G#Y   .^^^   
+ ^~~.    5#PP#5    .~~^   
+ ^~^.     5##5     .^~^   
+ ^~^      .^^.      ^~^   
+ :::                :::   
