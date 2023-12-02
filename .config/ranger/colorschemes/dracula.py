@@ -42,6 +42,91 @@ class Dracula(ColorScheme):
         if context.media:
             if context.image:
                 attr |= normal
+                fg = 4
+            elif context.video:
+                fg = 1
+            elif context.audio:
+                fg = 6
+            else:
+                fg = 10
+        if context.container:
+            attr |= bold
+            fg = 9
+        if context.directory:
+            attr |= bold
+            fg = 3
+        elif context.executable and not any(
+            (context.media, context.container, context.fifo, context.socket)
+        ):
+            attr |= bold
+            fg = 2
+        if context.socket:
+            fg = 5
+            attr |= bold
+        if context.fifo or context.device:
+            fg = 3
+            if context.device:
+                attr |= bold
+        if context.link:
+            fg = 6 if context.good else 13
+        if context.tag_marker and not context.selected:
+            attr |= bold
+            if fg in (red, magenta):
+                fg = 1
+            else:
+                fg = 15
+        if not context.selected and (context.cut or context.copied):
+            fg = 4
+            attr |= bold
+        if context.main_column:
+            if context.selected:
+                attr |= bold
+            if context.marked:
+                attr |= bold
+# This file is part of ranger, the console file manager.
+# License: GNU GPL version 3, see the file "AUTHORS" for details.
+# This theme was greatly inspired by "RougarouTheme" for ranger
+# It can be found in: `https://github.com/RougarouTheme/ranger`
+
+from __future__ import absolute_import, division, print_function
+
+from ranger.gui.colorscheme import ColorScheme
+from ranger.gui.color import (
+    black,
+    blue,
+    cyan,
+    green,
+    magenta,
+    red,
+    white,
+    yellow,
+    default,
+    normal,
+    bold,
+    reverse,
+    default_colors,
+)
+
+
+class Dracula(ColorScheme):
+    progress_bar_color = 13
+
+    def verify_browser(self, context, fg, bg, attr):
+        if context.selected:
+            attr = reverse
+        else:
+            attr = normal
+        if context.empty or context.error:
+            bg = 1
+            fg = 0
+        if context.border:
+            fg = default
+        if context.document:
+            attr |= normal
+            fg = 13
+        if context.media:
+            if context.image:
+                attr |= normal
                 fg = 3
             elif context.video:
                 fg = 1

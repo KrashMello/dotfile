@@ -16,6 +16,7 @@ configuration {
   matching: "fuzzy";
   scroll-method: 0;
   disable-history: false;
+  show-icons: true;
 
   display-drun: "  Menu";
   display-run: "  Run";
@@ -39,9 +40,9 @@ configuration {
 @theme"/dev/null"
 
 * {
-  bg: #232136;
-  fg: #e0def4;
-  button: #6e6a86;
+  bg: #191724;
+  fg: #26233a;
+  button: #ebbcba;
   background-color: @bg;
   text-color: @fg;
 }
@@ -65,16 +66,15 @@ window {
 
 entry {
   placeholder: "Search";
-  placeholder-color: #81a1c1;
-  text-color: @fg;
-  expand: true;
+  placeholder-color: #f6c177;
+  text-color: #f6c177;
+  expand: false;
+  height: 48px;
   padding: 2.0%;
   border-radius: 50%;
-  background-color: #393552;
+  background-color: #26233a;
 }
-
-
-
+/*
 inputbar {
   children: [entry];
   background-image: url("bg.jpg");
@@ -84,15 +84,37 @@ inputbar {
   margin: 0 0 20px 0;
   padding: 200px 20px 20px 20px;
 }
+*/
+logo{
+    background-image: url("logo-km-rose-pine.png");
+    background-size: 200px 200px;
+    width: 100px;
+  }
 
 listview {
   border: 0px 0px 0px;
   padding: 6px 0px 0px;
   margin: 10px 0px 0px 20px;
+  height: 90%;
 }
 
+inputbarbotton {
+  children: [logo,listview,entry];
+  expand: false;
+  border-radius: 10px 10px 0 0px;
+  font: "Dosis 14";
+  margin: 0 0 20px 0;
+  width: 30%;
+  padding: 20px 20px 20px 20px;
+
+}
+wallpaper{
+    background-image: url("surreal_art_by_thenumberoneai_dgfi3bl-fullview.jpg");
+  }
+
 mainbox {
-  children: [inputbar, mode-switcher, listview];
+  orientation: horizontal;
+  children: [wallpaper, inputbarbotton];
 }
 
 element {
@@ -100,7 +122,7 @@ element {
   font: "Dosis 14";
   margin: 5px 5px 5px 5px;
   border-radius: 10px;
-  background-color: #393552;
+  background-color: #524f67;
 }
 
 element-text {
@@ -109,8 +131,9 @@ element-text {
   margin: 0% 1% 0% 1%;
   font: "Dosis 14";
   background-color: inherit;
-  text-color: inherit;
+  text-color: #26233a;
 }
+
 element selected {
   background-color: @button;
   font: "Dosis 14";
@@ -120,13 +143,16 @@ element selected {
 
 mode-switcher {
     horizontal-align: 0.5;
-			padding: 0px 50px 0px 50px ;
-			border: 1px;
-		}
+		padding: 0px 50px 0px 50px ;
+		border: 1px;
+}
+
 button {
 	expand: true;
 	padding: 8px;
 	text-color: @fg;
+  border-radius: 10px;
+  background-color: #524f67;
 }
 button selected  {
 	background-color: @button;
