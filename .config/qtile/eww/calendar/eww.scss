@@ -1,68 +1,68 @@
 // Global
-*{
-    all: unset;
-    border-radius: 5px;
-  }
-  
-  // Variable Color's
-  $background: #545668;
-  $foreground: #A9B1D6;
-  
-  $black: #24283B;
-  $gray: #565F89;
-  $red: #F7768E;
-  $green: #73DACA;
-  $yellow: #E0AF68;
-  $blue: #7AA2F7;
-  $magenta: #bea1ff;
-  $cyan: #7DCFFF;
-  $white: $foreground;
-  
-  // EWW BAR
-  .eww_bar{
-    background-color: $background;
-  }
-  
+* {
+  all: unset;
+  border-radius: 5px;
+}
 
-  // Calendar
-  .cal-box {
-    background-color: #1e1d2d;
-    font-family: Comic Mono;
-    font-size: 12px;
-    font-weight: bold;
-  
-    .cal-inner-box {
-        padding: 1px 1px 1px;
-  
-        .cal {
-            &.highlight {
-                padding: 1px;
-            }
-  
-            padding: .8rem .25rem 0rem;
-            margin-left: 10px;
-        }
+// Variable Color's
+$background: #232136;
+$foreground: #f6c177;
+
+$black: #24283b;
+$gray: #565f89;
+$red: #f7768e;
+$green: #73daca;
+$yellow: #e0af68;
+$blue: #7aa2f7;
+$magenta: #bea1ff;
+$cyan: #7dcfff;
+$white: $foreground;
+
+// EWW BAR
+.eww_bar {
+  background-color: $background;
+}
+
+// Calendar
+.cal-box {
+  background-color: $background;
+  font-family: Comic Mono;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid #ebbcba;
+  border-radius: 12px;
+  .cal-inner-box {
+    padding: 1px 1px 1px;
+
+    .cal {
+      &.highlight {
+        padding: 1px;
+      }
+
+      padding: 0.8rem 0.25rem 0rem;
+      margin-left: 10px;
     }
   }
-  
-  calendar:selected {
-    color: #af8cff;
-  }
-  
-  calendar.header {
-  color: #af8cff;
+}
+
+calendar:selected {
+  color: #ebbcba;
+}
+
+calendar.header {
+  color: #9ccfd8;
   font-weight: bold;
-  }
-  
-  calendar.button {
-  color: #bea1ff
-  }
-  
-  calendar.highlight {
-  color: #bea1ff;
+}
+
+calendar.button {
+  color: #c4a7e7;
+}
+
+calendar.highlight {
+  color: #f6c177;
   font-weight: bold;
-  }
-  
-  calendar:indeterminate {
+}
+
+calendar:indeterminate {
   color: $background;
-  }
+}

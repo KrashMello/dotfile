@@ -12,8 +12,9 @@
 ;; ** Widget *************************************************************************
 
 (defwidget spotify [] 
-  (box :class "wid_get" :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false"
+  (box :class "wid_get" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
     (box :class "album_art" :vexpand "false" :hexpand "false" :style "background-image: url('${COVER}');")
+    (box :class "album_info" :orientation "v" :spacing 20 :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
     (label :halign "center" :class "song" :wrap "true" :limit-width 20 :text SONG)
     (label :halign "center" :class "artist" :wrap "true" :limit-width 15 :text ARTIST)
     (label :halign "center" :class "cava" :wrap "true" :style "color: ${COLOR};" :limit-width 26 :text CAVA)
@@ -23,6 +24,7 @@
       (button :class "prev" :onclick "scripts/spotify-previous.sh" "玲")
       (button :class "play" :onclick "scripts/spotify-pause.sh" STATUS)
       (button :class "next"  :onclick "scripts/spotify-next.sh" "怜"))))
+  )
 
 
 
@@ -32,10 +34,9 @@
 ;; spotify
 (defwindow spotify
            :monitor 0
-           :geometry (geometry :x "840px"
+           :geometry (geometry 
                                :y "35px"
-                               :width "240px"
-                               :height "262px"
+                               :width "200px"
                                :anchor "top center")
                                :stacking "fg"
                                :reserve (struts :distance "40px" :side "top")

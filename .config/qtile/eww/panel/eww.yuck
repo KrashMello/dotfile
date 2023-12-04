@@ -107,14 +107,11 @@
 		(box :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
 			(button :class "iconfolder2" :onclick "scripts/open_folders --dl" "")
 			(button :class "label_folder2" :onclick "scripts/open_folders --dl" "Downloads"))
-		(box :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
-			(button :class "iconfolder3" :onclick "scripts/open_folders --5sem" "")
-			(button :class "label_folder3" :onclick "scripts/open_folders --5sem" "5th Semestre"))
-		(box :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
+			(box :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
 			(button :class "iconfolder4" :onclick "scripts/open_folders --pics" "")
 			(button :class "label_folder4" :onclick "scripts/open_folders --pics" "Pictures"))
 		(box :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
-			(button :class "iconfolder5" :onclick "scripts/open_folders --cfg" "ﮛ")
+			(button :class "iconfolder5" :onclick "scripts/open_folders --cfg" (""
 			(button :class "label_folder5" :onclick "scripts/open_folders --cfg" "~/.config"))))
 
 

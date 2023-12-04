@@ -21,6 +21,6 @@ if [[ ! -f "$FILE" ]]; then
 	touch "$FILE"
 	run_eww
 else
-	${EWW} --config "$CFG" close powermenu
+	${EWW} --config "$CFG" close powermenu place
 	rm "$FILE"
 fi
