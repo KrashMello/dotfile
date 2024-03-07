@@ -15,7 +15,7 @@ return {
   {
     "rcarriga/nvim-notify",
     opts = {
-      timeout = 10000,
+      timeout = 1000,
     },
   },
   -- filename
@@ -64,15 +64,15 @@ return {
     },
   },
   -- statusline
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = {
-      options = {
-        theme = "rose-pine",
-      },
-    },
-  },
+  -- {
+  --   "nvim-lualine/lualine.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     options = {
+  --       theme = "rose-pine",
+  --     },
+  --   },
+  -- },
   -- animations
   {
     "echasnovski/mini.animate",

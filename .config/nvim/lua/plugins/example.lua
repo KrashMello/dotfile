@@ -1,15 +1,9 @@
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
  return {
-
-  { 'rose-pine/neovim', name = 'rose-pine' },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "rose-pine",
-    },
-  },
 {
+    'prisma/vim-prisma',
+    "nelsyeung/twig.vim",
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
       window = {
