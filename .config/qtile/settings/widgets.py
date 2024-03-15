@@ -96,6 +96,7 @@ primary_widgets = [
     icon(bg="#00000000", fg='icon', fontsize=14, text=' ', **decor_group
          ),
     widget.Clock(background="#00000000", foreground=colors['text'], format='%I:%M %p ', **decor_group),
+    widget.Systray(background="#00000000", foreground=colors['text'])
 ]
 
 secondary_widgets = [
@@ -120,6 +121,7 @@ secondary_widgets = [
          ),
     widget.Clock(background="#00000000", foreground=colors['text'], format='%I:%M %p ', **decor_group
                  ),
+    widget.Systray(background="#00000000", foreground=colors['text'])
 ]
 
 
