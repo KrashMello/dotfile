@@ -5,14 +5,14 @@
 #  ┬  ┬┌─┐┬─┐┌─┐
 #  └┐┌┘├─┤├┬┘└─┐
 #   └┘ ┴ ┴┴└─└─┘
-export VISUAL='code'
+export VISUAL='nvim'
 export EDITOR='nvim'
 export TERMINAL='kitty'
 export BROWSER='google-stable'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 
 if [ -d "$HOME/.local/bin" ] ;
-  then PATH="$HOME/.local/bin:$PATH"
+  then PATH="$HOME/.npm-global:$HOME/.local/bin:$PATH"
 fi
 
 #  ┬  ┌─┐┌─┐┌┬┐  ┌─┐┌┐┌┌─┐┬┌┐┌┌─┐
@@ -124,14 +124,26 @@ alias vm-on="sudo systemctl start libvirtd.service"
 alias vm-off="sudo systemctl stop libvirtd.service"
 
 alias musica="ncmpcpp"
+alias df='duf'
 alias ll='lsd -lh --group-dirs=first'
 alias la='lsd -a --group-dirs=first'
 alias l='lsd --group-dirs=first'
 alias lla='lsd -lha --group-dirs=first'
 alias ls='lsd --group-dirs=first'
+alias cat='bat'
+alias catn='cat'
+alias clear="clear && neofetch"
+alias kmComponent="cd $HOME/git/km-component/ && nvim"
+alias ga="git add"
+alias gc="git commit"
+alias gs="git status"
+alias glg="git log --graph"
 
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │ 
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴ 
 neofetch 
 # $HOME/.local/bin/colorscript -r
+
+# bun completions
+[ -s "/home/krashmello/.bun/_bun" ] && source "/home/krashmello/.bun/_bun"
