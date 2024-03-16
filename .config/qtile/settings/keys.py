@@ -78,8 +78,8 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod], "e", lazy.spawn("Thunar")),
 
     # Terminal
-    ([mod], "t", lazy.spawn("kitty")),
-    ([mod,"shift"], "t", lazy.spawn("alacritty")),
+    ([mod], "return", lazy.spawn("kitty")),
+    ([mod,"shift"], "return", lazy.spawn("alacritty")),
 
     # Redshift
     ([mod], "r", lazy.spawn("redshift -O 2400")),
