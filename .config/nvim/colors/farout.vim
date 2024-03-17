@@ -12,7 +12,7 @@ endif
 let colors_name = "farout"
 
 if &t_Co >= 256 || has("gui_running")
-    hi Normal ctermbg=233 ctermfg=187 cterm=NONE guibg=#0C1221 guifg=#E0CCAE gui=NONE
+    hi Normal ctermbg=233 ctermfg=187 cterm=NONE guibg=#030F27 guifg=#E0CCAE gui=NONE
     set background=dark
     hi NonText ctermbg=bg ctermfg=238 cterm=NONE guibg=bg guifg=#66292F gui=NONE
     hi Comment ctermbg=bg ctermfg=239 cterm=NONE guibg=bg guifg=#6B4035 gui=NONE
