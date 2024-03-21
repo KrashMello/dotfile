@@ -9,7 +9,7 @@ function run {
 PATH="$HOME/.config/qtile/scripts:$PATH"
 # dimension wide
 # xrandr --output DP-1 --off --output HDMI-1 --mode 1920x1080 --pos 1280x0 --rotate normal --output DVI-I-1 --mode 1280x1024 --pos 0x56 --rotate normal
-xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1280x0 --rotate normal --output HDMI-2 --off --output DP-1 --mode 1280x1024 --pos 0x404 --rotate normal --output HDMI-3 --off
+xrandr --output HDMI-1 --mode 1280x1024 --pos 0x404 --rotate normal --output HDMI-2 --off --output DP-1 --primary --mode 1920x1080 --pos 1280x0 --rotate normal --output HDMI-3 --off
 # run polybar kmbar --config=$HOME/.config/qtile/polybar/config.ini
 picom &
 #feh --bg-fill ~/Imágenes/sakura.png
