@@ -3,9 +3,12 @@ return {
     variant = "moon",
   } },
   {
+    "arcticicestudio/nord-vim",
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "farout",
+      colorscheme = "nord",
     },
   },
 }
