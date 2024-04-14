@@ -1,11 +1,127 @@
 * {
-    bg-col: #2E3440;
-    bg-col-light: #343a46;
-    border-col: #343a46;
-    selected-col: #343a46;
-    blue: #81A1C1;
-    fg-col: #b4bbc8;
-    fg-col2: #BF616A;
-    grey: #646a76;
-    width: 600;
+    bg: #2E3440;
+    fg: #E5E9F0;
+    phColor: #81A1C1;
+    btnBg: #81A1C1;
+    border: #923338;
+    inputBg: #4C566A;
+    button: #81A1C1;
+    inactive: #3B4252;
+    inactiveText: #EDDFD9;
+    background-color: @bg;
+    text-color: @fg;
+
+}
+element-text,
+element-icon,
+mode-switcher {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+window {
+  transparency: "real";
+  width: 55%;
+  border: 10px;
+  border-radius: 15px;
+  border-color: @bg;
+  height: 65%;
+}
+
+
+entry {
+  placeholder: "Search";
+  placeholder-color: @phColor;
+  text-color: @fg;
+  expand: false;
+  height: 48px;
+  padding: 2.0%;
+  border-radius: 50%;
+  background-color: @inputBg;
+}
+/*
+inputbar {
+  children: [entry];
+  background-image: url("bg.jpg");
+  expand: false;
+  border-radius: 10px 10px 0 0px;
+  font: "Dosis 14";
+  margin: 0 0 20px 0;
+  padding: 200px 20px 20px 20px;
+}
+*/
+logo{
+    background-image: url("logo-km-rose-pine.png");
+    background-size: 200px 200px;
+    width: 100px;
+  }
+
+listview {
+  border: 0px 0px 0px;
+  padding: 6px 0px 0px;
+  margin: 10px 0px 0px 20px;
+  height: 90%;
+}
+
+inputbarbotton {
+  children: [logo,listview,entry];
+  expand: false;
+  border-radius: 10px 10px 0 0px;
+  font: "Dosis 14";
+  margin: 0 0 20px 0;
+  width: 30%;
+  padding: 20px 20px 20px 20px;
+
+}
+wallpaper{
+    background-image: url("nord-wall.png");
+  }
+
+mainbox {
+  orientation: horizontal;
+  children: [wallpaper, inputbarbotton];
+}
+
+element {
+  padding: 10px;
+  font: "Dosis 14";
+  margin: 5px 5px 5px 5px;
+  border-radius: 10px;
+  background-color: @inactive;
+}
+
+element-text {
+  expand: true;
+  vertical-align: 0.5;
+  margin: 0% 1% 0% 1%;
+  font: "Dosis 14";
+  background-color: inherit;
+  text-color: @inactiveText;
+}
+
+element selected {
+  background-color: @button;
+  font: "Dosis 14";
+  text-color: @fg;
+  border-radius: 10px;
+}
+
+mode-switcher {
+    horizontal-align: 0.5;
+		padding: 0px 50px 0px 50px ;
+		border: 1px;
+}
+
+button {
+	expand: true;
+	padding: 8px;
+	text-color: @fg;
+  border-radius: 10px;
+  background-color: @btnBg;
+}
+button selected  {
+	background-color: @button;
+  border-radius: 10px;
+	border-color: #FFFFFF;
+	text-color: #2e3440;
 }

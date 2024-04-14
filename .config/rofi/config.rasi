@@ -37,7 +37,7 @@ configuration {
   }
 }
 
-@theme"themes/red-dragon.rasi"
+@theme"themes/nord.rasi"
 
 /*
   vim: ft=rasi
