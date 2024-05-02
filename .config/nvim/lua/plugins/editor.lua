@@ -1,5 +1,10 @@
 return {
   {
+    "echasnovski/mini.hipatterns",
+    event = "BufReadPre",
+    opts = {},
+  },
+  {
     "telescope.nvim",
     dependencies = {
       "nvim-telescope/telescope-file-browser.nvim",

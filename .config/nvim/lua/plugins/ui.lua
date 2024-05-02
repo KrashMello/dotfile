@@ -15,33 +15,36 @@ return {
   {
     "rcarriga/nvim-notify",
     opts = {
-      timeout = 1000,
+      timeout = 5000,
+      background_colour = "#000000",
+      render = "wrapped-compact",
     },
   },
   -- filename
   {
     "b0o/incline.nvim",
+    dependencies = {},
     event = "BufReadPre",
     priority = 1200,
     config = function()
+      local helpers = require("incline.helpers")
       require("incline").setup({
-        highlight = {
-          groups = {
-            InclineNormal = { guibg = "#ebbcba", guifg = "#191724" },
-            InclineNormalNC = { guifg = "#ebbcba", guibg = "#191724" },
-          },
-        },
-        window = { margin = { vertical = 0, horizontal = 1 } },
-        hide = {
-          cursorline = true,
+        window = {
+          padding = 0,
+          margin = { horizontal = 0 },
         },
         render = function(props)
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-          if vim.bo[props.buf].modified then
-            filename = "[+]" .. filename
-          end
-          local icon, color = require("nvim-web-devicons").get_icon_color(filename)
-          return { { icon, guifg = color }, { " " }, { filename } }
+          local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
+          local modified = vim.bo[props.buf].modified
+          local buffer = {
+            ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
+            " ",
+            { filename, gui = modified and "bold,italic" or "bold" },
+            " ",
+            guibg = "#363944",
+          }
+          return buffer
         end,
       })
     end,
@@ -61,6 +64,22 @@ return {
         show_buffer_close_icons = false,
         show_close_icon = false,
       },
+    },
+  },
+  -- LazyGit integration with Telescope
+  {
+    "kdheepak/lazygit.nvim",
+    keys = {
+      {
+        ";c",
+        ":LazyGit<Return>",
+        silent = true,
+        noremap = true,
+      },
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
     },
   },
   -- statusline
