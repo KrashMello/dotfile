@@ -30,7 +30,7 @@ floating_layout = layout.Floating(
         Match(wm_class='ssh-askpass'),
         Match(title='branchdialog'),
         # other float of google chrome
-        # Match(wm_class='crx_iojgbjjdoanmhcmmihbapiejfbbadhjd'),
+        Match(wm_class='crx_iojgbjjdoanmhcmmihbapiejfbbadhjd'),
         # Match(role='pop-up'),
         Match(wm_class='ark'),
         Match(wm_instance_class='google-chrome'),
