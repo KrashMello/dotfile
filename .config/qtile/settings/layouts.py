@@ -31,6 +31,7 @@ floating_layout = layout.Floating(
         Match(title='branchdialog'),
         Match(wm_class='crx_iojgbjjdoanmhcmmihbapiejfbbadhjd'),
         Match(wm_class='ark'),
+        Match(net_wm_pid='9543'),
         Match(role='pop-up'),
         Match(title='pinentry'),
         Match(wm_type="utility"),
