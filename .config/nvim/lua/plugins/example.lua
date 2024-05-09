@@ -4,6 +4,7 @@
 {
     'prisma/vim-prisma',
     "nelsyeung/twig.vim",
+    "jlcrochet/vim-razor",
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
       window = {
