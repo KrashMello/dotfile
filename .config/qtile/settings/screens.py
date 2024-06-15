@@ -2,12 +2,14 @@
 from libqtile.config import Screen
 from libqtile import bar
 from libqtile.log_utils import logger
-from .theme import colors
-from .widgets import primary_widgets, secondary_widgets
+
+# from .theme import colors
+from .widgets import primary_widgets  # , secondary_widgets
 import subprocess
 
+
 def status_bar(widgets):
-    return bar.Bar( widgets, 20, background='#00000000',  margin=[5,0,5,0] )
+    return bar.Bar(widgets, 20, background="#00000000", margin=[5, 0, 5, 0])
 
 
 screens = [Screen(top=status_bar(primary_widgets))]
@@ -31,4 +33,3 @@ else:
 # if connected_monitors > 1:
 #     for _ in range(1, connected_monitors):
 #         screens.append(Screen(top=status_bar(secondary_widgets)))
-

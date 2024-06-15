@@ -31,9 +31,10 @@ floating_layout = layout.Floating(
         Match(title='branchdialog'),
         # other float of google chrome
         Match(wm_class='crx_iojgbjjdoanmhcmmihbapiejfbbadhjd'),
-        # Match(role='pop-up'),
+        Match(role='pop-up'),
         Match(wm_class='ark'),
-        Match(wm_instance_class='google-chrome'),
+        # Match(wm_instance_class='google-chrome'),
+        Match(wm_instance_class='DBeaver'),
         Match(wm_instance_class='PacketTracer'),
         Match(title='pinentry'),
         Match(wm_type="utility"),

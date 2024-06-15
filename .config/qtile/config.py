@@ -8,15 +8,20 @@ from settings.mouse import mouse
 from settings.path import qtile_path
 from os import path
 import subprocess
+
+
 @hook.subscribe.startup_once
 def autostart():
-    subprocess.call([path.join(qtile_path, 'autostart.sh')])
+    subprocess.call([path.join(qtile_path, "autostart.sh")])
+
+
 main = None
 dgroups_key_binder = None
 dgroups_app_rules = []
 follow_mouse_focus = True
 bring_front_click = False
-cursor_warp = True
+floats_kept_about = True
+cursor_warp = False
 auto_fullscreen = True
-focus_on_window_activation = 'urgent'
-wmname = 'LG3D'
+focus_on_window_activation = "smart"
+wmname = "LG3D"
