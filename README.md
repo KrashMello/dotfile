@@ -11,17 +11,24 @@
 
 Install Qtile and dependencies:
 
-```
+```bash
 sudo pacman -S qtile pacman-contrib
-yay -S nerd-fonts-ubuntu-mono
+```
+```bash
+yay -S ttf-firacode-nerd xdotool xclip dunst sxhkd feh blueman variety pamac-aur udiskie volumeicon kitty plank parcellite arandr xrandr qtile-extras pavucontrol rofi neovim ranger fd ripgrep bat duf fzf neofetch fastfetch lazygit thunar maim ark unrar 
+```
+```bash
 pip install psutil
 ```
 
 Clone this repository and copy my configs:
 
 ```bash
-git clone
-cp -rf dotfiles/.config/ ~/.config
+git clone https://github.com/KrashMello/dotfile.git
+```
+
+```bash
+cp -rf dotfiles/.config/* ~/.config
 ```
 
 ## Structure
@@ -49,26 +56,27 @@ function run {
 }
 PATH="$HOME/.config/qtile/scripts:$PATH"
 # dimension wide
-xrandr --output DP-1 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-I-1 --mode 1280x1024 --pos 320x1080 --rotate normal
-run polybar kmbar --config=$HOME/.config/qtile/polybar/config.ini
+xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1280x0 --rotate normal --output HDMI-2 --off --output DP-1 --mode 1280x1024 --pos 0x588 --rotate normal --output HDMI-3 --off
 picom &
-#feh --bg-fill ~/Imágenes/sakura.png
+feh --bg-fill $HOME/Imágenes/background/wallhaven-1pwl61_1920x1080.png
 # start all this to entry the system
 sxhkd -c $HOME/.config/qtile/sxhkdrc &
 dunst -config "$HOME"/.config/qtile/dunstrc &
+# xss-lock -- i3lockmore -n --image-fill $HOME/Imágenes/background/surreal_art_by_thenumberoneai_dgfi3bl-fullview.jpg &
 run variety &
 run nm-applet &
+run blueman-applet &
 run pamac-tray &
-run xfce4-power-manager &
+# run xfce4-power-manager &
 numlockx on &
-run blueberry-tray &
 udiskie -t &
 run volumeicon &
-/usr/lib/xfce4/notifyd/xfce4-notifyd &
+variety &
+blueman-applet &
 kitty &
-
-# notes &
-
+plank &
+parcellite &
+setxkbmap latam
 
 ```
 
