@@ -9,7 +9,6 @@ function run {
 PATH="$HOME/.config/qtile/scripts:$PATH"
 # dimension wide
 xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1280x0 --rotate normal --output HDMI-2 --off --output DP-1 --mode 1280x1024 --pos 0x588 --rotate normal --output HDMI-3 --off
-# run polybar kmbar --config=$HOME/.config/qtile/polybar/config.ini
 picom &
 feh --bg-fill $HOME/Imágenes/background/wallhaven-1pwl61_1920x1080.png
 # start all this to entry the system
@@ -22,15 +21,12 @@ run blueman-applet &
 run pamac-tray &
 # run xfce4-power-manager &
 numlockx on &
-# run blueberry-tray &
 udiskie -t &
 run volumeicon &
 variety &
 blueman-applet &
-# /usr/lib/xfce4/notifyd/xfce4-notifyd &
 kitty &
 plank &
 parcellite &
 setxkbmap latam
 
-# notes &
