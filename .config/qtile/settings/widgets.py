@@ -20,7 +20,7 @@ def separator():
 
 
 def spacer(length=bar.STRETCH):
-    return widget.Spacer(length=length, background="#00000000")
+    return widget.Spacer(length=length, background=colors["background"])
 
 
 def icon(
@@ -38,7 +38,8 @@ def icon(
 
 decor_group = {
     "decorations": [
-        RectDecoration(colour=colors["background"], filled=True, group=True, radius=11),
+        RectDecoration(colour=colors["background"],
+                       filled=True, group=True, radius=11),
     ],
 }
 
@@ -81,59 +82,52 @@ def workspaces():
     ]
 
 
+def text_funki(text):
+    dsub = {
+        "Google Chrome": "Google Chrome",
+        "Firefox": "Firefox",
+        "Visual Studio": "Visual Studio",
+    }
+    for sub in dsub:
+        if sub in text:
+            text = dsub[sub]
+    return text
+
+
 primary_widgets = [
     widget.LaunchBar(
         default_icon="/home/krashmello/.config/qtile/assets/logo64x64_sakura_light.png",
         progs=[("rofy", "rofi -show drun")],
-        padding=5,
+        padding=3,
     ),
-    spacer(length=15),
-    *workspaces(),
+    spacer(length=8),
+    # *workspaces(),
+    widget.WindowName(
+        max_chars=50, format="{name} | ", scroll=True, width=150, parse_text=text_funki
+    ),
+    widget.GlobalMenu(background=colors["background"], padding=5),
     spacer(),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+    icon(bg=colors["background"], fg="icon",
+         fontsize=14, text=" ", **decor_group),
     widget.CPU(
         **base(bg="background", fg="text"),
         fontsize=14,
         format="{load_percent}% ",
         max_chars=5,
-        **decor_group,
     ),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+    icon(bg=colors["background"], fg="icon",
+         fontsize=14, text=" ", **decor_group),
     widget.Memory(
         **base(bg="background", fg="text"),
         fontsize=14,
         format="{MemUsed: .0f}{mm} ",
-        **decor_group,
     ),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+    widget.IWD(show_image=True, show_text=False, **base()),
+    widget.Systray(**base()),
     widget.Clock(
-        background="#00000000",
-        foreground=colors["text"],
-        fontsize=14,
-        format="%d/%m/%Y ",
-        **decor_group,
-        mouse_callbacks={
-            "Button1": lambda: qtile.cmd_spawn(
-                "sh /home/krashmello/.config/eww/calendar/calendar_widget.sh"
-            )
-        },
+        **base(),
+        format=" %d/%m/%Y  %I:%M %p ",
     ),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
-    widget.Clock(
-        background="#00000000",
-        foreground=colors["text"],
-        format="%I:%M %p ",
-        **decor_group,
-    ),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
-    widget.Wlan(
-        background="#00000000",
-        foreground=colors["text"],
-        format="{percent:2.0%} ",
-        inteface="wlan0",
-        **decor_group,
-    ),
-    widget.Systray(background="#00000000", foreground=colors["text"]),
 ]
 
 secondary_widgets = [
