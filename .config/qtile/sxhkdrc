@@ -2,15 +2,21 @@ super + s
 	screenshots --now;
 
 super + shift + s
-	screenshots --sel
+	screenshots --sel;
 
 super + alt + s
-	screenshots --in10
+	screenshots --in10;
 
 # Reload sxhkd
 super + Escape
 	pkill -USR1 -x sxhkd;
 
-# Restart polybar
-super + p
-    ResetPolybar
+# ranger 
+#
+super + shift + e
+	OpenApps --ranger;
+
+#floating Terminal
+
+super + shift + Return 
+	OpenApps --floating;
