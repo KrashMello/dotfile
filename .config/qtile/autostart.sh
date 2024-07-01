@@ -8,7 +8,7 @@ function run {
 }
 PATH="$HOME/.config/qtile/scripts:$PATH"
 # dimension wide
-xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1280x0 --rotate normal --output HDMI-2 --off --output DP-1 --mode 1280x1024 --pos 0x588 --rotate normal --output HDMI-3 --off
+ xrandr --output DP1 --mode 1280x1024 --pos 0x562 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1280x0 --rotate normal --output HDMI2 --off --output HDMI3 --off --output VIRTUAL1 --off
 picom &
 feh --bg-fill $HOME/Imágenes/background/wallhaven-1pwl61_1920x1080.png
 # start all this to entry the system
@@ -28,5 +28,6 @@ blueman-applet &
 kitty &
 plank &
 parcellite &
+knotes &
 setxkbmap latam
 
