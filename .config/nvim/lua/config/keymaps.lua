@@ -32,7 +32,7 @@ keymap.set("n", "<S-tab>", ":tabprev<CR>", opts)
 --terminal
 
 keymap.set("n", "<a-3>", function()
-  Util.float_term()
+  Util.terminal.open()
 end, { desc = "Terminal (cwd)" })
 keymap.set("t", "<A-3>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
