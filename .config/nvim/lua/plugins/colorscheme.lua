@@ -3,7 +3,7 @@ return {
     variant = "moon",
   } },
   -- {
-  --   "shaunsingh/nord.nvim",
+  "shaunsingh/nord.nvim",
   -- },
   -- {
   --   "AlexvZyl/nordic.nvim",
@@ -16,7 +16,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "base16-nord",
+      colorscheme = "nord",
     },
   },
 }
