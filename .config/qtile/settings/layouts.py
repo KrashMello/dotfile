@@ -33,6 +33,7 @@ floating_layout = layout.Floating(
         Match(role="pop-up"),
         Match(wm_class="ark"),
         Match(wm_class="krunner"),
+        Match(wm_class="gnome-calculator"),
         Match(wm_class="kalk"),
         Match(wm_class="Variety"),
         Match(wm_class="FloatTerm,kitty"),

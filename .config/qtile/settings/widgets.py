@@ -38,8 +38,7 @@ def icon(
 
 decor_group = {
     "decorations": [
-        RectDecoration(colour=colors["background"],
-                       filled=True, group=True, radius=11),
+        RectDecoration(colour=colors["background"], filled=True, group=True, radius=11),
     ],
 }
 
@@ -107,16 +106,14 @@ primary_widgets = [
     ),
     widget.GlobalMenu(background=colors["background"], padding=5),
     spacer(),
-    icon(bg=colors["background"], fg="icon",
-         fontsize=14, text=" ", **decor_group),
+    icon(bg=colors["background"], fg="icon", fontsize=14, text=" ", **decor_group),
     widget.CPU(
         **base(bg="background", fg="text"),
         fontsize=14,
         format="{load_percent}% ",
         max_chars=5,
     ),
-    icon(bg=colors["background"], fg="icon",
-         fontsize=14, text=" ", **decor_group),
+    icon(bg=colors["background"], fg="icon", fontsize=14, text=" ", **decor_group),
     widget.Memory(
         **base(bg="background", fg="text"),
         fontsize=14,
@@ -124,6 +121,7 @@ primary_widgets = [
     ),
     widget.IWD(show_image=True, show_text=False, **base()),
     widget.Systray(**base()),
+    widget.KeyboardLayout(configured_keyboards=["latam", "us"], fmt=" {}"),
     widget.Clock(
         **base(),
         format=" %d/%m/%Y  %I:%M %p ",
