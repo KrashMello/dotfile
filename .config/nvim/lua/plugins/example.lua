@@ -2,10 +2,9 @@
 -- stylua: ignore
  return {
 { 'wakatime/vim-wakatime', lazy = false },
-{
-    'prisma/vim-prisma',
-    "nelsyeung/twig.vim",
-    "jlcrochet/vim-razor",
+  {'prisma/vim-prisma'},
+  {"nelsyeung/twig.vim"},
+  {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
       window = {
