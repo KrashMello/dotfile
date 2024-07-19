@@ -50,13 +50,13 @@ keys = [
         # Window Nav
         ([mod, "shift"], "space", lazy.spawn("rofi -show window")),
         # Browsers
-        ([mod], "b", lazy.spawn("google-chrome-stable")),
+        ([mod], "b", lazy.spawn("firefox")),
         ([mod, "shift"], "b", lazy.spawn("qutebrowser")),
         # text editor
         ([mod], "c", lazy.spawn("Code")),
         ([mod, "shift"], "c", lazy.spawn("subl")),
         # File Explorer
-        ([mod], "e", lazy.spawn("Thunar")),
+        # ([mod], "e", lazy.spawn("Thunar")),
         # Terminal
         ([mod], "return", lazy.spawn("kitty")),
         # Redshift

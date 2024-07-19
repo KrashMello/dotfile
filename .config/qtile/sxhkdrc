@@ -13,7 +13,7 @@ super + Escape
 
 # ranger 
 #
-super + shift + e
+super + e
 	OpenApps --ranger;
 
 #floating Terminal
