@@ -11,7 +11,7 @@ configuration {
 
     modi: "window,run,drun";
     show-icons: true;
-    font: "Hack 11";
+    font: "FiraCode NF 11";
     icon-theme: "WhiteSur-light";
 }
 @import "themes/macos.rasi"

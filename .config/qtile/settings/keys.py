@@ -51,7 +51,8 @@ keys = [
         ([mod, "shift"], "space", lazy.spawn("rofi -show window")),
         # Browsers
         ([mod], "b", lazy.spawn("firefox")),
-        ([mod, "shift"], "b", lazy.spawn("qutebrowser")),
+        ([mod, "shift"], "b", lazy.window.bring_to_front()),
+        # ([mod, "shift"], "b", lazy.spawn("qutebrowser")),
         # text editor
         ([mod], "c", lazy.spawn("Code")),
         ([mod, "shift"], "c", lazy.spawn("subl")),

@@ -20,3 +20,7 @@ super + e
 
 super + shift + Return 
 	OpenApps --floating;
+
+#open rofi powermenu
+super + BackSpace
+	powermenu

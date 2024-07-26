@@ -85,7 +85,7 @@ __groups = {
         matches=[
             Match(
                 wm_class=re.compile(
-                    r"^(qtpad|Notes|slack|Slack|notion\-app|notion\-app|telegram\-desktop|TelegramDesktop|whatsapp\-nativefier\-d40211|whatsapp\-nativefier\-d40211|franz|Franz|Mail|thunderbird|knotes|merkuro\-calendar)$"
+                    r"^(qtpad|Notes|slack|Slack|notion\-app|notion\-app|telegram\-desktop|TelegramDesktop|whatsapp\-nativefier\-d40211|whatsapp\-nativefier\-d40211|franz|Franz|Mail|thunderbird|knotes|merkuro\-calendar|discord)$"
                 )
             )
         ],
