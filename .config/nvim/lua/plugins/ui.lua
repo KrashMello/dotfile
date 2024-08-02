@@ -9,6 +9,15 @@ return {
         },
         opts = { skip = true },
       })
+      opts.routes = {
+        {
+          filter = {
+            event = "notify",
+            find = "Request textDocument/inlayHint failed",
+          },
+          opts = { skip = true },
+        },
+      }
       opts.presets.lsp_doc_border = true
     end,
   },
