@@ -14,15 +14,11 @@ configuration {
 /* BUTTON = TRUE */
 
 window {
-    transparency:                   "real";
-    background-color:               @BG;
-    text-color:                     @FG;
-    border:                  	    2px;
-    border-color:                   @BGA;
-    border-radius:                  10px;
-    width:                          110px;
-    x-offset:                       -1%;
-    y-offset:                       0;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 43% 35%;
+    width:                          100%;
+    height:                          100%;
 }
 
 prompt {
@@ -82,19 +78,26 @@ case-indicator {
 
 listview {
     background-color:               @BG;
-    columns:                        1;
-    lines:			                5;
+    rows:                        1;
+    lines:5;
     spacing:                        15px;
     cycle:                          true;
     dynamic:                        true;
-    layout:                         vertical;
+    layout:                         horizontal;
 }
 
 mainbox {
+    text-color:                     @FG;
+    border:                  	    0 0 2px 0;
+    border-color:                   @BGB;
+    border-radius:                  15px;
     background-color:               @BG;
     children:                       [ listview ];
+    height: 110px;
+    width: 30%;
     spacing:                        15px;
     padding:                        15px;
+    location: 0;
 }
 
 element {
@@ -115,7 +118,7 @@ element-icon {
 }
 
 element-text {
-    background-color: 		        inherit;
+    background-color: 		        transparent;
     text-color:       		        inherit;
     font:			                "FiraCode NF 20";
     expand:                         true;
@@ -125,7 +128,7 @@ element-text {
 }
 
 element selected {
-    background-color:               @BGA;
+    background-color:               @SELTE;
     text-color:                     @SEL;
     border:                  	    0px 0px 0px 0px;
     border-radius:                  10px;

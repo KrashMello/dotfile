@@ -4,7 +4,9 @@
     
     background:           #1e1e2eff; 
     background-solid:     #1e1e2eff; 
-    selected-background:  rgba(0, 0, 0, 40%);
+    selected-background:  #c6a0f61f;
+    borderMainBox: #96CDFBff;
+    elementBG: #96CDFBff;
     /*#87b5d7;*/  
     /*#6eacda;*/
     /*#deca72;*/

@@ -8,21 +8,21 @@ configuration {
   kb-remove-to-eol: "";
   kb-remove-char-back: "BackSpace,Shift+BackSpace";
 
-
-    modi: "window,run,drun";
-    show-icons: true;
-    font: "FiraCode NF 11";
-    icon-theme: "WhiteSur-light";
+  modi: "window,run,drun";
+  show-icons: true;
+  font: "FiraCode NF 11";
+  icon-theme: "Colloid-Dark";
 }
-@import "themes/macos.rasi"
+@import "themes/macos-Catppuccin-Mocha.rasi"
 #window {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.1);
     padding: 130px 200px;
 }
-#mainbox {
-    border:  0;
+mainbox {
+    border: 0 0 2px 0;
+    border-color: @borderMainBox;
     border-radius: 15;
     padding: 20;
     background-color: @background;
