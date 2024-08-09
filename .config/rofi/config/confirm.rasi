@@ -1,28 +1,103 @@
-@import "colors.rasi"
+configuration {
+    show-icons:                     true;
+    display-drun: 		            "";
+    drun-display-format:            "{icon} {name}";
+    disable-history:                false;
+    click-to-exit: 		            true;
+    location:                       0;
+}
+
 @import "font.rasi"
+@import "colors.rasi"
 
-* {
-    background-color:       @BG;
-    text-color:             @FG;
+/* Line Responsible For Button Layouts */
+/* BUTTON = TRUE */
+*{
+  background-color: transparent;
+  text-color: @FG;
 }
-
-window {
-    width:      	        100%;
-    height: 100%;
+#window {
     background-color: rgba(255, 255, 255, 0.1);
-    padding:                45% 36%;
+    fullscreen:true;
+    padding: 43% 36%;
+    location: center;
+    children: [mainbox ];
+}
+listview {
+    background-color:               transparent;
+    lines: 1;
+    columns: 5;
+    cycle:                          true;
+    dynamic:                        true;
+    spacing:                        15px;
 }
 
-mainbox{
-    width:      	        200px;
-    padding:                20px;
-    border:		            0px 0px 2px 0px;
-    border-radius: 8px;
-    border-color:           @BGA;
-    width: 		            150px;
-    location: 0;
-  }
-entry {
-    expand: 		        true;
-    text-color:		        @BDR;
+mainbox {
+    text-color:                     @FG;
+    border:                  	    0 0 2px 0;
+    border-color:                   @BGB;
+    border-radius:                  15px;
+    background-color:               @BG;
+    children:[prompt,listview];
+    spacing:                        15px;
+    padding:                        15px;
+}
+  prompt{
+  margin: 0 10%;
+}
+element {
+    background-color:               @BG;
+    text-color:                     @FG;
+    border-radius:                  10px;
+    padding:                        20px;
+    expand:true;
+}
+
+element-icon {
+    background-color: 		        transparent;
+    text-color:       		        inherit;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    size:                           0px;
+    border:                         0px;
+}
+
+element-text {
+    background-color: 		        transparent;
+    text-color:       		        inherit;
+    font:			                "FiraCode NF 20";
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         0px 0px 0px 0px;
+}
+
+element selected {
+    background-color:               @SELTE;
+    text-color:                     @SEL;
+    border:                  	    0px 0px 0px 0px;
+    border-radius:                  10px;
+    border-color:                   @BDR;
+}
+
+element.active,
+element.selected.urgent {
+  background-color: @ON;
+  text-color: @BG;
+  border-color: @ON;
+}
+
+element.selected.urgent {
+  border-color: @BDR;
+}
+
+element.urgent,
+element.selected.active {
+  background-color: @OFF;
+  text-color: @BG;
+  border-color: @OFF;
+}
+
+element.selected.active {
+  border-color: @BDR;
 }
