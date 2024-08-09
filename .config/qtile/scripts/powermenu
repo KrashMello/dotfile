@@ -51,13 +51,7 @@ fi
 
 # Ask for confirmation
 rdialog() {
-  rofi -dmenu -i -no-fixed-num-lines -p "Are You Sure? : " \
-    -theme "$ddir/confirm.rasi"
-}
-
-# Display Help
-show_msg() {
-  rofi -theme "$ddir/askpass.rasi" -e "Options : yes / no / y / n"
+  echo -e "\n󰜺" | rofi -dmenu -p "¿esta seguro?" -theme "$ddir/confirm.rasi"
 }
 
 # Variable passed to rofi
@@ -67,22 +61,18 @@ chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-
 case $chosen in
 $shutdown)
   ans=$(rdialog &)
-  if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+  if [[ $ans == "" ]]; then
     systemctl poweroff
-  elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-    exit
   else
-    show_msg
+    exit
   fi
   ;;
 $reboot)
   ans=$(rdialog &)
-  if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+  if [[ $ans == "" ]]; then
     systemctl reboot
-  elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-    exit
   else
-    show_msg
+    exit
   fi
   ;;
 $lock)
@@ -90,25 +80,21 @@ $lock)
   ;;
 $suspend)
   ans=$(rdialog &)
-  if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+  if [[ $ans == "" ]]; then
     mpc -q pause
     amixer set Master mute
     sh $HOME/.local/bin/lock
     systemctl suspend
-  elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-    exit
   else
-    show_msg
+    exit
   fi
   ;;
 $logout)
   ans=$(rdialog &)
-  if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+  if [[ $ans == "" ]]; then
     pkill -9 -u $USER
-  elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-    exit
   else
-    show_msg
+    exit
   fi
   ;;
 esac
