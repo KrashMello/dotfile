@@ -14,6 +14,7 @@ install_with_dnf() {
   sudo dnf copr enable atim/lazygit -y
   sudo dnf copr enable frostyx/qtile
   sudo dnf install sxhkd feh dunst xclip maim kitty rofi neofetch unrar bat fd-find ranger neovim plank variety duf fastfetch fzf parcellite qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions
+  backup_and_copy "/usr/share/xsessions/qtile.desktop" "./qtile.desktop"
 }
 
 # Función para respaldar y copiar configuraciones
