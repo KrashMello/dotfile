@@ -8,11 +8,15 @@
 export VISUAL='nvim'
 export EDITOR='nvim'
 export TERMINAL='kitty'
-export BROWSER='google-stable'
+export BROWSER='google-chrome-stable'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 
+if [ -d "$HOME/.bun/bin" ] ;
+  then PATH="$HOME/.bun/bin:$PATH"
+fi
+
 if [ -d "$HOME/.local/bin" ] ;
-  then PATH="$HOME/.npm-global:$HOME/.local/bin:$PATH"
+  then PATH="$HOME/.cargo/env:$HOME/.local/bin:$PATH"
 fi
 
 #  ┬  ┌─┐┌─┐┌┬┐  ┌─┐┌┐┌┌─┐┬┌┐┌┌─┐
@@ -85,9 +89,9 @@ PS1='%B%F{blue}%f%b  %B%F{magenta}%n%f%b $(dir_icon)  %B%F{red}%~%f%b${vcs_in
 #  ┌─┐┬  ┬ ┬┌─┐┬┌┐┌┌─┐
 #  ├─┘│  │ ││ ┬││││└─┐
 #  ┴  ┴─┘└─┘└─┘┴┘└┘└─┘
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # bindkey '^[[A' history-substring-search-up
 # bindkey '^[[B' history-substring-search-down
@@ -116,9 +120,9 @@ fi
 alias mirrors="sudo reflector --verbose --latest 5 --country 'United States' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
 
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias mantenimiento="yay -Sc && sudo pacman -Scc"
-alias purga="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
-alias update="paru -Syu --nocombinedupgrade"
+# alias mantenimiento="yay -Sc && sudo pacman -Scc"
+# alias purga="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
+# alias update="paru -Syu --nocombinedupgrade"
 
 alias vm-on="sudo systemctl start libvirtd.service"
 alias vm-off="sudo systemctl stop libvirtd.service"
@@ -147,3 +151,17 @@ neofetch
 
 # bun completions
 [ -s "/home/krashmello/.bun/_bun" ] && source "/home/krashmello/.bun/_bun"
+
+PATH=~/.console-ninja/.bin:$PATH
+
+# pnpm
+export PNPM_HOME="/home/krashmello/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
