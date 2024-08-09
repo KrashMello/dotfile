@@ -1,32 +1,57 @@
 #!/bin/sh
-echo "hello my people welcome to km installer 😄"
-if which yay >/dev/null 2>&1; then
 
+# Mensaje de bienvenida
+echo "hello my people welcome to km installer 😄"
+
+# Función para instalar paquetes usando yay
+install_with_yay() {
   yay -Sy
   yay -S ttf-firacode-nerd xdotool xclip dunst sxhkd feh blueman variety pamac-aur udiskie volumeicon kitty plank parcellite arandr xrandr qtile-extras pavucontrol rofi neovim ranger fd ripgrep bat duf fzf neofetch fastfetch lazygit thunar maim ark unrar
+}
 
-elif which dnf >/dev/null 2>&1; then
-
+# Función para instalar paquetes usando dnf
+install_with_dnf() {
   sudo dnf copr enable atim/lazygit -y
   sudo dnf copr enable frostyx/qtile
-  sudo dnf install sxhkd feh dunst xclip maim kitty rofi neofetch unrar bat fd-find ranger neovim plank variety duf fastfetch fzf parcellite xclip qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions
+  sudo dnf install sxhkd feh dunst xclip maim kitty rofi neofetch unrar bat fd-find ranger neovim plank variety duf fastfetch fzf parcellite qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions
+}
+
+# Función para respaldar y copiar configuraciones
+backup_and_copy() {
+  local config_dir="$1"
+  local source_dir="$2"
+  
+  if [ -d "$config_dir" ]; then
+    mv "$config_dir" "${config_dir}_bak"
+  fi
+  
+  cp -r "$source_dir" "$config_dir"
+}
+
+# Instalación de paquetes
+if command -v yay >/dev/null 2>&1; then
+  install_with_yay
+elif command -v dnf >/dev/null 2>&1; then
+  install_with_dnf
 else
   echo "❌ no package manager found"
+  exit 1
 fi
 
-if which zsh >/dev/null 2>&1; then
-  echo "add default shell zsh"
-  sudo chsh -s $(which zsh) $USER
+# Cambiar a zsh si está instalado
+if command -v zsh >/dev/null 2>&1; then
+  backup_and_copy "$HOME/.zshrc" "./.zshrc"
+  sudo chsh -s "$(which zsh)" "$USER"
 fi
 
-if [ -d "$HOME/.config" ]; then
-  echo "copy configuration"
-  cp -r .config/* $HOME/.config
-else
-  echo "create ~/.config"
-  mkdir ~/.config
-  echo "copy configuration"
-  cp -r .config/* $HOME/.config
-fi
+# Copiar configuraciones
+backup_and_copy "$HOME/.config/nvim" "./.config/nvim"
+backup_and_copy "$HOME/.config/qtile" "./.config/qtile"
+backup_and_copy "$HOME/.config/kitty" "./.config/kitty"
+backup_and_copy "$HOME/.config/rofi" "./.config/rofi"
+backup_and_copy "$HOME/.config/picom" "./.config/picom"
+backup_and_copy "$HOME/.config/ranger" "./.config/ranger"
+backup_and_copy "$HOME/.config/neofetch" "./.config/neofetch"
+backup_and_copy "$HOME/.mozilla/firefox/firefox-themes/userChrome.css" "./firefox/chrome/userChrome.css
 
 echo "✅ done"
