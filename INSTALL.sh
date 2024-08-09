@@ -6,14 +6,14 @@ echo "hello my people welcome to km installer 😄"
 # Función para instalar paquetes usando yay
 install_with_yay() {
   yay -Sy
-  yay -S ttf-firacode-nerd xdotool xclip dunst sxhkd feh blueman variety pamac-aur udiskie volumeicon kitty plank parcellite arandr xrandr qtile-extras pavucontrol rofi neovim ranger fd ripgrep bat duf fzf neofetch fastfetch lazygit thunar maim ark unrar
+  yay -S ttf-firacode-nerd xdotool xclip dunst sxhkd feh blueman variety pamac-aur udiskie volumeicon kitty parcellite arandr xrandr qtile-extras pavucontrol rofi neovim ranger fd ripgrep bat duf fzf neofetch fastfetch lazygit thunar maim ark unrar
 }
 
 # Función para instalar paquetes usando dnf
 install_with_dnf() {
   sudo dnf copr enable atim/lazygit -y
   sudo dnf copr enable frostyx/qtile
-  sudo dnf install sxhkd feh dunst xclip maim kitty rofi neofetch unrar bat fd-find ranger neovim plank variety duf fastfetch fzf parcellite qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions
+  sudo dnf install sxhkd feh dunst xclip maim kitty rofi neofetch unrar bat fd-find ranger neovim variety duf fastfetch fzf parcellite qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions
 
   local config_dir="/usr/share/xsessions/qtile.desktop"
   local source_dir="./qtile.desktop"
