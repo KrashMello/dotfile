@@ -1,5 +1,0 @@
-setxkbmap latam &
-udiskie -t &
-volumeicon &
-nm-applet &
-picom &
