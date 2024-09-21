@@ -10,6 +10,8 @@ export EDITOR='nvim'
 export TERMINAL='kitty'
 export BROWSER='google-chrome-stable'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+export ATAC_KEY_BINDINGS=$HOME/.config/atac/vim_key_bindings.toml
+# export ATAC_THEME=$HOME/.config/atac/pastel_dark_theme.toml
 
 if [ -d "$HOME/.bun/bin" ] ;
   then PATH="$HOME/.bun/bin:$PATH"
@@ -41,7 +43,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} 'ma=48;5;197;1'
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:warnings' format "%B%F{red}No matches for:%f %F{magenta}%d%b"
 zstyle ':completion:*:descriptions' format '%F{yellow}[-- %d --]%f'
-zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
+zstyle ':vcs_info:*' formats ' %F{yellow} %f %F{red}%b%f'
 
 #  ┬ ┬┌─┐┬┌┬┐┬┌┐┌┌─┐  ┌┬┐┌─┐┌┬┐┌─┐
 #  │││├─┤│ │ │││││ ┬   │││ │ │ └─┐
@@ -53,6 +55,10 @@ expand-or-complete-with-dots() {
 }
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
+bindkey "^k" up-line-or-history 
+bindkey "^j" down-line-or-history 
+bindkey "^h" backward-char 
+bindkey "^l" forward-char 
 
 #  ┬ ┬┬┌─┐┌┬┐┌─┐┬─┐┬ ┬
 #  ├─┤│└─┐ │ │ │├┬┘└┬┘
@@ -78,14 +84,13 @@ setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
 #   ┴ ┴ ┴└─┘  ┴  ┴└─└─┘┴ ┴┴   ┴
 function dir_icon {
   if [[ "$PWD" == "$HOME" ]]; then
-    echo "%B%F{black}%f%b"
+    echo "%B%F{blue}%f%b"
   else
-    echo "%B%F{cyan}%f%b"
+    echo "%B%F{blue}%f%b"
   fi
 }
-
-PS1='%B%F{blue}%f%b  %B%F{magenta}%n%f%b $(dir_icon)  %B%F{red}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}.%F{red})%f%b '
-
+NEWLINE=$'\n'
+PS1=' %B%F{blue}󰣛%f%b %B%F{white}%n%f%b $(dir_icon)  %B%F{blue}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}✓%f%b.%F{red}✗)%f%b $NEWLINE %F{cyan}%f '
 #  ┌─┐┬  ┬ ┬┌─┐┬┌┐┌┌─┐
 #  ├─┘│  │ ││ ┬││││└─┐
 #  ┴  ┴─┘└─┘└─┘┴┘└┘└─┘
@@ -142,7 +147,33 @@ alias ga="git add"
 alias gc="git commit"
 alias gs="git status"
 alias glg="git log --graph"
+alias startDockerService="sudo systemctl start docker && sudo systemctl start docker.socket"
+alias dockerUp="docker-compose up -d"
 
+if command -v dnf >/dev/null 2>&1; then
+## Aliases
+
+local dnfprog="dnf"
+
+# Prefer dnf5 if installed
+command -v dnf5 > /dev/null && dnfprog=dnf5
+
+alias dnfl="${dnfprog} list"                       # List packages
+alias dnfli="${dnfprog} list installed"            # List installed packages
+alias dnfgl="${dnfprog} grouplist"                 # List package groups
+alias dnfmc="${dnfprog} makecache"                 # Generate metadata cache
+alias dnfp="${dnfprog} info"                       # Show package information
+alias dnfs="${dnfprog} search"                     # Search package
+
+alias dnfu="sudo ${dnfprog} upgrade"               # Upgrade package
+alias dnfi="sudo ${dnfprog} install"               # Install package
+alias dnfgi="sudo ${dnfprog} groupinstall"         # Install package group
+alias dnfr="sudo ${dnfprog} remove"                # Remove package
+alias dnfgr="sudo ${dnfprog} groupremove"          # Remove package group
+alias dnfc="sudo ${dnfprog} clean all"             # Clean cache
+
+
+fi
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │ 
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴ 
