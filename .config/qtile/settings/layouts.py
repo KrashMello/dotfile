@@ -39,6 +39,7 @@ floating_layout = layout.Floating(
         Match(wm_class="FloatTerm,kitty"),
         Match(wm_class="knotes"),
         Match(wm_class="pavucontrol"),
+        Match(wm_class="Bitwarden"),
         Match(wm_class="merkuro-calendar"),
         # Match(wm_instance_class='google-chrome'),
         Match(role="browser"),
