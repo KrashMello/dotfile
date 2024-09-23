@@ -147,8 +147,11 @@ alias ga="git add"
 alias gc="git commit"
 alias gs="git status"
 alias glg="git log --graph"
-alias startDockerService="sudo systemctl start docker && sudo systemctl start docker.socket"
+alias dockerStartService="sudo systemctl start docker && sudo systemctl start docker.socket"
+alias dockerStopService="sudo systemctl stop docker.socket && sudo systemctl stop docker"
 alias dockerUp="docker-compose up -d"
+alias dockerDown="docker-compose down"
+alias icat="kitty +kitten icat"
 
 if command -v dnf >/dev/null 2>&1; then
 ## Aliases
