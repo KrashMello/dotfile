@@ -11,7 +11,7 @@ __groups = {
         matches=[
             Match(
                 wm_class=re.compile(
-                    r"^(Navigator|Firefox|Vivaldi\-stable|Vivaldi\-snapshot|Chromium|Google\-chrome|Brave|Brave\-browser|navigator|firefox|vivaldi\-stable|vivaldi\-snapshot|chromium|google\-chrome|Google\-chrome|brave|brave\-browser|min|Min)$"
+                    r"^(qutebrowser|Navigator|Firefox|Vivaldi\-stable|Vivaldi\-snapshot|Chromium|Google\-chrome|Brave|Brave\-browser|navigator|firefox|vivaldi\-stable|vivaldi\-snapshot|chromium|google\-chrome|Google\-chrome|brave|brave\-browser|min|Min)$"
                 )
             )
         ],
@@ -35,7 +35,7 @@ __groups = {
         matches=[
             Match(
                 wm_class=re.compile(
-                    r"^(insomnia|Insomnia|postman|Postman|qutebrowser|qutebrowser)$"
+                    r"^(insomnia|Insomnia|postman|Postman)$"
                 )
             )
         ],
