@@ -112,15 +112,15 @@ return {
   --   },
   -- },
   -- animations
-  {
-    "echasnovski/mini.animate",
-    event = "VeryLazy",
-    opts = function(_, opts)
-      opts.scroll = {
-        enabled = false,
-      }
-    end,
-  },
+  -- {
+  --   "echasnovski/mini.animate",
+  --   event = "VeryLazy",
+  --   opts = function(_, opts)
+  --     opts.scroll = {
+  --       enabled = true,
+  --     }
+  --   end,
+  -- },
   -- logo
   {
     "nvimdev/dashboard-nvim",
