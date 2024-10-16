@@ -18,7 +18,7 @@ install_with_dnf() {
   local config_dir="/usr/share/xsessions/qtile.desktop"
   local source_dir="./qtile.desktop"
   if [ -d "$config_dir" ]; then
-   sudo mv "$config_dir" "${config_dir}_bak"
+    sudo mv "$config_dir" "${config_dir}_bak"
   fi
   sudo cp -r "$source_dir" "$config_dir"
 
@@ -28,11 +28,11 @@ install_with_dnf() {
 backup_and_copy() {
   local config_dir="$1"
   local source_dir="$2"
-  
+
   if [ -d "$config_dir" ]; then
     mv "$config_dir" "${config_dir}_bak"
   fi
-  
+
   cp -r "$source_dir" "$config_dir"
 }
 
@@ -60,6 +60,6 @@ backup_and_copy "$HOME/.config/rofi" "./.config/rofi"
 backup_and_copy "$HOME/.config/picom" "./.config/picom"
 backup_and_copy "$HOME/.config/ranger" "./.config/ranger"
 backup_and_copy "$HOME/.config/neofetch" "./.config/neofetch"
-backup_and_copy "$HOME/.mozilla/firefox/firefox-themes/userChrome.css" "./firefox/chrome/userChrome.css
+backup_and_copy "$HOME/.mozilla/firefox/firefox-themes/userChrome.css" "./firefox/chrome/userChrome.css"
 
 echo "✅ done"
