@@ -18,7 +18,7 @@ if [ -d "$HOME/.bun/bin" ] ;
 fi
 
 if [ -d "$HOME/.local/bin" ] ;
-  then PATH="$HOME/.cargo/env:$HOME/.local/bin:$PATH"
+  then PATH="$HOME/.cargo/env:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 fi
 
 #  ┬  ┌─┐┌─┐┌┬┐  ┌─┐┌┐┌┌─┐┬┌┐┌┌─┐
