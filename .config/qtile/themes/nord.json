@@ -5,6 +5,6 @@
   "inactive": ["#4C566A", "#4C566A"],
   "urgent": ["#BF616A", "#BF616A"],
   "icon": ["#81A1C1", "#81A1C1"],
-  "background": ["#2E3440", "#2E3440"],
+  "background": ["#2E344000", "#2E344000"],
   "extra": ["#5E81AC", "#5E81AC"]
 }
