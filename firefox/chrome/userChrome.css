@@ -40,8 +40,8 @@
 
   /* Dark Theme Colors */
   --window-colour: #2e3440;
-  --secondary-colour: #313244;
-  --inverted-colour: #89dceb;
+  --secondary-colour: #4c566a;
+  --inverted-colour: #d8dee9;
 
   /* Light Theme Colors
     --window-colour:               #FAFAFC;
@@ -58,7 +58,7 @@
   --uc-identity-color-red: #fc5c65;
   --uc-identity-color-pink: #f78fb3;
   --uc-identity-color-purple: #786fa6;
-  --uc-not-selected-tab: #f38ba8;
+  --uc-not-selected-tab: #89dceb;
 
   /* URL colour in URL bar suggestions */
   --urlbar-popup-url-color: var(--uc-identity-color-purple) !important;
