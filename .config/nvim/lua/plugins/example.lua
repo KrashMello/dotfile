@@ -3,19 +3,7 @@
  return {
   {'wakatime/vim-wakatime', lazy = false },
   {"nelsyeung/twig.vim"},
-  {
- "supermaven-inc/supermaven-nvim",
-      config = function()
-        require("supermaven-nvim").setup({
- keymaps = {
-    accept_suggestion = "<C-cr>",
-    clear_suggestion = "<C-]>",
-    accept_word = "<C-j>",
-  },
-      })
-      end,
-  },
-  {
+    {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
       filesystem = {
