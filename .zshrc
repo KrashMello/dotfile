@@ -157,6 +157,8 @@ alias dockerStopService="sudo systemctl stop docker.socket && sudo systemctl sto
 alias dockerUp="docker-compose up -d"
 alias dockerDown="docker-compose down"
 alias icat="kitty +kitten icat"
+alias zs="zellij attach"
+alias z="zellij"
 
 if command -v dnf >/dev/null 2>&1; then
 ## Aliases
