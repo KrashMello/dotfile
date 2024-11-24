@@ -29,6 +29,10 @@ keymap.set("n", "<C-m>", "<C-i>", opts)
 --tabs
 keymap.set("n", "<tab>", ":tabnext<CR>", opts)
 keymap.set("n", "<S-tab>", ":tabprev<CR>", opts)
+
+-- peepsight
+keymap.set("n", "te", ":TwilightEnable<CR>", { desc = "twilight Enable" })
+keymap.set("n", "td", ":TwilightDisable<CR>", { desc = "twilight Disable" })
 --terminal
 
 keymap.set("n", "<a-3>", function()
@@ -36,22 +40,31 @@ keymap.set("n", "<a-3>", function()
 end, { desc = "Terminal (cwd)" })
 keymap.set("t", "<A-3>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
--- save file
-keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
-
---nvim specter
-keymap.set("n", "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', {
-  desc = "Toggle Spectre",
-})
-keymap.set("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-  desc = "Search current word",
-})
-keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-  desc = "Search current word",
-})
-keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-  desc = "Search on current file",
-})
-
 -- atac API
 keymap.set("n", "<leader>aa", ":Atac<CR>", { desc = "Atac" })
+
+-- clear buffer
+keymap.set("n", "<leader>bq", '<Esc>:%bdelete|edit #|normal`"<Return>', { desc = "Clear buffer" })
+
+-- Redefine Ctrl+s to save with the custom function
+vim.api.nvim_set_keymap("n", "<C-s>", ":lua SaveFile()<CR>", { noremap = true, silent = true })
+
+-- Custom save function
+function SaveFile()
+  -- Check if a buffer with a file is open
+  if vim.fn.empty(vim.fn.expand("%:t")) == 1 then
+    vim.notify("No file to save", vim.log.levels.WARN)
+    return
+  end
+
+  local filename = vim.fn.expand("%:t") -- Get only the filename
+  local success, err = pcall(function()
+    vim.cmd("silent! write") -- Try to save the file without showing the default message
+  end)
+
+  if success then
+    vim.notify(filename .. " Saved!") -- Show only the custom message if successful
+  else
+    vim.notify("Error: " .. err, vim.log.levels.ERROR) -- Show the error message if it fails
+  end
+end

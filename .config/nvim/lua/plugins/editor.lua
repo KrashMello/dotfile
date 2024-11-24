@@ -1,5 +1,65 @@
 return {
   {
+    "folke/twilight.nvim",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      expand = { -- for treesitter, we we always try to expand to the top-most ancestor with these types
+        "function",
+        "method",
+        "table",
+        "if_statement",
+      },
+    },
+  },
+  {
+    -- Plugin: goto-preview
+    -- URL: https://github.com/rmagatti/goto-preview
+    -- Description: Provides preview functionality for definitions, declarations, implementations, type definitions, and references.
+    "rmagatti/goto-preview",
+    event = "BufEnter", -- Load the plugin when a buffer is entered
+    config = true, -- Enable default configuration
+    keys = {
+      {
+        "gpd",
+        "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+        noremap = true, -- Do not allow remapping
+        desc = "goto preview definition", -- Description for the keybinding
+      },
+      {
+        "gpD",
+        "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>",
+        noremap = true,
+        desc = "goto preview declaration",
+      },
+      {
+        "gpi",
+        "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
+        noremap = true,
+        desc = "goto preview implementation",
+      },
+      {
+        "gpy",
+        "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
+        noremap = true,
+        desc = "goto preview type definition",
+      },
+      {
+        "gpr",
+        "<cmd>lua require('goto-preview').goto_preview_references()<CR>",
+        noremap = true,
+        desc = "goto preview references",
+      },
+      {
+        "gP",
+        "<cmd>lua require('goto-preview').close_all_win()<CR>",
+        noremap = true,
+        desc = "close all preview windows",
+      },
+    },
+  },
+  {
     "telescope.nvim",
     dependencies = {
       "nvim-telescope/telescope-file-browser.nvim",
@@ -136,5 +196,19 @@ return {
   {
     "folke/flash.nvim",
     enabled = false,
+  },
+  {
+    "chrisgrieser/nvim-rip-substitute",
+    cmd = "RipSubstitute",
+    keys = {
+      {
+        "<S-h>",
+        function()
+          require("rip-substitute").sub()
+        end,
+        mode = { "n", "x" },
+        desc = "rip substitute",
+      },
+    },
   },
 }
