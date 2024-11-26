@@ -31,8 +31,7 @@ keymap.set("n", "<tab>", ":tabnext<CR>", opts)
 keymap.set("n", "<S-tab>", ":tabprev<CR>", opts)
 
 -- peepsight
-keymap.set("n", "te", ":TwilightEnable<CR>", { desc = "twilight Enable" })
-keymap.set("n", "td", ":TwilightDisable<CR>", { desc = "twilight Disable" })
+keymap.set("n", "<leader>t", ":Twilight<CR>", { desc = "twilight toggle" })
 --terminal
 
 keymap.set("n", "<a-3>", function()
