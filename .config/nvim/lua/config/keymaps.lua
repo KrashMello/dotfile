@@ -40,7 +40,7 @@ end, { desc = "Terminal (cwd)" })
 keymap.set("t", "<A-3>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- atac API
-keymap.set("n", "<leader>aa", ":Atac<CR>", { desc = "Atac" })
+-- keymap.set("n", "<leader>aa", ":Atac<CR>", { desc = "Atac" })
 
 -- clear buffer
 keymap.set("n", "<leader>bq", '<Esc>:%bdelete|edit #|normal`"<Return>', { desc = "Clear buffer" })
