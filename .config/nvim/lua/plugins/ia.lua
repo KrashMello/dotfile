@@ -5,7 +5,19 @@ return {
   version = false, -- set this if you want to always pull the latest change
   opts = {
     ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-    provider = "gemini", -- Recommend using Claude
+    provider = "gemini",
+    gemini = {
+      endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+      model = "gemini-1.5-flash-8b",
+      timeout = 30000, -- Timeout in milliseconds
+      temperature = 1,
+      max_tokens = 4096,
+    },
+    openai = {
+      api_key_name = "GROQ_API_KEY",
+      endpoint = "https://api.groq.com/openai/v1/",
+      model = "llama-3.1-70b-versatile",
+    },
     behaviour = {
       auto_suggestions = false, -- Experimental stage
       auto_set_highlight_group = true,

@@ -94,11 +94,11 @@ def text_funki(text):
 
 
 primary_widgets = [
-    widget.LaunchBar(
-        default_icon="/home/krashmello/.config/qtile/assets/logo64x64_sakura_light.png",
-        progs=[("rofy", "rofi -show drun")],
-        padding=3,
-    ),
+    # widget.LaunchBar(
+    #     default_icon="/home/krashmello/.config/qtile/assets/logo64x64_sakura_light.png",
+    #     progs=[("rofy", "rofi -show drun")],
+    #     padding=3,
+    # ),
     spacer(length=8),
     # *workspaces(),
     widget.WindowName(

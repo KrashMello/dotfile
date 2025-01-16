@@ -26,7 +26,6 @@ run volumeicon &
 variety &
 blueman-applet &
 kitty &
-plank &
 parcellite &
 knotes &
 setxkbmap latam
