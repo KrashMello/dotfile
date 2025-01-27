@@ -2,7 +2,6 @@ layout {
     tab name="nvim" focus=true {
         pane name="editor" command="nvim"
     }
-
     tab name="shell" {
       pane split_direction="horizontal" {
           pane name="server"
@@ -11,6 +10,9 @@ layout {
           pane name="lazygit" command="lazygit"
         }
         }
+    }
+    tab name="kanban" {
+      pane name="kanban" command="tkanban"
     }
     default_tab_template {
         pane size=1 borderless=true {
