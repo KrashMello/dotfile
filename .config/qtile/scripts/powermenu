@@ -34,11 +34,12 @@ else
 
   else
     # Section 1
-    shutdown=" Shutdown"
-    reboot=" Restart"
-    lock=" Lock"
-    suspend=" Sleep"
-    logout=" Logout"
+    #
+    shutdown="󰐥"
+    reboot="󰜉"
+    lock="󰍁"
+    suspend="󰒲"
+    logout="󰍃 "
     # Section 2
     #		shutdown="󰐥Shutdown"
     #		reboot="󰜉 Restart"

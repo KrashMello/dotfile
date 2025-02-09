@@ -58,7 +58,7 @@ def workspaces():
     return [
         widget.GroupBox(
             background="#00000000",
-            font="UbuntuMono Nerd Font",
+            font="FiraCode NF Bold",
             fontsize=14,
             margin_y=2,
             margin_x=10,
@@ -106,14 +106,14 @@ primary_widgets = [
     ),
     widget.GlobalMenu(background=colors["background"], padding=5),
     spacer(),
-    icon(bg=colors["background"], fg="icon", fontsize=14, text=" ", **decor_group),
+    icon(bg=colors["background"], fg="icon", fontsize=14, text=" ", **decor_group),
     widget.CPU(
         **base(bg="background", fg="text"),
         fontsize=14,
         format="{load_percent}% ",
         max_chars=5,
     ),
-    icon(bg=colors["background"], fg="icon", fontsize=14, text=" ", **decor_group),
+    icon(bg=colors["background"], fg="icon", fontsize=14, text=" ", **decor_group),
     widget.Memory(
         **base(bg="background", fg="text"),
         fontsize=14,
@@ -121,6 +121,7 @@ primary_widgets = [
     ),
     widget.IWD(show_image=True, show_text=False, **base()),
     widget.Systray(**base()),
+    widget.UPowerWidget(),
     widget.KeyboardLayout(configured_keyboards=["us", "latam"], fmt=" {}"),
     widget.Clock(
         **base(),
@@ -137,7 +138,7 @@ secondary_widgets = [
     spacer(length=15),
     *workspaces(),
     spacer(),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
     widget.CPU(
         **base(bg="background", fg="text"),
         fontsize=14,
@@ -145,7 +146,7 @@ secondary_widgets = [
         max_chars=5,
         **decor_group,
     ),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
     widget.Memory(
         **base(bg="background", fg="text"),
         fontsize=14,
@@ -160,7 +161,7 @@ secondary_widgets = [
         format="%d/%m/%Y ",
         **decor_group,
     ),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
     widget.Clock(
         background="#00000000",
         foreground=colors["text"],
@@ -172,7 +173,7 @@ secondary_widgets = [
 
 
 widget_defaults = {
-    "font": "UbuntuMono Nerd Font Bold",
+    "font": "FiraCode NF Bold",
     "fontsize": 14,
     "padding": 1,
 }

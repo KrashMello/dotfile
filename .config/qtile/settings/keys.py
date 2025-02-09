@@ -1,5 +1,6 @@
 from libqtile.config import Key
 from libqtile.lazy import lazy
+from libqtile import layout
 
 
 mod = "mod4"
@@ -18,10 +19,10 @@ keys = [
         ([mod], "h", lazy.layout.left()),
         ([mod], "l", lazy.layout.right()),
         # Change window sizes (MonadTall)
-        ([mod, "shift"], "Right", lazy.layout.grow()),
-        ([mod, "shift"], "Left", lazy.layout.shrink()),
-        ([mod, "shift"], "l", lazy.layout.grow()),
-        ([mod, "shift"], "h", lazy.layout.shrink()),
+        # ([mod, "shift"], "Right", lazy.layout.grow()),
+        # ([mod, "shift"], "Left", lazy.layout.shrink()),
+        # ([mod, "shift"], "l", lazy.layout.grow()),
+        # ([mod, "shift"], "h", lazy.layout.shrink()),
         # Toggle floating
         ([mod], "f", lazy.window.toggle_fullscreen()),
         ([mod, "shift"], "f", lazy.window.toggle_floating()),
@@ -44,18 +45,18 @@ keys = [
         ([mod, "control"], "q", lazy.shutdown()),
         # ------------ App Configs ------------
         # lock screen
-        ([mod], "l", lazy.spawn("archlinux-logout")),
+        # ([mod], "l", lazy.spawn("archlinux-logout")),
         # Menu
         ([mod], "space", lazy.spawn("rofi -show drun")),
         # Window Nav
         ([mod, "shift"], "space", lazy.spawn("rofi -show window")),
         # Browsers
         ([mod], "b", lazy.spawn("firefox")),
-        ([mod, "shift"], "b", lazy.window.bring_to_front()),
-        # ([mod, "shift"], "b", lazy.spawn("qutebrowser")),
+        # ([mod, "shift"], "b", lazy.window.bring_to_front()),
+        ([mod, "shift"], "b", lazy.spawn("qutebrowser")),
         # text editor
         ([mod], "c", lazy.spawn("Code")),
-        ([mod, "shift"], "c", lazy.spawn("subl")),
+        # ([mod, "shift"], "c", lazy.spawn("subl")),
         # File Explorer
         # ([mod], "e", lazy.spawn("Thunar")),
         # Terminal

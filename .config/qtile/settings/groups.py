@@ -7,7 +7,8 @@ import re
 __groups = {
     1: Group(
         "   ",
-        layout="monadtall",
+        layout="max",
+        layouts=layouts,
         matches=[
             Match(
                 wm_class=re.compile(
@@ -18,7 +19,7 @@ __groups = {
     ),
     2: Group(
         "   ",
-        layout="monadwide",
+        layout="tile",
         layouts=layouts,
         matches=[Match(wm_class=re.compile(r"^(Alacritty|kitty)$"))],
     ),
@@ -30,19 +31,13 @@ __groups = {
     ),
     4: Group(
         " 󱂛 ",
-        layout="monadtall",
+        layout="tile",
         layouts=layouts,
-        matches=[
-            Match(
-                wm_class=re.compile(
-                    r"^(insomnia|Insomnia|postman|Postman)$"
-                )
-            )
-        ],
+        matches=[Match(wm_class=re.compile(r"^(insomnia|Insomnia|postman|Postman)$"))],
     ),
     5: Group(
         "   ",
-        layout="monadwide",
+        layout="tile",
         layouts=layouts_maxtowide,
         matches=[
             Match(
@@ -54,8 +49,8 @@ __groups = {
     ),
     6: Group(
         "   ",
-        layout="max",
-        layouts=layouts_maxtowide,
+        layout="tile",
+        layouts=layouts,
         matches=[
             Match(
                 wm_class=re.compile(
@@ -66,22 +61,22 @@ __groups = {
     ),
     7: Group(
         " 󰋩  ",
-        layout="max",
-        layouts=layouts_maxtowide,
+        layout="tile",
+        layouts=layouts,
         matches=[Match(wm_class=re.compile(r"^(blender|Inkscape)$"))],
     ),
     8: Group(
         " 󰊗  ",
-        layout="monadwide",
-        layouts=layouts_maxtowide,
+        layout="max",
+        layouts=layouts,
         matches=[
             Match(wm_class=re.compile(r"^(steam|game\.exe|mtga\.exe|spotify|Spotify)$"))
         ],
     ),
     9: Group(
         "   ",
-        layout="monadwide",
-        layouts=layouts_maxtowide,
+        layout="max",
+        layouts=layouts,
         matches=[
             Match(
                 wm_class=re.compile(
