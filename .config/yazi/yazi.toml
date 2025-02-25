@@ -1,0 +1,10 @@
+[opener]
+extract = [
+	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+	{ run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
+]
+
+[plugin]
+prepend_previewers = [
+  { name = "*.md", run = "glow" },
+]
