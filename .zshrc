@@ -137,7 +137,7 @@ alias lla='lsd -lha --group-dirs=first'
 alias ls='lsd --group-dirs=first'
 alias cat='bat'
 alias catn='cat'
-alias clear="clear && neofetch"
+alias clear="clear && fastfetch"
 alias kmComponent="cd $HOME/git/km-component/ && nvim"
 alias ga="git add"
 alias gc="git commit"
@@ -178,7 +178,7 @@ fi
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │ 
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴ 
-neofetch 
+fastfetch 
 # $HOME/.local/bin/colorscript -r
 
 # bun completions
