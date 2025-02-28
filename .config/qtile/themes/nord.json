@@ -4,7 +4,7 @@
   "active": ["#88C0D0", "#88C0D0"],
   "inactive": ["#4C566A", "#4C566A"],
   "urgent": ["#BF616A", "#BF616A"],
-  "icon": ["#81A1C1", "#81A1C1"],
+  "icon": ["#88c0d0", "#88c0d0"],
   "background": ["#2E344000", "#2E344000"],
   "extra": ["#5E81AC", "#5E81AC"]
 }

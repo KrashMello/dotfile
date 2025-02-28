@@ -173,7 +173,7 @@ secondary_widgets = [
 
 
 widget_defaults = {
-    "font": "FiraCode NF Bold",
+    "font": "GohuFont 11 Nerd Font Bold",
     "fontsize": 14,
     "padding": 1,
 }
