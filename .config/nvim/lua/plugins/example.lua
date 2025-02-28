@@ -63,9 +63,9 @@
       end)
     end,
   },
-{
+  {
     "nvzone/typr",
-    cmd = "TyprStats",
+    cmd = {"TyprStats","Typr"},
     dependencies = "nvzone/volt",
     opts = {},
   },

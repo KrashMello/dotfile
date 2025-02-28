@@ -89,6 +89,11 @@ return {
           builtin.find_files({
             no_ignore = false,
             hidden = true,
+            previewer = false,
+            layout_config = {
+              height = 40,
+              width = 0.5,
+            },
           })
         end,
       },
@@ -96,14 +101,38 @@ return {
         ";r",
         function()
           local builtin = require("telescope.builtin")
-          builtin.live_grep()
+          builtin.live_grep({
+            layout_config = {
+              height = 40,
+              width = 0.5,
+            },
+          })
         end,
       },
       {
-        "sb",
+        ";gc",
         function()
           local builtin = require("telescope.builtin")
-          builtin.buffers()
+          builtin.git_commits({
+            layout_config = {
+              preview_width = 0.7,
+              height = 80,
+              width = 0.8,
+            },
+          })
+        end,
+      },
+      {
+        ";b",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.buffers({
+            previewer = false,
+            layout_config = {
+              height = 40,
+              width = 0.5,
+            },
+          })
         end,
       },
       {
@@ -117,14 +146,25 @@ return {
         ";e",
         function()
           local builtin = require("telescope.builtin")
-          builtin.diagnostics()
+          builtin.diagnostics({
+            layout_config = {
+              height = 40,
+              width = 0.5,
+            },
+          })
         end,
       },
       {
         ";s",
         function()
           local builtin = require("telescope.builtin")
-          builtin.treesitter()
+          builtin.treesitter({
+            previewer = false,
+            layout_config = {
+              height = 40,
+              width = 0.5,
+            },
+          })
         end,
       },
       {

@@ -23,6 +23,9 @@ keymap.set("i", "<80>ü^DY", "<C-o>:redo<CR>", { desc = "redo", remap = true })
 
 keymap.set("n", "<C-a>", "ggVG", { desc = "select All", remap = true })
 
+--telescope todo comment
+keymap.set("n", ";t", ":TodoTelescope<cr>", { desc = "Todo Telescope", remap = true, silent = true })
+
 --jumplist
 keymap.set("n", "<C-m>", "<C-i>", opts)
 
@@ -32,12 +35,6 @@ keymap.set("n", "<S-tab>", ":tabprev<CR>", opts)
 
 -- peepsight
 keymap.set("n", "<leader>t", ":Twilight<CR>", { desc = "twilight toggle" })
---terminal
-
-keymap.set("n", "<a-3>", function()
-  Util.terminal.open()
-end, { desc = "Terminal (cwd)" })
-keymap.set("t", "<A-3>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- atac API
 -- keymap.set("n", "<leader>aa", ":Atac<CR>", { desc = "Atac" })
