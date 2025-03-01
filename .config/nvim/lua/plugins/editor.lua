@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local
 return {
   {
     "folke/twilight.nvim",
@@ -105,6 +106,19 @@ return {
             layout_config = {
               height = 40,
               width = 0.5,
+            },
+          })
+        end,
+      },
+      {
+        ";gs",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.git_status({
+            layout_config = {
+              preview_width = 0.7,
+              height = 80,
+              width = 0.8,
             },
           })
         end,
@@ -261,6 +275,31 @@ return {
         end,
         mode = { "n", "x" },
         desc = "rip substitute",
+      },
+    },
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      filesystem = {
+        filtered_items = {
+          visible = false, -- when true, they will just be displayed differently than normal items
+          hide_dotfiles = true,
+          hide_gitignored = true,
+          hide_hidden = true,
+        },
+      },
+      window = {
+        position = "right",
+        width = 30,
+        mapping_options = {
+          noremap = true,
+          nowait = true,
+        },
+        mappings = {
+          ["<space>"] = "none",
+          ["l"] = "open",
+        },
       },
     },
   },
