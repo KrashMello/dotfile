@@ -2,10 +2,10 @@
   foreground:           #E5E9F0;
     selected-foreground:  #cad3f5;
     
-    background:           #2E34409f; 
-    background-solid:     #2E3440; 
+    background:           #242933; 
+    background-solid:     #242933; 
     selected-background:  #81A1C11f;
-    borderMainBox: #d8dee9;
+    borderMainBox: #88c0d0;
     elementBG: #d8dee9;
     /*#87b5d7;*/  
     /*#6eacda;*/

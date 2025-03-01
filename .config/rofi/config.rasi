@@ -8,37 +8,93 @@ configuration {
   kb-remove-to-eol: "";
   kb-remove-char-back: "BackSpace,Shift+BackSpace";
 
-  modi: "drun,window,run";
-
-  font: "Dosis 14";
-  drun-display-format: " {name} ";
-  sidebar-mode: true;
-  matching: "fuzzy";
-  scroll-method: 0;
-  disable-history: false;
+  modi: "window,run,drun";
   show-icons: true;
-
-  display-drun: "  Menu";
-  display-run: "  Run";
-  display-window: "   Window";
-
-  window-thumbnail: true;
-  sort: true;
-  sorting-method: "normal";
-
-  timeout {
-    action: "kb-cancel";
-    delay: 30;
-  }
-
-  filebrowser {
-    directories-first: true;
-    sorting-method: "name";
-  }
+  font: "GohuFont 11 Nerd Font 13";
+  icon-theme: "Colloid-Dark";
+  display-drun:               " ";
+  display-window:               " ";
+}
+@import "themes/macos-nord.rasi"
+#window {
+    fullscreen: true;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 130px 200px;
+    children:["mainbox"];
+}
+mainbox {
+    border: 0 0 2px 0;
+    border-color: @borderMainBox;
+    border-radius: 15;
+    padding: 20;
+    background-color: @background;
+    children: ["inputbar","listview"];
+}
+textbox {
+    text-color: @foreground;
+}
+listview {
+    padding: 20px;
+    columns: 5;
+    spacing: 4px;
+    cycle: false;
+    border: 0;
+    dynamic: false;
+    scrollbar: false;
+    layout: vertical;
+    fixed-columns: true;
+    background-color: transparent;
+    children: ["element"];
+}
+element {
+    margin: 11px;
+    padding: 14px;
+    border-radius: 5px;
+    orientation: vertical;
+    children: ["element-icon","element-text"];
+}
+element-icon {
+    size: 80px;
+    margin: 0 10px 0 0;
+}
+element-text {
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+}
+element.normal.normal {
+    background-color: transparent;
+    text-color:       @foreground;
+}
+element.selected.normal {
+    background-color: @selected-background;
+    text-color:       @selected-foreground;
+    border-color: #d07ef2;
+}
+element.alternate.normal {
+    background-color: transparent;
+    text-color:       @foreground;
 }
 
-@theme"themes/nord.rasi"
+inputbar {
+    enabled:true;
+    spacing: 0;
+    text-color: @selected-foreground;
+    margin: 0 25%;
+    padding: 5px 15px;
+    background-color: @selected-background;
+    border-radius: 10px;
+    children: ["prompt","entry"];
 
-/*
-  vim: ft=rasi
-*/
+}
+entry {
+  placeholder: "search...";
+    text-color: @selected-foreground;
+    placeholder-color: @selected-foreground;
+    spacing:    0;
+    background-color: rgba(0,0,0,0);
+}
+prompt {
+    spacing:    0;
+    text-color: inherit;
+    background-color: rgba(0,0,0,0);
+}

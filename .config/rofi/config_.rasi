@@ -1,0 +1,44 @@
+configuration {
+  kb-row-up: "Control+k";
+  kb-row-down: "Control+j";
+  kb-row-left: "Control+h";
+  kb-row-right: "Control+l";
+  kb-mode-complete: "";
+  kb-accept-entry: "Control+m,Return,KP_Enter";
+  kb-remove-to-eol: "";
+  kb-remove-char-back: "BackSpace,Shift+BackSpace";
+
+  modi: "drun,window,run";
+
+  font: "Dosis 14";
+  drun-display-format: " {name} ";
+  sidebar-mode: true;
+  matching: "fuzzy";
+  scroll-method: 0;
+  disable-history: false;
+  show-icons: true;
+
+  display-drun: "  Menu";
+  display-run: "  Run";
+  display-window: "   Window";
+
+  window-thumbnail: true;
+  sort: true;
+  sorting-method: "normal";
+
+  timeout {
+    action: "kb-cancel";
+    delay: 30;
+  }
+
+  filebrowser {
+    directories-first: true;
+    sorting-method: "name";
+  }
+}
+
+@theme"themes/nord.rasi"
+
+/*
+  vim: ft=rasi
+*/
