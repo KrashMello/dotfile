@@ -2,33 +2,7 @@
 -- stylua: ignore
  return {
   {'wakatime/vim-wakatime', lazy = false },
-  {"nelsyeung/twig.vim"},
-    {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      filesystem = {
-          filtered_items = {
-            visible = false, -- when true, they will just be displayed differently than normal items
-            hide_dotfiles = true,
-            hide_gitignored = true,
-            hide_hidden = true,
-        }
-      },
-      window = {
-        position = "right",
-        width = 30,
-        mapping_options = {
-          noremap = true,
-          nowait = true,
-        },
-        mappings = {
-          ["<space>"] = "none",
-          ["l"] = "open",
-        },
-      },
-    },
-  },
- {
+  {
     "kevinhwang91/nvim-ufo",
     dependencies = {
       "kevinhwang91/promise-async",
