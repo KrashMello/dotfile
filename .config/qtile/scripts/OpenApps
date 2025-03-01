@@ -30,8 +30,8 @@ case "$1" in
 --checkupdates)
   alacritty --hold --class Updating,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=47 -e Updates --print-updates
   ;;
---ranger)
-  kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e ranger
+--TfileManager)
+  kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e yazi
   ;;
 --nvim)
   alacritty -e nvim

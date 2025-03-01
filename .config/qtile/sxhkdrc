@@ -14,7 +14,7 @@ super + Escape
 # ranger 
 #
 super + e
-	OpenApps --ranger;
+	OpenApps --TfileManager;
 
 #floating Terminal
 
