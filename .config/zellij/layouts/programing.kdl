@@ -6,7 +6,7 @@ layout {
       pane split_direction="horizontal" {
           pane name="server"
         pane split_direction="vertical" { 
-          pane name="commands"
+          pane name="yazi" command="yazi"
           pane name="lazygit" command="lazygit"
         }
         }
