@@ -88,6 +88,7 @@ return {
         function()
           local builtin = require("telescope.builtin")
           builtin.find_files({
+            initial_mode = "insert",
             no_ignore = false,
             hidden = true,
             previewer = false,
