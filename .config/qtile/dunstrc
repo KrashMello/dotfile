@@ -9,36 +9,37 @@ monitor = 0
 follow = mouse
 width = 300
 height = 300
-origin = top-center
+origin = bottom-right
 offset = 10x48
 indicate_hidden = yes
 shrink = yes
 
-transparency = 9
+transparency = 4
 separator_height = 2
 padding = 8
 horizontal_padding = 11
-frame_width = 6
-frame_color = "#8aadf4"
+frame_width = 3
+frame_color = "#88c0d0"
 separator_color= frame
 
-font = JetBrainsMono Nerd Font Medium 9
+font = GohuFont 11 Nerd Font
 
 line_height = 0
 markup = full
-format = "<span size='x-large' font_desc='Cantarell 9' weight='bold' foreground='#9ccfd8'>%s</span>\n%b"
+format = "<span size='x-large' font_desc='GohuFont 11 Nerd Font' weight='bold' foreground='#88c0d0'>%s</span>\n%b"
 alignment = center
 
+history = true
 idle_threshold = 120
 show_age_threshold = 60
 sort = no
-word_wrap = yes
+word_wrap = no
 ignore_newline = no
 stack_duplicates = false
 hide_duplicate_count = yes
 show_indicators = no
 sticky_history = no
-history_length = 20
+history_length = 100
 always_run_script = true
 corner_radius = 4
 icon_position = left
@@ -55,17 +56,17 @@ mouse_right_click = close_all
 
 [urgency_low]
 timeout = 3
-background = "#24273a"
+background = "#2e3440"
 foreground = "#cad3f5"
 
 [urgency_normal]
 timeout = 6
-background = "#24273a"
+background = "#2e3440"
 foreground = "#cad3f5"
 
 [urgency_critical]
 timeout = 0
-background = "#24273a"
+background = "#2e3440"
 foreground = "#cad3f5"
 frame_color = "#f5a97f"
 
