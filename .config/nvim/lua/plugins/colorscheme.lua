@@ -13,8 +13,8 @@ return {
         -- or refer to the configuration section
         -- for configuration options
         bold_vert_split = false, -- use bold vertical separators
-        dim_nc_background = false, -- dim 'non-current' window backgrounds
-        disable_background = false, -- disable background
+        dim_nc_background = true, -- dim 'non-current' window backgrounds
+        disable_background = true, -- disable background
         disable_float_background = false, -- disable background for floats
         disable_italics = false, -- disable italics
       })
@@ -82,21 +82,10 @@ return {
       })
     end,
   }, -- and this
-  -- {
-  "shaunsingh/nord.nvim",
-  -- },
-  -- {
-  --   "AlexvZyl/nordic.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require("nordic").load()
-  --   end,
-  -- },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-frappe",
+      colorscheme = "catppuccin-macchiato",
     },
   },
 }
