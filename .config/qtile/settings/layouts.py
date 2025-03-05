@@ -59,6 +59,7 @@ floating_layout = layout.Floating(
         Match(wm_class="notification"),
         Match(wm_class="splash"),
         Match(wm_class="toolbar"),
+        Match(wm_class="feh"),
         Match(func=lambda c: c.has_fixed_size()),
         Match(func=lambda c: c.has_fixed_ratio()),
     ],
