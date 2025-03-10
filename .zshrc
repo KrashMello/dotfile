@@ -20,6 +20,16 @@ if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.cargo/env:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 fi
 
+if command -v bun >/dev/null 2>&1; then
+
+# bun completions
+[ -s "/home/krashmello/.bun/_bun" ] && source "/home/krashmello/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+fi
+
 #  ┬  ┌─┐┌─┐┌┬┐  ┌─┐┌┐┌┌─┐┬┌┐┌┌─┐
 #  │  │ │├─┤ ││  ├┤ ││││ ┬││││├┤ 
 #  ┴─┘└─┘┴ ┴─┴┘  └─┘┘└┘└─┘┴┘└┘└─┘
@@ -130,26 +140,49 @@ alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 alias musica="ncmpcpp"
 alias df='duf'
-alias ll='lsd -lh --group-dirs=first'
-alias la='lsd -a --group-dirs=first'
-alias l='lsd --group-dirs=first'
-alias lla='lsd -lha --group-dirs=first'
-alias ls='lsd --group-dirs=first'
+
+if command -v lsd >/dev/null 2>&1; then
+alias ls='lsd'
+alias ll='ls -lh --group-dirs=first'
+alias la='ls -a --group-dirs=first'
+alias lla='ls -lha --group-dirs=first'
+alias lt='ls --tree'
+fi
+
+if command -v bat >/dev/null 2>&1; then
 alias cat='bat'
-alias catn='cat'
+fi
+
+
+if command -v fastfetch >/dev/null 2>&1; then
 alias clear="clear && fastfetch"
-alias kmComponent="cd $HOME/git/km-component/ && nvim"
+fi
+
+if command -v lazygit >/dev/null 2>&1; then
+alias lg="lazygit"
+fi
+
 alias ga="git add"
 alias gc="git commit"
 alias gs="git status"
 alias glg="git log --graph"
+
+if command -v docker >/dev/null 2>&1; then
 alias dockerStartService="sudo systemctl start docker && sudo systemctl start docker.socket"
 alias dockerStopService="sudo systemctl stop docker.socket && sudo systemctl stop docker"
+fi
+
+if command -v docker-compose >/dev/null 2>&1; then
 alias dockerUp="docker-compose up -d"
 alias dockerDown="docker-compose down"
+fi
+
 alias icat="kitty +kitten icat"
+
+if command -v zellij >/dev/null 2>&1; then
 alias zs="zellij attach"
 alias z="zellij"
+fi
 
 if command -v dnf >/dev/null 2>&1; then
 ## Aliases
@@ -179,12 +212,6 @@ fi
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │ 
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴ 
 fastfetch 
-# $HOME/.local/bin/colorscript -r
-
-# bun completions
-[ -s "/home/krashmello/.bun/_bun" ] && source "/home/krashmello/.bun/_bun"
-
-PATH=~/.console-ninja/.bin:$PATH
 
 # pnpm
 export PNPM_HOME="/home/krashmello/.local/share/pnpm"
@@ -193,7 +220,3 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
