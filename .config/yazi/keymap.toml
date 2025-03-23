@@ -6,3 +6,13 @@ run = "plugin mount"
 on   = [ "+" ]
 run  = "plugin chmod"
 desc = "Chmod on selected files"
+
+[[manager.prepend_keymap]]
+on   = "R"
+run  = "plugin rsync"
+desc = "Copy files using rsync"
+
+[[manager.prepend_keymap]]
+on = ["C"]
+run = "plugin ouch --args=zip"
+desc = "Compress with ouch"
