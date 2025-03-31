@@ -8,9 +8,9 @@
 export VISUAL='nvim'
 export EDITOR='nvim'
 export TERMINAL='kitty'
-export BROWSER='google-chrome-stable'
+export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
-export ATAC_KEY_BINDINGS=$HOME/.config/atac/vim_key_bindings.toml
+export ATAC_KEY_BINDINGS=$HOME/.config/atac/default_key_bindings.toml
 # export ATAC_THEME=$HOME/.config/atac/pastel_dark_theme.toml
 if [ -d "$HOME/.bun/bin" ] ;
   then PATH="$HOME/.bun/bin:$PATH"
@@ -123,6 +123,10 @@ function xterm_title_preexec () {
 	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
 }
 
+function hws() {
+  mkdir {content,scripts,nmap}
+}
+
 function kt-session() {
   export PROJECT_DIR=$1
   kitty --session ~/.config/kitty/session.conf > /dev/null 2>&1 &
@@ -138,8 +142,12 @@ fi
 #  ┴ ┴┴─┘┴┴ ┴└─┘
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
+if command -v ncmpcpp >/dev/null 2>&1; then
 alias musica="ncmpcpp"
+fi
+if command -v duf >/dev/null 2>&1; then
 alias df='duf'
+fi
 
 if command -v lsd >/dev/null 2>&1; then
 alias ls='lsd'
