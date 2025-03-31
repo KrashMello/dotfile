@@ -1,0 +1,25 @@
+[general]
+import = ["themes/nord.toml"]
+
+[window]
+opacity = 0.8
+blur = true
+
+[font]
+normal.family = "GohuFont 11 Nerd Font"
+bold.family = "GohuFont 11 Nerd Font"
+italic.family = "GohuFont 11 Nerd Font"
+bold_italic.family = "GohuFont 11 Nerd Font"
+offset.x = 1
+offset.y = 2
+size = 14
+
+[cursor]
+style.shape = "Beam"
+
+[terminal]
+shell = "zsh"
+
+[mouse]
+hide_when_typing = true
+
