@@ -36,6 +36,7 @@ floating_layout = layout.Floating(
         Match(wm_class="kalk"),
         Match(wm_class="Variety"),
         Match(wm_class="FloatTerm,kitty"),
+        Match(wm_class="FloatTermAlacritty"),
         Match(wm_class="knotes"),
         Match(wm_class="pavucontrol"),
         Match(wm_class="Bitwarden"),

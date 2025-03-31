@@ -1,15 +1,4 @@
 #!/usr/bin/env bash
-#   █████╗ ██████╗ ██████╗ ███████╗    ██╗      █████╗ ██╗   ██╗███╗   ██╗ ██████╗██╗  ██╗███████╗██████╗
-#  ██╔══██╗██╔══██╗██╔══██╗██╔════╝    ██║     ██╔══██╗██║   ██║████╗  ██║██╔════╝██║  ██║██╔════╝██╔══██╗
-#  ███████║██████╔╝██████╔╝███████╗    ██║     ███████║██║   ██║██╔██╗ ██║██║     ███████║█████╗  ██████╔╝
-#  ██╔══██║██╔═══╝ ██╔═══╝ ╚════██║    ██║     ██╔══██║██║   ██║██║╚██╗██║██║     ██╔══██║██╔══╝  ██╔══██╗
-#  ██║  ██║██║     ██║     ███████║    ███████╗██║  ██║╚██████╔╝██║ ╚████║╚██████╗██║  ██║███████╗██║  ██║
-#  ╚═╝  ╚═╝╚═╝     ╚═╝     ╚══════╝    ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
-#	Script to control prefered apps to launch for all themes
-# 	Author: z0mbi3
-#	url: https://github.com/gh0stzk
-
-WIDGET_DIR="$HOME/.config/bspwm/eww"
 
 case "$1" in
 --menu)
@@ -22,8 +11,11 @@ case "$1" in
   alacritty
   ;;
 --floating)
-  kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=640 -o initial_window_height=400 -o remember_window_size=no
+  alacritty --hold --class FloatTermAlacritty -o window.dimensions.lines=22 window.dimensions.columns=90
   ;;
+# --floating)
+#   kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no
+#   ;;
 --update)
   alacritty --hold --class FloaTerm,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=90 -e Updates --update-system
   ;;
@@ -31,8 +23,11 @@ case "$1" in
   alacritty --hold --class Updating,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=47 -e Updates --print-updates
   ;;
 --TfileManager)
-  kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e yazi
+  alacritty --class FloatTermAlacritty -o window.dimensions.lines=22 window.dimensions.columns=90 -e $HOME/.local/bin/yazi
   ;;
+# --TfileManager)
+#   kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e yazi
+#   ;;
 --nvim)
   alacritty -e nvim
   ;;

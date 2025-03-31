@@ -8,9 +8,9 @@ function run {
 }
 PATH="$HOME/.config/qtile/scripts:$PATH"
 # dimension wide
- xrandr --output DP1 --mode 1280x1024 --pos 0x562 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1280x0 --rotate normal --output HDMI2 --off --output HDMI3 --off --output VIRTUAL1 --off
+xrandr --output eDP-1 --mode 1366x768 --pos 0x0 --primary --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1366x189 --rotate normal --output DP-1 --off --output HDMI-2 --off
 picom &
-feh --bg-fill $HOME/Imágenes/background/wallhaven-1pwl61_1920x1080.png
+feh --bg-fill $HOME/Imágenes/background/deer_art_wall.jpg
 # start all this to entry the system
 sxhkd -c $HOME/.config/qtile/sxhkdrc &
 dunst -config "$HOME"/.config/qtile/dunstrc &
@@ -22,11 +22,10 @@ run pamac-tray &
 # run xfce4-power-manager &
 numlockx on &
 udiskie -t &
-run volumeicon &
-variety &
+# run volumeicon &
 blueman-applet &
-kitty &
+alacritty &
 parcellite &
-knotes &
-setxkbmap latam
+# knotes &
+# setxkbmap latam
 
