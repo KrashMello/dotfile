@@ -60,7 +60,7 @@ keys = [
         # File Explorer
         # ([mod], "e", lazy.spawn("Thunar")),
         # Terminal
-        ([mod], "return", lazy.spawn("kitty")),
+        ([mod], "return", lazy.spawn("alacritty")),
         # Redshift
         ([mod], "r", lazy.spawn("redshift -O 2400")),
         ([mod, "shift"], "r", lazy.spawn("redshift -x")),
