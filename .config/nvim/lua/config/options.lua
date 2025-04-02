@@ -41,3 +41,4 @@ vim.opt.splitkeep = "cursor"
 
 -- vim.opt.formatoptions:append({ "r" })
 vim.g.autoformat = true
+vim.g.lazyvim_prettier_needs_config = true
