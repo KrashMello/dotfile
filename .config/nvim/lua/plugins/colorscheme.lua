@@ -12,11 +12,11 @@ return {
         -- leave this setup function empty for default config
         -- or refer to the configuration section
         -- for configuration options
-        bold_vert_split = false, -- use bold vertical separators
-        dim_nc_background = true, -- dim 'non-current' window backgrounds
-        disable_background = true, -- disable background
-        disable_float_background = false, -- disable background for floats
-        disable_italics = false, -- disable italics
+        bold_vert_split = false,
+        disable_background = true,
+        disable_float_background = true,
+        disable_italics = true,
+        dim_nc_background = true,
       })
     end,
   },
@@ -85,7 +85,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-macchiato",
+      colorscheme = "poimandres",
     },
   },
 }
