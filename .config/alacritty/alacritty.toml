@@ -2,7 +2,7 @@
 import = ["themes/nord.toml"]
 
 [window]
-opacity = 0.8
+opacity = 0.6
 blur = true
 
 [font]
@@ -12,7 +12,7 @@ italic.family = "GohuFont 11 Nerd Font"
 bold_italic.family = "GohuFont 11 Nerd Font"
 offset.x = 1
 offset.y = 2
-size = 14
+size = 20
 
 [cursor]
 style.shape = "Beam"
