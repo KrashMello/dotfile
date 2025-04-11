@@ -16,6 +16,7 @@ layouts = [
 
 layouts_maxtowide = [
     layout.MonadWide(**layout_conf),
+    layout.Tile(**layout_conf),
     layout.Max(),
 ]
 
