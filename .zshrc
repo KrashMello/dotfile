@@ -185,6 +185,11 @@ alias dockerUp="docker-compose up -d"
 alias dockerDown="docker-compose down"
 fi
 
+if command -v yt-dlp >/dev/null 2>&1; then
+alias yt="yt-dlp"
+alias yt-audio="yt-dlp --extract-audio --audio-format mp3"
+alias yt-playlist="yt-dlp --extract-audio --audio-format mp3 -o \"%(title)s.%(ext)s\""
+fi
 alias icat="kitty +kitten icat"
 
 if command -v zellij >/dev/null 2>&1; then
