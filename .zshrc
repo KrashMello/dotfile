@@ -10,7 +10,7 @@ export EDITOR='nvim'
 export TERMINAL='kitty'
 export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
-export ATAC_KEY_BINDINGS=$HOME/.config/atac/default_key_bindings.toml
+export ATAC_KEY_BINDINGS=$HOME/.config/atac/vim_key_bindings.toml
 # export ATAC_THEME=$HOME/.config/atac/pastel_dark_theme.toml
 if [ -d "$HOME/.bun/bin" ] ;
   then PATH="$HOME/.bun/bin:$PATH"
@@ -141,6 +141,14 @@ fi
 #  ├─┤│  │├─┤└─┐
 #  ┴ ┴┴─┘┴┴ ┴└─┘
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+
+function javaRunDev {
+  if [ -d $(pwd)/out/production/$(basename $(pwd)) ]; then
+    rm -rf $(pwd)/out/production/$(basename $(pwd))
+  fi;
+  javac -d $(pwd)/out/production/$(basename $(pwd)) $(pwd)/src/**/*.java
+  java -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath $(pwd)/out/production/$(basename $(pwd)) $1 
+}
 
 if command -v ncmpcpp >/dev/null 2>&1; then
 alias musica="ncmpcpp"
