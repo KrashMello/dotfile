@@ -1,0 +1,34 @@
+{
+  "text": [
+    "#5de4c7",
+    "#5de4c7"
+  ],
+  "focus": [
+    "#5de4c7",
+    "#5de4c7"
+  ],
+  "active": [
+    "#add7ff",
+    "#add7ff"
+  ],
+  "inactive": [
+    "#4C566A",
+    "#4C566A"
+  ],
+  "urgent": [
+    "#BF616A",
+    "#BF616A"
+  ],
+  "icon": [
+    "#add7ff",
+    "#add7ff"
+  ],
+  "background": [
+    "#2E344000",
+    "#2E344000"
+  ],
+  "extra": [
+    "#5E81AC",
+    "#5E81AC"
+  ]
+}
