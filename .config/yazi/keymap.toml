@@ -14,5 +14,5 @@ desc = "Copy files using rsync"
 
 [[manager.prepend_keymap]]
 on = ["C"]
-run = "plugin ouch --args=zip"
+run = "plugin ouch"
 desc = "Compress with ouch"
