@@ -13,7 +13,8 @@ install_with_yay() {
 install_with_dnf() {
   sudo dnf copr enable atim/lazygit -y
   sudo dnf copr enable frostyx/qtile
-  sudo dnf install sxhkd feh dunst xclip maim kitty rofi neofetch unrar bat fd-find ranger neovim variety duf fastfetch fzf xclipboard qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions
+  sudo dnf copr enable lihaohong/yazi
+  sudo dnf install sxhkd feh dunst xclip maim kitty rofi fastfetch unrar bat fd-find ranger neovim variety duf fzf xclipboard qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions magick i3lock yazi
 
   local config_dir="/usr/share/xsessions/qtile.desktop"
   local source_dir="./qtile.desktop"
@@ -58,7 +59,8 @@ backup_and_copy "$HOME/.config/qtile" "./.config/qtile"
 backup_and_copy "$HOME/.config/kitty" "./.config/kitty"
 backup_and_copy "$HOME/.config/rofi" "./.config/rofi"
 backup_and_copy "$HOME/.config/picom" "./.config/picom"
-backup_and_copy "$HOME/.config/ranger" "./.config/ranger"
+backup_and_copy "$HOME/.config/yazi" "./.config/yazi"
+backup_and_copy "$HOME/.config/zellij" "./.config/zellij"
 backup_and_copy "$HOME/.config/neofetch" "./.config/neofetch"
 backup_and_copy "$HOME/.config/clipcat" "./.config/clipcat"
 backup_and_copy "$HOME/.mozilla/firefox/firefox-themes/userChrome.css" "./firefox/chrome/userChrome.css"
