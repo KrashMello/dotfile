@@ -1,0 +1,96 @@
+configuration {
+  kb-row-up: "Control+k";
+  kb-row-down: "Control+j";
+  kb-row-left: "Control+h";
+  kb-row-right: "Control+l";
+  kb-mode-complete: "";
+  kb-accept-entry: "Control+m,Return,KP_Enter";
+  kb-remove-to-eol: "";
+  kb-remove-char-back: "BackSpace,Shift+BackSpace";
+
+  modi: "window,run,drun";
+  show-icons: true;
+  font: "GohuFont 11 Nerd Font 13";
+  icon-theme: "Colloid-Dark";
+  display-drun:               " ";
+  display-window:               " ";
+}
+@import "themes/macos-nord.rasi"
+#window {
+    fullscreen: true;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 130px 200px;
+    children:["mainbox"];
+}
+mainbox {
+    border: 0 0 2px 0;
+    border-color: @borderMainBox;
+    border-radius: 15;
+    padding: 20;
+    background-color: @background;
+    children: ["inputbar","listview"];
+}
+textbox {
+    text-color: @foreground;
+}
+listview {
+    padding: 7px;
+    columns: 1;
+    spacing: 1px;
+    cycle: false;
+    border: 0;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    fixed-columns: true;
+    background-color: transparent;
+    children: ["element"];
+}
+element {
+    margin: 1px;
+    padding: 7px;
+    border-radius: 5px;
+    orientation: horizontal;
+    children: ["element-text"];
+}
+element-text {
+    horizontal-align:               0;
+    vertical-align:                 0.5;
+}
+element.normal.normal {
+    background-color: transparent;
+    text-color:       @foreground;
+}
+element.selected.normal {
+    background-color: @selected-background;
+    text-color:       @selected-foreground;
+    border-color: #d07ef2;
+}
+element.alternate.normal {
+    background-color: transparent;
+    text-color:       @foreground;
+}
+
+inputbar {
+    enabled:true;
+    spacing: 0;
+    text-color: @selected-foreground;
+    margin: 0 25%;
+    padding: 5px 15px;
+    background-color: @selected-background;
+    border-radius: 10px;
+    children: ["prompt","entry"];
+
+}
+entry {
+  placeholder: "search...";
+    text-color: @selected-foreground;
+    placeholder-color: @selected-foreground;
+    spacing:    0;
+    background-color: rgba(0,0,0,0);
+}
+prompt {
+    spacing:    0;
+    text-color: inherit;
+    background-color: rgba(0,0,0,0);
+}

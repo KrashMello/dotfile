@@ -23,4 +23,8 @@ super + shift + Return
 
 #open rofi powermenu
 super + BackSpace
-	powermenu
+	powermenu;
+
+#open clipcat menu
+control + alt + h
+  OpenApps --clipcat;

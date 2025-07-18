@@ -4,18 +4,21 @@ case "$1" in
 --menu)
   rofi -show drun -theme $HOME/.config/bspwm/scripts/Launcher.rasi
   ;;
+--clipcat)
+  clipcat-menu
+  ;;
 --rice)
   RiceSelector
   ;;
 --terminal)
   alacritty
   ;;
---floating)
-  alacritty --hold --class FloatTermAlacritty -o window.dimensions.lines=22 window.dimensions.columns=90
-  ;;
 # --floating)
-#   kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no
+#   alacritty --hold --class FloatTermAlacritty -o window.dimensions.lines=22 window.dimensions.columns=90
 #   ;;
+--floating)
+  kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no
+  ;;
 --update)
   alacritty --hold --class FloaTerm,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=90 -e Updates --update-system
   ;;
