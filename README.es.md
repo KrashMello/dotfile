@@ -7,19 +7,9 @@
 - 🇪🇸 Español
 - [🇺🇸 English](./README.md)
 
-## Instalación (Arch)
+## Instalación (Arch or fedora)
 
 Instala Qtile y las dependencias:
-
-```bash
-sudo pacman -S qtile pacman-contrib
-```
-```bash
-yay -S ttf-firacode-nerd xdotool xclip dunst sxhkd feh blueman variety pamac-aur udiskie volumeicon kitty plank parcellite arandr xrandr qtile-extras pavucontrol rofi neovim ranger fd ripgrep bat duf fzf neofetch fastfetch lazygit thunar maim ark unrar 
-```
-```bash
-pip install psutil
-```
 
 Clona este repositorio y copia mis configuraciones:
 
@@ -28,7 +18,11 @@ git clone https://github.com/KrashMello/dotfile.git
 ```
 
 ```bash
-cp -rf dotfiles/.config/* ~/.config
+cd dotfile
+```
+
+```bash
+./INSTALL.sh
 ```
 
 ## Estructura
@@ -57,9 +51,9 @@ function run {
 }
 PATH="$HOME/.config/qtile/scripts:$PATH"
 # dimension wide
-xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1280x0 --rotate normal --output HDMI-2 --off --output DP-1 --mode 1280x1024 --pos 0x588 --rotate normal --output HDMI-3 --off
+xrandr --output HDMI-1 --mode 1920x1080 --pos 1920x85 --rotate normal --output HDMI-2 --off --output DP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-3 --off
 picom &
-feh --bg-fill $HOME/Imágenes/background/wallhaven-1pwl61_1920x1080.png
+feh --bg-fill $HOME/Imágenes/background/km_background.png
 # start all this to entry the system
 sxhkd -c $HOME/.config/qtile/sxhkdrc &
 dunst -config "$HOME"/.config/qtile/dunstrc &
@@ -67,23 +61,17 @@ dunst -config "$HOME"/.config/qtile/dunstrc &
 run variety &
 run nm-applet &
 run blueman-applet &
-run pamac-tray &
-# run xfce4-power-manager &
 numlockx on &
 udiskie -t &
-run volumeicon &
-variety &
 blueman-applet &
 kitty &
-plank &
-parcellite &
-setxkbmap latam
+clipcatd &
 
 ```
 
 ![screen1](./screenshot/1.png)
 
-Si quieres añadir o quitar atajos de teclado, abre `./settings/keys.py`.
+Si quieres añadir o quitar atajos de teclado, abre `./settings/keys.py` o `./sxhkdrc`.
 Para añadir o quitar espacios de trabajos, debes modificar
 `./settings/groups.py`. Finalmente, si quieres añadir nuevos _layouts_,
 abre `./settings/layouts.py`, el resto de archivos no hace falta tocarlos.
@@ -91,6 +79,8 @@ abre `./settings/layouts.py`, el resto de archivos no hace falta tocarlos.
 ![screen2](./screenshot/2.png)
 ![screen3](./screenshot/3.png)
 ![screen4](./screenshot/4.png)
+![screen5](./screenshot/5.png)
+![screen6](./screenshot/6.png)
 
 ## Temas
 
@@ -102,3 +92,25 @@ coloca su nombre en un archivo llamado `./config.json`:
   "theme": "km"
 }
 ```
+
+## Atajos de teclado
+
+| key | action |
+| ------------- | -------------- |
+| <win + space> | rofi menu |
+| <win + shift +space> | rofi show windows |
+| <control + alt + h> | clipcat menu |
+| <win + b> | open firefox |
+| <win + c> | open vscode |
+| <win + backspace> | powermenu  |
+| <win + shift + f> | floating window  |
+| <win + f> | fullscreen window  |
+| <win + w> | kill window  |
+| <win + period> | restart qtile  |
+| <win + enter> | kitty  |
+| <win + shift + enter> | floating kitty  |
+| <win + e> | file manager (yazi)  |
+| <win + shift + l> | keyboard layout  |
+| <win + s> | screenshots  |
+| <win + shift + s> | select screenshots  |
+| <win + alt + s> | 10 sec screenshots  |
