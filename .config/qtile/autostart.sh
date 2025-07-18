@@ -18,15 +18,9 @@ dunst -config "$HOME"/.config/qtile/dunstrc &
 run variety &
 run nm-applet &
 run blueman-applet &
-run pamac-tray &
-# run xfce4-power-manager &
 numlockx on &
 udiskie -t &
-# run volumeicon &
 blueman-applet &
 kitty &
-# alacritty &
-parcellite &
-# knotes &
-# setxkbmap latam
+clipcatd &
 
