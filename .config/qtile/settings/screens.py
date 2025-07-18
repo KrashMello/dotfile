@@ -11,11 +11,11 @@ import subprocess
 
 def status_bar(widgets):
     return bar.Bar(
-        widgets, 20, background=colors["background"], padding=3, margin=[0, 0, 0, 0]
+        widgets, 25, background=colors["background"], padding=3, margin=[0, 0, 3, 0]
     )
 
 
-screens = [Screen(top=status_bar(primary_widgets))]
+screens = [Screen(top=status_bar(primary_widgets),x=1280,y=0,width=1920,height=1080),Screen(x=0,y=0,width=1280,height=1080)]
 
 xrandr = "xrandr | grep -w 'connected' | cut -d ' ' -f 2 | wc -l"
 

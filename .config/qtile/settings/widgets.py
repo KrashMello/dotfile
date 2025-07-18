@@ -4,6 +4,7 @@ from .theme import colors
 from libqtile import bar
 from libqtile import qtile
 from qtile_extras.widget.decorations import RectDecoration
+from qtile_extras.popup.templates.mpris2 import COMPACT_LAYOUT, DEFAULT_LAYOUT
 # from qtile_extras.widget import GlobalMenu
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
 
@@ -35,17 +36,22 @@ def icon(
         decorations=decorations,
     )
 
-
-decor_group = {
+decor_right_side = {
     "decorations": [
-        RectDecoration(colour=colors["background"], filled=True, group=True, radius=11),
+        RectDecoration(colour=colors["background_menu"], filled=True, group=True, radius=[11,0,0,11]),
+    ],
+}
+
+decor_left_side =  {
+    "decorations": [
+        RectDecoration(colour=colors["background_menu"], filled=True, group=True, radius=[0,11,11,0]),
     ],
 }
 
 decor_groupbox = {
     "decorations": [
         RectDecoration(
-            colour=colors["background"],
+            colour=colors["background_menu"],
             radius=11,
             filled=True,
         ),
@@ -58,7 +64,7 @@ def workspaces():
     return [
         widget.GroupBox(
             background="#00000000",
-            font="FiraCode NF Bold",
+            font="GohuFont 11 Nerd Font",
             fontsize=14,
             margin_y=2,
             margin_x=10,
@@ -99,34 +105,37 @@ primary_widgets = [
     #     progs=[("rofy", "rofi -show drun")],
     #     padding=3,
     # ),
-    spacer(length=8),
-    # *workspaces(),
-    widget.WindowName(
-        max_chars=50, format="{name} | ", scroll=True, width=150, parse_text=text_funki
-    ),
-    widget.GlobalMenu(background=colors["background"], padding=5),
+    # spacer(length=8),
+    # widget.WindowName(
+    #     max_chars=50, format="{name} | ", scroll=True, width=150, parse_text=text_funki
+    # ),
+    widget.Visualiser(),
+    widget.Mpris2(popup_layout=DEFAULT_LAYOUT,max_chars=20),
+    # widget.GlobalMenu(background=colors["background"], padding=5),
     spacer(),
-    icon(bg=colors["background"], fg="icon", fontsize=14, text=" ", **decor_group),
+    *workspaces(),
+    spacer(),
+    icon(bg=colors["background"], fg="icon", fontsize=14, text=" "),
     widget.CPU(
         **base(bg="background", fg="text"),
         fontsize=14,
         format="{load_percent}% ",
         max_chars=5,
     ),
-    icon(bg=colors["background"], fg="icon", fontsize=14, text=" ", **decor_group),
+    icon(bg=colors["background"], fg="icon", fontsize=14, text=" "),
     widget.Memory(
         **base(bg="background", fg="text"),
         fontsize=14,
         format="{MemUsed: .0f}{mm} ",
     ),
     widget.IWD(show_image=True, show_text=False, **base()),
-    widget.Systray(**base()),
-    widget.UPowerWidget(),
+    widget.Systray(),
+    widget.Volume(),
     widget.KeyboardLayout(configured_keyboards=["us", "latam"], fmt=" {}"),
     widget.Clock(
         **base(),
         format=" %d/%m/%Y  %I:%M %p ",
-    ),
+   ),
 ]
 
 secondary_widgets = [
@@ -138,42 +147,42 @@ secondary_widgets = [
     spacer(length=15),
     *workspaces(),
     spacer(),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
-    widget.CPU(
-        **base(bg="background", fg="text"),
-        fontsize=14,
-        format="{load_percent}% ",
-        max_chars=5,
-        **decor_group,
-    ),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
-    widget.Memory(
-        **base(bg="background", fg="text"),
-        fontsize=14,
-        format="{MemUsed: .0f}{mm} ",
-        **decor_group,
-    ),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
-    widget.Clock(
-        background="#00000000",
-        foreground=colors["text"],
-        fontsize=14,
-        format="%d/%m/%Y ",
-        **decor_group,
-    ),
-    icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
-    widget.Clock(
-        background="#00000000",
-        foreground=colors["text"],
-        format="%I:%M %p ",
-        **decor_group,
-    ),
-    widget.Systray(background="#00000000", foreground=colors["text"]),
+    # icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_right_side),
+    # widget.CPU(
+    #     **base(bg="background", fg="text"),
+    #     fontsize=14,
+    #     format="{load_percent}% ",
+    #     max_chars=5,
+    #     **decor_group,
+    # ),
+    # icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+    # widget.Memory(
+    #     **base(bg="background", fg="text"),
+    #     fontsize=14,
+    #     format="{MemUsed: .0f}{mm} ",
+    #     **decor_group,
+    # ),
+    # icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+    # widget.Clock(
+    #     background="#00000000",
+    #     foreground=colors["text"],
+    #     fontsize=14,
+    #     format="%d/%m/%Y ",
+    #     **decor_group,
+    # ),
+    # icon(bg="#00000000", fg="icon", fontsize=14, text=" ", **decor_group),
+    # widget.Clock(
+    #     background="#00000000",
+    #     foreground=colors["text"],
+    #     format="%I:%M %p ",
+    #     **decor_group,
+    # ),
+    # widget.Systray(background="#00000000", foreground=colors["text"]),
 ]
 
 
 widget_defaults = {
-    "font": "GohuFont 11 Nerd Font Bold",
+    "font": "GohuFont 11 Nerd Font",
     "fontsize": 14,
     "padding": 1,
 }
