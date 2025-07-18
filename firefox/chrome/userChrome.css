@@ -276,8 +276,8 @@ window,
 
 .tabbrowser-tab[fadein]:not([selected]):not([pinned]) {
   /*margin: 0 2px 0 2px !important;*/
-  min-width: 32px !important;
-  max-width: 32px !important;
+  min-width: 24px !important;
+  max-width: 24px !important;
   border-bottom: solid 2px var(--uc-not-selected-tab) !important;
 }
 
