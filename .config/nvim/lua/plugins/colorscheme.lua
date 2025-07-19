@@ -26,6 +26,7 @@ return {
     name = "catppuccin",
     config = function()
       require("catppuccin").setup({
+        flavour = "macchiato", -- latte, frappe, macchiato, mocha
         no_italic = false, -- Force no italic
         no_bold = false, -- Force no bold
         no_underline = false, -- Force no underline
@@ -85,7 +86,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "poimandres",
+      colorscheme = "catppuccin",
     },
   },
 }
