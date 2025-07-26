@@ -8,8 +8,8 @@ super + alt + s
 	screenshots --in10;
 
 # Reload sxhkd
-super + Escape
-	pkill -USR1 -x sxhkd;
+control + alt + r
+  notify-send "Reloading sxhkd" & pkill -USR1 -x sxhkd
 
 # ranger 
 #
@@ -28,3 +28,11 @@ super + BackSpace
 #open clipcat menu
 control + alt + h
   OpenApps --clipcat;
+
+#redshift
+super + r
+  notify-send "Active Redshift" & redshift -P -O 3000;
+
+super + shift + r
+  notify-send "desactive Redshift" & redshift -x
+

@@ -61,9 +61,7 @@ keys = [
         # ([mod], "e", lazy.spawn("Thunar")),
         # Terminal
         ([mod], "return", lazy.spawn("kitty")),
-        # Redshift
-        ([mod], "r", lazy.spawn("redshift -O 2400")),
-        ([mod, "shift"], "r", lazy.spawn("redshift -x")),
+        # KeyLayout
         ([mod, "shift"], "l", lazy.widget["keyboardlayout"].next_keyboard()),
         # Screenshot
         # ([mod], "s", lazy.spawn(" maim -u $HOME/Imágenes/Screenshot/km-%d_%m_%Y-%I-%M-%S.png")),
