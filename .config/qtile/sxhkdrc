@@ -31,7 +31,7 @@ control + alt + h
 
 #redshift
 super + r
-  notify-send "Active Redshift" & redshift -P -O 3000;
+  notify-send "Active Redshift" & redshift -P -O $(if [ "$(date +"%H")" -ge 18 ]; then echo 3000; else echo 5000; fi);
 
 super + shift + r
   notify-send "desactive Redshift" & redshift -x
