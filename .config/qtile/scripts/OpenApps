@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 case "$1" in
+--notify)
+  notifyHistory
+  ;;
 --menu)
   rofi -show drun -theme $HOME/.config/bspwm/scripts/Launcher.rasi
   ;;
