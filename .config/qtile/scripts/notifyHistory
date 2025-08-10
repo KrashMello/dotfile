@@ -1,31 +1,27 @@
 #!/usr/bin/env bash
-rofi_command="rofi -theme $HOME/.config/rofi/config/notify.rasi"
 
-notifies=$(dunstctl history |
-  grep -A 2 "body\|summary" --no-group-separator |
-  sed 's/\s:\s/<>/g' |
-  sed "s/\\\\\"/'/g" |
-  awk -F'<>' '
-BEGIN {print("[ ");}
-{
-  if(NR % 3 == 0 && NR % 6 != 0 )
-    print("{\"body\" : ",$2, ",");
-  else if (NR % 6 == 0)
-    print("\"head\" : ",$2,"},");
-}
-END {print("]")}' |
-  awk '{ lines[NR] = $0 } END {
-  # Modificar la penúltima línea
-  # Imprimir todas las líneas
-  for(i=1; i<=NR; i++)
-  if (i == NR-1)
-    print substr(lines[i],1,length(lines[i])-1)
-  else
-    print lines[i]
-  }')
-options=$(echo "$notifies" | jq -c '.[]' | while read notify; do
-  body=$(echo "$notify" | jq -r '.body')
-  head=$(echo "$notify" | jq -r '.head')
-  echo "($head):\t$body"
-done)
-"$(echo -e "$options" | $rofi_command -p "Notify history " -dmenu -selected-row 0)"
+history_json="$(dunstctl history)"
+history_items="$(printf '%s' "$history_json" | jq -r '.data[0][] | .appname.data , (.timestamp.data | tostring) , .summary.data, .body.data | gsub("[\\n]"; "\\n")')" # the gsub is to really ensure no escaped new lines in the data lead us to print new lines. New lines in data have to be escaped. (Because) Actual newlines are the field separator essential to the logic of the while loop below, and rofi further down.
+
+iter=0
+
+IFS='
+'
+while
+  read -r application_name
+  read -r notification_timestamp
+  read -r notification_summary
+  read -r notification_body
+do
+  iter=$((iter + 1))
+  option=$(printf '"%s" (%s): %s ' "$notification_summary" "$application_name" "$notification_body")
+
+  options="$options$option
+"
+done <<EOF
+$history_items
+EOF
+
+options="$options"
+
+result=$(printf '%s' "$options" | rofi -theme $HOME/.config/rofi/config/notify.rasi -dmenu -i)
