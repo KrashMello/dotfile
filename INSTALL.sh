@@ -11,10 +11,20 @@ install_with_yay() {
 
 # Función para instalar paquetes usando dnf
 install_with_dnf() {
+  sudo dnf group install development-tools
   sudo dnf copr enable atim/lazygit -y
   sudo dnf copr enable frostyx/qtile
   sudo dnf copr enable lihaohong/yazi
-  sudo dnf install sxhkd feh dunst xclip maim kitty rofi fastfetch unrar bat fd-find ranger neovim variety duf fzf xclipboard qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions magick i3lock yazi xorg-x11-server-Xorg cava redshift
+  sudo dnf install sxhkd feh dunst xclip maim kitty rofi fastfetch unrar bat fd-find ranger neovim variety duf fzf xclipboard qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions magick i3lock yazi xorg-x11-server-Xorg cava redshift procps-ng curl file
+
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>~/.zshrc
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+  brew install rainfrog
+  brew install ouch
+  brew install atac
 
   local config_dir="/usr/share/xsessions/qtile.desktop"
   local source_dir="./qtile.desktop"
@@ -54,15 +64,15 @@ if command -v zsh >/dev/null 2>&1; then
 fi
 
 # Copiar configuraciones
-backup_and_copy "$HOME/.config/nvim" "./.config/nvim"
-backup_and_copy "$HOME/.config/qtile" "./.config/qtile"
-backup_and_copy "$HOME/.config/kitty" "./.config/kitty"
-backup_and_copy "$HOME/.config/rofi" "./.config/rofi"
-backup_and_copy "$HOME/.config/picom" "./.config/picom"
-backup_and_copy "$HOME/.config/yazi" "./.config/yazi"
-backup_and_copy "$HOME/.config/zellij" "./.config/zellij"
-backup_and_copy "$HOME/.config/neofetch" "./.config/neofetch"
-backup_and_copy "$HOME/.config/clipcat" "./.config/clipcat"
-backup_and_copy "$HOME/.mozilla/firefox/firefox-themes/userChrome.css" "./firefox/chrome/userChrome.css"
-
+# backup_and_copy "$HOME/.config/nvim" "./.config/nvim"
+# backup_and_copy "$HOME/.config/qtile" "./.config/qtile"
+# backup_and_copy "$HOME/.config/kitty" "./.config/kitty"
+# backup_and_copy "$HOME/.config/rofi" "./.config/rofi"
+# backup_and_copy "$HOME/.config/picom" "./.config/picom"
+# backup_and_copy "$HOME/.config/yazi" "./.config/yazi"
+# backup_and_copy "$HOME/.config/zellij" "./.config/zellij"
+# backup_and_copy "$HOME/.config/neofetch" "./.config/neofetch"
+# backup_and_copy "$HOME/.config/clipcat" "./.config/clipcat"
+# backup_and_copy "$HOME/.mozilla/firefox/firefox-themes/userChrome.css" "./firefox/chrome/userChrome.css"
+#
 echo "✅ done"
