@@ -182,7 +182,7 @@ secondary_widgets = [
 
 
 widget_defaults = {
-    "font": "GohuFont 11 Nerd Font",
+    "font": "GohuFont 11 Nerd Font bold",
     "fontsize": 14,
     "padding": 1,
 }

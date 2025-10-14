@@ -32,19 +32,18 @@ install_with_dnf() {
     sudo mv "$config_dir" "${config_dir}_bak"
   fi
   sudo cp -r "$source_dir" "$config_dir"
-
 }
 
 # Función para respaldar y copiar configuraciones
 backup_and_copy() {
-  local config_dir="$1"
-  local source_dir="$2"
+  local config_dir="$2"
+  local source_dir="$1"
 
-  if [ -d "$config_dir" ]; then
-    mv "$config_dir" "${config_dir}_bak"
+  if [ -d "$HOME"/"$source_dir" ]; then
+    mv "$HOME"/"$source_dir" "$HOME"/"${source_dir}_bak"
   fi
 
-  cp -r "$source_dir" "$config_dir"
+  ln -s "$(pwd)"/"$source_dir" "$config_dir"
 }
 
 # Instalación de paquetes
@@ -57,22 +56,22 @@ else
   exit 1
 fi
 
-# Cambiar a zsh si está instalado
+Cambiar a zsh si está instalado
 if command -v zsh >/dev/null 2>&1; then
   backup_and_copy "$HOME/.zshrc" "./.zshrc"
   sudo chsh -s "$(which zsh)" "$USER"
 fi
 
 # Copiar configuraciones
-# backup_and_copy "$HOME/.config/nvim" "./.config/nvim"
-# backup_and_copy "$HOME/.config/qtile" "./.config/qtile"
-# backup_and_copy "$HOME/.config/kitty" "./.config/kitty"
-# backup_and_copy "$HOME/.config/rofi" "./.config/rofi"
-# backup_and_copy "$HOME/.config/picom" "./.config/picom"
-# backup_and_copy "$HOME/.config/yazi" "./.config/yazi"
-# backup_and_copy "$HOME/.config/zellij" "./.config/zellij"
-# backup_and_copy "$HOME/.config/neofetch" "./.config/neofetch"
-# backup_and_copy "$HOME/.config/clipcat" "./.config/clipcat"
+backup_and_copy ".config/nvim" "$HOME/.config/"
+backup_and_copy ".config/qtile" "$HOME/.config/"
+backup_and_copy ".config/kitty" "$HOME/.config/"
+backup_and_copy ".config/rofi" "$HOME/.config/"
+backup_and_copy ".config/picom" "$HOME/.config/"
+backup_and_copy ".config/yazi" "$HOME/.config/"
+backup_and_copy ".config/zellij" "$HOME/.config/"
+backup_and_copy ".config/fastfetch" "$HOME/.config/"
+backup_and_copy ".config/clipcat" "$HOME/.config/"
 # backup_and_copy "$HOME/.mozilla/firefox/firefox-themes/userChrome.css" "./firefox/chrome/userChrome.css"
 #
 echo "✅ done"
