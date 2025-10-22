@@ -20,3 +20,4 @@
 <win + r>: active redshift
 <win + shift + r>: desactive redshift
 <win + shift + w>: wallpaper selector
+<win + t>: theme selector
