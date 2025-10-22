@@ -5,6 +5,7 @@
   "inactive": ["#4C566A", "#4C566A"],
   "urgent": ["#BF616A", "#BF616A"],
   "icon": ["#cba6f7", "#cba6f7"],
-  "background": ["#181825", "#181825"],
+  "background": ["#18182500", "#18182500"],
+  "background_menu": ["#181825", "#181825"],
   "extra": ["#5E81AC", "#5E81AC"]
 }

@@ -47,3 +47,7 @@ super + shift + w
 # helper
 super + shift + h
   helper;
+
+# theme selector
+super + t
+  theme-selector;

@@ -1,0 +1,4 @@
+catppuccin-mocha
+nord
+catppuccin-latte
+poimandres

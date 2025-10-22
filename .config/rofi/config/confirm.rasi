@@ -8,20 +8,22 @@ configuration {
 }
 
 @import "font.rasi"
-@import "colors.rasi"
+@import "themes/nord.rasi"
 
 /* Line Responsible For Button Layouts */
 /* BUTTON = TRUE */
+
 *{
+  screen-padding:               calc(50% - 85px) 36%;
   background-color: transparent;
   text-color: @FG;
 }
 #window {
     background-color: rgba(255, 255, 255, 0.1);
     fullscreen:true;
-    padding: 43% 36%;
+    padding: @screen-padding;
     location: center;
-    children: [mainbox ];
+    children: ["mainbox"];
 }
 listview {
     background-color:               transparent;
@@ -35,7 +37,7 @@ listview {
 mainbox {
     text-color:                     @FG;
     border:                  	    0 0 2px 0;
-    border-color:                   @BGB;
+    border-color:                   @BDR;
     border-radius:                  15px;
     background-color:               @BG;
     children:[prompt,listview];

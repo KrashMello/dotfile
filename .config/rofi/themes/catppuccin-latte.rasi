@@ -1,0 +1,14 @@
+* {
+    BG:    #FAF4EDff;    /* fondo principal oscuro -> beige claro */
+    BGA:   #FAF4EDFF;    /* fondo alterno */
+    FG:    #575279FF;    /* primer plano, texto principal -> gris violáceo suave */
+    FGA:   #DDB6F0FF;    /* primer plano alterno, acentos -> rosa lavanda */
+    BDR:   #D5C4A1A0;    /* borde suave -> marrón beige semitransparente */
+    SEL:   #179299FF;    /* foreground select (dejado igual para parecido) */
+    BGB:   #E6D6B9FF;    /* fondo seleccionado -> beige medio */
+    SELTE: #DDB6F01f;    /* background selection (se mantiene para contraste) */
+    UGT:   #DDB6F0FF;    /* texto destacado -> rosa lavanda */
+    IMG:   #BBAE93FF;    /* fondo imagen, tonos crema oscuro -> marrón claro */
+    OFF:   #988BA2FF;    /* texto o elemento inactivo -> gris lila */
+    ON:    #A6D1899F;    /* activo, verde suave mantenido -> verde pastel ligero */
+}

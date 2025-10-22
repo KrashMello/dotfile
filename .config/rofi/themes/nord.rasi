@@ -1,127 +1,14 @@
 * {
-    bg: #242933;
-    fg: #E5E9F0;
-    phColor: #81A1C1;
-    btnBg: #81A1C1;
-    border: #923338;
-    inputBg: #4C566A;
-    button: #81A1C1;
-    inactive: #3B4252;
-    inactiveText: #EDDFD9;
-    background-color: @bg;
-    text-color: @fg;
-
-}
-element-text,
-element-icon,
-mode-switcher {
-  background-color: inherit;
-  text-color: inherit;
-}
-
-window {
-  transparency: "real";
-  width: 55%;
-  border: 10px;
-  border-radius: 15px;
-  border-color: @bg;
-  height: 65%;
-}
-
-
-entry {
-  placeholder: "Search";
-  placeholder-color: @phColor;
-  text-color: @fg;
-  expand: false;
-  height: 48px;
-  padding: 2.0%;
-  border-radius: 50%;
-  background-color: @inputBg;
-}
-/*
-inputbar {
-  children: [entry];
-  background-image: url("bg.jpg");
-  expand: false;
-  border-radius: 10px 10px 0 0px;
-  font: "Dosis 14";
-  margin: 0 0 20px 0;
-  padding: 200px 20px 20px 20px;
-}
-*/
-logo{
-    background-image: url("logo-km-rose-pine.png");
-    background-size: 200px 200px;
-    width: 100px;
-  }
-
-listview {
-  border: 0px 0px 0px;
-  padding: 6px 0px 0px;
-  margin: 10px 0px 0px 20px;
-  height: 90%;
-}
-
-inputbarbotton {
-  children: [logo,listview,entry];
-  expand: false;
-  border-radius: 10px 10px 0 0px;
-  font: "Dosis 14";
-  margin: 0 0 20px 0;
-  width: 30%;
-  padding: 20px 20px 20px 20px;
-
-}
-wallpaper{
-    background-image: url("nord-wall.png");
-  }
-
-mainbox {
-  orientation: horizontal;
-  children: [wallpaper, inputbarbotton];
-}
-
-element {
-  padding: 10px;
-  font: "Dosis 14";
-  margin: 5px 5px 5px 5px;
-  border-radius: 10px;
-  background-color: @inactive;
-}
-
-element-text {
-  expand: true;
-  vertical-align: 0.5;
-  margin: 0% 1% 0% 1%;
-  font: "Dosis 14";
-  background-color: inherit;
-  text-color: @inactiveText;
-}
-
-element selected {
-  background-color: @button;
-  font: "Dosis 14";
-  text-color: @fg;
-  border-radius: 10px;
-}
-
-mode-switcher {
-    horizontal-align: 0.5;
-		padding: 0px 50px 0px 50px ;
-		border: 1px;
-}
-
-button {
-	expand: true;
-	padding: 8px;
-	text-color: @fg;
-  border-radius: 10px;
-  background-color: @btnBg;
-}
-button selected  {
-	background-color: @button;
-  border-radius: 10px;
-	border-color: #FFFFFF;
-	text-color: #2e3440;
+    BG:    #2E3440;    /* fondo principal oscuro (nord polar night) */
+    BGA:   #3B4252;    /* fondo alterno (nord polar night leve) */
+    FG:    #D8DEE9FF;    /* primer plano, texto principal (nord snow storm) */
+    FGA:   #88C0D0FF;    /* primer plano alterno, acentos (nord frost) */
+    BDR:   #88c0d0A0;    /* borde suave (nord snow storm con transparencia) */
+    SEL:   #88C0D0FF;    /* foreground select (más claro para contraste) */
+    BGB:   #434C5EFF;    /* fondo seleccionado (nord polar night oscuro) */
+    SELTE: #d8dee91F;    /* background selection (nord frost con transparencia) */
+    UGT:   #88C0D0FF;    /* texto destacado (nord frost) */
+    IMG:   #3B425280;    /* fondo imagen, tonos crema oscuro adaptado a nord (polar night 50% op) */
+    OFF:   #616E88FF;    /* texto o elemento inactivo (nord snow storm inactivo) */
+    ON:    #A3BE8C9F;    /* activo, verde suave mantenido (nord green) */
 }

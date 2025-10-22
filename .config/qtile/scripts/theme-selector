@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+rofi_command="rofi -theme $HOME/.config/rofi/config/clean.rasi"
+
+commands="$(/bin/cat $HOME/.config/qtile/assets/rofi-theme.txt)"
+chosse="$(echo -e "$commands" | $rofi_command -dmenu -i -p "  qtile keybind: ")"
+if [ "$chosse" != "" ]; then
+
+  echo "@import \"$chosse.rasi\"" >$HOME/.config/rofi/themes/default.rasi
+  echo "include $chosse.conf" >$HOME/.config/kitty/themes/default.conf
+  echo -e "{\n\t\"theme\": \"$chosse\"\n}" >$HOME/.config/qtile/config.json
+
+  qtile cmd-obj -o cmd -f restart
+
+fi

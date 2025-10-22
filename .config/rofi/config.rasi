@@ -11,27 +11,28 @@ configuration {
   modi: "window,run,drun";
   show-icons: true;
   font: "GohuFont 11 Nerd Font 13";
-  icon-theme: "Colloid-Dark";
+  icon-theme: "Nordzy";
   display-drun:               " ";
   display-window:               " ";
 }
-@import "themes/macos-nord.rasi"
+@import "themes/default.rasi"
 #window {
     fullscreen: true;
     background-color: rgba(255, 255, 255, 0.1);
+    border: 0px;
     padding: 130px 200px;
     children:["mainbox"];
 }
 mainbox {
     border: 0 0 2px 0;
-    border-color: @borderMainBox;
+    border-color: @BDR;
     border-radius: 15;
     padding: 20;
-    background-color: @background;
+    background-color: @BG;
     children: ["inputbar","listview"];
 }
 textbox {
-    text-color: @foreground;
+    text-color: @FG;
 }
 listview {
     padding: 20px;
@@ -63,33 +64,30 @@ element-text {
 }
 element.normal.normal {
     background-color: transparent;
-    text-color:       @foreground;
+    text-color:       @FG;
 }
 element.selected.normal {
-    background-color: @selected-background;
-    text-color:       @selected-foreground;
-    border-color: #d07ef2;
+    background-color: @SELTE;
+    text-color:       @SEL;
 }
 element.alternate.normal {
     background-color: transparent;
-    text-color:       @foreground;
+    text-color:       @FG;
 }
 
 inputbar {
     enabled:true;
     spacing: 0;
-    text-color: @selected-foreground;
     margin: 0 25%;
     padding: 5px 15px;
-    background-color: @selected-background;
+    background-color: @SELTE;
     border-radius: 10px;
     children: ["prompt","entry"];
 
 }
 entry {
   placeholder: "search...";
-    text-color: @selected-foreground;
-    placeholder-color: @selected-foreground;
+    placeholder-color: @SEL;
     spacing:    0;
     background-color: rgba(0,0,0,0);
 }

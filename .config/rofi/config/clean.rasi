@@ -1,21 +1,4 @@
-configuration {
-  kb-row-up: "Control+k";
-  kb-row-down: "Control+j";
-  kb-row-left: "Control+h";
-  kb-row-right: "Control+l";
-  kb-mode-complete: "";
-  kb-accept-entry: "Control+m,Return,KP_Enter";
-  kb-remove-to-eol: "";
-  kb-remove-char-back: "BackSpace,Shift+BackSpace";
-
-  modi: "window,run,drun";
-  show-icons: true;
-  font: "GohuFont 11 Nerd Font 13";
-  icon-theme: "Nordzy";
-  display-drun:               " ";
-  display-window:               " ";
-}
-@import "themes/macos-nord.rasi"
+@import "themes/default.rasi"
 #window {
     fullscreen: true;
     background-color: rgba(255, 255, 255, 0.1);
@@ -24,10 +7,10 @@ configuration {
 }
 mainbox {
     border: 0 0 2px 0;
-    border-color: @borderMainBox;
+    border-color: @BDR;
     border-radius: 15;
     padding: 20;
-    background-color: @background;
+    background-color: @BG;
     children: ["inputbar","listview"];
 }
 
@@ -53,38 +36,38 @@ element {
 
 element-text { 
     background-color: transparent;
-    text-color:       @foreground;
+    text-color:       @FG;
     vertical-align:                 0.5;
 }
 element.normal.normal {
     background-color: transparent;
-    text-color:       @foreground;
+    text-color:       @FG;
 }
 element.selected.normal {
-    background-color: @selected-background;
-    text-color:       @selected-foreground;
+    background-color: @SELTE;
+    text-color:       @SEL;
     border-color: #d07ef2;
 }
 element.alternate.normal {
     background-color: transparent;
-    text-color:       @foreground;
+    text-color:       @FG;
 }
 
 inputbar {
     enabled:true;
     spacing: 0;
-    text-color: @selected-foreground;
+    text-color: @SEL;
     margin: 0 25%;
     padding: 5px 15px;
-    background-color: @selected-background;
+    background-color: @SELTE;
     border-radius: 10px;
     children: ["prompt","entry"];
 
 }
 entry {
   placeholder: "search...";
-    text-color: @selected-foreground;
-    placeholder-color: @selected-foreground;
+    text-color: @SEL;
+    placeholder-color: @SEL;
     spacing:    0;
     background-color: rgba(0,0,0,0);
 }
@@ -93,3 +76,5 @@ prompt {
     text-color: inherit;
     background-color: rgba(0,0,0,0);
 }
+
+
