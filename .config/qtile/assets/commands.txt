@@ -1,0 +1,22 @@
+<win + space>:  show menu app
+<win + shift + space>:  show windows app open
+<control + alt + h>:  clipcat menu
+<win + b>:  open firefox
+<win + c>:  open vscode
+<win + backspace>:  system menu options
+<win + shift + f>:  floating window
+<win + f>:  fullscreen window
+<win + w>:  closet window
+<win + ctrl + r>:  restart qtile
+<win + enter>:  terminal kitty
+<win + shift + enter>:  floating terminal kitty
+<win + e>:  file manager (yazi)
+<win + shift + l>:  keyboard layout
+<win + s>:  screenshots
+<win + shift + s>:  select screenshots
+<win + alt + s>:  10 sec screenshots
+<win + shift + h>: helper
+<ctrl + alt + n>: show notifications
+<win + r>: active redshift
+<win + shift + r>: desactive redshift
+<win + shift + w>: wallpaper selector

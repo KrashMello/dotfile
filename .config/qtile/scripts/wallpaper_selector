@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+rofi_command="rofi -theme $HOME/.config/rofi/config/wallpaper.rasi"
+
+uptime=$(uptime -p | sed -e 's/up //g')
+
+images="$(xdg-user-dir PICTURES)/backgroud"
+
+chosse="$(for a in $images/*.png; do echo -en "$a\0icon\x1f$a\n"; done | $rofi_command -dmenu -selected-row 0 -p "UP - $uptime")"
+
+if [ "$chosse" != "" ]; then
+  feh --bg-fill $chosse
+fi

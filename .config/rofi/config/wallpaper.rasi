@@ -1,0 +1,68 @@
+configuration {
+    show-icons:                     true;
+    display-drun: 		            "";
+    drun-display-format:            "{icon}";
+    disable-history:                false;
+    click-to-exit: 		            true;
+    location:                       0;
+}
+
+@import "font.rasi"
+@import "colors.rasi"
+
+/* Line Responsible For Button Layouts */
+/* BUTTON = TRUE */
+
+#window {
+    background-color: rgba(255, 255, 255, 0.1);
+    fullscreen:true;
+    padding: 42% 20%;
+    location: center;
+    children: [ mainbox ];
+}
+
+mainbox {
+    text-color:                     @FG;
+    border:                  	    0 0 2px 0;
+    border-color:                   @BGB;
+    border-radius:                  15px;
+    background-color:               @BG;
+    children:["listview"];
+    padding:                        0px 15px;
+}
+
+listview {
+    background-color:               transparent;
+    fixed-columns: true;
+    lines: 1;
+    columns: 5;
+    cycle:                          true;
+    dynamic:                        true;
+    scrollbar: false;
+    spacing:                        10px;
+    children: ["element"];
+}
+
+element {
+    background-color:               @BG;
+    text-color:                     @FG;
+    margin: 10px 0px;
+    size: 100px;
+    padding: 0px 5px;
+    orientation: vertical;
+    children: ["element-icon"];
+}
+
+element-icon {
+    background-color: 		        transparent;
+    size:                           0px 150px;
+}
+
+element selected {
+    background-color:               @SELTE;
+    text-color:                     @SEL;
+    border-radius:                  10px;
+    border-color:                   @BDR;
+}
+
+

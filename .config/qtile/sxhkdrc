@@ -40,3 +40,10 @@ super + r
 super + shift + r
   notify-send "desactive Redshift" & redshift -x
 
+#wallpaper selector
+super + shift + w
+  wallpaper_selector;
+
+# helper
+super + shift + h
+  helper;
