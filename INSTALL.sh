@@ -9,6 +9,20 @@ install_with_yay() {
   yay -S ttf-firacode-nerd xdotool xclip dunst sxhkd feh blueman variety pamac-aur udiskie volumeicon kitty parcellite arandr xrandr qtile-extras pavucontrol rofi neovim ranger fd ripgrep bat duf fzf neofetch fastfetch lazygit thunar maim ark unrar
 }
 
+install_with_apt() {
+
+  sudo apt install xserver-xorg xinit libpangocairo-1.0-0 curl sxhkd feh dunst xclip maim kitty rofi fastfetch unrar-free bat fd-find ranger neovim variety duf fzf qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions i3lock cava redshift python3-pip python3-cffi python3-cairocffi python3-xcffib ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick pipx Mpdris2 iwd
+  $HOME/.local/bin/uv tool update-shell
+  source $HOME/.bashrc
+  $HOME/.local/bin/uv tool install qtile
+  pipx install qtile
+  pipx inject qtile qtile-extras
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+
+  local config_dir="/usr/share/xsessions/qtile.desktop"
+  local source_dir="./qtile.desktop"
+}
+
 # Función para instalar paquetes usando dnf
 install_with_dnf() {
   sudo dnf group install development-tools
