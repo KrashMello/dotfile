@@ -1,0 +1,14 @@
+* {
+    BG:    #1b1d1e;    /* fondo principal oscuro */
+    BGA:   #505354;    /* fondo alterno  */
+    FG:    #6f6f6f;    /* primer plano, texto principal */
+    FGA:   #a3a3a6;    /* primer plano alterno, acentos  */
+    BDR:   #c8be469F;    /* borde suave */
+    SEL:   #c8be469F;    /* foreground select  */
+    BGB:   #737174FF;    /* fondo seleccionado  */
+    SELTE: #6f6f6f1F;    /* background selection ( con transparencia) */
+    UGT:   #a3a3a6;    /* texto destacado */
+    IMG:   #50535480;    /* fondo imagen, tonos crema oscuro adaptado */
+    OFF:   #62605FFF;    /* texto o elemento inactivo */
+    ON:    #c8be469F;    /* activo, verde suave mantenido  */
+}

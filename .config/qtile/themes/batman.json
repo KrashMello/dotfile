@@ -1,0 +1,38 @@
+{
+  "text": [
+    "#f4fd22",
+    "#f4fd22"
+  ],
+  "focus": [
+    "#f4fd22",
+    "#f4fd22"
+  ],
+  "active": [
+    "#737174",
+    "#737174"
+  ],
+  "inactive": [
+    "#747271",
+    "#747271"
+  ],
+  "urgent": [
+    "#e6dc44",
+    "#e6dc44"
+  ],
+  "icon": [
+    "#e6dc44",
+    "#e6dc44"
+  ],
+  "background": [
+    "#1b1d1e00",
+    "#1b1d1e00"
+  ],
+  "background_menu": [
+    "#1b1d1e",
+    "#1b1d1e"
+  ],
+  "extra": [
+    "#c8be46",
+    "#c8be46"
+  ]
+}
