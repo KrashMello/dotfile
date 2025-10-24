@@ -36,15 +36,26 @@ def icon(
         decorations=decorations,
     )
 
+
 decor_right_side = {
     "decorations": [
-        RectDecoration(colour=colors["background_menu"], filled=True, group=True, radius=[11,0,0,11]),
+        RectDecoration(
+            colour=colors["background_menu"],
+            filled=True,
+            group=True,
+            radius=[11, 0, 0, 11],
+        ),
     ],
 }
 
-decor_left_side =  {
+decor_left_side = {
     "decorations": [
-        RectDecoration(colour=colors["background_menu"], filled=True, group=True, radius=[0,11,11,0]),
+        RectDecoration(
+            colour=colors["background_menu"],
+            filled=True,
+            group=True,
+            radius=[0, 11, 11, 0],
+        ),
     ],
 }
 
@@ -82,9 +93,15 @@ def workspaces():
             other_current_screen_border=colors["focus"],
             other_screen_border=colors["background"],
             disable_drag=True,
+            use_mouse_wheel=False,
+            mouse_callbacks={"Button1": select_group},
             **decor_groupbox,
         ),
     ]
+
+
+def select_group(self, event):
+    return
 
 
 def text_funki(text):
@@ -110,7 +127,7 @@ primary_widgets = [
     #     max_chars=50, format="{name} | ", scroll=True, width=150, parse_text=text_funki
     # ),
     widget.Visualiser(),
-    widget.Mpris2(popup_layout=DEFAULT_LAYOUT,max_chars=20),
+    widget.Mpris2(popup_layout=DEFAULT_LAYOUT, max_chars=20),
     # widget.GlobalMenu(background=colors["background"], padding=5),
     spacer(),
     *workspaces(),
@@ -135,7 +152,7 @@ primary_widgets = [
     widget.Clock(
         **base(),
         format=" %d/%m/%Y  %I:%M %p ",
-   ),
+    ),
 ]
 
 secondary_widgets = [
