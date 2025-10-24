@@ -4,12 +4,30 @@ rofi_command="rofi -theme $HOME/.config/rofi/config/clean.rasi"
 
 commands="$(/bin/cat $HOME/.config/qtile/assets/rofi-theme.txt)"
 chosse="$(echo -e "$commands" | $rofi_command -dmenu -i -p "  qtile keybind: ")"
-if [ "$chosse" != "" ]; then
 
+if [ "$chosse" != "" ]; then
   echo "@import \"$chosse.rasi\"" >$HOME/.config/rofi/themes/default.rasi
   echo "include $chosse.conf" >$HOME/.config/kitty/themes/default.conf
   echo -e "{\n\t\"theme\": \"$chosse\"\n}" >$HOME/.config/qtile/config.json
 
+  images="$(xdg-user-dir PICTURES)/background"
+  themes="/themes/$(/bin/cat ~/.config/qtile/config.json | sed "s/[\s\":]//g" | awk 'NR == 2 {print($2)}')"
+  gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+  case $chosse in
+  "nord")
+    feh --bg-fill "$images/$themes/wallhaven-2em38y_1920x1080.png"
+    ;;
+  "batman")
+    feh --bg-fill "$images/$themes/wallhaven-01zjqg_1920x1080.png"
+    ;;
+  "catppuccin-mocha")
+    feh --bg-fill "$images/$themes/wallhaven-1qkz23_1920x1080.png"
+    ;;
+  "catppuccin-latte")
+    feh --bg-fill "$images/$themes/wallhaven-k8x191_1920x1080.png"
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+    ;;
+  esac
   qtile cmd-obj -o cmd -f restart
 
 fi
