@@ -1,15 +1,38 @@
 {
-  "text": ["#787779", "#787779"],
-  "focus": ["#D9D7CE", "#D9D7CE"],
-  "active": ["#8FBCBB", "#8FBCBB"],
-  "inactive": ["#988D7A", "#988D7A"],
-  "urgent": ["#D27E99", "#D27E99"],
-  "icon": ["#B48EAD", "#B48EAD"],
+  "text": [
+    "#4c4f69",
+    "#4c4f69"
+  ],
+  "focus": [
+    "#D9D7CE",
+    "#D9D7CE"
+  ],
+  "active": [
+    "#8FBCBB",
+    "#8FBCBB"
+  ],
+  "inactive": [
+    "#988D7A",
+    "#988D7A"
+  ],
+  "urgent": [
+    "#D27E99",
+    "#D27E99"
+  ],
+  "icon": [
+    "#dd7878",
+    "#dd7878"
+  ],
   "background": [
     "#2E344000",
     "#2E344000"
   ],
-  "background_menu": ["#F4F1DE", "#F4F1DE"],
-  "extra": ["#83A597", "#83A597"]
+  "background_menu": [
+    "#F4F1DE",
+    "#F4F1DE"
+  ],
+  "extra": [
+    "#83A597",
+    "#83A597"
+  ]
 }
-
