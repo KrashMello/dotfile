@@ -10,7 +10,9 @@ move_request_up = "Ctrl-k"
 move_request_down = "Ctrl-j"
 
 next_environment = "Shift-E"
+display_env_editor = "Ctrl-E"
 display_cookies = "Shift-C"
+display_logs = "Shift-L"
 
 [keybindings.generic]
 display_help = "Shift-h" # Take care to not overlap other inputs, the help can be triggered from anywhere
@@ -77,6 +79,7 @@ export_request = "Ctrl-e"
 [keybindings.request_selected.param_tabs]
 change_auth_method = "Shift-A"
 change_body_content_type = "Shift-B"
+change_message_type = "Shift-M"
 
 [keybindings.request_selected.result_tabs]
 scroll_up = "Ctrl-k"
