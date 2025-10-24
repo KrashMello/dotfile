@@ -42,10 +42,14 @@ install_with_dnf() {
 
   local config_dir="/usr/share/xsessions/qtile.desktop"
   local source_dir="./qtile.desktop"
-  if [ -d "$config_dir" ]; then
-    sudo mv "$config_dir" "${config_dir}_bak"
+
+  read -p "¿Desea instalar el desktop manager? [S/N] " resp
+  if [ "$resp" = "S" ] || [ "$resp" = "s" ]; then
+    if [ -d "$config_dir" ]; then
+      sudo mv "$config_dir" "${config_dir}_bak"
+    fi
+    sudo cp -r "$source_dir" "$config_dir"
   fi
-  sudo cp -r "$source_dir" "$config_dir"
 }
 
 # Función para respaldar y copiar configuraciones
@@ -70,22 +74,31 @@ else
   exit 1
 fi
 
-Cambiar a zsh si está instalado
-if command -v zsh >/dev/null 2>&1; then
-  backup_and_copy "$HOME/.zshrc" "./.zshrc"
-  sudo chsh -s "$(which zsh)" "$USER"
+#Cambiar a zsh si está instalado
+
+read -p "¿Desea instalar la configuracion zshrc? [S/N] " resp
+if [ "$resp" = "S" ] || [ "$resp" = "s" ]; then
+  if command -v zsh >/dev/null 2>&1; then
+    backup_and_copy "$HOME/.zshrc" "./.zshrc"
+    sudo chsh -s "$(which zsh)" "$USER"
+  fi
 fi
 
 # Copiar configuraciones
-backup_and_copy ".config/nvim" "$HOME/.config/"
-backup_and_copy ".config/qtile" "$HOME/.config/"
-backup_and_copy ".config/kitty" "$HOME/.config/"
-backup_and_copy ".config/rofi" "$HOME/.config/"
-backup_and_copy ".config/picom" "$HOME/.config/"
-backup_and_copy ".config/yazi" "$HOME/.config/"
-backup_and_copy ".config/zellij" "$HOME/.config/"
-backup_and_copy ".config/fastfetch" "$HOME/.config/"
-backup_and_copy ".config/clipcat" "$HOME/.config/"
-# backup_and_copy "$HOME/.mozilla/firefox/firefox-themes/userChrome.css" "./firefox/chrome/userChrome.css"
-#
+read -p "¿Desea instalar las configuraciones de la instalación? [S/N] " resp
+if [ "$resp" = "S" ] || [ "$resp" = "s" ]; then
+
+  backup_and_copy ".config/nvim" "$HOME/.config/"
+  backup_and_copy ".config/qtile" "$HOME/.config/"
+  backup_and_copy ".config/kitty" "$HOME/.config/"
+  backup_and_copy ".config/rofi" "$HOME/.config/"
+  backup_and_copy ".config/picom" "$HOME/.config/"
+  backup_and_copy ".config/yazi" "$HOME/.config/"
+  backup_and_copy ".config/zellij" "$HOME/.config/"
+  backup_and_copy ".config/fastfetch" "$HOME/.config/"
+  backup_and_copy ".config/clipcat" "$HOME/.config/"
+  backup_and_copy "./background" "$(xdg-user-dir PICTURES)/"
+  # backup_and_copy "$HOME/.mozilla/firefox/firefox-themes/userChrome.css" "./firefox/chrome/userChrome.css"
+  #
+fi
 echo "✅ done"
