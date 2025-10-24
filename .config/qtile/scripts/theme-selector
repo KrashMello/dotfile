@@ -24,7 +24,7 @@ if [ "$chosse" != "" ]; then
     feh --bg-fill "$images/$themes/wallhaven-1qkz23_1920x1080.png"
     ;;
   "catppuccin-latte")
-    feh --bg-fill "$images/$themes/wallhaven-k8x191_1920x1080.png"
+    feh --bg-fill "$images/$themes/sky-cat.png"
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
     ;;
   esac
