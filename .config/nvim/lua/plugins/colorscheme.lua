@@ -4,7 +4,7 @@ return {
   } },
   { "rebelot/kanagawa.nvim" },
   {
-    "olivercederborg/poimandres.nvim",
+    "krashmello/poimandres.nvim",
     lazy = false,
     priority = 1000,
     config = function()
@@ -12,7 +12,7 @@ return {
         -- leave this setup function empty for default config
         -- or refer to the configuration section
         -- for configuration options
-        bold_vert_split = false,
+        bold_vert_split = true,
         disable_background = true,
         disable_float_background = true,
         disable_italics = true,
@@ -86,7 +86,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "poimandres",
     },
   },
 }
