@@ -145,7 +145,6 @@ primary_widgets = [
         fontsize=14,
         format="{MemUsed: .0f}{mm} ",
     ),
-    widget.IWD(show_image=True, show_text=False, **base()),
     widget.Systray(),
     widget.Volume(),
     widget.KeyboardLayout(configured_keyboards=["us", "latam"], fmt=" {}"),
