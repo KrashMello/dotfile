@@ -152,6 +152,7 @@ primary_widgets = [
         **base(),
         format=" %d/%m/%Y  %I:%M %p ",
     ),
+    widget.TunedManager(),
 ]
 
 secondary_widgets = [

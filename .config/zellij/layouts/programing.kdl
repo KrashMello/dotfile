@@ -6,7 +6,7 @@ layout {
           }
     }
     tab name="shell" {
-      pane split_direction="horizontal" {
+      pane split_direction="horizontal"  {
         pane name="server"
         pane split_direction="vertical" { 
           pane name="yazi" command="yazi"
