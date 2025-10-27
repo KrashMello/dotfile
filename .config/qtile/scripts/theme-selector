@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-rofi_command="rofi -theme $HOME/.config/rofi/config/clean.rasi"
+rofi_command="rofi -theme $HOME/.config/rofi/config/left-menu.rasi"
 
 commands="$(/bin/cat $HOME/.config/qtile/assets/rofi-theme.txt)"
 chosse="$(echo -e "$commands" | $rofi_command -dmenu -i -p "  qtile keybind: ")"
@@ -24,6 +24,10 @@ if [ "$chosse" != "" ]; then
     feh --bg-fill "$images/$themes/wallhaven-1qkz23_1920x1080.png"
     ;;
   "catppuccin-latte")
+    feh --bg-fill "$images/$themes/sky-cat.png"
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+    ;;
+  "rose-pine-dawn")
     feh --bg-fill "$images/$themes/sky-cat.png"
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
     ;;
