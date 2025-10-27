@@ -51,3 +51,7 @@ super + shift + h
 # theme selector
 super + t
   theme-selector;
+
+# power profiles 
+control + alt + p
+    powerprofile;
