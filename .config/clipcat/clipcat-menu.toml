@@ -3,10 +3,10 @@ finder = "rofi"
 preview_length = 80
 
 [rofi]
-line_length = 100
-menu_length = 30
+line_length = 10
+menu_length = 10
 menu_prompt = "Clipcat: "
-extra_arguments = ['-config','~/.config/rofi/config/clipcat.rasi']
+extra_arguments = ['-theme', '~/.config/rofi/config/left-menu.rasi']
 
 [dmenu]
 line_length = 100
