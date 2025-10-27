@@ -1,65 +1,45 @@
-configuration {
-  kb-row-up: "Control+k";
-  kb-row-down: "Control+j";
-  kb-row-left: "Control+h";
-  kb-row-right: "Control+l";
-  kb-mode-complete: "";
-  kb-accept-entry: "Control+m,Return,KP_Enter";
-  kb-remove-to-eol: "";
-  kb-remove-char-back: "BackSpace,Shift+BackSpace";
-
-  modi: "window,run,drun";
-  show-icons: true;
-  font: "GohuFont 11 Nerd Font 13";
-  icon-theme: "Nordzy";
-  display-drun:               " ";
-  display-window:               " ";
+configuration{
+  yoffset: 25;
+  xoffset: -5;
 }
 @import "themes/default.rasi"
 #window {
-    fullscreen: true;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 0px;
-    padding: 130px 200px;
+    background-color: transparent;
+    location: northeast;
     children:["mainbox"];
 }
+
 mainbox {
     border: 0 0 2px 0;
     border-color: @BDR;
     border-radius: 15;
     padding: 20;
-    background-color: @BG;
+    background-color: @BGA;
     children: ["inputbar","listview"];
 }
-textbox {
-    text-color: @FG;
-}
+
 listview {
     padding: 20px;
-    columns: 5;
     spacing: 4px;
     cycle: false;
     border: 0;
     dynamic: false;
+    lines: 10;
     scrollbar: false;
-    layout: vertical;
-    fixed-columns: true;
     background-color: transparent;
     children: ["element"];
 }
+
 element {
-    margin: 11px;
-    padding: 14px;
+    background-color: transparent;
+    padding: 5px;
     border-radius: 5px;
-    orientation: vertical;
-    children: ["element-icon","element-text"];
+    children: ["element-text"];
 }
-element-icon {
-    size: 80px;
-    margin: 0 10px 0 0;
-}
-element-text {
-    horizontal-align:               0.5;
+
+element-text { 
+    background-color: transparent;
+    text-color:       @FG;
     vertical-align:                 0.5;
 }
 element.normal.normal {
@@ -69,6 +49,7 @@ element.normal.normal {
 element.selected.normal {
     background-color: @SELTE;
     text-color:       @SEL;
+    border-color: #d07ef2;
 }
 element.alternate.normal {
     background-color: transparent;
@@ -77,16 +58,16 @@ element.alternate.normal {
 
 inputbar {
     enabled:true;
-    spacing: 0;
-    margin: 0 25%;
-    padding: 5px 15px;
+    text-color: @SEL;
+    margin: 0px calc(25% - 250px);
+    padding: 5px 10px;
     background-color: @SELTE;
     border-radius: 10px;
     children: ["prompt","entry"];
 
 }
 entry {
-  placeholder: "search...";
+    placeholder: "search...";
     text-color: @SEL;
     placeholder-color: @SEL;
     spacing:    0;
@@ -94,6 +75,8 @@ entry {
 }
 prompt {
     spacing:    0;
-    text-color: @SEL;
+    text-color: inherit;
     background-color: rgba(0,0,0,0);
 }
+
+

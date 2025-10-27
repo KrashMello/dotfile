@@ -8,7 +8,7 @@ configuration {
 }
 
 @import "font.rasi"
-@import "themes/nord.rasi"
+@import "themes/default.rasi"
 
 /* Line Responsible For Button Layouts */
 /* BUTTON = TRUE */
