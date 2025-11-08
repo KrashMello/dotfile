@@ -55,3 +55,7 @@ super + t
 # power profiles 
 control + alt + p
     powerprofile;
+
+#emoji selector
+super + control + space
+  OpenApps --emoji;

@@ -1,0 +1,86 @@
+@import "themes/default.rasi"
+#window {
+    background-color: transparent;
+    location: southwest;
+    children:["mainbox"];
+}
+
+mainbox {
+    border: 0 0 2px 0;
+    border-color: @BDR;
+    border-radius: 15;
+    padding: 20;
+    background-color: @BGA;
+    children: ["inputbar","listview"];
+}
+
+listview {
+    padding: 20px;
+    spacing: 4px;
+    cycle: false;
+    border: 0;
+    dynamic: false;
+    lines: 10;
+    columns: 10;
+    scrollbar: false;
+    fixed-columns: true;
+    background-color: transparent;
+    children: ["element"];
+}
+
+element {
+    background-color: transparent;
+    padding: 5px;
+    orientation: vertical;
+    border-radius: 5px;
+    children: ["element-icon"];
+}
+
+element-icon {
+    background-color: 		        transparent;
+    size:                          30px;
+}
+
+element-text { 
+    background-color: transparent;
+    text-color:       @FG;
+    vertical-align:                 0.5;
+}
+element.normal.normal {
+    background-color: transparent;
+    text-color:       @FG;
+}
+element.selected.normal {
+    background-color: @SELTE;
+    text-color:       @SEL;
+    border-color: #d07ef2;
+}
+element.alternate.normal {
+    background-color: transparent;
+    text-color:       @FG;
+}
+
+inputbar {
+    enabled:true;
+    text-color: @SEL;
+    margin: 0px calc(25% - 250px);
+    padding: 5px 10px;
+    background-color: @SELTE;
+    border-radius: 10px;
+    children: ["prompt","entry"];
+
+}
+entry {
+    placeholder: "search...";
+    text-color: @SEL;
+    placeholder-color: @SEL;
+    spacing:    0;
+    background-color: rgba(0,0,0,0);
+}
+prompt {
+    spacing:    0;
+    text-color: inherit;
+    background-color: rgba(0,0,0,0);
+}
+
+

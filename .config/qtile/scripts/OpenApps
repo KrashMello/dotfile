@@ -4,6 +4,9 @@ case "$1" in
 --notify)
   notifyHistory
   ;;
+--emoji)
+  rofimoji --selector-args="-theme $HOME/.config/rofi/config/emoji-center-menu.rasi" --use-icons
+  ;;
 --menu)
   rofi -show drun -theme $HOME/.config/bspwm/scripts/Launcher.rasi
   ;;
