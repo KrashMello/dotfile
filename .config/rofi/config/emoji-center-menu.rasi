@@ -3,6 +3,8 @@
 #window {
     background-color: transparent;
     children:["mainbox"];
+    width: calc(100% - 200px) 20%;
+    height: calc(100% - 200px) 40%;
 }
 
 mainbox {
@@ -21,7 +23,7 @@ listview {
     border: 0;
     dynamic: false;
     lines: 10;
-    columns: 10;
+    columns: 6;
     scrollbar: false;
     fixed-columns: true;
     background-color: transparent;
@@ -63,7 +65,7 @@ element.alternate.normal {
 inputbar {
     enabled:true;
     text-color: @SEL;
-    margin: 0px calc(25% - 250px);
+    width: calc(100% - 200px) 20%;
     padding: 5px 10px;
     background-color: @SELTE;
     border-radius: 10px;
