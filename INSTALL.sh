@@ -28,17 +28,19 @@ install_with_dnf() {
   sudo dnf group install development-tools
   sudo dnf copr enable atim/lazygit -y
   sudo dnf copr enable frostyx/qtile
-  sudo dnf copr enable lihaohong/yazi
-  sudo dnf install sxhkd feh dunst xclip maim kitty rofi fastfetch unrar bat fd-find ranger neovim variety duf fzf xclipboard qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions magick i3lock yazi xorg-x11-server-Xorg cava redshift procps-ng curl file power-profiles-daemon xorg-x11-xinit
+  sudo dnf install sxhkd feh dunst xclip maim kitty rofi fastfetch unrar bat fd-find ranger neovim variety duf fzf xclipboard qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions magick i3lock yazi xorg-x11-server-Xorg cava redshift procps-ng curl file power-profiles-daemon xorg-x11-xinit rofimoji
 
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>~/.zshrc
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  if [ ! -d /home/linuxbrew ]; then
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>~/.zshrc
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-  brew install rainfrog
-  brew install ouch
-  brew install atac
+    brew install rainfrog
+    brew install ouch
+    brew install atac
+    brew install yazi sevenzip jq poppler resvg imagemagick font-symbols-only-nerd-font
+  fi
 
   local config_dir="/usr/share/xsessions/qtile.desktop"
   local source_dir="./qtile.desktop"
