@@ -5,8 +5,8 @@ preview_length = 80
 [rofi]
 line_length = 10
 menu_length = 10
-menu_prompt = "Clipcat: "
-extra_arguments = ['-theme', '~/.config/rofi/config/left-menu.rasi']
+menu_prompt = "󱉨 "
+extra_arguments = ["-theme", "~/.config/rofi/config/center-menu.rasi"]
 
 [dmenu]
 line_length = 100
