@@ -1,0 +1,21 @@
+@import "themes/default.rasi"
+*{
+  background-color: transparent;
+}
+window {
+    background-color: @BGA;
+    border: 0 0 2px 0;
+    border-color: @BDR;
+    border-radius: 15;
+    scrollbar: true;
+    width: calc(100%-200px) 40%;
+}
+
+textbox {
+    padding: 5px;
+    color: @FG;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    background-color: @BGA;
+}
+
