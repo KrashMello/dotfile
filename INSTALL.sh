@@ -1,7 +1,18 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+CLIPCAT_VERSION=$(basename $(curl -s -w %{redirect_url} https://github.com/xrelkd/clipcat/releases/latest))
 
 # Mensaje de bienvenida
-echo "hello my people welcome to km installer 😄"
+echo "░█░█░█▀▄░█▀█░█▀▀░█░█░█▄█░█▀▀░█░░░█░░░█▀█"
+echo "░█▀▄░█▀▄░█▀█░▀▀█░█▀█░█░█░█▀▀░█░░░█░░░█░█"
+echo "░▀░▀░▀░▀░▀░▀░▀▀▀░▀░▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀"
+echo "░█▀▄░█▀█░▀█▀░█▀▀░▀█▀░█░░░█▀▀            "
+echo "░█░█░█░█░░█░░█▀▀░░█░░█░░░█▀▀            "
+echo "░▀▀░░▀▀▀░░▀░░▀░░░▀▀▀░▀▀▀░▀▀▀            "
+echo "░▀█▀░█▀█░█▀▀░▀█▀░█▀█░█░░░█░░░█▀▀░█▀▄    "
+echo "░░█░░█░█░▀▀█░░█░░█▀█░█░░░█░░░█▀▀░█▀▄    "
+echo "░▀▀▀░▀░▀░▀▀▀░░▀░░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀    "
+echo -e "\nEmpezemos con la instalacion 🔃"
 
 # Función para instalar paquetes usando yay
 install_with_yay() {
@@ -25,28 +36,48 @@ install_with_apt() {
 
 # Función para instalar paquetes usando dnf
 install_with_dnf() {
+  echo -e ̈́"\nInstalando paquetes development-tools 🔃"
   sudo dnf group install development-tools
+  echo -e "\nAgregando lazygit 🔃"
   sudo dnf copr enable atim/lazygit -y
+  echo -e "\nAgregando qtile 🔃"
   sudo dnf copr enable frostyx/qtile
+  echo -e "\nInstalando paquetes 🔃"
   sudo dnf install sxhkd feh dunst xclip maim kitty rofi fastfetch unrar bat fd-find ranger neovim variety duf fzf xclipboard qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions magick i3lock yazi xorg-x11-server-Xorg cava redshift procps-ng curl file power-profiles-daemon xorg-x11-xinit rofimoji
 
+  echo -e "\nInstalando clipcat 🔃"
+  curl -s -L -O https://github.com/xrelkd/clipcat/releases/download/${CLIPCAT_VERSION}/clipcat-${CLIPCAT_VERSION#v}-1.el7.x86_64.rpm
+  sudo dnf install --assumeyes clipcat-${CLIPCAT_VERSION#v}-1.el7.x86_64.rpm
+  rm clipcat-${CLIPCAT_VERSION#v}-1.el7.x86_64.rpm
+  echo -e "\nInstalando homebrew 🔃"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   if [ ! -d /home/linuxbrew ]; then
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>~/.zshrc
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
+    echo -e "\nInstalando homebrew packages 🔃"
     brew install rainfrog
     brew install ouch
     brew install atac
     brew install yazi sevenzip jq poppler resvg imagemagick font-symbols-only-nerd-font
   fi
-
-  local config_dir="/usr/share/xsessions/qtile.desktop"
-  local source_dir="./qtile.desktop"
-
+  if [ ! -d "$HOME"/systemd/user ]; then
+    echo -e "\nCreando directorio systemd/user 🔃"
+    mkdir -p "$HOME"/systemd/user
+    if [ ! -d "$HOME"/systemd/user/clipcat.service.d ]; then
+      echo -e "\nCreando clipcat.service 🔃"
+      touch clipcat.service
+      echo -e "[Unit]\nDescription=Clipcat Daemon\nPartOf=graphical-session.target\n\n[Install]\nWantedBy=graphical-session.target\n\n[Service]\nExecStartPre=/bin/rm -f %t/clipcat/grpc.sock\nExecStart=/usr/bin/clipcatd --no-daemon --replace\nRestart=on-failure\nType=simple" >$HOME/systemd/user/clipcat.service
+    fi
+    echo -e "\nRelocando systemd 🔃"
+    systemctl --user daemon-reload
+    systemctl --user enable clipcat.service
+    systemctl --user start clipcat.service
+  fi
   read -p "¿Desea instalar el desktop manager? [S/N] " resp
   if [ "$resp" = "S" ] || [ "$resp" = "s" ]; then
+    local config_dir="/usr/share/xsessions/qtile.desktop"
+    local source_dir="./qtile.desktop"
     if [ -d "$config_dir" ]; then
       sudo mv "$config_dir" "${config_dir}_bak"
     fi
@@ -103,4 +134,4 @@ if [ "$resp" = "S" ] || [ "$resp" = "s" ]; then
   # backup_and_copy "$HOME/.mozilla/firefox/firefox-themes/userChrome.css" "./firefox/chrome/userChrome.css"
   #
 fi
-echo "✅ done"
+echo -e "\nInstalación completa ✅"
