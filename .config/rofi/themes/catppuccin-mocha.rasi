@@ -1,12 +1,12 @@
 * {
-    BG:    #1E1E2EFF;    /* fondo principal oscuro */
-    BGA:   #1E1E2EFF;    /* fondo alterno */
+    BG:    #1E1E2E4d;    /* fondo principal oscuro */
+    BGA:   #1E1E2E4d;    /* fondo alterno */
     FG:    #D9E0EEFF;    /* primer plano, texto principal */
     FGA:   #F5C2E7FF;    /* primer plano alterno, acentos */
     BDR:   #F5C2E7A0;    /* borde suave */
     SEL:   #F2CDCDFF;    /* foregrond select (dejado por parecido) */
     BGB:   #2A2D3EFF;    /* fondo seleccionado */
-    SELTE: #DDB6F01f;    /* background selection (se mantiene para contraste) */
+    SELTE: #DDB6F01A;    /* background selection (se mantiene para contraste) */
     UGT:   #F5C2E7FF;    /* texto destacado */
     IMG:   #362D43FF;    /* fondo imagen, tonos crema oscuro */
     OFF:   #6E6C7EFF;    /* texto o elemento inactivo */

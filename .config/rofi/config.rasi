@@ -12,22 +12,22 @@ configuration {
   show-icons: true;
   font: "GohuFont 11 Nerd Font 13";
   icon-theme: "Nordzy";
-  display-drun:               " ";
-  display-window:               " ";
+  display-drun:               "󰀻 ";
+  display-window:               "󰀻 ";
 }
 @import "themes/default.rasi"
 #window {
-    fullscreen: true;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: transparent;
     border: 0px;
-    padding: 130px 200px;
+    padding: 0px;
+    width: calc(100%-200px) 40%;
+    hight: calc(100%-200px) 20%;
     children:["mainbox"];
 }
 mainbox {
     border: 0 0 2px 0;
     border-color: @BDR;
     border-radius: 15;
-    padding: 20;
     background-color: @BG;
     children: ["inputbar","listview"];
 }
@@ -37,30 +37,29 @@ textbox {
 listview {
     padding: 20px;
     columns: 5;
-    spacing: 4px;
+    lines: 4;
+    spacing: 10px;
     cycle: false;
     border: 0;
     dynamic: false;
     scrollbar: false;
-    layout: vertical;
     fixed-columns: true;
     background-color: transparent;
     children: ["element"];
 }
 element {
-    margin: 11px;
-    padding: 14px;
     border-radius: 5px;
     orientation: vertical;
     children: ["element-icon","element-text"];
 }
 element-icon {
-    size: 80px;
-    margin: 0 10px 0 0;
+    size: 70px;
 }
 element-text {
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
+  font: "Fira Code Nerd Font bold 10";
+  horizontal-align:               0.5;
+  vertical-align:                 0.5;
+  margin: 0 11px;
 }
 element.normal.normal {
     background-color: transparent;
@@ -78,7 +77,7 @@ element.alternate.normal {
 inputbar {
     enabled:true;
     spacing: 0;
-    margin: 0 25%;
+    margin: 10px 30px;
     padding: 5px 15px;
     background-color: @SELTE;
     border-radius: 10px;
@@ -86,7 +85,7 @@ inputbar {
 
 }
 entry {
-  placeholder: "search...";
+  placeholder: "";
     text-color: @SEL;
     placeholder-color: @SEL;
     spacing:    0;

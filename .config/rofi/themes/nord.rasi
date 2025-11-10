@@ -1,12 +1,12 @@
 * {
-    BG:    #2E3440;    /* fondo principal oscuro (nord polar night) */
-    BGA:   #3B4252;    /* fondo alterno (nord polar night leve) */
+    BG:    #2E34404d;    /* fondo principal oscuro (nord polar night) */
+    BGA:   #3B42524d;    /* fondo alterno (nord polar night leve) */
     FG:    #D8DEE9FF;    /* primer plano, texto principal (nord snow storm) */
     FGA:   #88C0D0FF;    /* primer plano alterno, acentos (nord frost) */
     BDR:   #88c0d0;    /* borde suave (nord snow storm con transparencia) */
     SEL:   #88C0D0FF;    /* foreground select (más claro para contraste) */
     BGB:   #434C5EFF;    /* fondo seleccionado (nord polar night oscuro) */
-    SELTE: #d8dee91F;    /* background selection (nord frost con transparencia) */
+    SELTE: #d8dee91A;    /* background selection (nord frost con transparencia) */
     UGT:   #88C0D0FF;    /* texto destacado (nord frost) */
     IMG:   #3B425280;    /* fondo imagen, tonos crema oscuro adaptado a nord (polar night 50% op) */
     OFF:   #616E88FF;    /* texto o elemento inactivo (nord snow storm inactivo) */

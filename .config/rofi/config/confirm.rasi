@@ -1,37 +1,13 @@
-configuration {
-    show-icons:                     true;
-    display-drun: 		            "";
-    drun-display-format:            "{icon} {name}";
-    disable-history:                false;
-    click-to-exit: 		            true;
-    location:                       0;
-}
-
-@import "font.rasi"
 @import "themes/default.rasi"
 
 /* Line Responsible For Button Layouts */
 /* BUTTON = TRUE */
 
-*{
-  screen-padding:               calc(50% - 85px) 36%;
-  background-color: transparent;
-  text-color: @FG;
-}
 #window {
-    background-color: rgba(255, 255, 255, 0.1);
-    fullscreen:true;
-    padding: @screen-padding;
-    location: center;
+    background-color: @BG;
+    width: calc(100% - 200px) 25%;
+    height: 7em;
     children: ["mainbox"];
-}
-listview {
-    background-color:               transparent;
-    lines: 1;
-    columns: 5;
-    cycle:                          true;
-    dynamic:                        true;
-    spacing:                        15px;
 }
 
 mainbox {
@@ -41,34 +17,33 @@ mainbox {
     border-radius:                  15px;
     background-color:               @BG;
     children:[prompt,listview];
-    spacing:                        15px;
+    orientation:                    vertical;
     padding:                        15px;
 }
-  prompt{
-  margin: 0 10%;
+listview {
+    background-color:               transparent;
+    spacing:                        15px;
+    lines: 1;
+    columns: 2;
+    flow:                    horizontal;
+    fixed-columns: true;
+}
+prompt{
+  margin: 0px 0px 0px 0px;
+  background-color: transparent;
+  text-color: inherit;
 }
 element {
     background-color:               @BG;
     text-color:                     @FG;
     border-radius:                  10px;
     padding:                        20px;
-    expand:true;
-}
-
-element-icon {
-    background-color: 		        transparent;
-    text-color:       		        inherit;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    size:                           0px;
-    border:                         0px;
+    children:[element-text];
 }
 
 element-text {
     background-color: 		        transparent;
-    text-color:       		        inherit;
     font:			                "FiraCode NF 20";
-    expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
     margin:                         0px 0px 0px 0px;

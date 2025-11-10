@@ -12,12 +12,11 @@ configuration {
 
 /* Line Responsible For Button Layouts */
 /* BUTTON = TRUE */
-*{
-    screen-padding:               calc(50% - 55px) 20%;
-}
+// *{
+//     screen-padding:               calc(50% - 55px) 20%;
+// }
 #window {
     background-color: rgba(255, 255, 255, 0.1);
-    fullscreen:true;
     padding: @screen-padding;
     location: center;
     children: [ mainbox ];
