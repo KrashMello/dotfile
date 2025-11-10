@@ -52,7 +52,7 @@ fi
 
 # Ask for confirmation
 rdialog() {
-  echo -e " \n󰜺 " | rofi -dmenu -p "¿esta seguro?" -theme "$ddir/confirm.rasi"
+  echo -e "\n󰜺 " | rofi -dmenu -p "¿esta seguro?" -theme "$ddir/confirm.rasi"
 }
 
 # Variable passed to rofi
