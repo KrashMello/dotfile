@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-rofi_command="rofi -theme $HOME/.config/rofi/config/left-menu.rasi"
+rofi_command="rofi -theme $HOME/.config/rofi/config/center-menu.rasi"
 
 list="$(powerprofilesctl list | awk '{if (NR == 1 || NR == 6 || NR == 10) print}' | sed 's/://g')"
 
-selected="$(echo -e "$list" | $rofi_command -dmenu -p "Power Profile" | sed 's/[*]//g')"
+selected="$(echo -e "$list" | $rofi_command -dmenu -p "󰓅 " | sed 's/[*]//g')"
 
 powerprofilesctl set $selected

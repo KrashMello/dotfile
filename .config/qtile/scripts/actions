@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+rofi_conf="rofi -theme $HOME/.config/rofi/config/center-menu.rasi -dmenu -p 󰧾  "
+theme="selector de tema"
+wallpaper="selector de fondo"
+notify="notificaciones"
+clipcat="portapapeles"
+emojis="emojis"
+application="aplicaciones"
+performance="modo de rendimiento"
+ans=$(echo -e "$application\n$theme\n$wallpaper\n$notify\n$clipcat\n$emojis\n$performance" | $rofi_conf)
+
+case $ans in
+"$application")
+  rofi -show drun
+  ;;
+"$theme")
+  theme-selector
+  ;;
+"$wallpaper")
+  wallpaper_selector
+  ;;
+"$notify")
+  notifyHistory
+  ;;
+"$clipcat")
+  clipcat-menu
+  ;;
+"$emojis")
+  rofimoji --selector-args="-theme $HOME/.config/rofi/config/emoji-center-menu.rasi" --use-icons
+  ;;
+"$performance")
+  powerprofile
+  ;;
+esac

@@ -62,7 +62,7 @@ keys = [
         # Terminal
         ([mod], "return", lazy.spawn("kitty")),
         # KeyLayout
-        ([mod, "shift"], "l", lazy.widget["keyboardlayout"].next_keyboard()),
+        (["control"], "space", lazy.widget["keyboardlayout"].next_keyboard()),
         # Screenshot
         # ([mod], "s", lazy.spawn(" maim -u $HOME/Imágenes/Screenshot/km-%d_%m_%Y-%I-%M-%S.png")),
         # ([mod, "shift"], "s", lazy.spawn("sh ../screenshots --sel")),

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-rofi_command="rofi -theme $HOME/.config/rofi/config/clean.rasi"
+rofi_command="rofi -dmenu -theme $HOME/.config/rofi/config/center-menu.rasi"
 
 uptime=$(uptime -p | sed -e 's/up //g')
 
 # images="$(xdg-user-dir PICTURES)/backgroud"
 commands="$(/bin/cat $HOME/.config/qtile/assets/commands.txt)"
-chosse="$(echo -e "$commands" | $rofi_command -dmenu -selected-row 0 -p "  qtile keybind: ")"
+chosse="$(echo -e "$commands" | $rofi_command -selected-row 0 -p "  ")"

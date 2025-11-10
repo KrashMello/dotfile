@@ -24,4 +24,4 @@ EOF
 
 options="$options"
 
-result=$(printf '%s' "$options" | rofi -theme $HOME/.config/rofi/config/left-menu.rasi -dmenu -i)
+result=$(printf '%s' "$options" | rofi -theme $HOME/.config/rofi/config/center-menu.rasi -dmenu -i -p " ")

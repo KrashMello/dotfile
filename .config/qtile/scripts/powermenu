@@ -52,13 +52,13 @@ fi
 
 # Ask for confirmation
 rdialog() {
-  echo -e "\n󰜺" | rofi -dmenu -p "¿esta seguro?" -theme "$ddir/confirm.rasi"
+  echo -e " \n󰜺 " | rofi -dmenu -p "¿esta seguro?" -theme "$ddir/confirm.rasi"
 }
 
 # Variable passed to rofi
 options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
 
-chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 0)"
+chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 0)"
 case $chosen in
 $shutdown)
   ans=$(rdialog &)
@@ -77,7 +77,7 @@ $reboot)
   fi
   ;;
 $lock)
-  $HOME/.config/qtile/scripts/screenLocker
+  screenLocker
   ;;
 $suspend)
   ans=$(rdialog &)

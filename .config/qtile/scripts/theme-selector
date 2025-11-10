@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-rofi_command="rofi -theme $HOME/.config/rofi/config/left-menu.rasi"
+rofi_command="rofi -theme $HOME/.config/rofi/config/center-menu.rasi"
 
 commands="$(/bin/cat $HOME/.config/qtile/assets/rofi-theme.txt)"
-chosse="$(echo -e "$commands" | $rofi_command -dmenu -i -p "  qtile keybind: ")"
+chosse="$(echo -e "$commands" | $rofi_command -dmenu -i -p "󰔎 ")"
 
 if [ "$chosse" != "" ]; then
   echo "@import \"$chosse.rasi\"" >$HOME/.config/rofi/themes/default.rasi

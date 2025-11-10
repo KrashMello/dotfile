@@ -26,12 +26,20 @@ super + BackSpace
 	powermenu;
 
 #open clipcat menu
-control + alt + h
+control + alt + 4
   OpenApps --clipcat;
 
 #show notifications
-control + alt + n
+control + alt + 2
   OpenApps --notify;
+
+#show notifications
+control + alt + 3
+  OpenApps --actions;
+
+#lock screen
+super + shift + l
+  OpenApps --screenlock;
 
 #redshift
 super + r
