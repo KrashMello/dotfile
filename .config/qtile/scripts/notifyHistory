@@ -1,8 +1,21 @@
 #!/usr/bin/env bash
 
 history_json="$(dunstctl history)"
-history_items="$(printf '%s' "$history_json" | jq -r '.data[0][] | .appname.data , (.timestamp.data | tostring) , .summary.data, .body.data | gsub("[\\n]"; "\\n")')" # the gsub is to really ensure no escaped new lines in the data lead us to print new lines. New lines in data have to be escaped. (Because) Actual newlines are the field separator essential to the logic of the while loop below, and rofi further down.
-
+history_items="$(printf '%s' "$history_json" | jq -r '.data[0][] | .appname.data , (.timestamp.data | tostring) , .summary.data, .body.data | gsub("[\\n]"; "\\n")')"
+markup_escape_text() {
+  local input="$1"
+  # Escapar ampersand primero para evitar dobles escapes
+  input=$(echo "$input" | sed -e 's/&/\&amp;/g')
+  # Escapar menor que
+  input=$(echo "$input" | sed -e 's/</\&lt;/g')
+  # Escapar mayor que
+  input=$(echo "$input" | sed -e 's/>/\&gt;/g')
+  # Escapar comillas dobles
+  input=$(echo "$input" | sed -e 's/"/\&quot;/g')
+  # Escapar comillas simples
+  input=$(echo "$input" | sed -e "s/'/\&apos;/g")
+  echo "$input"
+}
 iter=0
 
 IFS='
@@ -14,17 +27,56 @@ while
   read -r notification_body
 do
   iter=$((iter + 1))
-  option=$(printf '"%s" (%s): %s ' "$notification_summary" "$application_name" "$notification_body")
+  aplication_name=$(markup_escape_text "$application_name")
+  notification_summary=$(markup_escape_text "$notification_summary")
+  notification_body=$(markup_escape_text "$notification_body")
 
-  options="$options$option
-"
+  option=$(printf '<b>%s</b> <small>(%s)</small>: \n<i>%s</i> |' "$notification_summary" "$application_name" "$notification_body")
+  options="$options$option"
 done <<EOF
 $history_items
 EOF
 
-options="$options"
-
-result=$(printf '%s' "$options" | rofi -theme $HOME/.config/rofi/config/center-menu.rasi -dmenu -i -p " ")
-if [ "$result" != "" ]; then
-  echo -en $result | rofi -theme $HOME/.config/rofi/config/message.rasi -e -
-fi
+result=$(echo "$options" | cat | rofi -theme $HOME/.config/rofi/config/notify.rasi -dmenu -i -p " " -markup-rows -mesg -sep '|' -eh 2 -)
+# if [ "$result" != "" ]; then
+#   echo -en $result | rofi -theme $HOME/.config/rofi/config/message.rasi -e -
+# fi
+#
+# history_json="$(dunstctl history)"
+# history_items="$(printf '%s' "$history_json" | jq '.data[0][] | .message.data' | sed 's/"//g' | sed 's/\\n/ \\n /g')"
+# markup_escape_text() {
+#   local input="$1"
+#   # Escapar ampersand primero para evitar dobles escapes
+#   input=$(echo "$input" | sed -e 's/&/\&amp;/g')
+#   # Escapar menor que
+#   input=$(echo "$input" | sed -e 's/</\&lt;/g')
+#   # Escapar mayor que
+#   input=$(echo "$input" | sed -e 's/>/\&gt;/g')
+#   # Escapar comillas dobles
+#   input=$(echo "$input" | sed -e 's/"/\&quot;/g')
+#   # Escapar comillas simples
+#   input=$(echo "$input" | sed -e "s/'/\&apos;/g")
+#   echo "$input"
+# }
+# iter=0
+# echo "$history_items"
+# IFS='
+# '
+# while
+#   read -r application_name
+# # read -r notification_timestamp
+# # read -r notification_summary
+# # read -r notification_body
+# do
+#   iter=$((iter + 1))
+#   # application_name=$(markup_escape_text "$application_name")
+#   # notification_summary=$(markup_escape_text "$notification_summary")
+#   # notification_body=$(markup_escape_text "$notification_body")
+#
+#   option=$(printf '%s |' "$application_name")
+#   options="$options$option"
+# done <<EOF
+# $history_items
+# EOF
+#
+# result=$(echo "$options" | cat | rofi -theme $HOME/.config/rofi/config/notify.rasi -dmenu -i -p " " -markup-rows -mesg -sep '|' -eh 2 -)
