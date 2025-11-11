@@ -2,7 +2,7 @@
     BG:    #eff1f580;    /* fondo principal oscuro -> beige claro */
     BGA:   #FAF4ED80;    /* fondo alterno */
     FG:    #4c4f69;    /* primer plano, texto principal -> gris violáceo suave */
-    FGA:   #DDB6F0;    /* primer plano alterno, acentos -> rosa lavanda */
+    FGA:   #4c4f69;    /* primer plano alterno, acentos -> rosa lavanda */
     BDR:   #dd7878;    /* borde suave -> marrón beige semitransparente */
     SEL:   #4c4f69;    /* foreground select (dejado igual para parecido) */
     BGB:   #E6D6B9;    /* fondo seleccionado -> beige medio */

@@ -1,8 +1,8 @@
 * {
     BG:    #1917244d;    /* fondo principal oscuro */
     BGA:   #1F1D2E4d;    /* fondo alterno */
-    FG:    #E0DEF4FF;    /* primer plano, texto principal */
-    FGA:   #F6C177FF;    /* primer plano alterno, acentos */
+    FG:    #E0DEF4;    /* primer plano, texto principal */
+    FGA:   #F6C177;    /* primer plano alterno, acentos */
     BDR:   #5de4c7FF;    /* borde*/
     SEL:   #add7ffff;    /* foreground select */
     BGB:   #1E1B2AFF;    /* fondo seleccionado */
