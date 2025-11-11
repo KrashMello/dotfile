@@ -16,3 +16,6 @@ prepend_previewers = [
 	{ mime = "application/xz",              run = "ouch" },
 
 ]
+
+[mgr]
+ratio = [0,2,6]

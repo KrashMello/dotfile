@@ -1,0 +1,2 @@
+-- require("toggle-pane"):entry("min-parent")
+-- require("toggle-pane"):entry("max-preview")
