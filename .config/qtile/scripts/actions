@@ -8,7 +8,8 @@ clipcat="portapapeles"
 emojis="emojis"
 application="aplicaciones"
 performance="modo de rendimiento"
-ans=$(echo -e "$application\n$theme\n$wallpaper\n$notify\n$clipcat\n$emojis\n$performance" | $rofi_conf -p "󰧾 ")
+zellij="zellij"
+ans=$(echo -e "$application\n$theme\n$wallpaper\n$notify\n$clipcat\n$emojis\n$performance\n$zellij" | $rofi_conf -p "󰧾 ")
 
 case $ans in
 "$application")
@@ -31,5 +32,8 @@ case $ans in
   ;;
 "$performance")
   powerprofile
+  ;;
+"$zellij")
+  commandzellij
   ;;
 esac
