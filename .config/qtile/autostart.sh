@@ -20,6 +20,11 @@ fi
 # start all this to entry the system
 sxhkd -c "$HOME/.config/qtile/sxhkdrc" &
 dunst -config "$HOME/.config/qtile/dunstrc" &
+version=$(cat $HOME/.config/qtile/VERSION)
+actual_version=$(curl -X GET https://raw.githubusercontent.com/KrashMello/dotfile/refs/heads/main/VERSION)
+if [ "$version" != "$actual_version" ]; then
+  notify-send "Actualizacion pendiente" "Los dotfile tienen una nueva actualizacion $actual_version actualizar el repositorio"
+fi
 # xss-lock -- i3lockmore -n --image-fill $HOME/Imágenes/background/surreal_art_by_thenumberoneai_dgfi3bl-fullview.jpg &
 # run variety &
 run nm-applet &
