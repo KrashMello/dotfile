@@ -4,7 +4,7 @@
     FG:    #575279;    /* primer plano, texto principal -> gris violáceo suave */
     FGA:   #E6D6B9;    /* primer plano alterno, acentos -> rosa lavanda */
     BDR:   #d7827e;    /* borde suave -> marrón beige semitransparente */
-    SEL:   #E6D6B9;    /* foreground select (dejado igual para parecido) */
+    SEL:   #56949f;    /* foreground select (dejado igual para parecido) */
     BGB:   #E6D6B9;    /* fondo seleccionado -> beige medio */
     SELTE: #2869831A;    /* background selection (se mantiene para contraste) */
     UGT:   #DDB6F0;    /* texto destacado -> rosa lavanda */
