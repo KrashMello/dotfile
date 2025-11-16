@@ -43,7 +43,7 @@ element {
 
 element-text {
     background-color: 		        transparent;
-    font:			                "FiraCode NF 20";
+    text-color:                     inherit;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
     margin:                         0px 0px 0px 0px;
