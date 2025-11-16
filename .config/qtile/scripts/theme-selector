@@ -9,7 +9,9 @@ if [ "$chosse" != "" ]; then
   echo "@import \"$chosse.rasi\"" >$HOME/.config/rofi/themes/default.rasi
   echo "include $chosse.conf" >$HOME/.config/kitty/themes/default.conf
   echo -e "{\n\t\"theme\": \"$chosse\"\n}" >$HOME/.config/qtile/config.json
-
+  if [ -d $HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome ]; then
+    echo "@import \"./themes/$chosse.css\";" >$HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome/theme.css
+  fi
   images="$(xdg-user-dir PICTURES)/background"
   themes="themes/$(/bin/cat ~/.config/qtile/config.json | sed -n 's/^[[:space:]]*\"theme\":[[:space:]]*\"\([^;]*\)\".*$/\1/p')"
 
