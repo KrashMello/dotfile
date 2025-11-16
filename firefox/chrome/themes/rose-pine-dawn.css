@@ -1,0 +1,98 @@
+:root {
+/*---+---+---+---+---+---+---+
+     | C | O | L | O | U | R | S |
+     +---+---+---+---+---+---+---*/
+
+/* Comment the color theme you don't want to use */
+
+  /* Dark Theme Colors */
+  --window-colour: #faf4ed40;
+  --secondary-colour: #f2e9e140;
+  --inverted-colour: #56949f;
+  --uc-not-selected-tab: #575279;
+
+  /* Containter Tab Colours */
+  --uc-identity-color-blue: #fffac2;
+  --uc-identity-color-turquoise: #55e6c1;
+  --uc-identity-color-green: #b8e994;
+  --uc-identity-color-yellow: #f7d794;
+  --uc-identity-color-orange: #f19066;
+  --uc-identity-color-red: #fc5c65;
+  --uc-identity-color-pink: #f78fb3;
+  --uc-identity-color-purple: #786fa6;
+/* URL colour in URL bar suggestions */
+  --urlbar-popup-url-color: var(--uc-identity-color-purple) !important;
+
+  /*---+---+---+---+---+---+---+
+     | V | I | S | U | A | L | S |
+     +---+---+---+---+---+---+---*/
+
+  /* global border radius */
+  --uc-border-radius: 0;
+
+  /* dynamic url bar width settings */
+  --uc-urlbar-width: clamp(250px, 50vw, 600px);
+
+  /* dynamic tab width settings */
+  --uc-active-tab-width: clamp(50px, 18vw, 220px);
+  --uc-inactive-tab-width: clamp(50px, 15vw, 200px);
+
+  /* if active always shows the tab close button */
+  --show-tab-close-button: none;
+  /* DEFAULT: -moz-inline-box; */
+
+  /* if active only shows the tab close button on hover*/
+  --show-tab-close-button-hover: -moz-inline-box;
+  /* DEFAULT: -moz-inline-box; */
+
+  /* adds left and right margin to the container-tabs indicator */
+  --container-tabs-indicator-margin: 0px;
+}
+
+/*=============================================================================================*/
+
+/*---+---+---+---+---+---+
+ | L | A | Y | O | U | T |
+ +---+---+---+---+---+---*/
+
+/* No need to change anything below this comment.
+ * Just tweak it if you want to tweak the overall layout. c: */
+
+:root {
+  --uc-theme-colour: var(--window-colour);
+  --uc-hover-colour: var(--secondary-colour);
+  --uc-inverted-colour: var(--inverted-colour);
+
+  --button-bgcolor: var(--uc-theme-colour) !important;
+  --button-hover-bgcolor: var(--uc-hover-colour) !important;
+  --button-active-bgcolor: var(--uc-hover-colour) !important;
+
+  --toolbar-bgcolor: var(--uc-theme-colour) !important;
+  --toolbarbutton-hover-background: var(--uc-hover-colour) !important;
+  --toolbarbutton-active-background: var(--uc-hover-colour) !important;
+  --toolbarbutton-border-radius: var(--uc-border-radius) !important;
+  --lwt-toolbar-field-focus: var(--uc-theme-colour) !important;
+  --toolbarbutton-icon-fill: var(--uc-inverted-colour) !important;
+  --toolbar-field-focus-background-color: var(--secondary-colour) !important;
+  --toolbar-field-color: var(--uc-inverted-colour) !important;
+  --toolbar-field-focus-color: var(--uc-inverted-colour) !important;
+
+  --tabs-border-color: var(--uc-theme-colour) !important;
+  --tab-border-radius: var(--uc-border-radius) !important;
+  --lwt-text-color: var(--uc-inverted-colour) !important;
+  --lwt-tab-text: var(--uc-inverted-colour) !important;
+
+  --lwt-sidebar-background-color: var(--uc-hover-colour) !important;
+  --lwt-sidebar-text-color: var(--uc-inverted-colour) !important;
+
+  --arrowpanel-border-color: var(--uc-theme-colour) !important;
+  --arrowpanel-border-radius: var(--uc-border-radius) !important;
+  --arrowpanel-background: var(--uc-theme-colour) !important;
+  --arrowpanel-color: var(--inverted-colour) !important;
+
+  --autocomplete-popup-highlight-background: var(--uc-inverted-colour) !important;
+  --autocomplete-popup-highlight-color: var(--uc-inverted-colour) !important;
+  --autocomplete-popup-hover-background: var(--uc-inverted-colour) !important;
+
+  --tab-block-margin: 2px !important;
+}
