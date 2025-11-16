@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+#
+# tests() {
+#   #check if these get displayed right
+#   notify-send "Dinner is ready"
+#   notify-send "The\nTrick"
+#   notify-send "The Trick
+# #2"
+# }
+#
+# history_json="$(dunstctl history)"
+# history_items="$(printf '%s' "$history_json" | jq -r '.data[0][] | .appname.data , (.timestamp.data | tostring) , .summary.data, .body.data | gsub("[\\n]"; "\\n")')" # the gsub is to really ensure no escaped new lines in the data lead us to print new lines. New lines in data have to be escaped. (Because) Actual newlines are the field separator essential to the logic of the while loop below, and rofi further down.
+#
+# iter=0
+#
+# IFS='
+# '
+# while
+#   read -r application_name
+#   read -r notification_timestamp
+#   read -r notification_summary
+#   read -r notification_body
+# do
+#   iter=$((iter + 1))
+#   option=$(printf '"%s" (%s): %s ' "$notification_summary" "$application_name" "$notification_body")
+#
+#   options="$options$option
+# "
+# done <<EOF
+# $history_items
+# EOF
+#
+# options="$options"
+# echo "$options"
+# result=$(printf '%s' "$options" | rofi -dmenu -i)
+# if [ "$?" -ne 0 ] || [ -z "$result" ] || [ "$result" = "Cancel" ]; then
+#   exit
+# fi
+
+# Get the internal notification ID
+# selection_index=$(($(printf '%s' "$result" | awk -F" " '{print $(NF-0)}') - 1)) # translation of awk: grab the last field
+# notification_id=$(printf '%s' "$history_json" | jq -r .data[][$selection_index].id.data)
+# echo -e "$notification_id"
+# Tell dunst to revive said notification
+# dunstctl history-pop $notification_id
+# xprop -name "rofi - Clipcat: " -f WM_CLASS 8s -set WM_CLASS "new_class_name"
+# xprop
+# msg="<span font-size='small'><i>Alt+s</i>:    Dismiss notification.    <i>Alt+Enter</i>:      Mark notification seen.\n"
+# msg="$msg<i>Alt+r</i>:    Reload                   <i>Alt+a</i>:          Delete application notification</span>"
+# rofi -theme $HOME/.config/rofi/config/center-menu.rasi -dmenu -p " " -markup-rows -e "$msg"
+rofi -dmenu -markup-rows -theme $HOME/.config/rofi/config/center-menu.rasi <<EOF
+<b>Teiler</b> <span foreground="gray">(notify-send)</span>   <i>Screenshot will be taken in 5 seconds</i>
+EOF

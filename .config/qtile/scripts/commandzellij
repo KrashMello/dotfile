@@ -2,7 +2,6 @@
 
 sessions_list=$(zellij list-sessions -n | awk '{print $1;}')
 result=$(printf "%s\n" $sessions_list | rofi -dmenu -i -p " " -theme $HOME/.config/rofi/config/center-menu.rasi)
-
-if [ result != "" ]; then
+if [ "$result" != "" ]; then
   kitty sh -c "zellij attach $result"
 fi
