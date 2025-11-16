@@ -145,9 +145,11 @@ primary_widgets = [
         fontsize=14,
         format="{MemUsed: .0f}{mm} ",
     ),
-    widget.Systray(),
-    widget.Volume(),
-    widget.KeyboardLayout(configured_keyboards=["us intl", "latam"], fmt=" {}"),
+    widget.Systray(**base(bg="background", fg="text")),
+    widget.Volume(**base()),
+    widget.KeyboardLayout(
+        **base(), configured_keyboards=["us intl", "latam"], fmt=" {}"
+    ),
     widget.Clock(
         **base(),
         format=" %d/%m/%Y  %I:%M %p ",
