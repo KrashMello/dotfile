@@ -11,7 +11,8 @@ if [ "$chosse" != "" ]; then
   echo -e "{\n\t\"theme\": \"$chosse\"\n}" >$HOME/.config/qtile/config.json
 
   images="$(xdg-user-dir PICTURES)/background"
-  themes="/themes/$(/bin/cat ~/.config/qtile/config.json | sed "s/[\s\":]//g" | awk 'NR == 2 {print($2)}')"
+  themes="themes/$(/bin/cat ~/.config/qtile/config.json | sed -n 's/^[[:space:]]*\"theme\":[[:space:]]*\"\([^;]*\)\".*$/\1/p')"
+
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
   case $chosse in
   "nord")
