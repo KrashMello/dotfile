@@ -33,6 +33,7 @@ listview {
     dynamic:                        true;
     scrollbar: false;
     children: ["element"];
+    padding:                        5 0px;
     layout: vertical;
 }
 
