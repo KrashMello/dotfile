@@ -19,7 +19,8 @@ if [ -f "$HOME/.fehbg" ]; then
 fi
 # start all this to entry the system
 sxhkd -c "$HOME/.config/qtile/sxhkdrc" &
-dunst -config "$HOME/.config/qtile/dunstrc" &
+theme=$(/bin/cat ~/.config/qtile/config.json | sed -n 's/^[[:space:]]*\"theme\":[[:space:]]*\"\([^;]*\)\".*$/\1/p')
+dunst -config "$HOME/.config/qtile/themes/$theme/dunstrc" &
 version=$(cat $HOME/.config/qtile/VERSION)
 actual_version=$(curl -X GET https://raw.githubusercontent.com/KrashMello/dotfile/refs/heads/main/VERSION)
 if [ "$version" != "$actual_version" ]; then

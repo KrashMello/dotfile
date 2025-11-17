@@ -6,8 +6,12 @@ commands="$(/bin/cat $HOME/.config/qtile/assets/rofi-theme.txt)"
 chosse="$(echo -e "$commands" | $rofi_command -dmenu -i -p "󰔎 ")"
 
 if [ "$chosse" != "" ]; then
+  pkill dunst
+  dunst -config $HOME/.config/qtile/themes/$chosse/dunstrc &
+  notify-send "El tema a sido cambiado" "$chosse"
   echo "@import \"$chosse.rasi\"" >$HOME/.config/rofi/themes/default.rasi
   echo "include $chosse.conf" >$HOME/.config/kitty/themes/default.conf
+  kill -SIGUSR1 $(pidof kitty)
   echo -e "{\n\t\"theme\": \"$chosse\"\n}" >$HOME/.config/qtile/config.json
   if [ -d $HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome ]; then
     echo "@import \"./themes/$chosse.css\";" >$HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome/theme.css

@@ -19,14 +19,14 @@ separator_height = 2
 padding = 8
 horizontal_padding = 11
 frame_width = 3
-frame_color = "#88c0d0"
+frame_color = "#f2e9e1"
 separator_color= frame
 
 font = GohuFont 11 Nerd Font
 
 line_height = 0
 markup = full
-format = "<span size='x-large' font_desc='GohuFont 11 Nerd Font' weight='bold' foreground='#88c0d0'>%s</span>\n%b"
+format = "<span size='x-large' font_desc='GohuFont 11 Nerd Font' weight='bold' foreground='#575279'>%s</span>\n%b"
 alignment = center
 
 history = true
@@ -56,17 +56,17 @@ mouse_right_click = close_all
 
 [urgency_low]
 timeout = 3
-background = "#2e3440"
-foreground = "#cad3f5"
+background = "#f2e9e1"
+foreground = "#56949f"
 
 [urgency_normal]
 timeout = 6
-background = "#2e3440"
-foreground = "#cad3f5"
+background = "#f2e9e1"
+foreground = "#56949f"
 
 [urgency_critical]
 timeout = 0
-background = "#2e3440"
-foreground = "#cad3f5"
+background = "#f2e9e1"
+foreground = "#56949f"
 frame_color = "#f5a97f"
 
