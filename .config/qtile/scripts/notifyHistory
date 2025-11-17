@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+screen_info=$(qtile cmd-obj -o screen -f info)
+screen_index=$(printf "%s" $screen_info | jq -r '.index')
 history_json="$(dunstctl history)"
 history_items="$(printf '%s' "$history_json" | jq -r '.data[0][] | .appname.data , (.timestamp.data | tostring) , .summary.data, .body.data | gsub("[\\n]"; "\\n")')"
 iter=0
@@ -20,4 +22,4 @@ done <<EOF
 $history_items
 EOF
 echo -e "(box :orientation \"v\" :spacing 0 :space-evenly \"false\"\n$options\n)" >$HOME/.config/qtile/assets/eww/notify/notify-list.txt
-eww -c $HOME/.config/qtile/assets/eww open --toggle notify --screen 1
+eww -c $HOME/.config/qtile/assets/eww open --toggle notify --screen $screen_index
