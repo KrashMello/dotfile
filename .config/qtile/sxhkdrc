@@ -67,3 +67,7 @@ control + alt + p
 #emoji selector
 super + control + space
   OpenApps --emoji;
+
+#widgets
+alt + F1
+  OpenApps --helpKey;

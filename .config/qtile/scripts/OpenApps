@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+WIDGET_DIR="$HOME/.config/qtile/assets/eww/"
+
 case "$1" in
 --notify)
   notifyHistory
@@ -72,8 +74,8 @@ case "$1" in
   pavucontrol
   ;;
 # Eww Widgets
---powermenu)
-  eww -c "$WIDGET_DIR" open --toggle powermenu
+--helpKey)
+  eww -c "$WIDGET_DIR" open --toggle cheatsheet
   ;;
 --usercard)
   eww -c "$WIDGET_DIR" open --toggle launchermenu
