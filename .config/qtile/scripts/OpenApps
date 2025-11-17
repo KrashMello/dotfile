@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 WIDGET_DIR="$HOME/.config/qtile/assets/eww/"
+screen_info=$(qtile cmd-obj -o screen -f info)
+screen_index=$(printf "%s" $screen_info | jq -r '.index')
 
 case "$1" in
 --notify)
@@ -75,7 +77,7 @@ case "$1" in
   ;;
 # Eww Widgets
 --helpKey)
-  eww -c "$WIDGET_DIR" open --toggle cheatsheet
+  eww -c "$WIDGET_DIR" open --toggle cheatsheet --screen $screen_index
   ;;
 --usercard)
   eww -c "$WIDGET_DIR" open --toggle launchermenu
