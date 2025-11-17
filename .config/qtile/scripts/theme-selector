@@ -10,6 +10,8 @@ if [ "$chosse" != "" ]; then
   dunst -config $HOME/.config/qtile/themes/$chosse/dunstrc &
   notify-send "El tema a sido cambiado" "$chosse"
   echo "@import \"$chosse.rasi\"" >$HOME/.config/rofi/themes/default.rasi
+  echo "@import \"themes/$chosse.scss\"" >$HOME/.config/qtile/assets/eww/colors.scss
+  kill -SIGUSR1 $(pidof eww)
   echo "include $chosse.conf" >$HOME/.config/kitty/themes/default.conf
   kill -SIGUSR1 $(pidof kitty)
   echo -e "{\n\t\"theme\": \"$chosse\"\n}" >$HOME/.config/qtile/config.json
@@ -39,6 +41,6 @@ if [ "$chosse" != "" ]; then
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
     ;;
   esac
-  qtile cmd-obj -o cmd -f restart
+  qtile cmd-obj -o cmd -f reload_config
 
 fi
