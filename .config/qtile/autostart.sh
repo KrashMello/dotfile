@@ -21,7 +21,7 @@ fi
 sxhkd -c "$HOME/.config/qtile/sxhkdrc" &
 theme=$(/bin/cat ~/.config/qtile/config.json | sed -n 's/^[[:space:]]*\"theme\":[[:space:]]*\"\([^;]*\)\".*$/\1/p')
 dunst -config "$HOME/.config/qtile/themes/$theme/dunstrc" &
-version=$(cat $HOME/.config/qtile/VERSION)
+version=$(/bin/cat $HOME/.config/qtile/VERSION)
 actual_version=$(curl -X GET https://raw.githubusercontent.com/KrashMello/dotfile/refs/heads/main/VERSION)
 if [ "$version" != "$actual_version" ]; then
   notify-send "Actualizacion pendiente" "Los dotfile tienen una nueva actualizacion $actual_version actualizar el repositorio"
