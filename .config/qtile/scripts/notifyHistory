@@ -1,23 +1,6 @@
 #!/usr/bin/env bash
-rofi_theme_dir="$HOME/.config/rofi/themes"
-theme_select=$(cat $HOME/.config/rofi/themes/default.rasi | sed 's/^[^"]*"\([^"]*\)".*/\1/')
-fg=$(cat "$rofi_theme_dir"/"$theme_select" | sed -n 's/^[[:space:]]*FGA:[[:space:]]*\([^;]*\);.*$/\1/p')
 history_json="$(dunstctl history)"
 history_items="$(printf '%s' "$history_json" | jq -r '.data[0][] | .appname.data , (.timestamp.data | tostring) , .summary.data, .body.data | gsub("[\\n]"; "\\n")')"
-markup_escape_text() {
-  local input="$1"
-  # Escapar ampersand primero para evitar dobles escapes
-  input=$(echo "$input" | sed -e 's/&/\&amp;/g')
-  # Escapar menor que
-  input=$(echo "$input" | sed -e 's/</\&lt;/g')
-  # Escapar mayor que
-  input=$(echo "$input" | sed -e 's/>/\&gt;/g')
-  # Escapar comillas dobles
-  input=$(echo "$input" | sed -e 's/"/\&quot;/g')
-  # Escapar comillas simples
-  input=$(echo "$input" | sed -e "s/'/\&apos;/g")
-  echo "$input"
-}
 iter=0
 
 IFS='
@@ -29,56 +12,12 @@ while
   read -r notification_body
 do
   iter=$((iter + 1))
-  aplication_name=$(markup_escape_text "$application_name")
-  notification_summary=$(markup_escape_text "$notification_summary")
-  notification_body=$(markup_escape_text "$notification_body")
 
-  option=$(printf '<span foreground="%s"><b>%s</b> <small>(%s)</small>:</span> \n<i>%s</i> |' "$fg" "$notification_summary" "$application_name" "$notification_body")
+  # option=$(printf '<span foreground="%s"><b>%s</b> <small>(%s)</small>:</span> \n <i>%s</i>|\n' "$fg" "$notification_summary" "$application_name" "$notification_body")
+  option=$(echo "(box :orientation \"v\" :space-evenly \"false\" :class \"notify-container\"\n\t(label :xalign 0.01 :class \"notify-title\" :justify \"left\" :text \"$notification_summary ($application_name):\")\n\t(label :xalign 0.03 :class \"notify-content\" :wrap \"true\" :wrap-mode \"char\" :text \"$(echo $notification_body | sed 's/"/\\"/g')\")\n)\n")
   options="$options$option"
 done <<EOF
 $history_items
 EOF
-
-result=$(echo "$options" | cat | rofi -theme $HOME/.config/rofi/config/notify.rasi -dmenu -i -p " " -markup-rows -mesg -sep '|' -eh 2 -)
-# if [ "$result" != "" ]; then
-#   echo $result | cat | rofi -theme $HOME/.config/rofi/config/message.rasi -dmenu -markup-rows -markup -mesg -i -
-# fi
-#
-# history_json="$(dunstctl history)"
-# history_items="$(printf '%s' "$history_json" | jq '.data[0][] | .message.data' | sed 's/"//g' | sed 's/\\n/ \\n /g')"
-# markup_escape_text() {
-#   local input="$1"
-#   # Escapar ampersand primero para evitar dobles escapes
-#   input=$(echo "$input" | sed -e 's/&/\&amp;/g')
-#   # Escapar menor que
-#   input=$(echo "$input" | sed -e 's/</\&lt;/g')
-#   # Escapar mayor que
-#   input=$(echo "$input" | sed -e 's/>/\&gt;/g')
-#   # Escapar comillas dobles
-#   input=$(echo "$input" | sed -e 's/"/\&quot;/g')
-#   # Escapar comillas simples
-#   input=$(echo "$input" | sed -e "s/'/\&apos;/g")
-#   echo "$input"
-# }
-# iter=0
-# echo "$history_items"
-# IFS='
-# '
-# while
-#   read -r application_name
-# # read -r notification_timestamp
-# # read -r notification_summary
-# # read -r notification_body
-# do
-#   iter=$((iter + 1))
-#   # application_name=$(markup_escape_text "$application_name")
-#   # notification_summary=$(markup_escape_text "$notification_summary")
-#   # notification_body=$(markup_escape_text "$notification_body")
-#
-#   option=$(printf '%s |' "$application_name")
-#   options="$options$option"
-# done <<EOF
-# $history_items
-# EOF
-#
-# result=$(echo "$options" | cat | rofi -theme $HOME/.config/rofi/config/notify.rasi -dmenu -i -p " " -markup-rows -mesg -sep '|' -eh 2 -)
+echo -e "(box :orientation \"v\" :spacing 0 :space-evenly \"false\"\n$options\n)" >$HOME/.config/qtile/assets/eww/notify/notify-list.txt
+eww -c $HOME/.config/qtile/assets/eww open --toggle notify --screen 1
