@@ -1,5 +1,4 @@
 .git
 .vscode
-**/__pycache__/
-**/*.pyc
-**/*.pyo
+**/**/__pycache__/**
+**/**/notify-list.txt
