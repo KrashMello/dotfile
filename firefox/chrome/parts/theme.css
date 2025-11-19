@@ -1,0 +1,20 @@
+@import "toolbox.css";
+@import "headerbar-urlbar.css";
+@import "tabsbar.css";
+@import "nord.css";
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Set theme version text in customization panel */
+#customization-footer::before {
+	background: url(icons/icon.svg) no-repeat;
+	background-size: contain;
+	content: "Firefox Monterey theme";
+	padding: 10px 10px 10px 50px;
+}
+
+#customization-container {
+	background-color: var(--gnome-browser-before-load-background) !important;
+	color: var(--gnome-toolbar-color) !important;
+	background-image: none !important;
+}
