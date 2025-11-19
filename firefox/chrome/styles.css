@@ -136,16 +136,22 @@ window,
 }
 
 .tabbrowser-tab[fadein]:not([selected]):not([pinned]) {
-  /*margin: 0 2px 0 2px !important;*/
-  min-width: 24px !important;
+  padding: 0 !important;
+  min-width: 33px !important;
+  max-width: 24px !important;
+  border-bottom: solid 2px var(--uc-not-selected-tab) !important;
+}
+.tabbrowser-tab[pinned] {
+  padding: 0 !important;
+  min-width: 33px !important;
   max-width: 24px !important;
   border-bottom: solid 2px var(--uc-not-selected-tab) !important;
 }
 
+
 /* container tabs indicator */
 .tabbrowser-tab[usercontextid]>.tab-stack>.tab-background>.tab-context-line {
   margin: -1px var(--container-tabs-indicator-margin) 0 var(--container-tabs-indicator-margin) !important;
-
   border-radius: var(--tab-border-radius) !important;
 }
 
@@ -253,9 +259,6 @@ window,
   box-shadow: none !important;
 }
 
-#urlbar-background {
-  border: var(--uc-hover-colour) !important;
-}
 
 #urlbar[focused="true"]>#urlbar-background,
 #urlbar:not([open])>#urlbar-background {
@@ -265,11 +268,15 @@ window,
 #urlbar[open]>#urlbar-background {
   background: var(--uc-theme-colour) !important;
 }
+#urlbar[open] {
+  backdrop-filter: contrast(100%) blur(6px) !important;
+}
 
 .urlbarView-row:hover>.urlbarView-row-inner,
 .urlbarView-row[selected]>.urlbarView-row-inner {
   background: var(--uc-hover-colour) !important;
 }
+
 
 /* transition to oneline */
 @media (min-width: 1000px) {
