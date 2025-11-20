@@ -1,0 +1,36 @@
+@import "./parts/toolbox.css";
+@import "./common/parts/buttons.css";
+@import "./common/parts/entries.css";
+@import "./common/parts/controls.css";
+@import "./parts/headerbar-urlbar.css";
+@import "./common/parts/headerbar-private-urlbar.css";
+@import "./common/parts/headerbar.css";
+@import "./common/parts/csd.css";
+@import "./common/parts/titlebutton-light.css";
+@import "./common/parts/titlebutton-dark.css";
+@import "./common/parts/popups.css";
+@import "./parts/tabsbar.css";
+@import "./common/parts/findbar.css";
+@import "./common/parts/sidebar.css";
+@import "./common/parts/dialogs.css";
+@import "./common/parts/notification.css";
+@import "./common/parts/infobar.css";
+@import "./common/parts/video-player.css";
+@import "./common/parts/remove-white-flash.css";
+@import "./common/parts/icons.css";
+@import "./nord.css";
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Set theme version text in customization panel */
+#customization-footer::before {
+	background: url(icons/icon.svg) no-repeat;
+	background-size: contain;
+	content: "Firefox Monterey theme";
+	padding: 10px 10px 10px 50px;
+}
+
+#customization-container {
+	background-color: var(--gnome-browser-before-load-background) !important;
+	color: var(--gnome-toolbar-color) !important;
+	background-image: none !important;
+}

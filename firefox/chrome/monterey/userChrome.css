@@ -3,7 +3,7 @@
  * Add "/*" at the begining of "@import" line to DISABLE.
  */
 
-@import "theme.css"; /**/
+@import "./theme.css"; /**/
 
 /*--------------Configure your Monterey theme--------------
  * ONLY for Monterey theme
@@ -11,12 +11,12 @@
  */
 
 /* How many buttons on left headerbar */
-@import "left_header_button_3.css"; /**/
+@import "./left_header_button_3.css"; /**/
 /*@import "Monterey/left_header_button_4.css"; /**/
 /*@import "Monterey/left_header_button_5.css"; /**/
 
 /* How many buttons on right headerbar */
-@import "right_header_button_3.css"; /**/
+@import "./right_header_button_3.css"; /**/
 /*@import "Monterey/right_header_button_4.css"; /**/
 /*@import "Monterey/right_header_button_5.css"; /**/
 

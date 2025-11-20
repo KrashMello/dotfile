@@ -1,0 +1,6 @@
+@import "nord.css";
+
+@import "./common/pages/common.css";
+@import "./common/pages/newtab.css";
+@import "./common/pages/reader.css";
+@import "./common/pages/privatebrowsing.css";

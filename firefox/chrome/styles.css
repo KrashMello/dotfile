@@ -6,8 +6,11 @@
 /* showing only the back button */
 #back-button {
   display: -moz-inline-box !important;
+  
 }
-
+#identity-box >.identity-box-button  {
+  border-radius: 10px !important;
+}
 #forward-button {
   display: none !important;
 }
@@ -45,9 +48,9 @@
 }
 
 /* #identity-box { display: none !important } /* hides encryption AND permission items */
-#identity-permission-box {
+/* #identity-permission-box {
   display: none !important;
-}
+} */
 
 /* only hides permission items */
 
@@ -56,13 +59,10 @@
   display: none !important;
 }
 
-#pageActionButton {
+#pageActionButton , #page-action-buttons {
   display: none !important;
 }
 
-#page-action-buttons {
-  display: none !important;
-}
 window,
 #main-window,
 #toolbar-menubar,
@@ -72,12 +72,14 @@ window,
 #sidebar-box,
 #nav-bar {
   -moz-appearance: none !important;
-
+  
   border: none !important;
   box-shadow: none !important;
   background: var(--uc-theme-colour) !important;
 }
-
+toolbarbutton > image,  toolbarbutton > stack {
+  border-radius: 40px !important;
+}
 #firefox-view-button{
   display: none !important;
 }
@@ -104,10 +106,9 @@ window,
   margin-inline-start: 0 !important;
 }
 
-/* #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])[orient="horizontal"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
-  margin-inline-start: 0px !important; 
-  border-left: solid 1px var(--inverted-colour) !important;
-} */
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])[orient="horizontal"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
+  margin-inline-start: 2px !important; 
+}
 
 /* remove tab shadow */
 .tabbrowser-tab>.tab-stack>.tab-background {
@@ -124,7 +125,7 @@ window,
   background: var(--uc-hover-colour) !important;
 }
 
-.tabbrowser-tab[selected], .tabbrowser-tab[pinned][selected] {
+.tabbrowser-tab[selected] .tab-background, .tabbrowser-tab[pinned][selected] .tab-background {
   border-bottom: solid 2px var(--inverted-colour) !important;
 }
 
@@ -132,22 +133,26 @@ window,
 .tabbrowser-tab:not([pinned]) .tab-close-button {
   display: var(--show-tab-close-button) !important;
 }
-
 .tabbrowser-tab:not([pinned]):hover .tab-close-button {
   display: none !important;
+}
+.tabbrowser-tab .tab-background {
+  border-bottom: solid 2px var(--uc-not-selected-tab) !important;
+ }
+.tabbrowser-tab[selected][fadein]:not([pinned]) .tab-background {
+  background: var(--uc-hover-colour) !important;
 }
 
 /* adaptive tab width */
 .tabbrowser-tab[selected][fadein]:not([pinned]) {
   max-width: var(--uc-active-tab-width) !important;
-  margin: 0 -2px 0 -2px !important;
+  margin: 0 -4px 0 -4px !important;
 }
 
 .tabbrowser-tab[fadein]:not([selected]):not([pinned]),.tabbrowser-tab[pinned] {
   padding: 0 !important;
   min-width: 33px !important;
   max-width: 24px !important;
-  border-bottom: solid 2px var(--uc-not-selected-tab) !important;
 }
 
 
@@ -256,11 +261,11 @@ window,
   border-bottom: none !important;
 }
 
-#urlbar,
+/* #urlbar,
 #urlbar * {
   box-shadow: none !important;
   outline: none !important;
-  
+   */
 }
 
 #urlbar[focused="true"]>#urlbar-background,
@@ -342,4 +347,10 @@ window,
 .identity-color-purple {
   --identity-tab-color: var(--uc-identity-color-purple) !important;
   --identity-icon-color: var(--uc-identity-color-purple) !important;
+}
+.dialogBox{
+  background: var(--uc-theme-colour) !important;
+}
+#commonDialog{
+  color: var(--uc-inverted-colour) !important;
 }
