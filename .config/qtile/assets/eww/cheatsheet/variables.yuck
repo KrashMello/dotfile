@@ -1,0 +1,133 @@
+(defvar options '[
+[
+    {
+      "title": "qtile",
+      "class": "category-bspwm",
+      "content": [
+            {
+                "keys": "Alt + F1",
+                "description": "keybinds"
+            },
+            {
+                "keys": "Win + Ctrl + r",
+                "description": "Restart Qtile"
+              },
+            {
+              "keys": "Ctrl + Alt + r",
+              "description": "Restart sxhkd daemon"
+            }
+      ]
+    },
+    {
+      "title": "Base System",
+      "class": "category-system",
+      "content": [
+            {
+              "keys": "Win + Enter",
+              "description": "Launch terminal"
+            },
+            {
+              "keys": "Win + Shift + Enter",
+              "description": "Launch floating terminal"
+            },
+            {
+                "keys": "Win + Space Bar",
+                "description": "Application launcher"
+            },
+            {
+                "keys": "Win + t",
+                "description": "Theme Selector"
+            },
+            {
+                "keys": "Win + Shift + w",
+                "description": "Wallpaper selector"
+            },
+            {
+                "keys": "Ctrl + Alt + 3",
+                "description": "Actions"
+            },
+            {
+                "keys": "Ctrl + Alt + 2",
+                "description": "Notifications"
+            },
+            {
+                "keys": "Ctrl + Alt + 4",
+                "description": "Portapapeles"
+            },
+            {
+                "keys": "Ctrl + Alt + p",
+                "description": "Performance"
+            }
+      ]
+    },
+    {
+      "title": "Workspace",
+      "class": "category-workspaces",
+      "content": [
+            {
+              "keys": "Win + 1-9",
+              "description": "Switch to specific workspace"
+            },
+            {
+              "keys": "Win + Tab",
+              "description": "Rotate Workspace"
+            },
+            {
+                "keys": "Win + {,.}",
+                "description": "Focus Screen"
+            },
+            {
+                "keys": "Win + Shift + 1-9",
+                "description": "Send Window to specific workspace"
+            }
+            ]
+    }
+],
+[
+    {
+      "title": "Dotfiles Application",
+      "class": "category-nodes",
+      "content": [
+            {
+                "keys": "Win + s",
+                "description": "Screenshot"
+            },
+            {
+                "keys": "Win + Shift + s",
+                "description": "Screenshot Selector"
+              },
+            {
+              "keys": "Win + Backspace",
+              "description": "Power Menu"
+            },
+            {
+              "keys": "Ctrl + SpaceBar",
+              "description": "Keyboard Layout"
+            }
+      ]
+    },
+    {
+      "title": "Apps",
+      "class": "category-apps",
+      "content": [
+            {
+              "keys": "Win + B",
+              "description": "Firefox"
+            },
+            {
+              "keys": "Win + e",
+              "description": "File Manager"
+            }      
+            ]
+    },
+    {
+      "title": "System Actions",
+      "class": "category-preselection",
+      "content": [
+            {
+              "keys": "Win + Shift + l",
+              "description": "Lock Screen"
+            }            ]
+    }
+  ]
+]')

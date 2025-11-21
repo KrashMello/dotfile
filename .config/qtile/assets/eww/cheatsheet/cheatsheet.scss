@@ -4,17 +4,13 @@
 }
 
 .title {
-  font-family: JetBrainsMono NF;
   font-weight: Bolder;
-  font-size: 0.9rem;
   color: $magenta;
   margin: 1.6rem 1.6rem 0 1.6rem;
 }
 
 .title-info {
-  font-family: JetBrainsMono NF;
   font-style: Italic;
-  font-size: 0.8rem;
   margin-top: 3px;
   color: $fg;
 }
@@ -24,9 +20,7 @@
 }
 
 .category-bspwm {
-  font-family: JetBrainsMono NF;
   font-weight: Bold;
-  font-size: 0.8rem;
   background-color: $green;
   color: $bg;
   margin: 8px 0;
@@ -35,9 +29,7 @@
 }
 
 .category-system {
-  font-family: JetBrainsMono NF;
   font-weight: Bold;
-  font-size: 0.8rem;
   background-color: $red;
   color: $bg;
   margin: 8px 0;
@@ -46,9 +38,7 @@
 }
 
 .category-nodes {
-  font-family: JetBrainsMono NF;
   font-weight: Bold;
-  font-size: 0.8rem;
   background-color: $yellow;
   color: $bg;
   margin: 8px 0;
@@ -57,20 +47,7 @@
 }
 
 .category-workspaces {
-  font-family: JetBrainsMono NF;
   font-weight: Bold;
-  font-size: 0.8rem;
-  background-color: $magenta;
-  color: $bg;
-  margin: 8px 0;
-  padding: 2px 0;
-  border-radius: 2px;
-}
-
-.category-move {
-  font-family: JetBrainsMono NF;
-  font-weight: Bold;
-  font-size: 0.8rem;
   background-color: $archicon;
   color: $bg;
   margin: 8px 0;
@@ -79,9 +56,7 @@
 }
 
 .category-apps {
-  font-family: JetBrainsMono NF;
   font-weight: Bold;
-  font-size: 0.8rem;
   background-color: $green;
   color: $bg;
   margin: 8px 0;
@@ -90,9 +65,7 @@
 }
 
 .category-preselection {
-  font-family: JetBrainsMono NF;
   font-weight: Bold;
-  font-size: 0.8rem;
   background-color: $blue;
   color: $bg;
   margin: 8px 0;
@@ -101,9 +74,7 @@
 }
 
 .category-others {
-  font-family: JetBrainsMono NF;
   font-weight: Bold;
-  font-size: 0.8rem;
   background-color: $red;
   color: $bg;
   margin: 8px 0;
@@ -112,9 +83,7 @@
 }
 
 .category-power {
-  font-family: JetBrainsMono NF;
   font-weight: Bold;
-  font-size: 0.8rem;
   background-color: $cyan;
   color: $bg;
   margin: 8px 0;
@@ -123,15 +92,11 @@
 }
 
 .keys {
-  font-family: BebasNeue;
-  font-size: 1rem;
   color: $fg;
 }
 
 .keys-alt {
-  font-family: JetBrainsMono NF;
   font-weight: Bold;
-  font-size: 0.8rem;
   color: $fg;
 }
 

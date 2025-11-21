@@ -1,3 +1,7 @@
+;; Author : krashmello
+;; Dotfiles : https://github.com/krashmello/dotfiles
+;; Show all notifications.
+;;
 
 (defpoll notify-list :interval "1s" "/bin/cat ~/.config/qtile/assets/eww/notify/notify-list.txt")
 
@@ -15,7 +19,7 @@
           :spacing 0
           :space-evenly "false"
     (label  :class "widget-notify-title"
-            :xalign 0.2
+            :xalign 0.5
             :text "
 ░█▀█░█▀█░▀█▀░▀█▀░█▀▀░▀█▀░█▀▀░█▀█░▀█▀░▀█▀░█▀█░█▀█░█▀▀
 ░█░█░█░█░░█░░░█░░█▀▀░░█░░█░░░█▀█░░█░░░█░░█░█░█░█░▀▀█
@@ -32,9 +36,10 @@
 
 (defwindow notify
     :geometry (geometry :x "0%"
-                        :y "3%"
-                        :width "30%"
-                        :height "96%"
-                        :anchor "top right")
+                        :y "0%"
+                        :width "50%"
+                        :height "66%"
+                        :anchor "center")
+
     :wm-ignore false
     (notify))

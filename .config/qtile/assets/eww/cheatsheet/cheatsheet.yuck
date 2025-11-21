@@ -1,8 +1,9 @@
-;; Author : gh0st
-;; Dotfiles : https://github.com/gh0stzk/dotfiles
+;; Author : krashmello
+;; Dotfiles : https://github.com/krashmello/dotfiles
 ;; Show a cheatsheet for the bspwm environment.
 ;;
 
+(include "cheatsheet/variables.yuck")
 
 (defwidget cheatsheet []
     (scroll :hscroll true :vscroll true
@@ -32,107 +33,36 @@
   )
 )
 
-
 (defwidget content []
   (box :class "content" :orientation "h" :spacing 20 :space-evenly "true"
-    (box :orientation "v" :space-evenly "false" :spacing 1
-      (box :orientation "h" :space-evenly "true"
-        (label :class "category-bspwm" :xalign 0.5 :text "qtile")
-        (label :text ""))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Keybindings")
-        (label :class "keys-alt" :xalign 1 :text "Alt + F1"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Restart Qtile")
-        (label :class "keys-alt" :xalign 1 :text "Super + Ctrl + r"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Reload sxhkd daemon")
-        (label :class "keys-alt" :xalign 1 :text  "Ctrl + Alt + r"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "category-system" :xalign 0.5 :text "Base System")
-        (label :text ""))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Terminal")
-        (label :class "keys-alt" :xalign 1 :text "Win + Enter"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Floating terminal")
-        (label :class "keys-alt" :xalign 1 :text "Win + Shift + Enter"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Menu Apps")
-        (label :class "keys-alt" :xalign 1 :text "Win + Space Bar"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Theme Selector")
-        (label :class "keys-alt" :xalign 1 :text "Win + t"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Wallpaper Selector")
-        (label :class "keys-alt" :xalign 1 :text "Win + Shift + w"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Actions")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + 3"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Notifications")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + 2"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Portapapeles")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + 4"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Performance")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + p"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "category-workspaces" :xalign 0.5 :text "Workspaces")
-        (label :text ""))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Switch specific workspace")
-        (label :class "keys-alt" :xalign 1 :text "Win + 1-9"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Rotate workspace")
-        (label :class "keys-alt" :xalign 1 :text "Win + Tab"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "focus Screen")
-        (label :class "keys-alt" :xalign 1 :text "Win + {,.}"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Send to other workspace")
-        (label :class "keys-alt" :xalign 1 :text "Win + Shift + 1-9"))
-    )
-
-    (box :orientation "v" :space-evenly "false" :spacing 1
-      (box :orientation "h" :space-evenly "true"
-        (label :class "category-workspaces" :xalign 0.5 :text "Dotfiles Apps")
-        (label :text ""))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Screenshot")
-        (label :class "keys-alt" :xalign 1 :text "Win + s"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Screenshot Selector")
-        (label :class "keys-alt" :xalign 1 :text "Win + Shift + s"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Power Menu")
-        (label :class "keys-alt" :xalign 1 :text "Win + Back space"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Keyboard Layout")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Space bar"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "category-apps" :xalign 0.5 :text "Apps")
-        (label :text ""))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Firefox")
-        (label :class "keys-alt" :xalign 1 :text "Win + b"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "File Manager")
-        (label :class "keys-alt" :xalign 1 :text "Win + e"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "category-power" :xalign 0.5 :text "System Actions")
-        (label :text ""))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Lockscreen")
-        (label :class "keys-alt" :xalign 1 :text "Win + Shift + l"))
+    (for columns in  options
+      (box :orientation "v" :space-evenly "false" :spacing 1
+        (for items in "${columns}"
+          (box 
+            (box  :orientation "v" :space-evenly "false" :spacing 1
+              (box :orientation "h" :space-evenly "true"
+                (label :class {items.class} :xalign 0.5 :text "${items.title}")
+                (label :text "")
+              )
+              (box :orientation "v" :space-evenly "false" :spacing 1
+                (for content in "${items.content}"
+                  (box :orientation "h" :space-evenly "true"
+                    (label :class "keys" :xalign 0 :text "${content.description}")
+                    (label :class "keys-alt" :xalign 1 :text "${content.keys}")
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
     )
   )
 )
 
 ;; Window cheatsheet ;;
 (defwindow cheatsheet
-    :geometry (geometry :x "0%"
+  :geometry (geometry :x "0%"
                         :y "0%"
                         :width "76%"
                         :height "66%"
