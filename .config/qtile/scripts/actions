@@ -1,39 +1,42 @@
 #!/usr/bin/env bash
 
-rofi_conf="rofi -theme $HOME/.config/rofi/config/center-menu.rasi -dmenu"
-theme="selector de tema"
-wallpaper="selector de fondo"
-notify="notificaciones"
-clipcat="portapapeles"
-emojis="emojis"
-application="aplicaciones"
-performance="modo de rendimiento"
-zellij="zellij"
-ans=$(echo -e "$application\n$theme\n$wallpaper\n$notify\n$clipcat\n$emojis\n$performance\n$zellij" | $rofi_conf -p "󰧾 ")
-
+icons="$HOME/.icons/Nordzy"
+icons_apps="$icons/apps/scalable"
+icons_status="$icons/status"
+rofi_conf="rofi -dmenu -selected-row 0"
+theme="Selector de tema\0icon\x1f$icons_apps/preferences-desktop-theme-applications.svg"
+wallpaper="Selector de fondo\0icon\x1f$icons_apps/cs-backgrounds.svg"
+notify="Notificaciones\0icon\x1f$icons_apps/cs-notifications.svg"
+clipcat="Portapapeles\0icon\x1f$icons_status/scalable/task-past-due.svg"
+emojis="Emojis\0icon\x1f$icons_apps/preferences-desktop-emoticons.svg"
+application="Aplicaciones\0icon\x1f$icons_apps/Appstore.svg"
+performance="Modo de rendimiento\0icon\x1f$icons_status/24/indicator-cpufreq-100.svg"
+zellij="Zellij\0icon\x1f$icons_apps/xfce4-workspaces.svg"
+ans=$(echo -en "$application\n$theme\n$wallpaper\n$notify\n$clipcat\n$emojis\n$performance\n$zellij" | $rofi_conf -p "󰧾 ")
+ans=$(echo $ans | sed -e 's/^[[\\0icon\x1f]]*//g')
 case $ans in
-"$application")
+"Aplicaciones")
   rofi -show drun
   ;;
-"$theme")
+"Selector de tema")
   theme-selector
   ;;
-"$wallpaper")
+"Selector de fondo")
   wallpaper_selector
   ;;
-"$notify")
+"Notificaciones")
   notifyHistory
   ;;
-"$clipcat")
+"Portapapeles")
   clipcat-menu
   ;;
-"$emojis")
+"Emojis")
   rofimoji --selector-args="-theme $HOME/.config/rofi/config/emoji-center-menu.rasi" --use-icons
   ;;
-"$performance")
+"Modo de rendimiento")
   powerprofile
   ;;
-"$zellij")
+"Zellij")
   commandzellij
   ;;
 esac
