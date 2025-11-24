@@ -1,0 +1,46 @@
+.genwin {
+	background-color: $bg;
+	border-radius: 16px;
+}
+.iconcpu, .iconmem, .iconbright, .iconbat {
+	font-size : 32px;
+	font-weight : normal;
+}
+.iconcpu {
+	color: $red;
+}
+.iconmem {
+	color: $green;
+}
+.iconbright {
+	color: $yellow;
+}
+.iconbat {
+	color: $blue;
+}
+
+.cpu_bar, .mem_bar, .bright_bar, .bat_bar, scale trough {
+	all: unset;
+	background-color: $bg;
+	border-radius: 16px;
+	min-height: 28px;
+	min-width: 240px;
+}
+
+.cpu_bar, .mem_bar, .bright_bar, .bat_bar, scale trough highlight {
+	all: unset;
+	border-radius: 16px;
+}
+
+.cpu_bar scale trough highlight {
+	background-color: $red;
+}
+.mem_bar scale trough highlight {
+	background-color: $green;
+}
+.bright_bar scale trough highlight {
+	background-color: $yellow;
+}
+.bat_bar scale trough highlight {
+	background-color: $blue;
+}

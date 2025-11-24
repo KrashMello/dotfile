@@ -1,0 +1,51 @@
+;; Author : krashmello
+;; Dotfiles : https://github.com/krashmello/dotfiles
+;; Show all config menu.
+;;
+
+(defpoll HOST :interval "5s" `hostname`)
+(defpoll CPU_USAGE :interval "1s" 'sys_info --cpu')
+(defpoll MEM_USAGE :interval "1s" "free -m | grep Mem | awk '{print ($3/$2)*100}'")
+
+(defwidget menu []
+    (scroll :hscroll true :vscroll true
+        (box :orientation "v" :space-evenly "false"
+            (menu-content)
+        )
+    )
+)
+
+(defwidget menu-content []
+  (box :orientation "v"  :spacing 10 :space-evenly "false"
+     (system)
+     (cal)
+  )
+)
+(defwidget system [] 
+	(box :class "genwin" :vexpand "false" :hexpand "false" 
+		(box :orientation "v" :spacing 35 :halign "center" :valign "center" :space-evenly "true" :vexpand "false" :hexpand "true"
+			(box :class "cpu_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
+				(label :class "iconcpu" :text " ")
+				(scale :min 0 :max 100 :value CPU_USAGE :active "false")
+      )
+			(box :class "mem_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
+				(label :class "iconmem" :text " ")
+				(scale :min 0 :max 100 :value MEM_USAGE :active "false")
+      )
+			
+		)
+  )
+)
+(defwidget cal []
+    (calendar :halign "center" :valign "center" :class "genwin")
+)
+
+(defwindow menu
+    :geometry (geometry :x "0%"
+                        :y "27px"
+                        :width "310px"
+                        :height "70%"
+                        :anchor "top right")
+
+    :wm-ignore false
+    (menu))

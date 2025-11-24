@@ -1,2 +1,3 @@
 (include "cheatsheet/cheatsheet.yuck")
 (include "notify/notify.yuck")
+(include "config/config.yuck")
