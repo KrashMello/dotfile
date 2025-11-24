@@ -53,19 +53,13 @@ keys = [
         # Browsers
         ([mod], "b", lazy.spawn("firefox")),
         # ([mod, "shift"], "b", lazy.window.bring_to_front()),
-        ([mod, "shift"], "b", lazy.spawn("qutebrowser")),
         # text editor
         ([mod], "c", lazy.spawn("Code")),
-        # ([mod, "shift"], "c", lazy.spawn("subl")),
-        # File Explorer
-        # ([mod], "e", lazy.spawn("Thunar")),
         # Terminal
         ([mod], "return", lazy.spawn("kitty")),
         # KeyLayout
         (["control"], "space", lazy.widget["keyboardlayout"].next_keyboard()),
         # Screenshot
-        # ([mod], "s", lazy.spawn(" maim -u $HOME/Imágenes/Screenshot/km-%d_%m_%Y-%I-%M-%S.png")),
-        # ([mod, "shift"], "s", lazy.spawn("sh ../screenshots --sel")),
         # ------------ Hardware Configs ------------
         # ------------ Hardware Configs ------------
         # Volume
