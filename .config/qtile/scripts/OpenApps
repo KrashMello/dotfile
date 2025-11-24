@@ -5,6 +5,9 @@ screen_info=$(qtile cmd-obj -o screen -f info)
 screen_index=$(printf "%s" $screen_info | jq -r '.index')
 
 case "$1" in
+--htop)
+  kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e htop
+  ;;
 --notify)
   notifyHistory
   ;;

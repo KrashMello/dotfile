@@ -12,7 +12,8 @@ emojis="Emojis\0icon\x1f$icons_apps/preferences-desktop-emoticons.svg"
 application="Aplicaciones\0icon\x1f$icons_apps/Appstore.svg"
 performance="Modo de rendimiento\0icon\x1f$icons_status/24/indicator-cpufreq-100.svg"
 zellij="Zellij\0icon\x1f$icons_apps/xfce4-workspaces.svg"
-ans=$(echo -en "$application\n$theme\n$wallpaper\n$notify\n$clipcat\n$emojis\n$performance\n$zellij" | $rofi_conf -p "󰧾 ")
+htop="Administrador de procesos\0icon\x1f$icons_apps/htop.svg"
+ans=$(echo -en "$application\n$theme\n$wallpaper\n$notify\n$clipcat\n$emojis\n$performance\n$zellij\n$htop" | $rofi_conf -p "󰧾 ")
 ans=$(echo $ans | sed -e 's/^[[\\0icon\x1f]]*//g')
 case $ans in
 "Aplicaciones")
@@ -38,5 +39,8 @@ case $ans in
   ;;
 "Zellij")
   commandzellij
+  ;;
+"Administrador de procesos")
+  OpenApps --htop
   ;;
 esac
