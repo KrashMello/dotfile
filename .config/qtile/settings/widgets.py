@@ -5,6 +5,7 @@ from libqtile import bar
 from libqtile import qtile
 from qtile_extras.widget.decorations import RectDecoration
 from qtile_extras.popup.templates.mpris2 import COMPACT_LAYOUT, DEFAULT_LAYOUT
+
 # from qtile_extras.widget import GlobalMenu
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
 
@@ -69,6 +70,12 @@ decor_groupbox = {
     ],
     "padding": 18,
 }
+
+
+def spawn_menu():
+    qtile.spawn(
+        f"{path.join(path.expanduser('~'), '.config', 'qtile', 'scripts')}/eww -c {path.join(path.expanduser('~'), '.config', 'qtile', 'assets', 'eww')} open --toggle menu"
+    )
 
 
 def workspaces():
@@ -154,6 +161,7 @@ primary_widgets = [
         **base(),
         format=" %d/%m/%Y  %I:%M %p ",
     ),
+    widget.TextBox(" ", **base(), mouse_callbacks={"Button1": spawn_menu}),
 ]
 
 secondary_widgets = [
