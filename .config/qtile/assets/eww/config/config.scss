@@ -1,10 +1,20 @@
-.genwin {
+.mic_icon, .volume_icon, .iconcpu, .iconmem, .iconbright, .iconbat {
+	font-size : 22;
+	font-weight : normal;
+}
+
+.volume_control, .genwin{
 	background-color: $bg;
 	border-radius: 16px;
+  padding: 4;
 }
-.iconcpu, .iconmem, .iconbright, .iconbat {
-	font-size : 32px;
-	font-weight : normal;
+
+.volume_icon{
+    color: $magenta;
+}
+
+.mic_icon {
+    color: $blue;
 }
 .iconcpu {
 	color: $red;
@@ -20,15 +30,14 @@
 }
 
 .cpu_bar, .mem_bar, .bright_bar, .bat_bar, scale trough {
-	all: unset;
+	// all: unset;
 	background-color: $bg;
 	border-radius: 16px;
-	min-height: 28px;
+	min-height: 22px;
 	min-width: 240px;
 }
 
 .cpu_bar, .mem_bar, .bright_bar, .bat_bar, scale trough highlight {
-	all: unset;
 	border-radius: 16px;
 }
 
@@ -43,4 +52,12 @@
 }
 .bat_bar scale trough highlight {
 	background-color: $blue;
+}
+.volbar trough highlight {
+  background-image: linear-gradient(to right, $magenta 30%, $magenta 50%, $magenta 100% *50);
+  border-radius: 10px;
+}
+.micbar trough highlight {
+  background-image: linear-gradient(to right, $blue 30%, $blue 50%, $blue 100% *50);
+  border-radius: 10px;
 }

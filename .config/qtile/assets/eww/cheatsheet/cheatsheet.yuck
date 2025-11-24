@@ -16,7 +16,7 @@
 
 
 (defwidget top []
-  (box  :class ""
+  (box  
         :orientation "v"
         :spacing 0
         :space-evenly "false"

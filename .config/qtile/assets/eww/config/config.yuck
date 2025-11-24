@@ -6,6 +6,14 @@
 (defpoll HOST :interval "5s" `hostname`)
 (defpoll CPU_USAGE :interval "1s" 'sys_info --cpu')
 (defpoll MEM_USAGE :interval "1s" "free -m | grep Mem | awk '{print ($3/$2)*100}'")
+(defpoll volume_percent :interval "1s" "amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll mic_percent :interval "1s" "amixer sget Capture | grep 'Mono:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll music_title :interval "1s" "playerctl metadata title")
+(defpoll music_artist :interval "1s" "playerctl metadata artist")
+(defpoll music_status :interval "1s" "playerctl status")
+(defpoll music_icon :interval "1s" "playerctl metadata mpris:artUrl | cut -d \":\" -f 2 | sed 's/file://g'")
+
+(defvar eww "eww -c $HOME/.config/qtile/assets/eww")
 
 (defwidget menu []
     (scroll :hscroll true :vscroll true
@@ -18,33 +26,97 @@
 (defwidget menu-content []
   (box :orientation "v"  :spacing 10 :space-evenly "false"
      (system)
+     (box :spacing "10"
+          :space-evenly "true" 
+          :orientation "v"
+          :class "volume_control"
+          :vexpand "false"
+          :hexpand "false"
+        (volume)
+        (mic)
+     )
      (cal)
+     (music)
   )
 )
+
 (defwidget system [] 
 	(box :class "genwin" :vexpand "false" :hexpand "false" 
-		(box :orientation "v" :spacing 35 :halign "center" :valign "center" :space-evenly "true" :vexpand "false" :hexpand "true"
-			(box :class "cpu_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
+		(box 
+      :orientation "v" 
+      :spacing 10
+      :space-evenly "true"
+      :vexpand "false"
+      :hexpand "false"
+			(box 
+        :class "cpu_bar"
+        :orientation "h"
+        :spacing 20
+        :space-evenly "false"
 				(label :class "iconcpu" :text " ")
-				(scale :min 0 :max 100 :value CPU_USAGE :active "false")
+				(scale :min 0 :max 100 :value CPU_USAGE )
       )
 			(box :class "mem_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
 				(label :class "iconmem" :text " ")
-				(scale :min 0 :max 100 :value MEM_USAGE :active "false")
+				(scale :min 0 :max 100 :value MEM_USAGE)
       )
 			
 		)
   )
 )
+(defwidget music []
+  (box :orientation "v" :spacing 10 :space-evenly "false" :class "genwin" :vexpand "false" :hexpand "false"
+    (image :path "${music_icon}" :image-width "100" :image-height "100")
+    (label :text "${music_title} - ${music_artist}" :truncate "true")
+    (box :orientation "h"  :space-evenly "false" :spacing 10 :halign "center" :vexpand "false" :hexpand "false"
+      (button :onclick "playerctl previous"
+              :class "iconcpu"
+               " ")
+      (button :onclick "playerctl play-pause"
+              :class "iconcpu"
+               "${music_status != 'Paused' ? '' : ''} ")
+      (button :onclick "playerctl next"
+              :class "iconcpu"
+               " ")
+      
+    )
+  )
+)
 (defwidget cal []
-    (calendar :halign "center" :valign "center" :class "genwin")
+      (calendar :class "genwin")
+)
+
+(defwidget volume []
+  (box  :space-evenly "false" :orientation "h" :spacing "3"
+    (label  :class "volume_icon" :text " ")	
+    (scale  :class "volbar"
+          :value volume_percent
+          :orientation "h"
+          :tooltip "${volume_percent}%"
+          :max 100
+          :min 0
+          :onchange "amixer sset Master {}%")
+  )
+)
+
+(defwidget mic []
+  (box  :space-evenly "false" :orientation "h" :spacing "3"
+    (label :class "mic_icon" :text " ")	
+    (scale :class "micbar"
+          :value mic_percent
+          :orientation "h"
+          :tooltip "${mic_percent}%"
+          :max 100
+          :min 0
+          :onchange "amixer sset Capture {}%")
+  )
 )
 
 (defwindow menu
     :geometry (geometry :x "0%"
                         :y "27px"
                         :width "310px"
-                        :height "70%"
+                        :height "586px"
                         :anchor "top right")
 
     :wm-ignore false
