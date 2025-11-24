@@ -5,7 +5,8 @@ rofi_command="rofi -theme $HOME/.config/rofi/config/wallpaper.rasi"
 uptime=$(uptime -p | sed -e 's/up //g')
 
 images="$(xdg-user-dir PICTURES)/background"
-themes="themes/$(/bin/cat ~/.config/qtile/config.json | sed -n 's/^[[:space:]]*\"theme\":[[:space:]]*\"\([^;]*\)\".*$/\1/p')"
+theme=$(jq -r '.theme' $HOME/.config/qtile/config.json)
+themes="themes/$theme"
 if [ -d "$images/$themes" ]; then
   chosse="$(for a in "$images/$themes"/*.png; do echo -en "$a\0icon\x1f$a\n"; done | $rofi_command -dmenu -selected-row 0 -p "UP - $uptime")"
 

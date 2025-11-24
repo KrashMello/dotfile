@@ -7,8 +7,8 @@ run() {
 }
 
 #scripts
-if [ -d "$HOME/.config/qtile/scripts/" ]; then
-  PATH="$HOME/.config/qtile/scripts/:$PATH"
+if [ -d "$HOME/.config/qtile/scripts" ]; then
+  PATH="$HOME/.config/qtile/scripts:$PATH"
 fi
 
 # dimension wide
@@ -19,7 +19,7 @@ if [ -f "$HOME/.fehbg" ]; then
 fi
 # start all this to entry the system
 sxhkd -c "$HOME/.config/qtile/sxhkdrc" &
-theme=$(/bin/cat ~/.config/qtile/config.json | sed -n 's/^[[:space:]]*\"theme\":[[:space:]]*\"\([^;]*\)\".*$/\1/p')
+theme=$(jq -r '.theme' $HOME/.config/qtile/config.json)
 dunst -config "$HOME/.config/qtile/themes/$theme/dunstrc" &
 version=$(/bin/cat $HOME/.config/qtile/VERSION)
 actual_version=$(curl -X GET https://raw.githubusercontent.com/KrashMello/dotfile/refs/heads/main/.config/qtile/VERSION)

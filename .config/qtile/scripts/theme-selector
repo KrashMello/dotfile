@@ -14,7 +14,9 @@ if [ "$chosse" != "" ]; then
   kill -SIGUSR1 $(pidof eww)
   echo "include $chosse.conf" >$HOME/.config/kitty/themes/default.conf
   kill -SIGUSR1 $(pidof kitty)
-  echo -e "{\n\t\"theme\": \"$chosse\"\n}" >$HOME/.config/qtile/config.json
+  if [ -f $HOME/.config/qtile/config.json ]; then
+    echo -e $(jq --arg theme "$chosse" '.theme |= $theme' $HOME/.config/qtile/config.json) >$HOME/.config/qtile/config.json
+  fi
   if [ -d $HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome ]; then
     echo "@import \"./themes/$chosse.css\";" >$HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome/theme.css
   fi
@@ -41,6 +43,6 @@ if [ "$chosse" != "" ]; then
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
     ;;
   esac
-  qtile cmd-obj -o cmd -f reload_config
+  qtile cmd-obj -o cmd -f restart
 
 fi
