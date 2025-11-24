@@ -23,5 +23,12 @@ def load_theme():
         return json.load(f)
 
 
+def load_groups():
+    config = path.join(qtile_path, "config.json")
+    with open(path.join(config)) as f:
+        return json.load(f)["groups"]
+
+
 if __name__ == "settings.theme":
     colors = load_theme()
+    groups = load_groups()
