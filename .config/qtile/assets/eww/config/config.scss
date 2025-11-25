@@ -1,3 +1,53 @@
+.btn_flat {
+  padding: 5;
+  font-size: 25px;
+  
+}
+.cal {
+  background-color: $bg;
+  font-size: 18px;
+  font-weight: normal;
+  border-radius: 16px;
+
+.cal-in {
+    padding: 0px 10px 0px 10px;
+    color: $fg; 
+
+.cal {
+     &.highlight {
+          padding: 20px;
+      }
+
+      padding: 5px 5px 5px 5px;
+      margin-left: 10px;
+    }
+  }
+}
+
+calender {
+    color: $fg; 
+}
+calendar:selected {
+  color: $red;
+}
+
+calendar.header {
+color: $yellow;
+font-weight: bold;
+}
+
+calendar.button {
+color: $green;
+}
+
+calendar.highlight {
+color: $blue;
+font-weight: bold;
+}
+
+calendar:indeterminate {
+color: $magenta;
+}
 .mic_icon, .volume_icon, .iconcpu, .iconmem, .iconbright, .iconbat {
 	font-size : 22;
 	font-weight : normal;

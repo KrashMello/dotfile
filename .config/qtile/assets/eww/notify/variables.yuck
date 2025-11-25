@@ -1,0 +1,2 @@
+(defpoll update-notify-list :interval "3s" "$HOME/.config/qtile/scripts/notifyHistory")
+(defpoll notify-list :interval "3s" "/bin/cat ~/.config/qtile/assets/eww/notify/notify-list.txt")

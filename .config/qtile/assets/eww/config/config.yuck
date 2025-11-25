@@ -4,7 +4,7 @@
 ;;
 
 (defpoll HOST :interval "5s" `hostname`)
-(defpoll CPU_USAGE :interval "1s" 'sys_info --cpu')
+(defpoll CPU_USAGE :interval "1s" '$HOME/.config/qtile/scripts/sys_info --cpu')
 (defpoll MEM_USAGE :interval "1s" "free -m | grep Mem | awk '{print ($3/$2)*100}'")
 (defpoll volume_percent :interval "1s" "amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
 (defpoll mic_percent :interval "1s" "amixer sget Capture | grep 'Mono:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
@@ -13,7 +13,8 @@
 (defpoll music_status :interval "1s" "playerctl status")
 (defpoll music_icon :interval "1s" "playerctl metadata mpris:artUrl | cut -d \":\" -f 2 | sed 's/file://g'")
 
-(defvar eww "eww -c $HOME/.config/qtile/assets/eww")
+(defvar eww "$HOME/.config/qtile/scripts/eww -c $HOME/.config/qtile/assets/eww")
+(defvar calendar_show false)
 
 (defwidget menu []
     (scroll :hscroll true :vscroll true
@@ -35,7 +36,44 @@
         (volume)
         (mic)
      )
-     (cal)
+     (box
+        :orientation "v"
+        :vexpand "false"
+        :hexpand "false"
+        :space-evenly "false"
+        :class "genwin"
+        :spacing 10
+        (box :orientation "h" :halign "center" :spacing 10 :space-evenly "false"
+          (button :height 2 :class 'btn_flat' :onclick "${eww} update calendar_show=false" "  ")
+          (button :height 2 :class 'btn_flat' :onclick "${eww} update calendar_show=true" "  ")
+        )
+        (box 
+          :orientation "h"
+          :space-evenly "false"
+          :class "genwin"
+          :vexpand "false"
+          :hexpand "false"
+          (revealer :transition "slideright"
+              :reveal calendar_show
+              :duration "200ms"
+              :visible calendar_show
+
+                (box :orientation "v" :space-evenly "false" :width 300 :spacing 0
+              (cal)
+              )
+          )
+          (revealer :transition "sliderleft"
+              :reveal {!calendar_show ? true : false}
+              :visible {!calendar_show ? true : false}
+              :duration "200ms"
+              (scroll :hscroll false :vscroll true :height 205
+                (box :orientation "v" :space-evenly "false" :width 300 :spacing 0
+                  (literal :content update-notify-list)
+                  )
+                )
+          )
+        )
+     )
      (music)
   )
 )
@@ -83,7 +121,7 @@
   )
 )
 (defwidget cal []
-      (calendar :class "genwin")
+      (calendar :class "cal")
 )
 
 (defwidget volume []
@@ -116,7 +154,7 @@
     :geometry (geometry :x "0%"
                         :y "27px"
                         :width "310px"
-                        :height "586px"
+                        :height "608px"
                         :anchor "top right")
 
     :wm-ignore false

@@ -3,8 +3,6 @@
 ;; Show all notifications.
 ;;
 
-(defpoll notify-list :interval "1s" "/bin/cat ~/.config/qtile/assets/eww/notify/notify-list.txt")
-
 (defwidget notify []
     (scroll :hscroll true :vscroll true
         (box :class "notify" :orientation "v" :space-evenly "false"
@@ -29,7 +27,7 @@
 
 (defwidget notify-content []
   (box :orientation "v"  :spacing 0
-     (literal :content notify-list)
+     (literal :content update-notify-list)
   )
 )
 
@@ -37,8 +35,8 @@
 (defwindow notify
     :geometry (geometry :x "0%"
                         :y "0%"
-                        :width "50%"
-                        :height "66%"
+                        :width "46%"
+                        :height "50%"
                         :anchor "center")
 
     :wm-ignore false
