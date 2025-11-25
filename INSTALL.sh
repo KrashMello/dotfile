@@ -43,7 +43,7 @@ install_with_dnf() {
   echo -e "\nAgregando qtile 🔃"
   sudo dnf copr enable frostyx/qtile
   echo -e "\nInstalando paquetes 🔃"
-  sudo dnf install sxhkd feh dunst xclip maim kitty rofi fastfetch unrar bat fd-find ranger neovim variety duf fzf xclipboard qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions magick i3lock yazi xorg-x11-server-Xorg cava redshift procps-ng curl file power-profiles-daemon xorg-x11-xinit rofimoji
+  sudo dnf install sxhkd feh dunst xclip maim kitty rofi fastfetch unrar bat fd-find ranger neovim variety duf fzf xclipboard qtile-extras qtile lazygit ripgrep zsh picom lsd zsh-syntax-highlighting zsh-autosuggestions magick i3lock yazi xorg-x11-server-Xorg cava redshift procps-ng curl file power-profiles-daemon xorg-x11-xinit rofimoji playerctl
 
   echo -e "\nInstalando clipcat 🔃"
   curl -s -L -O https://github.com/xrelkd/clipcat/releases/download/${CLIPCAT_VERSION}/clipcat-${CLIPCAT_VERSION#v}-1.el7.x86_64.rpm
