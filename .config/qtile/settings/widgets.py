@@ -139,19 +139,6 @@ primary_widgets = [
     spacer(),
     *workspaces(),
     spacer(),
-    icon(bg=colors["background"], fg="icon", fontsize=14, text=" "),
-    widget.CPU(
-        **base(bg="background", fg="text"),
-        fontsize=14,
-        format="{load_percent}% ",
-        max_chars=5,
-    ),
-    icon(bg=colors["background"], fg="icon", fontsize=14, text=" "),
-    widget.Memory(
-        **base(bg="background", fg="text"),
-        fontsize=14,
-        format="{MemUsed: .0f}{mm} ",
-    ),
     widget.Systray(**base(bg="background", fg="text")),
     widget.Volume(**base()),
     widget.KeyboardLayout(
