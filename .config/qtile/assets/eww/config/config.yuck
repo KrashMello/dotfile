@@ -17,10 +17,13 @@
 (defvar calendar_show false)
 
 (defwidget menu []
-    (scroll :hscroll true :vscroll true
-        (box :orientation "v" :space-evenly "false"
-            (menu-content)
-        )
+    (eventbox
+      :onhoverlost "${eww} close menu"
+      (scroll :hscroll true :vscroll true
+          (box :orientation "v" :space-evenly "false"
+              (menu-content)
+          )
+      )
     )
 )
 
@@ -92,11 +95,11 @@
         :spacing 20
         :space-evenly "false"
 				(label :class "iconcpu" :text " ")
-				(scale :min 0 :max 100 :value CPU_USAGE )
+				(scale :min 0 :max 100 :tooltip "${CPU_USAGE}%" :value CPU_USAGE )
       )
 			(box :class "mem_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
 				(label :class "iconmem" :text " ")
-				(scale :min 0 :max 100 :value MEM_USAGE)
+				(scale :min 0 :max 100 :tooltip "${MEM_USAGE}%" :value MEM_USAGE)
       )
 			
 		)
@@ -121,7 +124,7 @@
   )
 )
 (defwidget cal []
-      (calendar :class "cal")
+      (calendar :onclick "notify-send 'Calendar Clicked ' '{0}/{1}/{2}'" :class "cal")
 )
 
 (defwidget volume []
@@ -151,11 +154,12 @@
 )
 
 (defwindow menu
+    :type "toolbar"
+    :onlostfocus "notify-send 'Menu Closed'"
     :geometry (geometry :x "0%"
                         :y "27px"
                         :width "310px"
                         :height "608px"
                         :anchor "top right")
 
-    :wm-ignore false
     (menu))
