@@ -1,6 +1,6 @@
 ;; Author : krashmello
 ;; Dotfiles : https://github.com/krashmello/dotfiles
-;; Show a cheatsheet for the bspwm environment.
+;; Show a cheatsheet for the qtile environment.
 ;;
 
 (include "cheatsheet/variables.yuck")
