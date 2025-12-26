@@ -71,3 +71,6 @@ super + control + space
 #widgets
 alt + F1
   OpenApps --helpKey;
+
+super + alt + space
+  qtile cmd-obj -o widget keyboardlayout -f next_keyboard
