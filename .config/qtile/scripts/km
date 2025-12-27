@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+echo "░█░█░█▀▄░█▀█░█▀▀░█░█░█▄█░█▀▀░█░░░█░░░█▀█"
+echo "░█▀▄░█▀▄░█▀█░▀▀█░█▀█░█░█░█▀▀░█░░░█░░░█░█"
+echo "░▀░▀░▀░▀░▀░▀░▀▀▀░▀░▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀"
+echo "░█▀▄░█▀█░▀█▀░█▀▀░▀█▀░█░░░█▀▀            "
+echo "░█░█░█░█░░█░░█▀▀░░█░░█░░░█▀▀            "
+echo "░▀▀░░▀▀▀░░▀░░▀░░░▀▀▀░▀▀▀░▀▀▀            "
+echo "░█░█░█▀█░█▀▄░█▀█░▀█▀░█▀▀                "
+echo "░█░█░█▀▀░█░█░█▀█░░█░░█▀▀                "
+echo "░▀▀▀░▀░░░▀▀░░▀░▀░░▀░░▀▀▀                "
+echo -e "\nEmpezemos con la actualizacion 🔃"
+
+CONFIG_DIR="$HOME/.config"
+QTILE_DIR="$CONFIG_DIR/qtile"
+ROFI_DIR="$CONFIG_DIR/rofi"
+PICOM_DIR="$CONFIG_DIR/picom"
+YAZI_DIR="$CONFIG_DIR/yazi"
+ZELLIJ_DIR="$CONFIG_DIR/zellij"
+FASTFETCH_DIR="$CONFIG_DIR/fastfetch"
+CLIPCAT_DIR="$CONFIG_DIR/clipcat"
+NVIM_DIR="$CONFIG_DIR/nvim"
+KITTY_DIR="$CONFIG_DIR/kitty"
+ATAC_DIR="$CONFIG_DIR/atac"
+TEMP_FILES="/tmp/km-update/.config"
+actual_theme=$(/bin/cat "$QTILE_DIR"/config.json | jq .theme | sed -e 's/"//g')
+remove_old_files() {
+  rm -rf "$NVIM_DIR" \
+    "$KITTY_DIR" \
+    "$ROFI_DIR" \
+    "$PICOM_DIR" \
+    "$YAZI_DIR" \
+    "$ZELLIJ_DIR" \
+    "$FASTFETCH_DIR" \
+    "$CLIPCAT_DIR" \
+    "$QTILE_DIR" \
+    "$ATAC_DIR"
+}
+copy_folders() {
+  cp -r "$TEMP_FILES"/qtile "$CONFIG_DIR"
+  cp -r "$TEMP_FILES"/nvim "$CONFIG_DIR"
+  cp -r "$TEMP_FILES"/kitty "$CONFIG_DIR"
+  cp -r "$TEMP_FILES"/rofi "$CONFIG_DIR"
+  cp -r "$TEMP_FILES"/picom "$CONFIG_DIR"
+  cp -r "$TEMP_FILES"/yazi "$CONFIG_DIR"
+  cp -r "$TEMP_FILES"/zellij "$CONFIG_DIR"
+  cp -r "$TEMP_FILES"/fastfetch "$CONFIG_DIR"
+  cp -r "$TEMP_FILES"/clipcat "$CONFIG_DIR"
+}
+
+theme_update() {
+  echo -e "\nActualizando tema 🔃 : $actual_theme"
+  pkill dunst
+  dunst -config "$QTILE_DIR"/themes/"$actual_theme"/dunstrc &
+  notify-send "El tema a sido cambiado" "$actual_theme"
+  echo "@import \"$actual_theme.rasi\"" >"$ROFI_DIR"/themes/default.rasi
+  echo "@import \"themes/$actual_theme.scss\"" >"$QTILE_DIR"/assets/eww/colors.scss
+  kill -SIGUSR1 $(pidof eww)
+  echo "include $actual_theme.conf" >"$KITTY_DIR"/themes/default.conf
+  kill -SIGUSR1 $(pidof kitty)
+  if [ -f "$QTILE_DIR"/config.json ]; then
+    echo -e $(jq --arg theme "$actual_theme" '.theme |= $theme' "$QTILE_DIR"/config.json) >"$QTILE_DIR"/config.json
+  fi
+  gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+  case $actual_theme in
+  "catppuccin-latte")
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+    ;;
+  "rose-pine-dawn")
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+    ;;
+  esac
+  qtile cmd-obj -o cmd -f restart
+}
+case $1 in
+'--update')
+  cd /tmp/ || exit
+  git clone https://github.com/krashmello/dotfile.git --depth=1 km-update
+  remove_old_files
+  copy_folders
+  theme_update
+  rm -rf /tmp/km-update
+  ;;
+esac
