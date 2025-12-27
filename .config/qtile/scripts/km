@@ -70,6 +70,7 @@ theme_update() {
     ;;
   esac
   qtile cmd-obj -o cmd -f restart
+  picom -b &>/dev/null
 }
 case $1 in
 '--update')

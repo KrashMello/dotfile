@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 
 WIDGET_DIR="$HOME/.config/qtile/assets/eww/"
-screen_info=$(qtile cmd-obj -o screen -f info)
-screen_index=$(printf "%s" $screen_info | jq -r '.index')
 
 case "$1" in
 --htop)
   kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e htop
   ;;
 --notify)
-  eww -c $HOME/.config/qtile/assets/eww open --toggle notify --screen "$screen_index"
+  notify-send screen_index
+  eww -c "$HOME"/.config/qtile/assets/eww open --toggle notify --screen "$(screen_index)"
   ;;
 --emoji)
   rofimoji --selector-args="-theme $HOME/.config/rofi/config/emoji-center-menu.rasi" --use-icons
