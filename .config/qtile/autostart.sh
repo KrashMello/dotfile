@@ -13,7 +13,7 @@ fi
 
 # dimension wide
 if [ -f "$HOME/.sceenlayout/layout.sh" ]; then
-  bash -c "$HOME/.sceenlayout/layout.sh"
+  $HOME/.sceenlayout/layout.sh
 fi
 
 picom &
