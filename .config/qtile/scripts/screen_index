@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+screen_info=$(qtile cmd-obj -o screen -f info)
+echo "$(printf "%s" $screen_info | jq -r '.index')"
