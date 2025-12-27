@@ -74,7 +74,7 @@ decor_groupbox = {
 
 def spawn_menu():
     qtile.spawn(
-        f"{path.join(path.expanduser('~'), '.config', 'qtile', 'scripts')}/eww -c {path.join(path.expanduser('~'), '.config', 'qtile', 'assets', 'eww')} open --toggle menu --screen screen_index"
+        f"{path.join(path.expanduser('~'), '.config', 'qtile', 'scripts')}/eww -c {path.join(path.expanduser('~'), '.config', 'qtile', 'assets', 'eww')} open --toggle menu"
     )
 
 
