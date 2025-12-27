@@ -12,7 +12,10 @@ if [ -d "$HOME/.config/qtile/scripts" ]; then
 fi
 
 # dimension wide
-xrandr --output HDMI-1 --mode 1920x1080 --pos 0x1080 --rotate normal --output HDMI-2 --off --output DP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-3 --off
+if [ -f "$HOME/.sceenlayout/layout.sh" ]; then
+  bash -c "$HOME/.sceenlayout/layout.sh"
+fi
+
 picom &
 if [ -f "$HOME/.fehbg" ]; then
   "$HOME/.fehbg"
