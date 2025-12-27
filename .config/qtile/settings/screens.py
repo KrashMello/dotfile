@@ -15,7 +15,9 @@ def status_bar(widgets):
     )
 
 
-screens = [Screen(top=status_bar(primary_widgets),x=1280,y=0,width=1920,height=1080),Screen(x=0,y=0,width=1280,height=1080)]
+screens = [
+    Screen(top=status_bar(primary_widgets)),
+]
 
 xrandr = "xrandr | grep -w 'connected' | cut -d ' ' -f 2 | wc -l"
 
@@ -33,6 +35,6 @@ if command.returncode != 0:
 else:
     connected_monitors = int(command.stdout.decode("UTF-8"))
 
-# if connected_monitors > 1:
-#     for _ in range(1, connected_monitors):
-#         screens.append(Screen(top=status_bar(secondary_widgets)))
+if connected_monitors > 1:
+    for _ in range(1, connected_monitors):
+        screens.append(Screen())
