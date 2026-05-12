@@ -3,7 +3,7 @@ configuration{
 }
 @import "themes/default.rasi"
 #window {
-    background-color: transparent;
+    background-color: @BG;
     width: calc(100%-200px) 40%;
     children:["mainbox"];
 }
