@@ -154,6 +154,7 @@
 )
 
 (defwindow menu
+    :monitor 0
     :type "toolbar"
     :onlostfocus "notify-send 'Menu Closed'"
     :geometry (geometry :x "0%"

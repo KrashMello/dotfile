@@ -11,7 +11,7 @@ for i, group in enumerate(groups):
         group["name"],
         layout="max",
         layouts=layouts,
-        matches=[Match(wm_class=re.compile(rf"^({group['matches']})$"))],
+        matches=[Match(wm_class=re.compile(rf"({group['matches']})", re.IGNORECASE))],
     )
 
 groups = [__groups[i] for i in __groups]

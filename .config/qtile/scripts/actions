@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-
-icons="$HOME/.icons/Nordzy"
+icon_theme='Nordzy'
+icons="$HOME/.icons/$icon_theme"
 icons_apps="$icons/apps/scalable"
 icons_status="$icons/status"
 rofi_conf="rofi -dmenu -selected-row 0"

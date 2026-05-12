@@ -33,6 +33,7 @@
 
 
 (defwindow notify
+    :monitor 0
     :geometry (geometry :x "0%"
                         :y "0%"
                         :width "46%"

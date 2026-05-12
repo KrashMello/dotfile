@@ -1,5 +1,26 @@
-TEMP_IMAGE="/tmp/i3lock.png"
+#!/bin/bash
 
-maim -d 0.3 -u ${TEMP_IMAGE}
-magick $TEMP_IMAGE -blur 5x5 $TEMP_IMAGE
-i3lock -n -i $TEMP_IMAGE -e -u
+TEMP_IMAGE="/tmp/screen_locker.png"
+
+# 1. Captura de pantalla según el protocolo
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  # Wayland (requiere grim)
+  grim "$TEMP_IMAGE"
+else
+  # X11 (tu código original)
+  maim -d 0.3 -u "$TEMP_IMAGE"
+fi
+
+# 2. Procesamiento de la imagen (Magick funciona en ambos)
+magick "$TEMP_IMAGE" -blur 5x5 "$TEMP_IMAGE"
+
+# 3. Bloqueo de pantalla
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  # Wayland (requiere swaylock)
+  # Nota: -i es para la imagen, -e para ignorar eventos vacíos
+  swaylock -n -i "$TEMP_IMAGE" -e -u -t
+  rm "$TEMP_IMAGE" # Limpieza manual recomendada en Wayland
+else
+  # X11
+  i3lock -n -i "$TEMP_IMAGE" -e -u
+fi

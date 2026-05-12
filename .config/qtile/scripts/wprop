@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sleep 2 && qtile cmd-obj -o window -f info

@@ -4,3 +4,4 @@ catppuccin-latte
 poimandres
 batman
 rose-pine-dawn
+cyberpunk

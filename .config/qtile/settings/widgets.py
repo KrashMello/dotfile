@@ -6,8 +6,7 @@ from libqtile import qtile
 from qtile_extras.widget.decorations import RectDecoration
 from qtile_extras.popup.templates.mpris2 import COMPACT_LAYOUT, DEFAULT_LAYOUT
 from os import path
-# from qtile_extras.widget import GlobalMenu
-# Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
+# from qtile_extras.widget import GlobalMenu Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
 
 
 def base(fg="text", bg="background"):

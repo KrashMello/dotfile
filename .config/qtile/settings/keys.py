@@ -1,9 +1,11 @@
 from libqtile.config import Key
 from libqtile.lazy import lazy
 from libqtile import layout
-
+from libqtile.utils import guess_terminal
 
 mod = "mod4"
+
+terminal = guess_terminal()
 
 keys = [
     Key(key[0], key[1], *key[2:])
@@ -41,7 +43,7 @@ keys = [
         ([mod], "period", lazy.next_screen()),
         ([mod], "comma", lazy.prev_screen()),
         # Restart Qtile
-        ([mod, "control"], "r", lazy.restart()),
+        ([mod, "control"], "r", lazy.reload_config()),
         ([mod, "control"], "q", lazy.shutdown()),
         # ------------ App Configs ------------
         # lock screen
@@ -79,3 +81,13 @@ keys = [
         ([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
     ]
 ]
+
+for vt in range(1, 8):
+    keys.append(
+        Key(
+            ["control", "mod1"],
+            f"f{vt}",
+            lazy.core.change_vt(vt).when(func=lambda: qtile.core.name == "wayland"),
+            desc=f"Switch to VT{vt}",
+        )
+    )

@@ -8,7 +8,7 @@ case "$1" in
   ;;
 --notify)
   notify-send screen_index
-  eww -c "$HOME"/.config/qtile/assets/eww open --toggle notify --screen "$(screen_index)"
+  eww -c "$HOME"/.config/qtile/assets/eww open --toggle notify
   ;;
 --emoji)
   rofimoji --selector-args="-theme $HOME/.config/rofi/config/emoji-center-menu.rasi" --use-icons
@@ -30,6 +30,14 @@ case "$1" in
   ;;
 --terminal)
   alacritty
+  ;;
+--reloadSxhk)
+  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    pkill -HUP swhkd
+  else
+    pkill -USR1 -x sxhkd
+  fi
+  notify-send "Reloading sxhkd"
   ;;
 # --floating)
 #   alacritty --hold --class FloatTermAlacritty -o window.dimensions.lines=22 window.dimensions.columns=90
@@ -79,7 +87,7 @@ case "$1" in
   ;;
 # Eww Widgets
 --helpKey)
-  eww -c "$WIDGET_DIR" open --toggle cheatsheet --screen $screen_index
+  eww -c "$WIDGET_DIR" open --toggle cheatsheet
   ;;
 --usercard)
   eww -c "$WIDGET_DIR" open --toggle launchermenu
