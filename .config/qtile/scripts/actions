@@ -27,6 +27,7 @@ case $ans in
   ;;
 "Notificaciones")
   notifyHistory
+  eww -c "$HOME"/.config/qtile/assets/eww open --toggle notify
   ;;
 "Portapapeles")
   clipcat-menu

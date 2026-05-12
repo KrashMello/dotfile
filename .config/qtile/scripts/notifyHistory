@@ -15,10 +15,13 @@ while
 do
   iter=$((iter + 1))
 
-  # option=$(printf '<span foreground="%s"><b>%s</b> <small>(%s)</small>:</span> \n <i>%s</i>|\n' "$fg" "$notification_summary" "$application_name" "$notification_body")
-  option=$(echo "(box :orientation \"v\" :space-evenly \"false\" :class \"notify-container\" :hexpand \"false\"\n\t(label :xalign 0.01 :class \"notify-title\" :justify \"left\" :wrap \"true\" :wrap-mode \"char\" :text \"$notification_summary ($application_name):\")\n\t(label :xalign 0.03 :class \"notify-content\" :wrap \"true\" :wrap-mode \"char\" :text \"$(echo $notification_body | sed 's/"/\\"/g')\")\n)\n")
-  options="$options$option"
+  clean_body=$(echo "$notification_body" | sed 's/"/\\"/g' | tr -d '\n')
+  clean_summary=$(echo "$notification_summary" | sed 's/"/\\"/g')
+
+  option="\t(box :orientation \"v\" :space-evenly false :class \"notify-container\" :hexpand false \n\t\t(label :xalign 0.01 :class \"notify-title\" :justify \"left\" :wrap true :wrap-mode \"char\" :text \"$clean_summary ($application_name):\") \n\t\t(label :xalign 0.03 :class \"notify-content\" :wrap true :wrap-mode \"char\" :text \"$clean_body\")\n)"
+  options="$options $option"
 done <<EOF
 $history_items
 EOF
-echo -e "(box :orientation \"v\" :spacing 0 :space-evenly \"false\"\n$options\n)"
+
+echo -e "(box :orientation \"v\" :spacing 0 :space-evenly false $options)"
