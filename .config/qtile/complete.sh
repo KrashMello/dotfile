@@ -12,6 +12,9 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
   swaybg -i "$wallpaper" &
   swhks &
   swhkd -c "$HOME/.config/qtile/sxhkdrc" &
+  cliphist wipe
+  wl-paste --type text --watch cliphist store &
+  wl-paste --type image --watch cliphist store &
 elif [ "$XDG_SESSION_TYPE" = "x11" ]; then
   sxhkd -c "$HOME/.config/qtile/sxhkdrc" &
   xrandr --output HDMI-1 --mode 1920x1080 --pos 0x1080 --rotate normal --output HDMI-2 --off --output DP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-3 --off
@@ -21,7 +24,7 @@ elif [ "$XDG_SESSION_TYPE" = "x11" ]; then
   numlockx on &
   udiskie -t &
   blueman-applet &
-  # dimension wide
+  clipcatd &
   if [ -f "$HOME/.fehbg" ]; then
     "$HOME/.fehbg"
   fi
@@ -30,7 +33,6 @@ else
 fi
 
 # start all this to entry the system
-
 theme=$(jq -r '.theme' $HOME/.config/qtile/config.json)
 dunst -config "$HOME/.config/qtile/themes/$theme/dunstrc" &
 (
@@ -40,5 +42,4 @@ dunst -config "$HOME/.config/qtile/themes/$theme/dunstrc" &
     notify-send "Actualización pendiente" "Los dotfiles tienen una nueva versión $actual_version"
   fi
 ) &
-clipcatd &
 kitty &
