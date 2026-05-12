@@ -6,10 +6,10 @@
 /* Comment the color theme you don't want to use */
 
   /* Dark Theme Colors */
-  --window-colour: #4C566AE6;
-  --secondary-colour: #2E3440E6;
-  --inverted-colour: #88c0d0;
-  --uc-not-selected-tab: #E5E9F0;
+  --window-colour: #4A1D1F40;
+  --secondary-colour: #ff726740;
+  --inverted-colour: #5EF6FF;
+  --uc-not-selected-tab: #FFA500;
 
   /* Containter Tab Colours */
   --uc-identity-color-blue: #fffac2;
