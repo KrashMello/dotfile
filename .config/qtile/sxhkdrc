@@ -29,6 +29,9 @@ super + BackSpace
 control + alt + 4
   OpenApps --clipcat;
 
+super + control + v
+  OpenApps --clipcat;
+
 #show notifications
 control + alt + 2
   OpenApps --notify;
