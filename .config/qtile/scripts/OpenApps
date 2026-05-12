@@ -23,7 +23,11 @@ case "$1" in
   rofi -show drun -theme $HOME/.config/bspwm/scripts/Launcher.rasi
   ;;
 --clipcat)
-  clipcat-menu
+  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    wl-clip-menu
+  else
+    clipcat-menu
+  fi
   ;;
 --rice)
   RiceSelector

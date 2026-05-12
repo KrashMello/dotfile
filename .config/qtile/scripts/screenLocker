@@ -9,6 +9,5 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
   swaylock -n -i "$TEMP_IMAGE" -s fill -e -u
   rm "$TEMP_IMAGE" # Limpieza manual recomendada en Wayland
 else
-  # X11
   i3lock -n -i "$TEMP_IMAGE" -e -u
 fi

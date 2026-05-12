@@ -1,0 +1,13 @@
+#!/bin/bash
+WINDOW_CLASS=$(qtile cmd-obj -o window -f info | jq '."wm_class"[0]' | tr -d '"')
+
+SELECTION=$(cliphist list | rofi -dmenu -theme $HOME/.config/rofi/config/center-menu.rasi -p "󱉨  " | cliphist decode)
+
+if [ -n "$SELECTION" ]; then
+  echo -n "$SELECTION" | wl-copy
+  if [[ "$WINDOW_CLASS" == "kitty" ]]; then
+    wtype -M ctrl -M shift v -m ctrl -m shift
+  else
+    wtype -M ctrl v -m ctrl
+  fi
+fi
