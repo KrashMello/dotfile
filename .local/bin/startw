@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=qtile
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY
+if [ -d "$HOME/.config/qtile/scripts" ]; then
+  PATH="$PATH:$HOME/.config/qtile/scripts"
+fi
+loginctl enable-linger "$USER"
+dbus-run-session qtile start -b wayland &
