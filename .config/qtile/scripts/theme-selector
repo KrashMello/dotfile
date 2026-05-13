@@ -20,6 +20,7 @@ if [ "$chosse" != "" ]; then
   if [ -d $HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome ]; then
     echo "@import \"./themes/$chosse.css\";" >$HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome/theme.css
   fi
+  qtile cmd-obj -o cmd -f reload_config
   images="$(xdg-user-dir PICTURES)/background"
   themes="themes/$(/bin/cat ~/.config/qtile/config.json | jq .theme | tr -d '"')"
 
@@ -55,5 +56,4 @@ if [ "$chosse" != "" ]; then
     feh --bg-fill "$wallpaper"
   fi
 
-  qtile cmd-obj -o cmd -f reload_config
 fi

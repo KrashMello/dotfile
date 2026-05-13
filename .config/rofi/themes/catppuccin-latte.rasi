@@ -1,5 +1,5 @@
 * {
-    BG:    #eff1f580;    /* fondo principal oscuro -> beige claro */
+    BG:    #eff1f5;    /* fondo principal oscuro -> beige claro */
     BGA:   #FAF4ED80;    /* fondo alterno */
     FG:    #4c4f69;    /* primer plano, texto principal -> gris violáceo suave */
     FGA:   #4c4f69;    /* primer plano alterno, acentos -> rosa lavanda */

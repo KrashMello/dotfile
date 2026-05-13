@@ -1,5 +1,5 @@
 * {
-    BG:    #1917244d;    /* fondo principal oscuro */
+    BG:    #191724;    /* fondo principal oscuro */
     BGA:   #1F1D2E4d;    /* fondo alterno */
     FG:    #E0DEF4;    /* primer plano, texto principal */
     FGA:   #F6C177;    /* primer plano alterno, acentos */

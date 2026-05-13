@@ -1,5 +1,5 @@
 * {
-    BG:    #2E34404d;    /* fondo principal oscuro (nord polar night) */
+    BG:    #2E3440;    /* fondo principal oscuro (nord polar night) */
     BGA:   #3B42524d;    /* fondo alterno (nord polar night leve) */
     FG:    #D8DEE9FF;    /* primer plano, texto principal (nord snow storm) */
     FGA:   #88C0D0FF;    /* primer plano alterno, acentos (nord frost) */
