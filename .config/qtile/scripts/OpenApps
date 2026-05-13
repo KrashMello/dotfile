@@ -2,12 +2,14 @@
 
 WIDGET_DIR="$HOME/.config/qtile/assets/eww/"
 
+screen=$(qtile cmd-obj -o screen -f info | jq .index)
+
 case "$1" in
 --htop)
   kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e htop
   ;;
 --notify)
-  eww -c "$HOME"/.config/qtile/assets/eww open --toggle notify
+  eww -c "$HOME"/.config/qtile/assets/eww open --toggle notify --screen "$screen"
   ;;
 --emoji)
   rofimoji --selector-args="-theme $HOME/.config/rofi/config/emoji-center-menu.rasi" --use-icons
@@ -90,7 +92,7 @@ case "$1" in
   ;;
 # Eww Widgets
 --helpKey)
-  eww -c "$WIDGET_DIR" open --toggle cheatsheet
+  eww -c "$WIDGET_DIR" open --toggle cheatsheet --screen "$screen"
   ;;
 --usercard)
   eww -c "$WIDGET_DIR" open --toggle launchermenu

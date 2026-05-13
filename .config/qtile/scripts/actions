@@ -15,6 +15,7 @@ zellij="Zellij\0icon\x1f$icons_apps/xfce4-workspaces.svg"
 htop="Administrador de procesos\0icon\x1f$icons_apps/htop.svg"
 ans=$(echo -en "$application\n$theme\n$wallpaper\n$notify\n$clipcat\n$emojis\n$performance\n$zellij\n$htop" | $rofi_conf -p "󰧾 ")
 ans=$(echo $ans | sed -e 's/^[[\\0icon\x1f]]*//g')
+screen=$(qtile cmd-obj -o screen -f info | jq .index)
 case $ans in
 "Aplicaciones")
   rofi -show drun
@@ -27,7 +28,7 @@ case $ans in
   ;;
 "Notificaciones")
   notifyHistory
-  eww -c "$HOME"/.config/qtile/assets/eww open --toggle notify
+  eww -c "$HOME"/.config/qtile/assets/eww open --toggle notify --screen "$screen"
   ;;
 "Portapapeles")
   clipcat-menu
