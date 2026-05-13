@@ -21,28 +21,39 @@ if [ "$chosse" != "" ]; then
     echo "@import \"./themes/$chosse.css\";" >$HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome/theme.css
   fi
   images="$(xdg-user-dir PICTURES)/background"
-  themes="themes/$(/bin/cat ~/.config/qtile/config.json | sed -n 's/^[[:space:]]*\"theme\":[[:space:]]*\"\([^;]*\)\".*$/\1/p')"
+  themes="themes/$(/bin/cat ~/.config/qtile/config.json | jq .theme | tr -d '"')"
 
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
   case $chosse in
   "nord")
-    feh --bg-fill "$images/$themes/wallhaven-2em38y_1920x1080.png"
+    wallpaper="$images/$themes/wallhaven-2em38y_1920x1080.png"
     ;;
   "batman")
-    feh --bg-fill "$images/$themes/wallhaven-01zjqg_1920x1080.png"
+    wallpaper="$images/$themes/wallhaven-01zjqg_1920x1080.png"
     ;;
   "catppuccin-mocha")
-    feh --bg-fill "$images/$themes/wallhaven-1qkz23_1920x1080.png"
+    wallpaper="$images/$themes/wallhaven-1qkz23_1920x1080.png"
     ;;
   "catppuccin-latte")
-    feh --bg-fill "$images/$themes/sky-cat.png"
+    wallpaper="$images/$themes/sky-cat.png"
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
     ;;
   "rose-pine-dawn")
-    feh --bg-fill "$images/$themes/sky-cat.png"
+    wallpaper="$images/$themes/sky-cat.png"
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
     ;;
   esac
-  qtile cmd-obj -o cmd -f restart
+  if [ -f "$HOME"/.wallpaper ]; then
+    echo "$wallpaper" >"$HOME"/.wallpaper
+  else
+    touch "$HOME"/.wallpaper
+    echo "$wallpaper" >"$HOME"/.wallpaper
+  fi
+  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    swaybg -i "$wallpaper"
+  else
+    feh --bg-fill "$wallpaper"
+  fi
 
+  qtile cmd-obj -o cmd -f reload_config
 fi
