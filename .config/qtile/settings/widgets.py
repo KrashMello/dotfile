@@ -132,8 +132,8 @@ primary_widgets = [
     # widget.WindowName(
     #     max_chars=50, format="{name} | ", scroll=True, width=150, parse_text=text_funki
     # ),
-    widget.Visualiser(),
-    widget.Mpris2(popup_layout=DEFAULT_LAYOUT, max_chars=20),
+    widget.Visualiser(bar_colour=colors["text"][0]),
+    widget.Mpris2(popup_layout=DEFAULT_LAYOUT, max_chars=20, **base()),
     # widget.GlobalMenu(background=colors["background"], padding=5),
     spacer(),
     *workspaces(),
