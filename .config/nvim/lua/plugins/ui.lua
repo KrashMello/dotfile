@@ -19,6 +19,11 @@ return {
     priority = 1200,
     config = function()
       local helpers = require("incline.helpers")
+      local hl = vim.api.nvim_get_hl(0, { name = "Normal" })
+      local bg_hex = "#000000"
+      if hl.bg then
+        bg_hex = string.format("#%06x", hl.bg)
+      end
       require("incline").setup({
         window = { padding = 0, margin = { horizontal = 0 } },
         render = function(props)
@@ -30,7 +35,7 @@ return {
             " ",
             { filename, gui = modified and "bold,italic" or "bold" },
             " ",
-            guibg = "#363944",
+            guibg = bg_hex,
           }
           return buffer
         end,
