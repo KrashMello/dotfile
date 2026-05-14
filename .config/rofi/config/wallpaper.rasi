@@ -9,7 +9,7 @@
 /* BUTTON = TRUE */
 
 #window {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.0);
     location: center;
     children: [ mainbox ];
 }
@@ -55,7 +55,7 @@ element selected {
     background-color:               @SELTE;
     text-color:                     @SEL;
     border-radius:                  10px;
-    border-color:                   @BDR;
+    border-color:                   transparent;
 }
 
 

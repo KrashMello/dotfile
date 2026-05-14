@@ -4,7 +4,7 @@ configuration{
 @import "themes/default.rasi"
 #window {
     background-color: @BG;
-    width: calc(100%-200px) 40%;
+    width: calc(100%-200px) 50%;
     children:["mainbox"];
 }
 

@@ -20,7 +20,7 @@ configuration {
     background-color: transparent;
     border: 0px;
     padding: 0px;
-    width: calc(100%-200px) 40%;
+    width: calc(100%-200px) 50%;
     hight: calc(100%-200px) 20%;
     children:["mainbox"];
 }
