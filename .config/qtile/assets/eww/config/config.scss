@@ -1,7 +1,7 @@
 .btn_flat {
   padding: 5;
   font-size: 25px;
-  
+  color: $fg;
 }
 .cal {
   background-color: $bg;
@@ -24,8 +24,8 @@
   }
 }
 
-calender {
-    color: $fg; 
+calendar {
+    color: $fg;
 }
 calendar:selected {
   color: $red;
