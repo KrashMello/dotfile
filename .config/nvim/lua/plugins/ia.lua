@@ -6,14 +6,14 @@ return {
   version = false, -- set this if you want to always pull the latest change
   opts = {
     ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-    provider = "groq",
+    provider = "gemini",
     providers = {
       gemini = {
         endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
-        model = "gemini-1.5-flash-8b",
+        model = "gemini-2.5-flash",
         timeout = 30000, -- Timeout in milliseconds
         temperature = 1,
-        max_tokens = 4096,
+        max_tokens = 10000,
       },
       groq = {
         __inherited_from = "openai",
@@ -77,7 +77,7 @@ return {
         height = 8, -- Height of the input window in vertical layout
       },
       edit = {
-        start_insert = true, -- Start insert mode when opening the edit window
+        start_insert = false, -- Start insert mode when opening the edit window
       },
       ask = {
         floating = false, -- Open the 'AvanteAsk' prompt in a floating window
