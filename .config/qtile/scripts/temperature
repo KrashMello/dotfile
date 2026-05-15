@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+loc=$(curl -s https://ipinfo.io/json | jq -r '.loc')
+lat=${loc%,*}
+lon=${loc#*,}
+if command -v gammastep >/dev/null 2>&1; then
+  case "$1" in
+  --service)
+    other=$(pidof gammastep)
+    if [ -n "$other" ]; then
+      pkill -9 "$other"
+    fi
+    gammastep -t 5500k:3000k -m wayland -l "$lat":"$lon" &
+    ;;
+  --help)
+    echo "temperature --service"
+    ;;
+  *)
+
+    echo "temperature --service"
+    ;;
+  esac
+else
+  echo "gammastep not found"
+fi
