@@ -73,7 +73,7 @@ decor_groupbox = {
 
 def spawn_menu():
     qtile.spawn(
-        f"{path.join(path.expanduser('~'), '.config', 'qtile', 'scripts')}/eww -c {path.join(path.expanduser('~'), '.config', 'qtile', 'assets', 'eww')} open --toggle menu"
+        f"{path.join(path.expanduser('~'), '.config', 'km', 'scripts')}/eww -c {path.join(path.expanduser('~'), '.config', 'eww')} open --toggle menu"
     )
 
 
