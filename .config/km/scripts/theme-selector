@@ -2,12 +2,12 @@
 
 rofi_command="rofi -theme $CONFIG_ROFI/config/center-menu.rasi"
 
-commands="$(/bin/cat $XDG_CONFIG_KM/rofi-theme.txt)"
+commands="$(/bin/cat $XDG_CONFIG_KM/themes.txt)"
 chosse="$(echo -e "$commands" | $rofi_command -dmenu -i -p "󰔎 ")"
 
 if [ "$chosse" != "" ]; then
   pkill dunst
-  dunst -config $HOME/.config/qtile/themes/$chosse/dunstrc &
+  dunst -config $CONFIG_QTILE/themes/$chosse/dunstrc &
   notify-send "El tema a sido cambiado" "$chosse"
   echo "@import \"$chosse.rasi\"" >$CONFIG_ROFI/themes/default.rasi
   echo "@import \"themes/$chosse.scss\"" >$CONFIG_EWW/colors.scss
