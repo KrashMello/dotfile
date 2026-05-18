@@ -136,7 +136,7 @@ if [ "$resp" = "S" ] || [ "$resp" = "s" ]; then
   backup_and_copy "$DOT_DIR/.config/yazi" "$XDG_CONFIG_HOME" -d
   backup_and_copy "$DOT_DIR/.config/zellij" "$XDG_CONFIG_HOME" -d
   backup_and_copy "$DOT_DIR/background" "$(xdg-user-dir PICTURES)" -d
-  backup_and_copy "$DOT_DIR/.local/bin/startw" "$XDG_CONFIG_HOME/.local/bin" -d
+  backup_and_copy "$DOT_DIR/.local/bin/startw" "$HOME/.local/bin" -f
   # backup_and_copy "$HOME/.mozilla/firefox/firefox-themes/userChrome.css" "./firefox/chrome/userChrome.css"
   #
 fi
