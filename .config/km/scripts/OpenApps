@@ -7,7 +7,7 @@ case "$1" in
   kitty --config $CONFIG_KITTY/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e htop
   ;;
 --notify)
-  eww -c "$CONFIG_EWW"/eww open --toggle notify --screen "$screen"
+  eww -c "$CONFIG_EWW" open --toggle notify --screen "$screen"
   ;;
 --emoji)
   rofimoji --selector-args="-theme $CONFIG_ROFI/config/emoji-center-menu.rasi" --use-icons
