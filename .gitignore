@@ -2,3 +2,8 @@
 .vscode
 **/__pycache__/
 **/**/notify-list.txt
+.config/kitty/themes/default.conf
+.config/rofi/themes/default.rasi
+.config/eww/colors.scss
+.config/km/.wallpaper
+firefox/chrome/theme.css
