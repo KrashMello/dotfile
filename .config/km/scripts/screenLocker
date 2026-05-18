@@ -1,0 +1,8 @@
+#!/bin/bash
+
+TEMP_IMAGE="/tmp/screen_locker.png"
+
+magick "$(/bin/cat "$XDG_CONFIG_KM"/.wallpaper)" -blur 5x5 "$TEMP_IMAGE"
+
+swaylock -n -i "$TEMP_IMAGE" -s fill -e -u
+rm "$TEMP_IMAGE"

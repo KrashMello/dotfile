@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
 
-WIDGET_DIR="$HOME/.config/qtile/assets/eww/"
-
 screen=$(qtile cmd-obj -o screen -f info | jq .index)
 
 case "$1" in
 --htop)
-  kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e htop
+  kitty --config $CONFIG_KITTY/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e htop
   ;;
 --notify)
-  eww -c "$HOME"/.config/qtile/assets/eww open --toggle notify --screen "$screen"
+  eww -c "$CONFIG_EWW"/eww open --toggle notify --screen "$screen"
   ;;
 --emoji)
-  rofimoji --selector-args="-theme $HOME/.config/rofi/config/emoji-center-menu.rasi" --use-icons
+  rofimoji --selector-args="-theme $CONFIG_ROFI/config/emoji-center-menu.rasi" --use-icons
   ;;
 --screenlock)
   screenLocker
@@ -24,11 +22,7 @@ case "$1" in
   rofi -show drun -theme $HOME/.config/bspwm/scripts/Launcher.rasi
   ;;
 --clipcat)
-  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    wl-clip-menu
-  else
-    clipcat-menu
-  fi
+  wl-clip-menu
   ;;
 --rice)
   RiceSelector
@@ -37,18 +31,14 @@ case "$1" in
   alacritty
   ;;
 --reloadSxhk)
-  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    pkill -HUP swhkd
-  else
-    pkill -USR1 -x sxhkd
-  fi
+  pkill -HUP swhkd
   notify-send "Reloading sxhkd"
   ;;
 # --floating)
 #   alacritty --hold --class FloatTermAlacritty -o window.dimensions.lines=22 window.dimensions.columns=90
 #   ;;
 --floating)
-  kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no
+  kitty --config $CONFIG_KITTY/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no
   ;;
 --update)
   alacritty --hold --class FloaTerm,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=90 -e Updates --update-system
@@ -60,7 +50,7 @@ case "$1" in
 #   alacritty --class FloatTermAlacritty -o window.dimensions.lines=22 window.dimensions.columns=90 -e $HOME/.local/bin/yazi
 #   ;;
 --TfileManager)
-  kitty --config $HOME/.config/kitty/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e yazi
+  kitty --config $CONFIG_KITTY/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e yazi
   ;;
 --nvim)
   alacritty -e nvim
@@ -92,16 +82,16 @@ case "$1" in
   ;;
 # Eww Widgets
 --helpKey)
-  eww -c "$WIDGET_DIR" open --toggle cheatsheet --screen "$screen"
+  eww -c "$CONFIG_EWW" open --toggle cheatsheet --screen "$screen"
   ;;
 --usercard)
-  eww -c "$WIDGET_DIR" open --toggle launchermenu
+  eww -c "$CONFIG_EWW" open --toggle launchermenu
   ;;
 --player)
-  eww -c "$WIDGET_DIR" open --toggle music
+  eww -c "$CONFIG_EWW" open --toggle music
   ;;
 --calendar)
-  eww -c "$WIDGET_DIR" open --toggle date
+  eww -c "$CONFIG_EWW" open --toggle date
   ;;
 *)
   echo "Opción no válida"

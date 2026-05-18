@@ -1,28 +1,28 @@
 #!/usr/bin/env bash
 
-rofi_command="rofi -theme $HOME/.config/rofi/config/center-menu.rasi"
+rofi_command="rofi -theme $CONFIG_ROFI/config/center-menu.rasi"
 
-commands="$(/bin/cat $HOME/.config/qtile/assets/rofi-theme.txt)"
+commands="$(/bin/cat $XDG_CONFIG_KM/rofi-theme.txt)"
 chosse="$(echo -e "$commands" | $rofi_command -dmenu -i -p "󰔎 ")"
 
 if [ "$chosse" != "" ]; then
   pkill dunst
   dunst -config $HOME/.config/qtile/themes/$chosse/dunstrc &
   notify-send "El tema a sido cambiado" "$chosse"
-  echo "@import \"$chosse.rasi\"" >$HOME/.config/rofi/themes/default.rasi
-  echo "@import \"themes/$chosse.scss\"" >$HOME/.config/qtile/assets/eww/colors.scss
+  echo "@import \"$chosse.rasi\"" >$CONFIG_ROFI/themes/default.rasi
+  echo "@import \"themes/$chosse.scss\"" >$CONFIG_EWW/colors.scss
   kill -SIGUSR1 $(pidof eww)
-  echo "include $chosse.conf" >$HOME/.config/kitty/themes/default.conf
+  echo "include $chosse.conf" >$CONFIG_KITTY/themes/default.conf
   kill -SIGUSR1 $(pidof kitty)
-  if [ -f $HOME/.config/qtile/config.json ]; then
-    echo -e $(jq --arg theme "$chosse" '.theme |= $theme' $HOME/.config/qtile/config.json) >$HOME/.config/qtile/config.json
+  if [ -f $CONFIG_QTILE/config.json ]; then
+    echo -e $(jq --arg theme "$chosse" '.theme |= $theme' $CONFIG_QTILE/config.json) >$CONFIG_QTILE/config.json
   fi
   if [ -d $HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome ]; then
     echo "@import \"./themes/$chosse.css\";" >$HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome/theme.css
   fi
   qtile cmd-obj -o cmd -f reload_config
   images="$(xdg-user-dir PICTURES)/background"
-  themes="themes/$(/bin/cat ~/.config/qtile/config.json | jq .theme | tr -d '"')"
+  themes="themes/$(/bin/cat $CONFIG_QTILE/config.json | jq .theme | tr -d '"')"
 
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
   case $chosse in
@@ -44,16 +44,13 @@ if [ "$chosse" != "" ]; then
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
     ;;
   esac
-  if [ -f "$HOME"/.wallpaper ]; then
-    echo "$wallpaper" >"$HOME"/.wallpaper
+  if [ -f "$XDG_CONFIG_KM"/.wallpaper ]; then
+    echo "$wallpaper" >"$XDG_CONFIG_KM"/.wallpaper
   else
-    touch "$HOME"/.wallpaper
-    echo "$wallpaper" >"$HOME"/.wallpaper
+    touch "$XDG_CONFIG_KM"/.wallpaper
+    echo "$wallpaper" >"$XDG_CONFIG_KM"/.wallpaper
   fi
-  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    swaybg -i "$wallpaper"
-  else
-    feh --bg-fill "$wallpaper"
-  fi
+
+  swaybg -i "$wallpaper"
 
 fi

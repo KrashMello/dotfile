@@ -1,7 +1,7 @@
 #!/bin/bash
 WINDOW_CLASS=$(qtile cmd-obj -o window -f info | jq '."wm_class"[0]' | tr -d '"')
 
-SELECTION=$(cliphist list | rofi -dmenu -theme $HOME/.config/rofi/config/center-menu.rasi -p "󱉨  " | cliphist decode)
+SELECTION=$(cliphist list | rofi -dmenu -theme $CONFIG_ROFI/config/center-menu.rasi -p "󱉨  " | cliphist decode)
 
 if [ -n "$SELECTION" ]; then
   echo -n "$SELECTION" | wl-copy

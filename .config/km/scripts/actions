@@ -28,13 +28,13 @@ case $ans in
   ;;
 "Notificaciones")
   notifyHistory
-  eww -c "$HOME"/.config/qtile/assets/eww open --toggle notify --screen "$screen"
+  eww -c "$CONFIG_EWW" open --toggle notify --screen "$screen"
   ;;
 "Portapapeles")
   clipcat-menu
   ;;
 "Emojis")
-  rofimoji --selector-args="-theme $HOME/.config/rofi/config/emoji-center-menu.rasi" --use-icons
+  rofimoji --selector-args="-theme $CONFIG_ROFI/config/emoji-center-menu.rasi" --use-icons
   ;;
 "Modo de rendimiento")
   powerprofile

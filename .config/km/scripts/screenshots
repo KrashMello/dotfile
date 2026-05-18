@@ -5,12 +5,6 @@ filename="$dir/Screenshot-${timestamp}.png"
 
 [ -d "$dir" ] || mkdir -p "$dir"
 
-if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
-  backend="wayland"
-else
-  backend="x11"
-fi
-
 # Función para mostrar una notificación con dunst
 show_notification() {
   dunstify --replace=699 -i "$1" "Screenshot" "$2"
@@ -27,32 +21,20 @@ take_screenshot() {
   local mode=$1
   local msg=$2
 
-  case $backend in
-  wayland)
-    case $mode in
-    now) grim "$filename" ;;
-    sel) grim -g "$(slurp)" "$filename" ;;
-    active)
-      # Nota: La captura de ventana activa en Wayland depende del compositor.
-      # Este ejemplo es para Sway/Hyprland.
-      if command -v hyprctl >/dev/null; then
-        grim -g "$(hyprctl activewindow -j | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')" "$filename"
-      else
-        grim "$filename" # Fallback a pantalla completa
-      fi
-      ;;
-    esac
-    wl-copy <"$filename"
-    ;;
-  x11)
-    case $mode in
-    now) maim -u "$filename" ;;
-    sel) maim -u -s "$filename" ;;
-    active) maim -u -i "$(xdotool getactivewindow)" "$filename" ;;
-    esac
-    xclip -selection clipboard -t image/png -i "$filename"
+  case $mode in
+  now) grim "$filename" ;;
+  sel) grim -g "$(slurp)" "$filename" ;;
+  active)
+    # Nota: La captura de ventana activa en Wayland depende del compositor.
+    # Este ejemplo es para Sway/Hyprland.
+    if command -v hyprctl >/dev/null; then
+      grim -g "$(hyprctl activewindow -j | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')" "$filename"
+    else
+      grim "$filename" # Fallback a pantalla completa
+    fi
     ;;
   esac
+  wl-copy <"$filename"
 
   show_notification "$filename" "$msg"
 }

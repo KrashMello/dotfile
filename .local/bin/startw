@@ -2,9 +2,15 @@
 
 export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=qtile
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CONFIG_KM=$XDG_CONFIG_HOME/km
+export CONFIG_EWW=$XDG_CONFIG_HOME/eww
+export CONFIG_KITTY=$XDG_CONFIG_HOME/kitty
+export CONFIG_ROFI=$XDG_CONFIG_HOME/rofi
+export CONFIG_QTILE=$XDG_CONFIG_HOME/qtile
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY
-if [ -d "$HOME/.config/qtile/scripts" ]; then
-  PATH="$PATH:$HOME/.config/qtile/scripts"
+if [ -d "$XDG_CONFIG_KM/scripts" ]; then
+  PATH="$PATH:$XDG_CONFIG_KM/scripts"
 fi
 loginctl enable-linger "$USER"
 dbus-run-session qtile start -b wayland &

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-rofi_command="rofi -theme $HOME/.config/rofi/config/wallpaper.rasi"
+rofi_command="rofi -theme $CONFIG_ROFI/config/wallpaper.rasi"
 
 uptime=$(uptime -p | sed -e 's/up //g')
 
 images="$(xdg-user-dir PICTURES)/background"
-theme=$(jq -r '.theme' $HOME/.config/qtile/config.json)
+theme=$(jq -r '.theme' $CONFIG_QTILE/config.json)
 themes="themes/$theme"
 if [ -d "$images/$themes" ]; then
   chosse="$(for a in "$images/$themes"/*.png; do echo -en "$a\0icon\x1f$a\n"; done | $rofi_command -dmenu -selected-row 0 -p "UP - $uptime")"
@@ -15,18 +15,12 @@ else
 fi
 
 if [ "$chosse" != "" ]; then
-  if [ -f "$HOME"/.wallpaper ]; then
-    echo "$chosse" >"$HOME"/.wallpaper
+  if [ -f "$XDG_CONFIG_KM"/.wallpaper ]; then
+    echo "$chosse" >"$XDG_CONFIG_KM"/.wallpaper
   else
-    touch "$HOME"/.wallpaper
-    echo "$chosse" >"$HOME"/.wallpaper
+    touch "$XDG_CONFIG_KM"/.wallpaper
+    echo "$chosse" >"$XDG_CONFIG_KM"/.wallpaper
   fi
-
-  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    swaybg -i "$chosse"
-  else
-    feh --bg-fill "$chosse"
-  fi
-
+  swaybg -i "$chosse"
   notify-send "Wallpaper changed" "$chosse"
 fi
