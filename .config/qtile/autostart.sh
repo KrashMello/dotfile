@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-if [ -d "$HOME/.config/qtile/scripts" ]; then
-  PATH="$HOME/.config/qtile/scripts:$PATH"
-fi
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+systemctl --user restart xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk

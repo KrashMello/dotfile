@@ -8,7 +8,7 @@ export CONFIG_EWW=$XDG_CONFIG_HOME/eww
 export CONFIG_KITTY=$XDG_CONFIG_HOME/kitty
 export CONFIG_ROFI=$XDG_CONFIG_HOME/rofi
 export CONFIG_QTILE=$XDG_CONFIG_HOME/qtile
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY
+
 if [ -d "$XDG_CONFIG_KM/scripts" ]; then
   PATH="$PATH:$XDG_CONFIG_KM/scripts"
 fi

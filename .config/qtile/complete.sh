@@ -6,14 +6,13 @@ run() {
   fi
 }
 # Constantes
-
 WALLPAPER=$(/bin/cat "$HOME"/.wallpaper)
 THEME=$(jq -r '.theme' $HOME/.config/qtile/config.json)
 
-wlr-randr --output HDMI-A-1 --mode 1920x1080 --pos 0x1080 --rotate normal --output HDMI-2 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-3 --off
+$HOME/.screenlayout/layout.sh
 swaybg -i "$WALLPAPER" &
 swhkd -c "$HOME/.config/qtile/sxhkdrc" &
-swhks &
+run swhks
 cliphist wipe
 wl-paste --type text --watch cliphist store &
 wl-paste --type image --watch cliphist store &
@@ -29,4 +28,4 @@ dunst -config "$HOME/.config/qtile/themes/$THEME/dunstrc" &
   fi
 ) &
 
-run kitty &
+run kitty

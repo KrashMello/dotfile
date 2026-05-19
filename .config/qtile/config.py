@@ -48,6 +48,12 @@ idle_inhibitors = []  # type: list
 wmname = "LG3D"
 
 
+@hook.subscribe.startup_once
+def autostart():
+    script = path.expanduser("~/.config/qtile/autostart.sh")
+    subprocess.Popen([script])
+
+
 @hook.subscribe.startup_complete
 def run_every_startup():
     script = path.expanduser("~/.config/qtile/complete.sh")
