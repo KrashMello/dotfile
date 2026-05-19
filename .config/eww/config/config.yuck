@@ -4,7 +4,7 @@
 ;;
 
 (defpoll HOST :interval "5s" `hostname`)
-(defpoll CPU_USAGE :interval "1s" '$HOME/.config/qtile/scripts/sys_info --cpu')
+(defpoll CPU_USAGE :interval "1s" '$XDG_CONFIG_KM/scripts/sys_info --cpu')
 (defpoll MEM_USAGE :interval "1s" "free -m | grep Mem | awk '{print ($3/$2)*100}'")
 (defpoll volume_percent :interval "1s" "amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
 (defpoll mic_percent :interval "1s" "amixer sget Capture | grep 'Mono:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
@@ -13,14 +13,14 @@
 (defpoll music_status :interval "1s" "playerctl status")
 (defpoll music_icon :interval "1s" "playerctl metadata mpris:artUrl | cut -d \":\" -f 2 | sed 's/file://g'")
 
-(defvar eww "$HOME/.config/qtile/scripts/eww -c $HOME/.config/qtile/assets/eww")
+(defvar eww "$XDG_CONFIG_KM/scripts/eww -c $CONFIG_EWW")
 (defvar calendar_show false)
 
 (defwidget menu []
     (eventbox
       :onhoverlost "${eww} close menu"
       (scroll :hscroll true :vscroll true
-          (box :orientation "v" :space-evenly "false"
+          (box :class "menu-container" :orientation "v" :space-evenly "false"
               (menu-content)
           )
       )
@@ -108,7 +108,7 @@
 (defwidget music []
   (box :orientation "v" :spacing 10 :space-evenly "false" :class "genwin" :vexpand "false" :hexpand "false"
     (image :path "${music_icon}" :image-width "100" :image-height "100")
-    (label :text "${music_title} - ${music_artist}" :truncate "true")
+    (label :class "text" :text "${music_title} - ${music_artist}" :truncate "true")
     (box :orientation "h"  :space-evenly "false" :spacing 10 :halign "center" :vexpand "false" :hexpand "false"
       (button :onclick "playerctl previous"
               :class "iconcpu"
@@ -156,10 +156,9 @@
 (defwindow menu
     :monitor 0
     :type "toolbar"
-    :onlostfocus "notify-send 'Menu Closed'"
     :geometry (geometry :x "0%"
                         :y "27px"
-                        :width "310px"
+                        :width "325px"
                         :height "608px"
                         :anchor "top right")
 

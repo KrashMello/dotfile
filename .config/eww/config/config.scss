@@ -1,3 +1,12 @@
+.menu-container{
+  background-color: $bg-alt;
+  opacity: 0.95;
+  padding: 5;
+  border-radius: 16px;
+}
+.text {
+  color: $fg;
+}
 .btn_flat {
   padding: 5;
   font-size: 25px;
