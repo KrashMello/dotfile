@@ -1,3 +1,77 @@
+local theme_file_path = vim.fn.expand("$CONFIG_QTILE/config.json")
+local uv = vim.uv
+
+local function read_file(path)
+  local file = io.open(path, "r")
+  if not file then
+    return "nord"
+  end
+  local content = vim.fn.json_decode(file:read("*line"))
+  file:close()
+  return content.theme
+end
+
+-- local function set_dark_mode()
+--   vim.api.nvim_set_option_value("background", "dark", {})
+--   vim.cmd([[colorscheme tokyonight-moon]])
+-- end
+--
+-- local function set_light_mode()
+--   vim.api.nvim_set_option_value("background", "light", {})
+--   vim.cmd([[colorscheme onedark]])
+-- end
+
+local function watch_theme_change()
+  local handle = uv.new_fs_event()
+
+  local unwatch_cb = function()
+    if handle then
+      uv.fs_event_stop(handle)
+    end
+  end
+
+  local event_cb = function(err)
+    if err then
+      error("Theme file watcher failed")
+      unwatch_cb()
+    else
+      -- Important to wrap in schedule, otherwise error E5560
+      vim.schedule(function()
+        local theme = read_file(theme_file_path)
+        vim.api.nvim_set_option_value("background", "dark", {})
+        if theme == "nord" then
+          vim.cmd([[colorscheme nord]])
+        elseif theme == "catppuccin-mocha" then
+          vim.cmd([[colorscheme catppuccin-mocha]])
+        elseif theme == "rose-pine-dawn" then
+          vim.api.nvim_set_option_value("background", "light", {})
+          vim.cmd([[colorscheme rose-pine-dawn]])
+        else
+          vim.cmd([[colorscheme nord]])
+        end
+        unwatch_cb()
+        watch_theme_change()
+      end)
+    end
+  end
+
+  local flags = {
+    watch_entry = false, -- true = when dir, watch dir inode, not dir content
+    stat = false, -- true = don't use inotify/kqueue but periodic check, not implemented
+    recursive = false, -- true = watch dirs inside dirs
+  }
+
+  -- attach handler
+  if handle then
+    uv.fs_event_start(handle, theme_file_path, flags, event_cb)
+  end
+
+  return handle
+end
+
+local theme = read_file(theme_file_path)
+watch_theme_change()
+
 return {
   { "rose-pine/neovim", name = "rose-pine", opts = {
     variant = "moon",
@@ -83,10 +157,11 @@ return {
       })
     end,
   }, -- and this
+  { "nordtheme/vim" },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "poimandres",
+      colorscheme = theme,
     },
   },
 }
