@@ -2,6 +2,8 @@
 
 export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=qtile
+export MOZ_ENABLE_WAYLAND=1
+export GDK_BACKEND=wayland,x11
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CONFIG_KM=$XDG_CONFIG_HOME/km
 export CONFIG_EWW=$XDG_CONFIG_HOME/eww
@@ -13,4 +15,9 @@ if [ -d "$XDG_CONFIG_KM/scripts" ]; then
   PATH="$PATH:$XDG_CONFIG_KM/scripts"
 fi
 loginctl enable-linger "$USER"
-dbus-run-session qtile start -b wayland &
+
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_CONFIG_HOME XDG_SESSION_TYPE GDK_BACKEND
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_CONFIG_HOME XDG_SESSION_TYPE GDK_BACKEND
+
+systemctl --user start qtile-session.service
+exec qtile start -b wayland &
