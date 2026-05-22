@@ -6,22 +6,22 @@ run() {
   fi
 }
 # Constantes
-WALLPAPER=$(/bin/cat "$HOME"/.wallpaper)
-THEME=$(jq -r '.theme' $HOME/.config/qtile/config.json)
+WALLPAPER=$(/bin/cat "$XDG_CONFIG_KM"/.wallpaper)
+THEME=$(jq -r '.theme' $CONFIG_QTILE/config.json)
 
 $HOME/.screenlayout/layout.sh
 swaybg -i "$WALLPAPER" &
-swhkd -c "$HOME/.config/qtile/sxhkdrc" &
+swhkd -c "$CONFIG_QTILE/sxhkdrc" &
 run swhks
 cliphist wipe
 wl-paste --type text --watch cliphist store &
 wl-paste --type image --watch cliphist store &
 
 # start all this to entry the system
-dunst -config "$HOME/.config/qtile/themes/$THEME/dunstrc" &
+dunst -config "$CONFIG_QTILE/themes/$THEME/dunstrc" &
 
 (
-  version=$(/bin/cat $HOME/.config/qtile/VERSION)
+  version=$(/bin/cat $CONFIG_QTILE/VERSION)
   actual_version=$(curl -s --max-time 5 https://raw.githubusercontent.com/KrashMello/dotfile/refs/heads/main/.config/qtile/VERSION)
   if [ -n "$actual_version" ] && [ "$version" != "$actual_version" ]; then
     notify-send "Actualización pendiente" "Los dotfiles tienen una nueva versión $actual_version"
