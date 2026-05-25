@@ -60,7 +60,7 @@ keys = [
         # Terminal
         ([mod], "return", lazy.spawn("kitty")),
         # KeyLayout
-        (["control"], "space", lazy.widget["keyboardlayout"].next_keyboard()),
+        # (["control"], "space", lazy.widget["keyboardlayout"].next_keyboard()),
         # Screenshot
         # ------------ Hardware Configs ------------
         # ------------ Hardware Configs ------------
