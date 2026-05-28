@@ -1,27 +1,37 @@
 [[plugin.deps]]
-use = "Reledia/glow"
-rev = "5ce76dc"
-hash = "52e5f5c602962e7cbf874da28f52ba45"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "beb586a"
-hash = "f28138c2e11e87962b66d583fef724c3"
+rev = "c2c16c8"
+hash = "f0c8c378184d5f8abd1b095a443d336d"
 
 [[plugin.deps]]
 use = "GianniBYoung/rsync"
-rev = "3f431aa"
-hash = "1854a5a30d23e84bc8df24700f27957b"
+rev = "44f6979"
+hash = "9e85283824277bf66011a3977d266edb"
 
 [[plugin.deps]]
 use = "ndtoan96/ouch"
-rev = "2496cd9"
-hash = "5b9dea47776a30946cfbf83232d18fb1"
+rev = "406ce6c"
+hash = "f5afc904d5106ee368c8aa2ded43bd74"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "8f1d971"
-hash = "8a7c58225816a163a6e8730c0adafbc8"
+rev = "c2c16c8"
+hash = "9c7987da2d2a2120dac33abb64132004"
+
+[[plugin.deps]]
+use = "AnirudhG07/rich-preview"
+rev = "7d616ad"
+hash = "d64feec9761392cbc250d199ab4b8a3a"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:mount"
+rev = "c2c16c8"
+hash = "e3260d0b1feded8c8e3ae3afa1169e30"
+
+[[plugin.deps]]
+use = "WhoSowSee/mdv-previewer"
+rev = "04aa2bd"
+hash = "64de0b69e2b4829bd7ad4c500a3f7a61"
 
 [flavor]
 deps = []

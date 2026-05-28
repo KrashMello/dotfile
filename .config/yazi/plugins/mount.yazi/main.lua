@@ -1,4 +1,4 @@
---- @since 25.2.7
+--- @since 26.5.6
 
 local toggle_ui = ya.sync(function(self)
 	if self.children then
@@ -7,18 +7,21 @@ local toggle_ui = ya.sync(function(self)
 	else
 		self.children = Modal:children_add(self, 10)
 	end
-	ya.render()
+	ui.render()
 end)
 
-local subscribe = ya.sync(function(self)
+local subscribe = ya.sync(function()
 	ps.unsub("mount")
-	ps.sub("mount", function() ya.manager_emit("plugin", { self._id, "refresh" }) end)
+	ps.sub("mount", function()
+		-- TODO: use `ya.async()`
+		ya.emit("plugin", { "mount", "refresh" })
+	end)
 end)
 
 local update_partitions = ya.sync(function(self, partitions)
 	self.partitions = partitions
 	self.cursor = math.max(0, math.min(self.cursor or 0, #self.partitions - 1))
-	ya.render()
+	ui.render()
 end)
 
 local active_partition = ya.sync(function(self) return self.partitions[self.cursor + 1] end)
@@ -29,12 +32,14 @@ local update_cursor = ya.sync(function(self, cursor)
 	else
 		self.cursor = ya.clamp(0, self.cursor + cursor, #self.partitions - 1)
 	end
-	ya.render()
+	ui.render()
 end)
 
 local M = {
 	keys = {
 		{ on = "q", run = "quit" },
+		{ on = "<Esc>", run = "quit" },
+		{ on = "<Enter>", run = { "enter", "quit" } },
 
 		{ on = "k", run = "up" },
 		{ on = "j", run = "down" },
@@ -48,6 +53,7 @@ local M = {
 		{ on = "u", run = "unmount" },
 		{ on = "e", run = "eject" },
 	},
+	permit = table.pack(ya.chan("mpsc", 1)),
 }
 
 function M:new(area)
@@ -88,8 +94,13 @@ function M:entry(job)
 	local tx1, rx1 = ya.chan("mpsc")
 	local tx2, rx2 = ya.chan("mpsc")
 	function producer()
+		self.permit[1]:send(true)
 		while true do
-			local cand = self.keys[ya.which { cands = self.keys, silent = true }] or { run = {} }
+			self.permit[2]:recv()
+			local idx = ya.which { cands = self.keys, silent = true }
+			self.permit[1]:send(true)
+
+			local cand = self.keys[idx] or { run = {} }
 			for _, r in ipairs(type(cand.run) == "table" and cand.run or { cand.run }) do
 				tx1:send(r)
 				if r == "quit" then
@@ -113,7 +124,7 @@ function M:entry(job)
 			elseif run == "enter" then
 				local active = active_partition()
 				if active and active.dist then
-					ya.manager_emit("cd", { active.dist })
+					ya.emit("cd", { active.dist })
 				end
 			else
 				tx2:send(run)
@@ -127,11 +138,11 @@ function M:entry(job)
 			if run == "quit" then
 				break
 			elseif run == "mount" then
-				self.operate("mount")
+				require(".cross").operate("mount", active_partition())
 			elseif run == "unmount" then
-				self.operate("unmount")
+				require(".cross").operate("unmount", active_partition())
 			elseif run == "eject" then
-				self.operate("eject")
+				require(".cross").operate("eject", active_partition())
 			end
 		until not run
 	end
@@ -155,11 +166,11 @@ function M:redraw()
 
 	return {
 		ui.Clear(self._area),
-		ui.Border(ui.Border.ALL)
+		ui.Border(ui.Edge.ALL)
 			:area(self._area)
 			:type(ui.Border.ROUNDED)
 			:style(ui.Style():fg("blue"))
-			:title(ui.Line("Mount"):align(ui.Line.CENTER)),
+			:title(ui.Line("Mount"):align(ui.Align.CENTER)),
 		ui.Table(rows)
 			:area(self._area:pad(ui.Pad(1, 2, 1, 2)))
 			:header(ui.Row({ "Src", "Label", "Dist", "FSType" }):style(ui.Style():bold()))
@@ -169,7 +180,7 @@ function M:redraw()
 				ui.Constraint.Length(20),
 				ui.Constraint.Length(20),
 				ui.Constraint.Percentage(70),
-				ui.Constraint.Length(10),
+				ui.Constraint.Length(20),
 			},
 	}
 end
@@ -209,6 +220,12 @@ function M.split(src)
 		{ "^/dev/nvme%d+n%d+", "p%d+$" }, -- /dev/nvme0n1p1
 		{ "^/dev/mmcblk%d+", "p%d+$" }, -- /dev/mmcblk0p1
 		{ "^/dev/disk%d+", ".+$" }, -- /dev/disk1s1
+		{ "^/dev/sr%d+", ".+$" }, -- /dev/sr0
+		{ "^/dev/fd%d+", ".+$" }, -- /dev/fd0
+		{ "^/dev/md%d+", "p%d+$" }, -- /dev/md0p1
+		{ "^/dev/nbd%d+", "p%d+$" }, -- /dev/nbd0p1
+		{ "^/dev/bcache%d+", "p%d+$" }, -- /dev/bcache0p1
+		{ "^/dev/mapper/", ".+$" }, -- /dev/mapper/<name>
 	}
 	for _, p in ipairs(pats) do
 		local main = src:match(p[1])
@@ -233,7 +250,7 @@ function M.fillin(tbl)
 		return tbl
 	end
 
-	local output, err = Command("lsblk"):args({ "-p", "-o", "name,fstype", "-J" }):args(sources):output()
+	local output, err = Command("lsblk"):arg({ "-p", "-o", "name,fstype", "-J" }):arg(sources):output()
 	if err then
 		ya.dbg("Failed to fetch filesystem types for unmounted partitions: " .. err)
 		return tbl
@@ -245,36 +262,6 @@ function M.fillin(tbl)
 	end
 	return tbl
 end
-
-function M.operate(type)
-	local active = active_partition()
-	if not active then
-		return
-	elseif not active.sub then
-		return -- TODO: mount/unmount main disk
-	end
-
-	local output, err
-	if ya.target_os() == "macos" then
-		output, err = Command("diskutil"):args({ type, active.src }):output()
-	end
-	if ya.target_os() == "linux" then
-		if type == "eject" then
-			Command("udisksctl"):args({ "unmount", "-b", active.src }):status()
-			output, err = Command("udisksctl"):args({ "power-off", "-b", active.src }):output()
-		else
-			output, err = Command("udisksctl"):args({ type, "-b", active.src }):output()
-		end
-	end
-
-	if not output then
-		M.fail("Failed to %s `%s`: %s", type, active.src, err)
-	elseif not output.status.success then
-		M.fail("Failed to %s `%s`: %s", type, active.src, output.stderr)
-	end
-end
-
-function M.fail(s, ...) ya.notify { title = "Mount", content = string.format(s, ...), timeout = 10, level = "error" } end
 
 function M:click() end
 
