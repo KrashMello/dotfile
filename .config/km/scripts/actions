@@ -31,7 +31,7 @@ case $ans in
   eww -c "$CONFIG_EWW" open --toggle notify --screen "$screen"
   ;;
 "Portapapeles")
-  clipcat-menu
+  OpenApps --clipcat
   ;;
 "Emojis")
   rofimoji --selector-args="-theme $CONFIG_ROFI/config/emoji-center-menu.rasi" --use-icons
