@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 icon_theme='Nordzy'
 icons="$HOME/.icons/$icon_theme"
+km_icons="$HOME/.config/km/icons"
 icons_apps="$icons/apps/scalable"
 icons_status="$icons/status"
 rofi_conf="rofi -dmenu -selected-row 0"
@@ -13,7 +14,8 @@ application="Aplicaciones\0icon\x1f$icons_apps/Appstore.svg"
 performance="Modo de rendimiento\0icon\x1f$icons_status/24/indicator-cpufreq-100.svg"
 zellij="Zellij\0icon\x1f$icons_apps/xfce4-workspaces.svg"
 htop="Administrador de procesos\0icon\x1f$icons_apps/htop.svg"
-ans=$(echo -en "$application\n$theme\n$wallpaper\n$notify\n$clipcat\n$emojis\n$performance\n$zellij\n$htop" | $rofi_conf -p "󰧾 ")
+update="Actualizar\0icon\x1f$km_icons/update.svg"
+ans=$(echo -en "$application\n$theme\n$wallpaper\n$notify\n$clipcat\n$emojis\n$performance\n$zellij\n$htop\n$update" | $rofi_conf -p "󰧾 ")
 ans=$(echo $ans | sed -e 's/^[[\\0icon\x1f]]*//g')
 screen=$(qtile cmd-obj -o screen -f info | jq .index)
 case $ans in
@@ -44,5 +46,8 @@ case $ans in
   ;;
 "Administrador de procesos")
   OpenApps --htop
+  ;;
+"Actualizar")
+  OpenApps --update
   ;;
 esac

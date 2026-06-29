@@ -41,7 +41,7 @@ case "$1" in
   kitty --config $CONFIG_KITTY/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no
   ;;
 --update)
-  alacritty --hold --class FloaTerm,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=90 -e Updates --update-system
+  kitty --config $CONFIG_KITTY/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e update-system
   ;;
 --checkupdates)
   alacritty --hold --class Updating,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=47 -e Updates --print-updates
