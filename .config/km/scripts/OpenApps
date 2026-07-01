@@ -93,6 +93,12 @@ case "$1" in
 --calendar)
   eww -c "$CONFIG_EWW" open --toggle date
   ;;
+--test)
+  for icon in "$XDG_CONFIG_KM"/icons/*; do
+    svgName=$(echo "$icon" | awk -F/ '{print $NF}')
+    /bin/cat "$icon" | sed 's/color="km"/color="#FF0000"/g' >"$HOME"/.icons/km/"$svgName"
+  done
+  ;;
 *)
   echo "Opción no válida"
   ;;

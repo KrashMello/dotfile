@@ -28,19 +28,24 @@ if [ "$chosse" != "" ]; then
   case $chosse in
   "nord")
     wallpaper="$images/$themes/wallhaven-2em38y_1920x1080.png"
+    COLOR="#d8dee9"
     ;;
   "batman")
     wallpaper="$images/$themes/wallhaven-01zjqg_1920x1080.png"
+    COLOR="#fcef0c"
     ;;
   "catppuccin-mocha")
     wallpaper="$images/$themes/wallhaven-1qkz23_1920x1080.png"
+    COLOR="#f5c2e7"
     ;;
   "catppuccin-latte")
     wallpaper="$images/$themes/sky-cat.png"
+    COLOR="#4c4f69"
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
     ;;
   "rose-pine-dawn")
     wallpaper="$images/$themes/sky-cat.png"
+    COLOR="#d7827e"
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
     ;;
   esac
@@ -51,6 +56,10 @@ if [ "$chosse" != "" ]; then
     echo "$wallpaper" >"$XDG_CONFIG_KM"/.wallpaper
   fi
 
+  for icon in "$XDG_CONFIG_KM"/icons/*; do
+    svgName=$(echo "$icon" | awk -F/ '{print $NF}')
+    /bin/cat "$icon" | sed 's/color="km"/color="'"$COLOR"'"/g' >"$HOME"/.icons/km/"$svgName"
+  done
   swaybg -i "$wallpaper"
 
 fi
