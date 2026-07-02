@@ -49,12 +49,13 @@ if [ "$chosse" != "" ]; then
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
     ;;
   esac
-  if [ -f "$XDG_CONFIG_KM"/.wallpaper ]; then
-    echo "$wallpaper" >"$XDG_CONFIG_KM"/.wallpaper
-  else
+  if [ ! -f "$XDG_CONFIG_KM"/.wallpaper ]; then
     touch "$XDG_CONFIG_KM"/.wallpaper
-    echo "$wallpaper" >"$XDG_CONFIG_KM"/.wallpaper
   fi
+  if [ ! -d "$HOME"/.icons/km ]; then
+    mkdir -p "$HOME"/.icons/km
+  fi
+  echo "$wallpaper" >"$XDG_CONFIG_KM"/.wallpaper
 
   for icon in "$XDG_CONFIG_KM"/icons/*; do
     svgName=$(echo "$icon" | awk -F/ '{print $NF}')
