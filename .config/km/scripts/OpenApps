@@ -38,10 +38,13 @@ case "$1" in
 #   alacritty --hold --class FloatTermAlacritty -o window.dimensions.lines=22 window.dimensions.columns=90
 #   ;;
 --floating)
-  kitty --config $CONFIG_KITTY/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no
+  kitty --config "$CONFIG_KITTY"/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no
+  ;;
+--audio)
+  kitty --config "$CONFIG_KITTY"/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e wiremix
   ;;
 --update)
-  kitty --config $CONFIG_KITTY/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e update-system
+  kitty --config "$CONFIG_KITTY"/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e update-system
   ;;
 --checkupdates)
   alacritty --hold --class Updating,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=47 -e Updates --print-updates
@@ -50,7 +53,7 @@ case "$1" in
 #   alacritty --class FloatTermAlacritty -o window.dimensions.lines=22 window.dimensions.columns=90 -e $HOME/.local/bin/yazi
 #   ;;
 --TfileManager)
-  kitty --config $CONFIG_KITTY/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e yazi
+  kitty --config "$CONFIG_KITTY"/kitty-float.conf --class FloatTerm,kitty -o initial_window_width=800 -o initial_window_height=400 -o remember_window_size=no -e yazi
   ;;
 --nvim)
   alacritty -e nvim

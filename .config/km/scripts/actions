@@ -10,8 +10,9 @@ application="Aplicaciones\0icon\x1f$icons_apps/app.svg"
 performance="Modo de rendimiento\0icon\x1f$icons_apps/performance.svg"
 zellij="Zellij\0icon\x1f$icons_apps/workspace.svg"
 htop="Administrador de procesos\0icon\x1f$icons_apps/task_manager.svg"
-update="Actualizar\0icon\x1f"$icons_apps"/update.svg"
-ans=$(echo -en "$application\n$theme\n$wallpaper\n$notify\n$clipcat\n$emojis\n$performance\n$zellij\n$htop\n$update" | $rofi_conf -p "󰧾 ")
+update="Actualizar\0icon\x1f$icons_apps/update.svg"
+audio="Control de Audio\0icon\x1f$icons_apps/audio.svg"
+ans=$(echo -en "$application\n$theme\n$wallpaper\n$notify\n$clipcat\n$emojis\n$performance\n$zellij\n$htop\n$update\n$audio" | $rofi_conf -p "󰧾 ")
 ans=$(echo "$ans" | sed -e 's/^[[\\0icon\x1f]]*//g')
 screen=$(qtile cmd-obj -o screen -f info | jq .index)
 case $ans in
@@ -45,5 +46,8 @@ case $ans in
   ;;
 "Actualizar")
   OpenApps --update
+  ;;
+"Control de Audio")
+  OpenApps --audio
   ;;
 esac
