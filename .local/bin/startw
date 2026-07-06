@@ -2,7 +2,9 @@
 
 export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=qtile
+export XDG_SESSION_DESKTOP=qtile
 export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM="wayland;xcb"
 export GDK_BACKEND=wayland,x11
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CONFIG_KM=$XDG_CONFIG_HOME/km
@@ -19,5 +21,4 @@ loginctl enable-linger "$USER"
 dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_CONFIG_HOME XDG_SESSION_TYPE GDK_BACKEND
 systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_CONFIG_HOME XDG_SESSION_TYPE GDK_BACKEND
 
-systemctl --user start qtile-session.service
-exec qtile start -b wayland &
+qtile start -b wayland &
