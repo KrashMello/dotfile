@@ -34,8 +34,7 @@ install_with_dnf() {
   echo -e "\nAgregando a la lista de repositorios qtile 🔃"
   sudo dnf copr enable frostyx/qtile
   echo -e "\nInstalando paquetes 🔃"
-  sudo dnf install dunst kitty rofi fastfetch unrar bat fd-find neovim duf fzf cliphist wl-clipboard qtile-extras qtile lazygit ripgrep zsh lsd zsh-syntax-highlighting zsh-autosuggestions magick swaylock cava gammastep procps-ng curl file rofimoji playerctl wdisplays swaybg slurp xdg-desktop-portal-wlr xdg-desktop-portal-gtk gamescope wlr-randr grim gtk-layer-shell wiremix podman-compose podman-tui
-
+  sudo dnf install dunst kitty rofi fastfetch unrar bat fd-find neovim duf fzf cliphist wl-clipboard qtile-extras qtile lazygit ripgrep zsh lsd zsh-syntax-highlighting zsh-autosuggestions magick swaylock cava gammastep procps-ng curl file rofimoji playerctl wdisplays swaybg slurp xdg-desktop-portal-wlr xdg-desktop-portal-gtk gamescope wlr-randr grim gtk-layer-shell wiremix podman-compose podman-tui gh
   echo -e "\nInstalando homebrew 🔃"
 
   if [ ! -d /home/linuxbrew ]; then
@@ -95,15 +94,15 @@ fi
 # Copiar configuraciones
 read -p "¿Desea instalar las configuraciones de la instalación? [S/N] " resp
 if [ "$resp" = "S" ] || [ "$resp" = "s" ]; then
-  if [ ! -d "$XDG_CONFIG_HOME"/.dotfile ]; then
-    mkdir -p "$XDG_CONFIG_HOME"/.dotfile
+  if [ ! -d "$HOME"/.dotfile ]; then
+    mkdir -p "$HOME"/.dotfile
   fi
-  cp -r "$DOT_DIR/.config" "$XDG_CONFIG_HOME"/.dotfile/
-  cp -r "$DOT_DIR/.local" "$XDG_CONFIG_HOME"/.dotfile/
-  cp -r "$DOT_DIR/firefox" "$XDG_CONFIG_HOME"/.dotfile/
-  cp -r "$DOT_DIR/background" "$XDG_CONFIG_HOME"/.dotfile/
-  cp -r "$DOT_DIR/zshrc" "$XDG_CONFIG_HOME"/.dotfile/
-  DOT_DIR="$XDG_CONFIG_HOME"/.dotfile
+  cp -r "$DOT_DIR/.config" "$HOME"/.dotfile/
+  cp -r "$DOT_DIR/.local" "$HOME"/.dotfile/
+  cp -r "$DOT_DIR/firefox" "$HOME"/.dotfile/
+  cp -r "$DOT_DIR/background" "$HOME"/.dotfile/
+  cp -r "$DOT_DIR/.zshrc" "$HOME"/.dotfile/
+  DOT_DIR="$HOME"/.dotfile
   backup_and_copy "$DOT_DIR/.config/atac" "$XDG_CONFIG_HOME" -d
   backup_and_copy "$DOT_DIR/.config/eww" "$XDG_CONFIG_HOME" -d
   backup_and_copy "$DOT_DIR/.config/fastfetch" "$XDG_CONFIG_HOME" -d
