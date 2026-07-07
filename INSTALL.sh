@@ -118,6 +118,7 @@ if [ "$resp" = "S" ] || [ "$resp" = "s" ]; then
   backup_and_copy "$DOT_DIR/.config/rofi" "$XDG_CONFIG_HOME" -d
   backup_and_copy "$DOT_DIR/.config/yazi" "$XDG_CONFIG_HOME" -d
   backup_and_copy "$DOT_DIR/.config/zellij" "$XDG_CONFIG_HOME" -d
+  backup_and_copy "$DOT_DIR/.config/systemd" "$XDG_CONFIG_HOME" -d
   backup_and_copy "$DOT_DIR/background" "$(xdg-user-dir PICTURES)" -d
   backup_and_copy "$DOT_DIR/.local/bin/startw" "$HOME/.local/bin" -f
   if [ -d $HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome ]; then
