@@ -1,0 +1,12 @@
+[Unit]
+Description=Sesion Grafica de Qtile en Wayland
+BindsTo=graphical-session.target
+Before=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/true
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

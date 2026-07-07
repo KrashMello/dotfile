@@ -21,4 +21,5 @@ loginctl enable-linger "$USER"
 dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_CONFIG_HOME XDG_SESSION_TYPE GDK_BACKEND
 systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_CONFIG_HOME XDG_SESSION_TYPE GDK_BACKEND
 
+systemctl --user start qtile-session.service
 qtile start -b wayland &
