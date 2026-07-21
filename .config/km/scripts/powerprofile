@@ -2,7 +2,7 @@
 
 rofi_command="rofi -theme $CONFIG_ROFI/config/center-menu.rasi"
 
-list="$(powerprofilesctl list | awk '{if (NR == 1 || NR == 5 || NR == 9) print}' | sed 's/://g')"
+list="$(powerprofilesctl list | grep -E '^\*? +[a-z-]+:' | awk -F: '{print $1}' | tr -d '* ')"
 
 selected="$(echo -e "$list" | $rofi_command -dmenu -p "󰓅 " | sed 's/[*]//g')"
 
