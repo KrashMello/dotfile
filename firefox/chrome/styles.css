@@ -254,19 +254,24 @@ toolbarbutton > image,  toolbarbutton > stack {
   border: none !important;
   box-shadow: none !important;
   background: transparent !important;
+  width: calc(100dvw - 60%) !important;
 }
 
+#toolbar-menubar {
+  display: none !important;
+}
 /* remove border below whole nav */
 #navigator-toolbox {
   border-bottom: none !important;
+  display: flex !important;
+  flex-flow: row-reverse !important;
 }
 
 /* #urlbar,
 #urlbar * {
   box-shadow: none !important;
   outline: none !important;
-   */
-}
+} */
 
 #urlbar[focused="true"]>#urlbar-background,
 #urlbar:not([open])>#urlbar-background {
@@ -296,9 +301,7 @@ toolbarbutton > image,  toolbarbutton > stack {
 @media (min-width: 1000px) {
 
   /* move tabs bar over */
-  #TabsToolbar {
-    margin-left: var(--uc-urlbar-width) !important;
-  }
+
 
   /* move entire nav bar  */
   #nav-bar {
