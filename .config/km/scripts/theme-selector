@@ -15,7 +15,8 @@ if [ "$chosse" != "" ]; then
   echo "include $chosse.conf" >$CONFIG_KITTY/themes/default.conf
   kill -SIGUSR1 $(pidof kitty)
   if [ -f $CONFIG_QTILE/config.json ]; then
-    echo -e $(jq --arg theme "$chosse" '.theme |= $theme' $CONFIG_QTILE/config.json) >$CONFIG_QTILE/config.json
+    tmp_file=$(mktemp)
+    jq --arg theme "$chosse" '.theme = $theme' "$CONFIG_QTILE/config.json" >"$tmp_file" && mv "$tmp_file" "$CONFIG_QTILE/config.json"
   fi
   if [ -d $HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome ]; then
     echo "@import \"./themes/$chosse.css\";" >$HOME/.mozilla/firefox/$(/bin/ls $HOME/.mozilla/firefox/ | grep -e '.default-release*$')/chrome/theme.css
