@@ -56,7 +56,7 @@ element-icon {
     size: 70px;
 }
 element-text {
-  font: "Fira Code Nerd Font bold 10";
+  font: "GohuFont 11 Nerd Font bold 13";
   horizontal-align:               0.5;
   vertical-align:                 0.5;
   margin: 0 11px;
