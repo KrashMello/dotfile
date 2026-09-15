@@ -3,7 +3,7 @@ configuration{
 }
 @import "themes/default.rasi"
 #window {
-    background-color: @BG;
+    background-color: transparent;
     width: calc(100%-200px) 50%;
     children:["mainbox"];
 }
@@ -14,6 +14,7 @@ mainbox {
     border-radius: 15;
     padding: 20;
     background-color: @BGA;
+    background-color: @BG;
     children: ["inputbar","listview"];
 }
 
