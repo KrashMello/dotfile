@@ -6,7 +6,7 @@ local function read_file(path)
   if not file then
     return "nord"
   end
-  local content = vim.fn.json_decode(file:read("*line"))
+  local content = vim.fn.json_decode(file:read("*a"))
   file:close()
   return content.theme
 end
