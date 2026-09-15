@@ -1,6 +1,16 @@
-#!/bin/bash
+#!/bin/sh
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CONFIG_KM=$XDG_CONFIG_HOME/km
+export CONFIG_EWW=$XDG_CONFIG_HOME/eww
+export CONFIG_KITTY=$XDG_CONFIG_HOME/kitty
+export CONFIG_ROFI=$XDG_CONFIG_HOME/rofi
+export CONFIG_QTILE=$XDG_CONFIG_HOME/qtile
 
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+if [ -d "$XDG_CONFIG_KM/scripts" ]; then
+  PATH="$PATH:$XDG_CONFIG_KM/scripts"
+fi
+loginctl enable-linger "$USER"
+dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_CONFIG_HOME XDG_SESSION_TYPE GDK_BACKEND
+systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_CONFIG_HOME XDG_SESSION_TYPE GDK_BACKEND
 
-systemctl --user restart xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk
+systemctl --user start qtile-session.service
