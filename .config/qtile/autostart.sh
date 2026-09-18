@@ -5,11 +5,13 @@ export CONFIG_EWW=$XDG_CONFIG_HOME/eww
 export CONFIG_KITTY=$XDG_CONFIG_HOME/kitty
 export CONFIG_ROFI=$XDG_CONFIG_HOME/rofi
 export CONFIG_QTILE=$XDG_CONFIG_HOME/qtile
+export XDG_CURRENT_DESKTOP=gnome
 
 if [ -d "$XDG_CONFIG_KM/scripts" ]; then
   PATH="$PATH:$XDG_CONFIG_KM/scripts"
 fi
 loginctl enable-linger "$USER"
+
 dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_CONFIG_HOME XDG_SESSION_TYPE GDK_BACKEND
 systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_CONFIG_HOME XDG_SESSION_TYPE GDK_BACKEND
 
